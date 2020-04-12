@@ -18,6 +18,7 @@ export interface doctorsData {
     AvailableDays: object,
     WorkDays: []
 }
+
 export interface workHours{
     Day: string,
     Index: number,
