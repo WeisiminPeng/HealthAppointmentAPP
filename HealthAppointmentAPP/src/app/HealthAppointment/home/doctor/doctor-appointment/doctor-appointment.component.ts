@@ -22,7 +22,8 @@ export class DoctorAppointmentComponent implements OnInit {
   public doctors: Array<doctorsData>;
   public doctor: doctorsData;
   public id: string;
-  // public workHoursData: Object;
+  public workStartHoursData: Date;
+  public workEndHoursData: Date;
   public breakHoursData: Object;
   public intl: Internationalization = new Internationalization();
   public animationSettings: Object = { effect: 'None' };
@@ -49,6 +50,8 @@ export class DoctorAppointmentComponent implements OnInit {
       // this.breakHoursData = JSON.parse(JSON.stringify(this.workHoursData));
       // console.log("test!: "+JSON.parse(JSON.stringify(this.workHoursData)))
       this.breakHoursData = this.doctor.WorkDays;
+      // this.workStartHoursData = new Date(<Date>this.doctor.StartHour);
+      // new Date(<Date>workDays[i].WorkStartHour);
       // console.log("this.breakHoursData: " + this.breakHoursData)
       // console.log(this.workHoursData)
       // this.filteredDoctors = this.doctors;
@@ -92,6 +95,7 @@ export class DoctorAppointmentComponent implements OnInit {
         newState = 'TimeOff';
         break;
     }
+    
     //find the switched day and change state
     for (let i = 0; i < (<{ [key: string]: Object }[]>this.breakHoursData).length; i++) {
       if (this.breakHoursData[i].Day === currentDay) {
