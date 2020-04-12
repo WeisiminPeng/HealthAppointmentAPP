@@ -95,7 +95,7 @@ export class DoctorAppointmentComponent implements OnInit {
         newState = 'TimeOff';
         break;
     }
-    
+
     //find the switched day and change state
     for (let i = 0; i < (<{ [key: string]: Object }[]>this.breakHoursData).length; i++) {
       if (this.breakHoursData[i].Day === currentDay) {
@@ -126,7 +126,6 @@ export class DoctorAppointmentComponent implements OnInit {
     } else if (data.State === 'RemoveBreak') {
       return '---';
     } else {
-      // tslint:disable-next-line:max-line-length
       // this.BreakStart = data.BreakStartHour;
       // this.BreakEnd = data.BreakEndHour;
       // console.log("data.BreakStartHour:  " + data.BreakStartHour)
