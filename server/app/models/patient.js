@@ -3,20 +3,28 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 //Create the data model
-let Todo = new Schema({
-    title: {
+let Patient = new Schema({
+    Name: {
         type: String,
         required: "title is required"
     },
-    description: {
+    Gender: {
         type: String
     },
-    dueDate: {
-        type: String,
+    Text: {
+        type: String
     },
-    time: {
-        type: Date,
-        default: Date.now
+    DOB:{
+        type:Date
+    },
+    Mobile: {
+        type: String
+    },
+    Address:{
+        type: String
+    },
+    Appointment:{
+        type: Array
     }
     // createDate: {
     //     type: Date,
@@ -28,20 +36,20 @@ let Todo = new Schema({
     // }
 }, {
     versionKey: false, 
-    timestamps: {
-        createdAt: 'createDate',
-        updatedAt: 'modifiedDate'
-    }
+    // timestamps: {
+    //     createdAt: 'createDate',
+    //     updatedAt: 'modifiedDate'
+    // }
 });
 
 // Duplicate the id field as mongoose returns _id field instead of id.
-Todo.virtual('id').get(function(){
+Patient.virtual('id').get(function(){
     return this._id.toHexString();
 });
 
 // Ensure virtual fields are serialised.
-Todo.set('toJSON', {
+Patient.set('toJSON', {
     virtuals: true
 });
 
-module.exports = mongoose.model('Todo', Todo);
+module.exports = mongoose.model('Patient', Patient);
