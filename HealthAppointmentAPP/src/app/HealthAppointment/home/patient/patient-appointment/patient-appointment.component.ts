@@ -14,15 +14,7 @@ import { doctorsData } from 'src/app/HealthAppointment/healthappoint.model';
   styleUrls: ['./patient-appointment.component.scss']
 })
 export class PatientAppointmentComponent implements OnInit {
-  // @ViewChild('specializationObj')
-  // public specializationObj: DropDownListComponent;
-  // @ViewChild('specialistItemObj')
-  // public specialistItemObj: any;
-  // public doctorsData: { [key: string]: Object }[];
-  // public activeDoctorData: { [key: string]: Object };
-  // public filteredDoctors: { [key: string]: Object }[];
-  // public specializationData: Object[];
-  // public fields: Object = { text: 'Text', value: 'Id' };
+
   public selectedSpecialization: string;
   public selectedDoctors:Array<doctorsData>;
   // public tooltipObj: Tooltip;
@@ -46,20 +38,7 @@ export class PatientAppointmentComponent implements OnInit {
       this.doctors = doctors;
       this.filteredDoctors = this.doctors;
     });
-    // this.dataService.updateActiveItem('doctors');
-    // this.tooltipObj = new Tooltip({
-    //   height: '30px',
-    //   width: '76px',
-    //   position: 'RightTop',
-    //   offsetX: -10,
-    //   showTipPointer: false,
-    //   target: '.availability',
-    //   beforeOpen: (args: TooltipEventArgs) => {
-    //     args.element.querySelector('.e-tip-content').textContent =
-    //       args.target.classList[1].charAt(0).toUpperCase() + args.target.classList[1].slice(1);
-    //   }
-    // });
-    // this.tooltipObj.appendTo(this.specialistItemObj.nativeElement);
+
   }
 
   onSpecializationChange(args?: any) {

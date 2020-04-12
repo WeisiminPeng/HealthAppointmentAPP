@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { DropDownListModule} from '@syncfusion/ej2-angular-dropdowns';
 
 import { HttpClientModule } from '@angular/common/http';
 
@@ -14,6 +13,7 @@ import { PatientAppointmentComponent } from './HealthAppointment/home/patient/pa
 import { PatientSidebarComponent } from './HealthAppointment/home/patient/patient-sidebar/patient-sidebar.component';
 import { PatientScheduleComponent } from './HealthAppointment/home/patient/patient-schedule/patient-schedule.component';
 
+import { DropDownListModule} from '@syncfusion/ej2-angular-dropdowns';
 import { SidebarModule } from '@syncfusion/ej2-angular-navigations';
 import { DoctorSidebarComponent } from './HealthAppointment/home/doctor/doctor-sidebar/doctor-sidebar.component';
 import { DialogModule } from '@syncfusion/ej2-angular-popups';
