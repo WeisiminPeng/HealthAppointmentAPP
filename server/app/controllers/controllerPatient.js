@@ -1,17 +1,17 @@
 'use strict';
 
 //Import specific operations to database
-const service = require('../services/service');
+const service = require('../services/servicePatient');
 
 //Create and return a new todo in JSON based on the HTTP request
 exports.save = function(req, res){
-    const Newtodo = Object.assign({}, req.body);
-    const result = (todo) => {
+    const NewPatient = Object.assign({}, req.body);
+    const result = (patient) => {
         res.status(200);
-        res.json(todo);
+        res.json(patient);
     };
 
-    const promise =  service.save(Newtodo);
+    const promise =  service.save(NewPatient);
     promise
     // service.save(Newtodo)
         .then(result)
@@ -20,8 +20,8 @@ exports.save = function(req, res){
 
 //Return an updated todo in JSON based on the update parameters
 exports.update = function(req, res){
-    const todo = Object.assign({}, req.body);
-    const result = (todo) => {
+    const patient = Object.assign({}, req.body);
+    const result = (patient) => {
         res.status(200);
         // res.json(todo);
         res.json({
@@ -29,17 +29,17 @@ exports.update = function(req, res){
         });
     };
 
-    todo._id = req.params.id;
-    service.update(todo)
+    patient._id = req.params.id;
+    service.update(patient)
         .then(result)
         .catch(renderErrorResponse(res));
 }
 
 //Return a todo in JSON based on the search parameter
 exports.get = function(req, res){
-    const result = (todo) => {
+    const result = (patient) => {
         res.status(200);
-        res.json(todo);
+        res.json(patient);
     }
 
     service.get(req.params.id)
@@ -54,9 +54,9 @@ exports.list = function(req, res){
     if(totalQuery) {
         params.total = totalQuery
     };
-    const result = (todos) => {
+    const result = (patients) => {
         res.status(200);
-        res.json(todos);
+        res.json(patients);
     };
     const promise = service.search(params);
     promise

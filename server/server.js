@@ -31,4 +31,4 @@ let initApp = require('./app/app');
 initApp(app);
 
 app.listen(port);
-console.log('Todo RESTful API server started on: ' + port);
+console.log('HealthAppointmentAPP RESTful API server started on: ' + port);

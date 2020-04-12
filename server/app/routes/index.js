@@ -1,8 +1,12 @@
 'use strict';
 
-// const Route = require('./../routes/route');
-const Route = require('./../routes/routeDoctor');
+const RoutePatient = require('./../routes/routePatient');
+const RouteDoctr = require('./../routes/routeDoctor');
 
 module.exports = (app) => {
-    Route(app);
+    RouteDoctr(app);
+};
+
+module.exports = (app) => {
+    RoutePatient(app);
 };

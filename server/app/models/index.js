@@ -1,4 +1,4 @@
 'use strict';
 
-// const Model = require('./todo');
-const Model = require('./doctor');
+const ModelPatient = require('./patient');
+const ModelDoctor = require('./doctor');
