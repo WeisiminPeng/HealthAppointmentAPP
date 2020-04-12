@@ -14,15 +14,7 @@ import { doctorsData } from 'src/app/HealthAppointment/healthappoint.model';
   styleUrls: ['./patient-appointment.component.scss']
 })
 export class PatientAppointmentComponent implements OnInit {
-  // @ViewChild('specializationObj')
-  // public specializationObj: DropDownListComponent;
-  // @ViewChild('specialistItemObj')
-  // public specialistItemObj: any;
-  // public doctorsData: { [key: string]: Object }[];
-  // public activeDoctorData: { [key: string]: Object };
-  // public filteredDoctors: { [key: string]: Object }[];
-  // public specializationData: Object[];
-  // public fields: Object = { text: 'Text', value: 'Id' };
+
   public selectedSpecialization: string;
   public selectedDoctors:Array<doctorsData>;
   // public tooltipObj: Tooltip;
