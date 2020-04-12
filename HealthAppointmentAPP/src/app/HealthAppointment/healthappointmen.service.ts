@@ -33,7 +33,6 @@ export class HealthappointmenService {
   public update(doctorWorkDays:string,id: string): Observable<success> {
     let header = new HttpHeaders({'content-type': 'application/json'});
     const doctorUpdate$ = this.http.put<success>(`${this.ROUTE_URL}/${id}`, doctorWorkDays, {headers : header});
-    // this.http.post<Todoitem>(this.ROUTE_URL, todoitem);
     return doctorUpdate$;
   }
 
