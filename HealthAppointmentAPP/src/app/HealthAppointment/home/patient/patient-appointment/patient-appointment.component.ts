@@ -38,20 +38,7 @@ export class PatientAppointmentComponent implements OnInit {
       this.doctors = doctors;
       this.filteredDoctors = this.doctors;
     });
-    // this.dataService.updateActiveItem('doctors');
-    // this.tooltipObj = new Tooltip({
-    //   height: '30px',
-    //   width: '76px',
-    //   position: 'RightTop',
-    //   offsetX: -10,
-    //   showTipPointer: false,
-    //   target: '.availability',
-    //   beforeOpen: (args: TooltipEventArgs) => {
-    //     args.element.querySelector('.e-tip-content').textContent =
-    //       args.target.classList[1].charAt(0).toUpperCase() + args.target.classList[1].slice(1);
-    //   }
-    // });
-    // this.tooltipObj.appendTo(this.specialistItemObj.nativeElement);
+
   }
 
   onSpecializationChange(args?: any) {
