@@ -5,7 +5,7 @@ let express = require('express'),
     bodyParser = require('body-parser');
 
 //Connect to local MongoDB collection Assignment8
-mongoose.connect('mongodb://localhost:27017/Assignment7', {
+mongoose.connect('mongodb://localhost:27017/HealthAppointmentAPP', {
     // useMongoClient: true
     // useNewUrlParser: true,
     // useUnifiedTopology: true
