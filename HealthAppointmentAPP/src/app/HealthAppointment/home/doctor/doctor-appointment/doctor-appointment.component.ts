@@ -21,7 +21,7 @@ export class DoctorAppointmentComponent implements OnInit {
 
   public doctors: Array<doctorsData>;
   public doctor: doctorsData;
-  public id: string;
+  public username: string;
   public workStartHoursData: Date;
   public workEndHoursData: Date;
   public breakHoursData: Object;
@@ -40,10 +40,11 @@ export class DoctorAppointmentComponent implements OnInit {
 
   ngOnInit(): void {
     // get id
-    this.id = this.routes.snapshot.paramMap.get('id');
+    this.username = this.routes.snapshot.paramMap.get('username');
+    // console.log(this.username)
 
     // get doctor's workhours
-    this.doctorService.get(this.id).subscribe(doctor => {
+    this.doctorService.get(this.username).subscribe(doctor => {
       this.doctor = doctor;
       console.log(this.doctor)
       // this.workHoursData = this.doctor.WorkDays;
@@ -139,7 +140,7 @@ export class DoctorAppointmentComponent implements OnInit {
   }
 
   onCancelClick() {
-    this.doctorService.get(this.id).subscribe(doctor => {
+    this.doctorService.get(this.username).subscribe(doctor => {
       this.doctor = doctor;
       // console.log(this.doctor)
       // this.workHoursData = this.doctor.WorkDays;
@@ -193,7 +194,7 @@ export class DoctorAppointmentComponent implements OnInit {
     editDoctorWorkDays.WorkDays = workDays;
     editDoctorWorkDays.AvailableDays = availableDays;
     console.log(editDoctorWorkDays)
-    this.doctorService.update(editDoctorWorkDays, this.id).subscribe(doctorUpdate => {
+    this.doctorService.update(editDoctorWorkDays, this.username).subscribe(doctorUpdate => {
       this.doctorUpdate = doctorUpdate;
       console.log(this.doctorUpdate)
     });

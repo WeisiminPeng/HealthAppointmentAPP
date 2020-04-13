@@ -29,7 +29,7 @@ exports.update = function(req, res){
         });
     };
 
-    doctor._id = req.params.id;
+    doctor.username = req.params.username;
     service.update(doctor)
         .then(result)
         .catch(renderErrorResponse(res));
@@ -42,7 +42,7 @@ exports.get = function(req, res){
         res.json(doctor);
     }
 
-    service.get(req.params.id)
+    service.get(req.params.username)
         .then(result)
         .catch(renderErrorResponse(res));
 };
@@ -73,7 +73,7 @@ exports.delete = function(req, res){
         });
     }
 
-    service.delete(req.params.id)
+    service.delete(req.params.username)
         .then(result)
         .catch(renderErrorResponse(res));
 };

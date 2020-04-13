@@ -101,9 +101,9 @@ let Doctor = new Schema({
 });
 
 // Duplicate the id field as mongoose returns _id field instead of id.
-Doctor.virtual('id').get(function(){
-    return this._id.toHexString();
-});
+// Doctor.virtual('id').get(function(){
+//     return this._id.toHexString();
+// });
 
 // Ensure virtual fields are serialised.
 Doctor.set('toJSON', {

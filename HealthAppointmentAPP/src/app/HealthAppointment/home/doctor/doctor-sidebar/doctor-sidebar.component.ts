@@ -9,7 +9,7 @@ import { DoctorService } from '../../../services/doctor.service'
 })
 export class DoctorSidebarComponent implements OnInit {
 
-  public id:string;
+  public username:string;
   public doctorAppointment:string;
   public doctorSchdule:string;
   // private doctorSchdule1 = '/doctorSchdule';
@@ -17,9 +17,9 @@ export class DoctorSidebarComponent implements OnInit {
   constructor(public doctorService: DoctorService, public routes: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.id = this.routes.snapshot.paramMap.get('id');
-    this.doctorAppointment = '/doctorAppointment/'+this.id;
-    this.doctorSchdule = '/doctorSchdule/'+this.id;
+    this.username = this.routes.snapshot.paramMap.get('username');
+    this.doctorAppointment = '/doctorAppointment/'+this.username;
+    this.doctorSchdule = '/doctorSchdule/'+this.username;
     console.log(this.doctorAppointment)
   }
 

@@ -15,17 +15,17 @@ exports.search = function(params){
     return promise;
 };
 
-exports.get = function(id){
-    const promise = Doctor.findById(id).exec();
+exports.get = function(username){
+    const promise = Doctor.findOne({username:username}).exec();
     return promise;
 }
 
 exports.update = function(doctor){
-    const promise = Doctor.findOneAndUpdate({_id: doctor._id}, doctor).exec();
+    const promise = Doctor.findOneAndUpdate({username: doctor.username}, doctor).exec();
     return promise;
 }
 
-exports.delete = function(id){
-    const promise = Doctor.remove({_id: id}).exec();
+exports.delete = function(username){
+    const promise = Doctor.remove({username: username}).exec();
     return promise;
 }
