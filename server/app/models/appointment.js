@@ -3,27 +3,26 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 //Create the data model
-let Patient = new Schema({
-    Name: {
-        type: String,
-        required: "title is required"
-    },
-    Gender: {
+let Appointment = new Schema({
+    PatientUsername: {
         type: String
     },
-    Text: {
+    DoctorUsername: {
         type: String
     },
-    DOB:{
-        type:Date
-    },
-    Mobile: {
+    PatientName: {
         type: String
     },
-    Address:{
-        type: String
+    DoctorName:{
+        type:String
     },
-    username:{
+    StartTime: {
+        type: Date
+    },
+    EndTime:{
+        type: Date
+    },
+    Symptims:{
         type: String
     }
     // createDate: {
@@ -43,13 +42,13 @@ let Patient = new Schema({
 });
 
 // Duplicate the id field as mongoose returns _id field instead of id.
-// Patient.virtual('id').get(function(){
-//     return this._id.toHexString();
-// });
+Appointment.virtual('id').get(function(){
+    return this._id.toHexString();
+});
 
 // Ensure virtual fields are serialised.
-Patient.set('toJSON', {
+Appointment.set('toJSON', {
     virtuals: true
 });
 
-module.exports = mongoose.model('Patient', Patient);
+module.exports = mongoose.model('Appointment', Appointment);

@@ -6,7 +6,7 @@ module.exports = function(app){
         .get(controller.list) //List all the todos
         .post(controller.save); //Create a new todos
 
-    app.route('/doctors/:id')
+    app.route('/doctors/:username')
         .get(controller.get) //Fetch one todo
         .put(controller.update) //Update one todo
         .delete(controller.delete); //Delete one todo

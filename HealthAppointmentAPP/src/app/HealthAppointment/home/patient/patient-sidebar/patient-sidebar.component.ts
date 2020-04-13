@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
+import { PatientService } from '../../../services/patient.service'
 
 @Component({
   selector: 'app-patient-sidebar',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PatientSidebarComponent implements OnInit {
 
-  constructor() { }
+  public username:string;
+  public patientAppointment:string;
+  public patientSchdule:string;
+
+  constructor(public patientService: PatientService, public routes: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.username = this.routes.snapshot.paramMap.get('username');
+    this.patientAppointment = '/doctorAppointment/'+this.username;
+    this.patientSchdule = '/doctorSchdule/'+this.username;
+    // console.log(this.doctorAppointment)
   }
 
   onItemClick(args: any) {

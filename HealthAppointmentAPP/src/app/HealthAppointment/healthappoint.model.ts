@@ -16,7 +16,8 @@ export interface doctorsData {
     StartHour: string,
     EndHour: string,
     AvailableDays: object,
-    WorkDays: []
+    WorkDays: [],
+    username: string
 }
 
 export interface workHours{
@@ -32,4 +33,14 @@ export interface workHours{
 
 export interface success {
     message: string;
+}
+
+export interface patientData{
+    Name: string,
+    Gender: string,
+    Text: string,
+    DOB:Date,
+    Mobile: string,
+    Address:string,
+    username:string
 }

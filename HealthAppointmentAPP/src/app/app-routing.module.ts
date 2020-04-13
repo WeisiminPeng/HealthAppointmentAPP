@@ -11,23 +11,23 @@ import { PatientScheduleComponent } from './HealthAppointment/home/patient/patie
 
 const routes: Routes = [
   {
-    path: 'doctorAppointment/:id',
+    path: 'doctorAppointment/:username',
     // path: 'doctorAppointment',
     component: DoctorAppointmentComponent
   },
   {
-    path: 'doctorSchdule/:id',
+    path: 'doctorSchdule/:username',
     // path: 'doctorSchdule',
     component: DoctorScheduleComponent
   },
   {
-    // path: 'patientAppointment/:id',
-    path: 'patientAppointment',
+    path: 'patientAppointment/:username',
+    // path: 'patientAppointment',
     component: PatientAppointmentComponent
   },
   {
-    // path: 'patientSchdule/:id',
-    path: 'patientAppointment',
+    path: 'patientSchdule/:username',
+    // path: 'patientAppointment',
     component: PatientScheduleComponent
   }
 ];
