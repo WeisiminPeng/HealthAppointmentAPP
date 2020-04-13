@@ -3,7 +3,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 // import { DropDownListComponent } from '@syncfusion/ej2-angular-dropdowns';
 // import { Router } from '@angular/router';
 // import { DataService } from '../../../../data.service';
-import { HealthappointmenService} from '../../../healthappointmen.service'
+import { DoctorService} from '../../services/doctor.service'
 // import { Tooltip, TooltipEventArgs } from '@syncfusion/ej2-angular-popups';
 
 import { doctorsData } from 'src/app/HealthAppointment/healthappoint.model';
@@ -24,7 +24,7 @@ export class PatientAppointmentComponent implements OnInit {
   public specializationData: string[] = ["General Medicine", "Neurology"];
 
 
-  constructor(public healthappointmenService: HealthappointmenService) {
+  constructor(public doctorService: DoctorService) {
     // this.doctorsData = this.filteredDoctors = this.dataService.getDoctorsData();
     // this.activeDoctorData = this.doctorsData[0];
     // this.specializationData = this.dataService.specialistData;
@@ -34,7 +34,7 @@ export class PatientAppointmentComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.healthappointmenService.list().subscribe(doctors => {
+    this.doctorService.list().subscribe(doctors => {
       this.doctors = doctors;
       this.filteredDoctors = this.doctors;
     });
