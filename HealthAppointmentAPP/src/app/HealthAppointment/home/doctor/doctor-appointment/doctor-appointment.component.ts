@@ -5,7 +5,7 @@ import { DialogComponent } from '@syncfusion/ej2-angular-popups';
 import { TimePicker } from '@syncfusion/ej2-angular-calendars';
 import { EJ2Instance } from '@syncfusion/ej2-angular-schedule';
 
-import { DoctorService } from '../../services/doctor.service'
+import { DoctorService } from '../../../services/doctor.service'
 import { doctorsData } from 'src/app/HealthAppointment/healthappoint.model';
 import { success } from 'src/app/HealthAppointment/healthappoint.model';
 // import { workHours } from 'src/app/HealthAppointment/healthappoint.model';

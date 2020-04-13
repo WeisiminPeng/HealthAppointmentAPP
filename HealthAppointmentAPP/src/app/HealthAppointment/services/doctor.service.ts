@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { doctorsData } from '../../healthappoint.model';
-import { success } from '../../healthappoint.model';
+import { doctorsData } from '../healthappoint.model';
+import { success } from '../healthappoint.model';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 

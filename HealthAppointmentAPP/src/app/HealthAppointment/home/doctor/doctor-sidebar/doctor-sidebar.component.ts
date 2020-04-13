@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { DoctorService } from '../../services/doctor.service'
+import { DoctorService } from '../../../services/doctor.service'
 
 @Component({
   selector: 'app-doctor-sidebar',

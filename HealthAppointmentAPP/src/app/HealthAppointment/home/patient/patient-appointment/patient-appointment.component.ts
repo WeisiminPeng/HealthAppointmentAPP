@@ -3,7 +3,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 // import { DropDownListComponent } from '@syncfusion/ej2-angular-dropdowns';
 // import { Router } from '@angular/router';
 // import { DataService } from '../../../../data.service';
-import { DoctorService} from '../../services/doctor.service'
+import { DoctorService} from '../../../services/doctor.service'
 // import { Tooltip, TooltipEventArgs } from '@syncfusion/ej2-angular-popups';
 
 import { doctorsData } from 'src/app/HealthAppointment/healthappoint.model';
