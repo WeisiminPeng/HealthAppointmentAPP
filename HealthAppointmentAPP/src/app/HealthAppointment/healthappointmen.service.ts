@@ -1,21 +1,18 @@
 import { Injectable } from '@angular/core';
-<<<<<<< HEAD
-=======
+
 import { doctorsData } from './healthappoint.model';
 import { success } from './healthappoint.model';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
->>>>>>> 02f40859851a15e612243d518e6e9587f4edad06
 
 @Injectable({
   providedIn: 'root'
 })
 export class HealthappointmenService {
 
-<<<<<<< HEAD
-  constructor() { }
-=======
+
+
   // private ROUTE_URL = './../../assets/dataset/doctorsData.json';
   private ROUTE_URL = 'http://localhost:3000/doctors';
 
@@ -41,6 +38,4 @@ export class HealthappointmenService {
     const doctorUpdate$ = this.http.put<success>(`${this.ROUTE_URL}/${id}`, doctorWorkDays, {headers : header});
     return doctorUpdate$;
   }
-
->>>>>>> 02f40859851a15e612243d518e6e9587f4edad06
 }
