@@ -44,3 +44,13 @@ export interface patientData{
     Address:string,
     username:string
 }
+
+export interface appointmentData{
+    PatientUsername: string,
+    DoctorUsername: string,
+    PatientName: string,
+    DoctorName: string,
+    StartTime: Date,
+    EndTime: Date,
+    Symptims: string
+}

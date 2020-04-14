@@ -3,12 +3,12 @@
 const controller = require('../controllers/controllerDoctor');
 module.exports = function(app){
     app.route('/doctors')
-        .get(controller.list) //List all the todos
-        .post(controller.save); //Create a new todos
+        .get(controller.list)
+        .post(controller.save); 
 
     app.route('/doctors/:username')
-        .get(controller.get) //Fetch one todo
-        .put(controller.update) //Update one todo
-        .delete(controller.delete); //Delete one todo
+        .get(controller.get) 
+        .put(controller.update) 
+        .delete(controller.delete); 
         
 };

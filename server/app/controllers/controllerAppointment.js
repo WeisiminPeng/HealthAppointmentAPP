@@ -42,7 +42,7 @@ exports.get = function (req, res) {
         res.json(appointment);
     }
 
-    service.get(req.params.id)
+    service.get(req.params.username)
         .then(result)
         .catch(renderErrorResponse(res));
 };

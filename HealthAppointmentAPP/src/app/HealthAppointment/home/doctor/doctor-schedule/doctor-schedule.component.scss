@@ -1,0 +1,48 @@
+.doctor-schedule {
+    font-size: 14px;
+    margin: 30px 50px;
+    color: #9aa5bb;
+    letter-spacing: .05px;
+    .e-all-day-appointment-wrapper,.e-timeline-wrapper{
+        font-size: 0;
+    }
+    .putAclassHere {
+        display: flex;
+        justify-content: space-between;
+
+        .schedule-container {
+            padding-right: 25px;
+            width: 100%;
+
+            .e-schedule-toolbar-container {
+                .e-toolbar-items {
+                    .e-toolbar-center {
+                        .planner-dropdown {
+                            margin-top: 5px;
+                            margin-left: 20px;
+                        }
+                    }
+                }
+            }
+            .e-table-container {
+                .e-month-view {
+                    .e-content-wrap {
+                        .e-work-cells {
+                            .e-block-indicator {
+                                visibility: hidden;
+                            }
+    
+                            .e-appointment {
+                                .e-time,
+                                .e-subject {
+                                    padding: 2px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+    }
+}

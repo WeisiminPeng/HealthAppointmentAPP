@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const Appointment = mongoose.model('Appointment');
 
 exports.save = function (params) {
+    console.log(params);
     const newAppointment = new Appointment(params);
     return newAppointment.save();
     // const promise = newTodo.save();
@@ -15,8 +16,18 @@ exports.search = function (params) {
     return promise;
 };
 
-exports.get = function (id) {
-    const promise = Appointment.findById(id).exec();
+exports.get = function (username) {
+    // const promise = Appointment.findById(id).exec();
+    const promise = Appointment.find({
+        $or: [
+            {
+                PatientUsername: { $eq: username }
+            },
+            {
+                DoctorUsername: { $eq: username }
+            }
+        ]
+    }).exec();
     return promise;
 }
 
