@@ -2,28 +2,27 @@
 <div class="planner-wrapper">
     <!-- <ejs-sidebar #sideBar id="plannerSiderBar" [enableGestures]='false' [showBackdrop]='showBackdrop'
       [closeOnDocumentClick]='closeOnDocumentClick'> -->
-      <ejs-sidebar #sidebar id="Siderbar" (created)="onCreated($event)" 
-      style="visibility: hidden" [closeOnDocumentClick]="closeOnDocumentClick">
-      <div class="dock">
-        <div class="info align-center">
-          <!-- <div class="image"><img src="./assets/images/Admin.png" /></div> -->
-          <div class="content nameContent">
-            <p class='name'>Jane Deo</p>
-            <p class='user-type'>Admin</p>
-          </div>
+    <ejs-sidebar #sidebar id="Siderbar" (created)="onCreated($event)" style="visibility: hidden" [closeOnDocumentClick]="closeOnDocumentClick">
+        <div class="dock">
+            <div class="info align-center">
+                <!-- <div class="image"><img src="./assets/images/Admin.png" /></div> -->
+                <div class="content nameContent">
+                    <p class='name'>Jane Deo</p>
+                    <p class='user-type'>Admin</p>
+                </div>
+            </div>
+            <div class="sidebar-item schdule" [routerLink]="patientSchdule" (click)="onItemClick($event)">
+                <!-- <div class="sidebar-item dashboard" > -->
+                <!-- <span class="dashboard-image"><span class="icon-dashboard item-image"></span></span> -->
+                <span class="text" title="dashboard">Schdule</span>
+            </div>
+            <div class="sidebar-item appointment" [routerLink]="patientAppointment" (click)="onItemClick($event)">
+                <!-- <span class="scheduler-image"><span class="icon-schedule item-image"></span></span> -->
+                <span class="text" title="appointment">Appointment</span>
+            </div>
         </div>
-        <div class="sidebar-item schdule" [routerLink]="patientSchdule" (click)="onItemClick($event)">
-        <!-- <div class="sidebar-item dashboard" > -->
-          <!-- <span class="dashboard-image"><span class="icon-dashboard item-image"></span></span> -->
-          <span class="text" title="dashboard">Schdule</span>
-        </div>
-         <div class="sidebar-item appointment" [routerLink]="patientAppointment" (click)="onItemClick($event)">
-          <!-- <span class="scheduler-image"><span class="icon-schedule item-image"></span></span> -->
-          <span class="text" title="appointment">Appointment</span>
-        </div>
-      </div>
     </ejs-sidebar>
     <div style="padding:100px" class="showsidebar">
-      <button ejs-button #SidebarBtn id="toggle"  (click)="showSidebar()">Open Sidebar</button>
-  </div>
-  </div>
+        <button ejs-button #SidebarBtn id="toggle" (click)="showSidebar()">Open Sidebar</button>
+    </div>
+</div>
