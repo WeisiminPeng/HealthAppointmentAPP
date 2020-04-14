@@ -1,12 +1,14 @@
+import { PasswordManagement2Component } from './HealthAppointment/home/doctor/password-management2/password-management2.component';
+import { PasswordManagementComponent } from './HealthAppointment/home/patient/password-management/password-management.component';
 import { DoctorAppointmentComponent } from './HealthAppointment/home/doctor/doctor-appointment/doctor-appointment.component';
 import { DoctorScheduleComponent } from './HealthAppointment/home/doctor/doctor-schedule/doctor-schedule.component';
 import { PatientAppointmentComponent } from './HealthAppointment/home/patient/patient-appointment/patient-appointment.component';
 import { PatientSidebarComponent } from './HealthAppointment/home/patient/patient-sidebar/patient-sidebar.component';
 import { PatientScheduleComponent } from './HealthAppointment/home/patient/patient-schedule/patient-schedule.component';
 
-import { MainComponent } from './main/main.component';
-import { RegisterComponent } from './register/register.component';
-import { LoginComponent } from './login/login.component';
+import { MainComponent } from './HealthAppointment/LoginAndRegister/main/main.component';
+import { RegisterComponent } from './HealthAppointment/LoginAndRegister//register/register.component';
+import { LoginComponent } from './HealthAppointment/LoginAndRegister/login/login.component';
 import { DoctorDetailComponent } from './HealthAppointment/home/patient/doctor-detail/doctor-detail.component';
 import { PatientInfoComponent } from './HealthAppointment/home/patient/patient-info/patient-info.component';
 import { DoctorInfoComponent } from './HealthAppointment/home/doctor/doctor-info/doctor-info.component';
@@ -67,6 +69,14 @@ const routes: Routes = [
     // path: 'patientAppointment',
     component: DoctorInfoComponent
 
+  },
+  {
+    path:'changePassword/:username',
+    component:PasswordManagementComponent
+  },
+  {
+    path:'changePassword2/:username',
+    component:PasswordManagement2Component
   }
 ];
 @NgModule({
