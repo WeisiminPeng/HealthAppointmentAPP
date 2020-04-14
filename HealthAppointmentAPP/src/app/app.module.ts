@@ -21,6 +21,7 @@ import { DialogModule } from '@syncfusion/ej2-angular-popups';
 import { DatePickerModule, TimePickerModule } from '@syncfusion/ej2-angular-calendars';
 import { ScheduleModule, RecurrenceEditorModule } from '@syncfusion/ej2-angular-schedule';
 import { CheckBoxModule, ButtonModule, SwitchModule, RadioButtonModule } from '@syncfusion/ej2-angular-buttons';
+import { DoctorDetailComponent } from './HealthAppointment/home/patient/doctor-detail/doctor-detail.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { CheckBoxModule, ButtonModule, SwitchModule, RadioButtonModule } from '@
     PatientAppointmentComponent,
     PatientSidebarComponent,
     PatientScheduleComponent,
-    DoctorSidebarComponent
+    DoctorSidebarComponent,
+    DoctorDetailComponent
   ],
   imports: [
     BrowserModule,
