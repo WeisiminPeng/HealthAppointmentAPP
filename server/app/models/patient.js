@@ -6,7 +6,15 @@ const Schema = mongoose.Schema;
 let Patient = new Schema({
     Name: {
         type: String,
-        required: "title is required"
+        required: "Name is required"
+    },
+    username: {
+        type: String,
+        required: "Username is required"
+    },
+    Password: {
+        type: String,
+        required: "Password is required"
     },
     Gender: {
         type: String
@@ -14,32 +22,21 @@ let Patient = new Schema({
     Text: {
         type: String
     },
-    DOB:{
-        type:Date
+
+    DOB: {
+        type: Date
     },
     Mobile: {
         type: String
     },
-    Address:{
+    Email: {
         type: String
     },
-    username:{
+    Address: {
         type: String
     }
-    // createDate: {
-    //     type: Date,
-    //     default: Date.now
-    // },
-    // modifiedDate: {
-    //     type: Date,
-    //     default: Date.now
-    // }
 }, {
-    versionKey: false, 
-    // timestamps: {
-    //     createdAt: 'createDate',
-    //     updatedAt: 'modifiedDate'
-    // }
+    versionKey: false,
 });
 
 // Duplicate the id field as mongoose returns _id field instead of id.
@@ -48,8 +45,8 @@ let Patient = new Schema({
 // });
 
 // Ensure virtual fields are serialised.
+
 Patient.set('toJSON', {
     virtuals: true
 });
-
 module.exports = mongoose.model('Patient', Patient);

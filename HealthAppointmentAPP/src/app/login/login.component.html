@@ -1,0 +1,16 @@
+<div id="login">
+    <tr>
+        <input type="radio" value="patient" name="people" id="people1" [(ngModel)]="kindOfUser"> <label for="people1">Patient</label>
+        <input type="radio" value="doctor" name="people" id="people2" [(ngModel)]="kindOfUser"> <label for="people2">Doctor</label>
+    </tr>
+    <tr>
+        <td>Username:</td> <input type="text" [(ngModel)]="Username">
+
+    </tr>
+    <tr>
+        <td>Password:</td> <input type="text" [(ngModel)]="password">
+    </tr>
+
+</div>
+<button id="sign-in" (click)="sign()">Sign-in </button>
+<button (click)="back()">back</button>
