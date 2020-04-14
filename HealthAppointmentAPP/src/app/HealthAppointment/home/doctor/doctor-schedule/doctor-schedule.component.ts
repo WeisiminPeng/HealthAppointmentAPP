@@ -85,23 +85,23 @@ public newTodo: appointmentData;
 
 
 
-    // !!!create new appointment
-    var modifyDate: any = {};
-    modifyDate.PatientUsername = "testpatient1";
-    modifyDate.DoctorUsername = "testdoctor";
-    modifyDate.PatientName = "Laura Smith";
-    modifyDate.DoctorName = "Nembo Lukeni";
-    modifyDate.Symptims = "headache much";
-    modifyDate.StartTime = new Date(2020, 1, 14, 10, 0);
-    modifyDate.EndTime = new Date(2020, 1, 14, 12, 30);
-    this.updateModifyDate = JSON.stringify(modifyDate);
-    console.log(this.updateModifyDate);
+    // // !!!create new appointment
+    // var modifyDate: any = {};
+    // modifyDate.PatientUsername = "testpatient1";
+    // modifyDate.DoctorUsername = "testdoctor";
+    // modifyDate.PatientName = "Laura Smith";
+    // modifyDate.DoctorName = "Nembo Lukeni";
+    // modifyDate.Symptims = "headache much";
+    // modifyDate.StartTime = new Date(2020, 1, 14, 10, 0);
+    // modifyDate.EndTime = new Date(2020, 1, 14, 12, 30);
+    // this.updateModifyDate = JSON.stringify(modifyDate);
+    // console.log(this.updateModifyDate);
 
 
-    this.appointmentService.save(this.updateModifyDate).subscribe(newTodo => {
-      this.newTodo = newTodo;
-      console.log(this.newTodo);
-    });
+    // this.appointmentService.save(this.updateModifyDate).subscribe(newTodo => {
+    //   this.newTodo = newTodo;
+    //   console.log(this.newTodo);
+    // });
 
 
     // this.appointmentService.update(this.updateModifyDate, '5e93ee34f2896bb491f13c99').subscribe(todoUpdate => {
