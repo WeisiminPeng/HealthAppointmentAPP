@@ -1,8 +1,11 @@
 <p>doctor-sidebar works!</p>
-<div class="planner-wrapper">
+<div class="sidebar-wrapper">
     <!-- <ejs-sidebar #sideBar id="plannerSiderBar" [enableGestures]='false' [showBackdrop]='showBackdrop'
       [closeOnDocumentClick]='closeOnDocumentClick'> -->
-    <ejs-sidebar #sideBar id="plannerSiderBar">
+    <!-- <ejs-sidebar #sidebar id="Siderbar" (created)="onCreated($event)" 
+    style="visibility: hidden" [closeOnDocumentClick]="closeOnDocumentClick" [isOpen]="isOpen"> -->
+    <ejs-sidebar #sidebar id="Siderbar" (created)="onCreated($event)" 
+    style="visibility: hidden" [closeOnDocumentClick]="closeOnDocumentClick">
         <div class="dock">
             <div class="info align-center">
                 <!-- <div class="image"><img src="./assets/images/Admin.png" /></div> -->
@@ -20,6 +23,13 @@
                 <!-- <span class="scheduler-image"><span class="icon-schedule item-image"></span></span> -->
                 <span class="text" title="appointment">Appointment</span>
             </div>
+            <div class="sidebar-item info" [routerLink]="personalInfo">
+                <!-- <span class="scheduler-image"><span class="icon-schedule item-image"></span></span> -->
+                <span class="text" title="info">Personal Info</span>
+              </div>
         </div>
     </ejs-sidebar>
+    <div style="padding:100px" class="showsidebar">
+        <button ejs-button #SidebarBtn id="toggle"  (click)="showSidebar()">Open Sidebar</button>
+    </div>
 </div>

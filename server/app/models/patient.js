@@ -39,9 +39,13 @@ let Patient = new Schema({
     versionKey: false,
 });
 
-Patient.virtual('id').get(function() {
-    return this._id.toHexString();
-});
+// Duplicate the id field as mongoose returns _id field instead of id.
+// Patient.virtual('id').get(function(){
+//     return this._id.toHexString();
+// });
+
+// Ensure virtual fields are serialised.
+
 Patient.set('toJSON', {
     virtuals: true
 });

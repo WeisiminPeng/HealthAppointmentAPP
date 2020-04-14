@@ -21,7 +21,11 @@ import { DialogModule } from '@syncfusion/ej2-angular-popups';
 import { DatePickerModule, TimePickerModule } from '@syncfusion/ej2-angular-calendars';
 import { ScheduleModule, RecurrenceEditorModule } from '@syncfusion/ej2-angular-schedule';
 import { CheckBoxModule, ButtonModule, SwitchModule, RadioButtonModule } from '@syncfusion/ej2-angular-buttons';
-
+import { DoctorDetailComponent } from './HealthAppointment/home/patient/doctor-detail/doctor-detail.component';
+import { PatientInfoComponent } from './HealthAppointment/home/patient/patient-info/patient-info.component';
+import { DoctorInfoComponent } from './HealthAppointment/home/doctor/doctor-info/doctor-info.component';
+import { PasswordManagementComponent } from './HealthAppointment/home/patient/password-management/password-management.component';
+import { PasswordManagement2Component  } from './HealthAppointment/home/doctor/password-management2/password-management2.component';
 
 
 @NgModule({
@@ -35,7 +39,12 @@ import { CheckBoxModule, ButtonModule, SwitchModule, RadioButtonModule } from '@
     PatientAppointmentComponent,
     PatientSidebarComponent,
     PatientScheduleComponent,
-    DoctorSidebarComponent
+    DoctorSidebarComponent,
+    DoctorDetailComponent,
+    PatientInfoComponent,
+    DoctorInfoComponent,
+    PasswordManagementComponent,
+    PasswordManagement2Component
   ],
   imports: [
     BrowserModule,

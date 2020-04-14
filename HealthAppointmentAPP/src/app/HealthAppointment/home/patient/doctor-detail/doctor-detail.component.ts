@@ -18,18 +18,21 @@ import { appointmentData } from 'src/app/HealthAppointment/healthappoint.model';
 import { success } from 'src/app/HealthAppointment/healthappoint.model';
 // import { CalendarSettings } from './../../calenderSetting';
 
+
 @Component({
-  selector: 'app-doctor-schedule',
-  templateUrl: './doctor-schedule.component.html',
-  styleUrls: ['./doctor-schedule.component.scss'],
+  selector: 'app-doctor-detail',
+  templateUrl: './doctor-detail.component.html',
+  styleUrls: ['./doctor-detail.component.scss'],
   providers: [
     DayService, WeekService, WorkWeekService, MonthService, AgendaService,
     ResizeService, DragAndDropService
   ]
 })
-export class DoctorScheduleComponent implements OnInit {
+export class DoctorDetailComponent implements OnInit {
 
   constructor(public doctorService: DoctorService, public appointmentService: AppointmentService, public routes: ActivatedRoute) { }
+
+
 
   @ViewChild('scheduleObj') scheduleObj: ScheduleComponent;
 
@@ -46,7 +49,7 @@ export class DoctorScheduleComponent implements OnInit {
   // public calendarSettings: CalendarSettings;
   public eventData: Object[];
   public currentView: string = 'Week';
-  public workDays: Array<number> = [0,1, 2, 3, 4, 5,6];
+  public workDays: Array<number> = [0, 1, 2, 3, 4, 5, 6];
   public workHours: WorkHoursModel = { start: '08:00', end: '21:00' };
   public animationSettings: Object = { effect: 'None' };
   public timeScale: TimeScaleModel = { enable: true, interval: 60 };
@@ -62,10 +65,10 @@ export class DoctorScheduleComponent implements OnInit {
     Subject: 'Paris',
     StartTime: new Date(2020, 1, 14, 10, 0),
     EndTime: new Date(2020, 1, 14, 12, 30)
-}];
-public updateModifyDate:string;
-public todoUpdate: success;
-public newTodo: appointmentData;
+  }];
+  public updateModifyDate: string;
+  public todoUpdate: success;
+  public newTodo: appointmentData;
 
 
 
@@ -86,22 +89,22 @@ public newTodo: appointmentData;
 
 
     // !!!create new appointment
-    var modifyDate: any = {};
-    modifyDate.PatientUsername = "testpatient1";
-    modifyDate.DoctorUsername = "testdoctor";
-    modifyDate.PatientName = "Laura Smith";
-    modifyDate.DoctorName = "Nembo Lukeni";
-    modifyDate.Symptims = "headache much";
-    modifyDate.StartTime = new Date(2020, 1, 14, 10, 0);
-    modifyDate.EndTime = new Date(2020, 1, 14, 12, 30);
-    this.updateModifyDate = JSON.stringify(modifyDate);
-    console.log(this.updateModifyDate);
+    // var modifyDate: any = {};
+    // modifyDate.PatientUsername = "testpatient1";
+    // modifyDate.DoctorUsername = "testdoctor";
+    // modifyDate.PatientName = "Laura Smith";
+    // modifyDate.DoctorName = "Nembo Lukeni";
+    // modifyDate.Symptims = "headache much";
+    // modifyDate.StartTime = new Date(2020, 1, 14, 10, 0);
+    // modifyDate.EndTime = new Date(2020, 1, 14, 12, 30);
+    // this.updateModifyDate = JSON.stringify(modifyDate);
+    // console.log(this.updateModifyDate);
 
 
-    this.appointmentService.save(this.updateModifyDate).subscribe(newTodo => {
-      this.newTodo = newTodo;
-      console.log(this.newTodo);
-    });
+    // this.appointmentService.save(this.updateModifyDate).subscribe(newTodo => {
+    //   this.newTodo = newTodo;
+    //   console.log(this.newTodo);
+    // });
 
 
     // this.appointmentService.update(this.updateModifyDate, '5e93ee34f2896bb491f13c99').subscribe(todoUpdate => {
@@ -111,8 +114,8 @@ public newTodo: appointmentData;
 
 
 
-    this.username = this.routes.snapshot.paramMap.get('username');
-    // console.log(this.username)
+    this.username = this.routes.snapshot.paramMap.get('username').split('_')[0];
+    console.log(this.username)
 
     // all the appointments of this doctor
     this.appointmentService.get(this.username).subscribe(appointments => {
@@ -154,7 +157,7 @@ public newTodo: appointmentData;
 
 
     // canlender settings
-    
+
 
     // this.currentView = this.currentView;
     // this.firstDayOfWeek = this.firstDayOfWeek;
@@ -185,15 +188,16 @@ public newTodo: appointmentData;
     // };
   }
 
-// input's lenth must larger than 5 for symptoms
+  // input's lenth must larger than 5 for symptoms
   public minValidation: (args: { [key: string]: string }) => boolean = (args: { [key: string]: string; }) => {
     return args['value'].length >= 5;
   }
 
-  onEventRendered(args: any) {}
-  onActionBegin(args: ActionEventArgs & ToolbarActionArgs): void {}
-  onActionComplete(args: ActionEventArgs): void {}
-  onPopupOpen(args: PopupOpenEventArgs) {}
-  onNavigation(args: NavigatingEventArgs) {}
+  onEventRendered(args: any) { }
+  onActionBegin(args: ActionEventArgs & ToolbarActionArgs): void { }
+  onActionComplete(args: ActionEventArgs): void { }
+  onPopupOpen(args: PopupOpenEventArgs) { }
+  onNavigation(args: NavigatingEventArgs) { }
+
 
 }

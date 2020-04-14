@@ -1,0 +1,27 @@
+<div class="personalInfoDiv">
+    <h2>Personal-Info</h2>
+    <table>
+        <tr>
+            <td>Name:</td><input type="text" [(ngModel)]="people.Name" />
+        </tr>
+
+
+        <tr>
+            <td>Phone:</td><input type="text" [(ngModel)]="people.Mobile" />
+        </tr>
+        <br>
+        <tr>
+            <td>Email:</td><input type="text" [(ngModel)]="people.Email" /> <br>
+        </tr>
+        <tr>
+            <td>Password:</td><input type="password" [(ngModel)]="people.Password" /> <br>
+        </tr>
+
+    </table>
+
+    <br>
+
+    <button class="update" (click)="update()">Update</button>
+    <button class="changePassword" (click)="changePassword()">Change Password</button>
+</div>
+<app-doctor-sidebar></app-doctor-sidebar>
