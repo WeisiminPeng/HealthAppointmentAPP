@@ -6,7 +6,15 @@ const Schema = mongoose.Schema;
 let Doctor = new Schema({
     Name: {
         type: String,
-        required: "title is required"
+        required: "Name is required"
+    },
+    username: {
+        type: String,
+        required: "Username is required"
+    },
+    Password: {
+        type: String,
+        required: "Password is required"
     },
     Gender: {
         type: String
@@ -49,65 +57,24 @@ let Doctor = new Schema({
     },
     WorkDays: {
         type: Array
-    },
-    Appointment:{
-        type:Array
     }
-    
-        // Day: {
-        //     type: String
-        // },
-        // Index: {
-        //     type: Number
-        // },
-        // Enable: {
-        //     type: Boolean
-        // },
-        // WorkStartHour: {
-        //     type: Date
-        // },
-        // WorkEndHour: {
-        //     type: Date
-        // },
-        // BreakStartHour: {
-        //     type: Date
-        // },
-        // BreakEndHour: {
-        //     type: Date
-        // },
-        // State: {
-        //     type: String
-        // }
-    // }
-    
-    // time: {
-    //     type: Date,
-    //     default: Date.now
-    // }
-    // createDate: {
-    //     type: Date,
-    //     default: Date.now
-    // },
-    // modifiedDate: {
-    //     type: Date,
-    //     default: Date.now
-    // }
 }, {
-    versionKey: false, 
-    // timestamps: {
-    //     createdAt: 'createDate',
-    //     updatedAt: 'modifiedDate'
-    // }
+    versionKey: false,
 });
 
 // Duplicate the id field as mongoose returns _id field instead of id.
-Doctor.virtual('id').get(function(){
-    return this._id.toHexString();
-});
+// Doctor.virtual('id').get(function(){
+//     return this._id.toHexString();
+// });
 
-// Ensure virtual fields are serialised.
+
+
 Doctor.set('toJSON', {
     virtuals: true
 });
+// <<<<<<< HEAD
 
 module.exports = mongoose.model('Doctor', Doctor);
+// =======
+module.exports = mongoose.model('Doctor', Doctor);
+// >>>>>>> d4716122552e048ea0b43fe6f3f67b4248b200df

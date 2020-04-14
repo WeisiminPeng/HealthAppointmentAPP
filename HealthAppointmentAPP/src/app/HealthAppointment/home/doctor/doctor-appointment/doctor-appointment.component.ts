@@ -5,7 +5,7 @@ import { DialogComponent } from '@syncfusion/ej2-angular-popups';
 import { TimePicker } from '@syncfusion/ej2-angular-calendars';
 import { EJ2Instance } from '@syncfusion/ej2-angular-schedule';
 
-import { HealthappointmenService } from '../../../healthappointmen.service'
+import { DoctorService } from '../../../services/doctor.service'
 import { doctorsData } from 'src/app/HealthAppointment/healthappoint.model';
 import { success } from 'src/app/HealthAppointment/healthappoint.model';
 // import { workHours } from 'src/app/HealthAppointment/healthappoint.model';
@@ -17,11 +17,11 @@ import { success } from 'src/app/HealthAppointment/healthappoint.model';
 })
 export class DoctorAppointmentComponent implements OnInit {
 
-  constructor(public healthappointmenService: HealthappointmenService, public routes: ActivatedRoute) { }
+  constructor(public doctorService: DoctorService, public routes: ActivatedRoute) { }
 
   public doctors: Array<doctorsData>;
   public doctor: doctorsData;
-  public id: string;
+  public username: string;
   public workStartHoursData: Date;
   public workEndHoursData: Date;
   public breakHoursData: Object;
@@ -39,11 +39,12 @@ export class DoctorAppointmentComponent implements OnInit {
   public doctorUpdate: success;
 
   ngOnInit(): void {
-    // get id
-    this.id = this.routes.snapshot.paramMap.get('id');
+    // get username
+    this.username = this.routes.snapshot.paramMap.get('username');
+    console.log("this.username: "+this.username)
 
     // get doctor's workhours
-    this.healthappointmenService.get(this.id).subscribe(doctor => {
+    this.doctorService.get(this.username).subscribe(doctor => {
       this.doctor = doctor;
       console.log(this.doctor)
       // this.workHoursData = this.doctor.WorkDays;
@@ -139,7 +140,7 @@ export class DoctorAppointmentComponent implements OnInit {
   }
 
   onCancelClick() {
-    this.healthappointmenService.get(this.id).subscribe(doctor => {
+    this.doctorService.get(this.username).subscribe(doctor => {
       this.doctor = doctor;
       // console.log(this.doctor)
       // this.workHoursData = this.doctor.WorkDays;
@@ -193,7 +194,7 @@ export class DoctorAppointmentComponent implements OnInit {
     editDoctorWorkDays.WorkDays = workDays;
     editDoctorWorkDays.AvailableDays = availableDays;
     console.log(editDoctorWorkDays)
-    this.healthappointmenService.update(editDoctorWorkDays, this.id).subscribe(doctorUpdate => {
+    this.doctorService.update(editDoctorWorkDays, this.username).subscribe(doctorUpdate => {
       this.doctorUpdate = doctorUpdate;
       console.log(this.doctorUpdate)
     });

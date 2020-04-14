@@ -1,17 +1,17 @@
 'use strict';
 
 //Import specific operations to database
-const service = require('../services/serviceDoctor');
+const service = require('../services/service');
 
 //Create and return a new todo in JSON based on the HTTP request
 exports.save = function(req, res){
-    const newDoctor = Object.assign({}, req.body);
-    const result = (doctor) => {
+    const Newtodo = Object.assign({}, req.body);
+    const result = (todo) => {
         res.status(200);
-        res.json(doctor);
+        res.json(todo);
     };
 
-    const promise =  service.save(newDoctor);
+    const promise =  service.save(Newtodo);
     promise
     // service.save(Newtodo)
         .then(result)
@@ -20,29 +20,29 @@ exports.save = function(req, res){
 
 //Return an updated todo in JSON based on the update parameters
 exports.update = function(req, res){
-    const doctor = Object.assign({}, req.body);
-    const result = (doctor) => {
+    const todo = Object.assign({}, req.body);
+    const result = (todo) => {
         res.status(200);
-        // res.json(doctor);
+        // res.json(todo);
         res.json({
             message: "Successfully Updated."
         });
     };
 
-    doctor.username = req.params.username;
-    service.update(doctor)
+    todo._id = req.params.id;
+    service.update(todo)
         .then(result)
         .catch(renderErrorResponse(res));
 }
 
 //Return a todo in JSON based on the search parameter
 exports.get = function(req, res){
-    const result = (doctor) => {
+    const result = (todo) => {
         res.status(200);
-        res.json(doctor);
+        res.json(todo);
     }
 
-    service.get(req.params.username)
+    service.get(req.params.id)
         .then(result)
         .catch(renderErrorResponse(res));
 };
@@ -54,9 +54,9 @@ exports.list = function(req, res){
     if(totalQuery) {
         params.total = totalQuery
     };
-    const result = (doctors) => {
+    const result = (todos) => {
         res.status(200);
-        res.json(doctors);
+        res.json(todos);
     };
     const promise = service.search(params);
     promise
@@ -73,7 +73,7 @@ exports.delete = function(req, res){
         });
     }
 
-    service.delete(req.params.username)
+    service.delete(req.params.id)
         .then(result)
         .catch(renderErrorResponse(res));
 };

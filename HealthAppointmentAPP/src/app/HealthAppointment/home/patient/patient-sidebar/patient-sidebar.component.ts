@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { SidebarComponent } from '@syncfusion/ej2-angular-navigations';
+
+import { PatientService } from '../../../services/patient.service'
 
 @Component({
   selector: 'app-patient-sidebar',
@@ -7,10 +11,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PatientSidebarComponent implements OnInit {
 
-  constructor() { }
+  public username:string;
+  public patientAppointment:string;
+  public patientSchdule:string;
+
+  @ViewChild('sidebar') 
+  public sidebar: SidebarComponent;
+  public isOpen: boolean = true;
+  public closeOnDocumentClick: boolean = true;
+  public type: string = 'Push';
+
+  constructor(public patientService: PatientService, public routes: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.username = this.routes.snapshot.paramMap.get('username');
+    this.patientAppointment = '/doctorAppointment/'+this.username;
+    this.patientSchdule = '/doctorSchdule/'+this.username;
+    // console.log(this.doctorAppointment)
   }
+
+  public onCreated(args: any) {
+    this.sidebar.element.style.visibility = '';
+}
+
+showSidebar():void{
+ this.sidebar.show();
+}
 
   onItemClick(args: any) {
   

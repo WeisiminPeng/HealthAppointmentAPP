@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { doctorsData } from './healthappoint.model';
-import { success } from './healthappoint.model';
+import { doctorsData } from '../healthappoint.model';
+import { success } from '../healthappoint.model';
+
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
@@ -8,7 +9,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class HealthappointmenService {
+export class DoctorService {
+
+
 
   // private ROUTE_URL = './../../assets/dataset/doctorsData.json';
   private ROUTE_URL = 'http://localhost:3000/doctors';
@@ -23,17 +26,16 @@ export class HealthappointmenService {
   }
 
   //get one doctor
-  public get(id: string): Observable<doctorsData> {
-    const doctor$ = this.http.get<doctorsData>(`${this.ROUTE_URL}/${id}`);
+  public get(username: string): Observable<doctorsData> {
+    const doctor$ = this.http.get<doctorsData>(`${this.ROUTE_URL}/${username}`);
     // console.log(`${this.ROUTE_URL}/${id}`);
     return doctor$;
   }
 
   //Update one doctor
-  public update(doctorWorkDays:string,id: string): Observable<success> {
+  public update(doctorWorkDays:string,username: string): Observable<success> {
     let header = new HttpHeaders({'content-type': 'application/json'});
-    const doctorUpdate$ = this.http.put<success>(`${this.ROUTE_URL}/${id}`, doctorWorkDays, {headers : header});
+    const doctorUpdate$ = this.http.put<success>(`${this.ROUTE_URL}/${username}`, doctorWorkDays, {headers : header});
     return doctorUpdate$;
   }
-
 }
