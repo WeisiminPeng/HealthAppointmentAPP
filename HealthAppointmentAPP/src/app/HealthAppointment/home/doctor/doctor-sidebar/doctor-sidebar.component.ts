@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { HealthappointmenService } from '../../../healthappointmen.service'
+import { DoctorService } from '../../../services/doctor.service'
+import { SidebarComponent } from '@syncfusion/ej2-angular-navigations';
+import { ButtonComponent} from "@syncfusion/ej2-angular-buttons";
 
 @Component({
   selector: 'app-doctor-sidebar',
@@ -9,18 +11,34 @@ import { HealthappointmenService } from '../../../healthappointmen.service'
 })
 export class DoctorSidebarComponent implements OnInit {
 
-  public id:string;
+  public username:string;
   public doctorAppointment:string;
   public doctorSchdule:string;
   // private doctorSchdule1 = '/doctorSchdule';
 
-  constructor(public healthappointmenService: HealthappointmenService, public routes: ActivatedRoute) { }
+  @ViewChild('sidebar') 
+  public sidebar: SidebarComponent;
+  @ViewChild('idebarBtn')
+  public idebarBtn: ButtonComponent;
+  public isOpen: boolean = true;
+  public closeOnDocumentClick: boolean = true;
+  public type: string = 'Push';
+
+  constructor(public doctorService: DoctorService, public routes: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.id = this.routes.snapshot.paramMap.get('id');
-    this.doctorAppointment = '/doctorAppointment/'+this.id;
-    this.doctorSchdule = '/doctorSchdule/'+this.id;
+    this.username = this.routes.snapshot.paramMap.get('username');
+    this.doctorAppointment = '/doctorAppointment/'+this.username;
+    this.doctorSchdule = '/doctorSchdule/'+this.username;
     console.log(this.doctorAppointment)
+  }
+
+  public onCreated(args: any) {
+       this.sidebar.element.style.visibility = '';
+  }
+
+  showSidebar():void{
+    this.sidebar.show();
   }
 
   // onItemClick(args: any) {

@@ -13,6 +13,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {
+
     path:'login',
     component:LoginComponent
   },
@@ -25,23 +26,23 @@ const routes: Routes = [
     component:MainComponent
   },
   {
-    path: 'doctorAppointment/:id',
+    path: 'doctorAppointment/:username',
     // path: 'doctorAppointment',
     component: DoctorAppointmentComponent
   },
   {
-    path: 'doctorSchdule/:id',
+    path: 'doctorSchdule/:username',
     // path: 'doctorSchdule',
     component: DoctorScheduleComponent
   },
   {
-    // path: 'patientAppointment/:id',
-    path: 'patientAppointment',
+    path: 'patientAppointment/:username',
+    // path: 'patientAppointment',
     component: PatientAppointmentComponent
   },
   {
-    // path: 'patientSchdule/:id',
-    path: 'patientAppointment',
+    path: 'patientSchdule/:username',
+    // path: 'patientAppointment',
     component: PatientScheduleComponent
 
   }

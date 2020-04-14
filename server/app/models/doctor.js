@@ -55,19 +55,21 @@ let Doctor = new Schema({
     AvailableDays: {
         type: Array
     },
-    WorkDays: {
-        type: Array
+    username:{
+        type: String
     },
-    Appointment: {
+    WorkDays: {
         type: Array
     }
 }, {
     versionKey: false,
 });
 
-Doctor.virtual('id').get(function() {
-    return this._id.toHexString();
-});
+// Duplicate the id field as mongoose returns _id field instead of id.
+// Doctor.virtual('id').get(function(){
+//     return this._id.toHexString();
+// });
+
 
 
 Doctor.set('toJSON', {
