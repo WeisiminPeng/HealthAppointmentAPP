@@ -33,14 +33,14 @@ export class RegisterComponent implements OnInit {
         console.log(response);
         this.List = response;
         for(let i = 0; i < this.List.length;i++){
-          if(this.List[i].Username=== this.Username){
+          if(this.List[i].username=== this.Username){
             alert('Username has existed');
             return;
         }
       }
         let api = 'http://localhost:3000/patients';
         this.http.post(api,{
-          'Username': this.Username,
+          'username': this.Username,
           'Name': this.Name,
           'Gender': this.sex,
           'DOB': this.DateOfBirth,
@@ -61,14 +61,14 @@ export class RegisterComponent implements OnInit {
         this.List = response;
         // tslint:disable-next-line: prefer-for-of
         for (let i = 0; i < this.List.length; i++ ) {
-          if(this.List[i].Username=== this.Username){
+          if(this.List[i].username=== this.Username){
             alert('Username has existed');
             return;
         }
       }
         let api = 'http://localhost:3000/doctors';
         this.http.post(api,{
-              'Username': this.Username,
+              'username': this.Username,
               'Name': this.Name,
               'Gender': this.sex,
               'DOB': this.DateOfBirth,

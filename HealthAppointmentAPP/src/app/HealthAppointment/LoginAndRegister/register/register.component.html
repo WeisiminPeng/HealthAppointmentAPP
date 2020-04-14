@@ -28,13 +28,13 @@
             <td>Username:</td> <input type="text" [(ngModel)]="Username">
         </tr>
         <tr>
-            <td>Password:</td> <input type="password" [(ngModel)]="Password">
+            <td>Password:</td> <input type="password" [(ngModel)]="Password"><br>{{Password | json}}
         </tr>
     </table>
     <button id="registerBtn" (click)="register()">Confirm</button>
     <button id="return" (click)="back()">Back</button>
 </div>
 <pre>
-  {{Password | json}}
-  {{Username |json}}
+
+
 </pre>
