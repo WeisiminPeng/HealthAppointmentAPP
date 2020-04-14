@@ -23,30 +23,31 @@ sign(){
     console.log(response);
     this.List = response;
     for(let i = 0; i < this.List.length;i++){
-      if(this.List[i].Username=== this.Username){
+      if(this.List[i].username=== this.Username){
         if(this.List[i].Password=== this.password){
-          alert("login succesfully");
+          this.router.navigate(['/patientAppointment/'+ this.Username]);
         }else{
           alert("password is wrong");
         }
-        break;
+        return;
       }
     }
     alert("Username doesn't exist! please go register");
-      this.router.navigate(['']);
+
+
   });
 }else if (this.kindOfUser==='doctor'){
   this.http.get('http://localhost:3000/doctors').subscribe((response:any)=>{
     console.log(response);
     this.List = response;
     for(let i = 0; i < this.List.length;i++){
-      if(this.List[i].Username=== this.Username){
+      if(this.List[i].username=== this.Username){
         if(this.List[i].Password=== this.password){
-          alert("login succesfully");
+          this.router.navigate(['/doctorSchdule/'+this.Username]);
         }else{
           alert("password is wrong");
         }
-        break;
+        return;
       }
     }
     alert("Username doesn't exist! please go register");

@@ -25,23 +25,23 @@ const routes: Routes = [
     component:MainComponent
   },
   {
-    path: 'doctorAppointment/:id',
+    path: 'doctorAppointment/:username',
     // path: 'doctorAppointment',
     component: DoctorAppointmentComponent
   },
   {
-    path: 'doctorSchdule/:id',
+    path: 'doctorSchdule/:username',
     // path: 'doctorSchdule',
     component: DoctorScheduleComponent
   },
   {
     // path: 'patientAppointment/:id',
-    path: 'patientAppointment',
+    path: 'patientAppointment/:username',
     component: PatientAppointmentComponent
   },
   {
     // path: 'patientSchdule/:id',
-    path: 'patientAppointment',
+    path: 'patientSchedule/:username',
     component: PatientScheduleComponent
 
   }

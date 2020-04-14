@@ -23,6 +23,7 @@ import { ScheduleModule, RecurrenceEditorModule } from '@syncfusion/ej2-angular-
 import { CheckBoxModule, ButtonModule, SwitchModule, RadioButtonModule } from '@syncfusion/ej2-angular-buttons';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
