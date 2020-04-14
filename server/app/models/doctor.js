@@ -6,6 +6,7 @@ const Schema = mongoose.Schema;
 let Doctor = new Schema({
     Name: {
         type: String,
+<<<<<<< HEAD
         required: "Name is required"
     },
     Username: {
@@ -15,6 +16,9 @@ let Doctor = new Schema({
     Password: {
         type: String,
         required: "Name is required"
+=======
+        required: "title is required"
+>>>>>>> 02f40859851a15e612243d518e6e9587f4edad06
     },
     Gender: {
         type: String
@@ -58,6 +62,7 @@ let Doctor = new Schema({
     WorkDays: {
         type: Array
     },
+<<<<<<< HEAD
     Appointment: {
         type: Array
     }
@@ -88,6 +93,38 @@ let Doctor = new Schema({
     // }
     // }
 
+=======
+    Appointment:{
+        type:Array
+    }
+    
+        // Day: {
+        //     type: String
+        // },
+        // Index: {
+        //     type: Number
+        // },
+        // Enable: {
+        //     type: Boolean
+        // },
+        // WorkStartHour: {
+        //     type: Date
+        // },
+        // WorkEndHour: {
+        //     type: Date
+        // },
+        // BreakStartHour: {
+        //     type: Date
+        // },
+        // BreakEndHour: {
+        //     type: Date
+        // },
+        // State: {
+        //     type: String
+        // }
+    // }
+    
+>>>>>>> 02f40859851a15e612243d518e6e9587f4edad06
     // time: {
     //     type: Date,
     //     default: Date.now
@@ -101,7 +138,11 @@ let Doctor = new Schema({
     //     default: Date.now
     // }
 }, {
+<<<<<<< HEAD
     versionKey: false,
+=======
+    versionKey: false, 
+>>>>>>> 02f40859851a15e612243d518e6e9587f4edad06
     // timestamps: {
     //     createdAt: 'createDate',
     //     updatedAt: 'modifiedDate'
@@ -109,7 +150,11 @@ let Doctor = new Schema({
 });
 
 // Duplicate the id field as mongoose returns _id field instead of id.
+<<<<<<< HEAD
 Doctor.virtual('id').get(function() {
+=======
+Doctor.virtual('id').get(function(){
+>>>>>>> 02f40859851a15e612243d518e6e9587f4edad06
     return this._id.toHexString();
 });
 

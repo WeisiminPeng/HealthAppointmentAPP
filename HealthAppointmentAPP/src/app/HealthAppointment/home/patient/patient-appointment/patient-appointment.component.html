@@ -1,0 +1,51 @@
+<p>patient-appointment works!</p>
+<app-patient-sidebar></app-patient-sidebar>
+<div class="doctors-wrapper">
+    <header>
+        <div class="module-title">
+            <div class="title">DOCTORS LIST</div>
+            <div class="underline"></div>
+        </div>
+    </header>
+    <div class="specialization-detail-wrapper">
+        <div class="specialization-types">
+            <!-- <ejs-dropdownlist id='Specialization' #specializationObj [dataSource]='specializationData'
+                [showClearButton]='true' (change)='onSpecializationChange($event)' [fields]='fields'
+                placeholder='Select a Specialization' popupHeight='230px'> -->
+
+            <ejs-dropdownlist id='Specialization'  [dataSource]='specializationData'
+                [showClearButton]='true' (change)='onSpecializationChange($event)' 
+                placeholder='Select a Specialization' popupHeight='230px'>
+            </ejs-dropdownlist>
+
+        </div>
+        <div #specialistItemObj class='specialist-display'>
+            <!-- <div (click)='onSpecialistClick($event)' *ngFor="let data of filteredDoctors"> -->
+                <div (click)='onSpecialistClick($event)' *ngFor="let data of filteredDoctors">
+                <div class='specialist-item' id=Specialist_{{data.Id}}>
+                    <!-- <div class="specialist-image">
+                        <img class="profile" src="./assets/images/{{data.Text}}.png" alt="doctor" />
+                        <span class='availability {{data.Availability}}'></span>
+                        <span class='upload icon-upload_photo {{data.NewDoctorClass}}'></span>
+                    </div> -->
+                    <div class="specialist-detail">
+                        <div class="name">Dr. {{data.Name}}</div>
+                        <div class="education">
+                            {{getEducation(data.Education)}}
+                        </div>
+                        <div class="specialist-experience">
+                            <div class="specialization">
+                                <span class="label-text">Specialization</span>
+                                <span class="specialization-text">{{data.Designation}}</span>
+                            </div>
+                            <div class="experience">
+                                <span class="label-text">Experience</span>
+                                <span class="specialization-text">{{data.Experience}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

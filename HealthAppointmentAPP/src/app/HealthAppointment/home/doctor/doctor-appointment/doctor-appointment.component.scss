@@ -1,0 +1,201 @@
+// http://localhost:4200/doctorAppointment/这里是存在数据库里面那个ID
+// 打开就是这个页面，点击edit还有一个页面   时间显示后面还有一个按钮  虽然看不见
+
+// 这个可以改颜色
+$planner-hover-bg-color: #f5f5f5;
+$planner-element-bg-color: #7575FF;
+$planner-element-back-color: #FFFFFF;
+$planner-delete-btn-color: #FF0000;
+$planner-box-shadow: 1px 2px 20px 0 rgba(173,173,255,0.20);
+$planner-font-color1: #333333;
+$planner-font-color2: #666666;
+$planner-tooltip-bg-color:#000;
+
+// 这个文件的SCSS改的小心一点吧..谢了
+.break-hour-dialog {
+    width: 445px;
+    max-height: 98% !important;
+
+    .e-dlg-content {
+        .break-hour-operations {
+            font-weight: 600;
+            font-size: 11px;
+            color: $planner-font-color2;
+            letter-spacing: 0.33px;
+            line-height: 18px;
+            padding-bottom: 20px;
+        }
+
+        .break-hour-header {
+            display: flex;
+
+            div {
+                &:nth-child(1){
+                    flex: 0.25;
+                }
+
+                &:nth-child(2),
+                &:nth-child(3) {
+                    flex: 1;
+                    margin: 0 30px;
+                    font-weight: 600;
+                    font-size: 11px;
+                    color: $planner-font-color2;
+                    letter-spacing: 0.33px;
+                }
+            }
+        }
+
+        :nth-child(3) {
+            &.break-hour-days {
+                padding-top: 7px !important;
+            }
+        }
+
+        .break-hour-days {
+            display: flex;
+            padding-top: 21px;
+
+            .day-button {
+                height: 32px;
+                width: 32px;
+
+                .e-btn {                    
+                    background: $planner-element-bg-color;
+                    border-color: $planner-element-bg-color;
+                    height: 32px;
+                    width: 32px;
+                }
+
+                &.TimeOff {
+                    margin: 5px 0;
+
+                    .e-btn {
+                        background: $planner-delete-btn-color;
+                        border-color: $planner-delete-btn-color;
+                    }
+                }
+
+                &.RemoveBreak {
+                    .e-btn {
+                        background: $planner-element-back-color;
+                        border: 1px solid #C0C0C0;
+                        color: $planner-font-color1;
+                    }
+                }
+            }
+
+            .start-container {
+                margin: 0 14.4px 0 16px;
+            }
+
+            .start-container,
+            .end-container {
+                &.TimeOff {
+                    display: none;
+                }
+            }
+
+            .state-container {
+                &:not(.TimeOff) {
+                    display: none;
+                }
+
+                &.TimeOff {
+                    display: block;
+                    margin: auto 27.9px;
+                    font-size: 13px;
+                    color: $planner-font-color1;
+                    letter-spacing: 0.39px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 850px) {
+    .doctor-details-container {
+        margin: 20px 29px;
+
+        header {
+            flex-direction: row;
+            margin: 10px 0;
+            
+            .detail-header-title {
+                flex: auto;
+            }
+
+            .doctor-detail {
+                justify-content: normal;
+
+                .delete-details,
+                .edit-details {
+                    width: 70px;
+                }
+
+                .delete-details {
+                    margin-right: 10px;
+                }
+            }
+        }
+
+        .active-doctor {
+            grid-template-rows: 0fr 1fr 1fr;
+            grid-template-columns: none;
+
+            .active-doctor-image {
+                margin-bottom: 35px;
+                margin-top: 21px;
+
+                .availability {
+                    left: 80px;
+                    top: 65px;
+                }
+
+                .upload {
+                    top: 30%;
+                    left: 35%;
+                }
+            }
+
+            .active-doctor-info {
+                .info-field-container {
+                    &.basic-detail {    
+                        .name {
+                            height: 29px;
+                            padding-bottom: 3px;
+                        }
+                    }
+                }                
+            }
+
+            .work-days-container {
+                header {
+                    margin: 0;
+
+                    .title-text {
+                        margin-top: 5px;
+                        margin-right: 18.7px;
+                    }
+
+                    div:nth-child(2) {
+                        display: flex;
+
+                        .button-label {
+                            padding-right: 6.6px;
+                            margin: auto 0;
+                        }
+                    }                    
+                }
+
+                .work-days-content {
+                    .work-day-item {
+                        padding: 0;
+                        padding-top: 14.4px;
+                    }
+                }
+            }
+        }
+    }
+}
+

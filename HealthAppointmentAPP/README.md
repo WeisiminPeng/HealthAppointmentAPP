@@ -1,5 +1,32 @@
 # HealthAppointmentAPP
 
+<<<<<<< HEAD
+=======
+<!-- 
+建一个文件夹
+vscode terminal转到这个文件夹
+git clone https://github.com/neu-mis-info6150-spring-2020/final-project-web-learning-group.git
+git init
+然后terminal 到HealthAppointmentAPP(到项目里面来)
+npm install
+再就  前端 后端和作业一样开就行了 -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> 02f40859851a15e612243d518e6e9587f4edad06
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.6.
 
 ## Development server

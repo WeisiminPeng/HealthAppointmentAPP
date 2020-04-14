@@ -19,6 +19,15 @@
     "@angular/platform-browser": "~9.0.6",
     "@angular/platform-browser-dynamic": "~9.0.6",
     "@angular/router": "~9.0.6",
+<<<<<<< HEAD
+=======
+    "@syncfusion/ej2-angular-buttons": "^18.1.43",
+    "@syncfusion/ej2-angular-calendars": "^18.1.43",
+    "@syncfusion/ej2-angular-dropdowns": "^18.1.43",
+    "@syncfusion/ej2-angular-navigations": "^18.1.43",
+    "@syncfusion/ej2-angular-popups": "^18.1.43",
+    "@syncfusion/ej2-angular-schedule": "^18.1.43",
+>>>>>>> 02f40859851a15e612243d518e6e9587f4edad06
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"

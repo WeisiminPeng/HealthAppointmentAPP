@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+<<<<<<< HEAD
+=======
+@import '../node_modules/@syncfusion/ej2-base/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-buttons/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-dropdowns/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-inputs/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-popups/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-lists/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-angular-dropdowns/styles/material.css';
+
+.e-popup-open{
+    .e-list-item{
+        padding: 4px 0;
+    }
+    
+}
+>>>>>>> 02f40859851a15e612243d518e6e9587f4edad06
