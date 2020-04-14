@@ -14,6 +14,7 @@ export class PatientSidebarComponent implements OnInit {
   public username:string;
   public patientAppointment:string;
   public patientSchdule:string;
+  public personalInfo: string;
 
   @ViewChild('sidebar') 
   public sidebar: SidebarComponent;
@@ -27,6 +28,7 @@ export class PatientSidebarComponent implements OnInit {
     this.username = this.routes.snapshot.paramMap.get('username').split('_')[0];
     this.patientAppointment = '/patientAppointment/'+this.username;
     this.patientSchdule = '/patientSchdule/'+this.username;
+    this.personalInfo = '/patientInfo/'+this.username;
     // console.log(this.doctorAppointment)
   }
 
@@ -37,14 +39,5 @@ export class PatientSidebarComponent implements OnInit {
 showSidebar():void{
  this.sidebar.show();
 }
-
-  onItemClick(args: any) {
-  
-    const elements: HTMLElement[] = args.currentTarget.parentElement.querySelectorAll('.active-item');
-    elements.forEach(element => {
-      if (element.classList.contains('active-item')) { element.classList.remove('active-item'); }
-    });
-    args.currentTarget.classList.add('active-item');
-  }
 
 }

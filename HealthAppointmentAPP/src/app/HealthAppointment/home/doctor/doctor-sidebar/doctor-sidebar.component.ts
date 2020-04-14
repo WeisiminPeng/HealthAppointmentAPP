@@ -14,6 +14,7 @@ export class DoctorSidebarComponent implements OnInit {
   public username:string;
   public doctorAppointment:string;
   public doctorSchdule:string;
+  public personalInfo: string;
   // private doctorSchdule1 = '/doctorSchdule';
 
   @ViewChild('sidebar') 
@@ -28,6 +29,7 @@ export class DoctorSidebarComponent implements OnInit {
     this.username = this.routes.snapshot.paramMap.get('username');
     this.doctorAppointment = '/doctorAppointment/'+this.username;
     this.doctorSchdule = '/doctorSchdule/'+this.username;
+    this.personalInfo = '/doctorInfo/'+this.username;
     console.log(this.doctorAppointment)
   }
 
