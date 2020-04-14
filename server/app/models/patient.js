@@ -8,7 +8,7 @@ let Patient = new Schema({
         type: String,
         required: "Name is required"
     },
-    Username: {
+    username: {
         type: String,
         required: "Username is required"
     },
@@ -34,9 +34,6 @@ let Patient = new Schema({
     },
     Address: {
         type: String
-    },
-    Appointment: {
-        type: Array
     }
 }, {
     versionKey: false,

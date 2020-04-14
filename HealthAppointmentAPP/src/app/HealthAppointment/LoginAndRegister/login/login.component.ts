@@ -33,7 +33,7 @@ sign(){
       }
     }
     alert("Username doesn't exist! please go register");
-
+      this.router.navigate(['']);
   });
 }else if (this.kindOfUser==='doctor'){
   this.http.get('http://localhost:3000/doctors').subscribe((response:any)=>{

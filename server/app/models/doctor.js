@@ -8,7 +8,7 @@ let Doctor = new Schema({
         type: String,
         required: "Name is required"
     },
-    Username: {
+    username: {
         type: String,
         required: "Username is required"
     },
