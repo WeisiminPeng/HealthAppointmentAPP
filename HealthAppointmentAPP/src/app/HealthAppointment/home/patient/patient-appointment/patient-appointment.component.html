@@ -22,7 +22,7 @@
         <div #specialistItemObj class='specialist-display'>
             <!-- <div (click)='onSpecialistClick($event)' *ngFor="let data of filteredDoctors"> -->
                 <div (click)='onSpecialistClick($event)' *ngFor="let data of filteredDoctors">
-                <div class='specialist-item' id=Specialist_{{data.Id}}>
+                <div class='specialist-item' id=Specialist_{{data.username}}>
                     <!-- <div class="specialist-image">
                         <img class="profile" src="./assets/images/{{data.Text}}.png" alt="doctor" />
                         <span class='availability {{data.Availability}}'></span>
