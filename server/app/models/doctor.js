@@ -6,7 +6,15 @@ const Schema = mongoose.Schema;
 let Doctor = new Schema({
     Name: {
         type: String,
-        required: "title is required"
+        required: "Name is required"
+    },
+    Username: {
+        type: String,
+        required: "Username is required"
+    },
+    Password: {
+        type: String,
+        required: "Password is required"
     },
     Gender: {
         type: String
@@ -53,51 +61,8 @@ let Doctor = new Schema({
     WorkDays: {
         type: Array
     }
-    
-        // Day: {
-        //     type: String
-        // },
-        // Index: {
-        //     type: Number
-        // },
-        // Enable: {
-        //     type: Boolean
-        // },
-        // WorkStartHour: {
-        //     type: Date
-        // },
-        // WorkEndHour: {
-        //     type: Date
-        // },
-        // BreakStartHour: {
-        //     type: Date
-        // },
-        // BreakEndHour: {
-        //     type: Date
-        // },
-        // State: {
-        //     type: String
-        // }
-    // }
-    
-    // time: {
-    //     type: Date,
-    //     default: Date.now
-    // }
-    // createDate: {
-    //     type: Date,
-    //     default: Date.now
-    // },
-    // modifiedDate: {
-    //     type: Date,
-    //     default: Date.now
-    // }
 }, {
-    versionKey: false, 
-    // timestamps: {
-    //     createdAt: 'createDate',
-    //     updatedAt: 'modifiedDate'
-    // }
+    versionKey: false,
 });
 
 // Duplicate the id field as mongoose returns _id field instead of id.
@@ -105,9 +70,9 @@ let Doctor = new Schema({
 //     return this._id.toHexString();
 // });
 
-// Ensure virtual fields are serialised.
+
+
 Doctor.set('toJSON', {
     virtuals: true
 });
-
 module.exports = mongoose.model('Doctor', Doctor);

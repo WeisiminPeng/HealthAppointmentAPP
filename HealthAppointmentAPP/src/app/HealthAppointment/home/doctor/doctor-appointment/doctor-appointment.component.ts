@@ -39,9 +39,9 @@ export class DoctorAppointmentComponent implements OnInit {
   public doctorUpdate: success;
 
   ngOnInit(): void {
-    // get id
+    // get username
     this.username = this.routes.snapshot.paramMap.get('username');
-    // console.log(this.username)
+    console.log("this.username: "+this.username)
 
     // get doctor's workhours
     this.doctorService.get(this.username).subscribe(doctor => {
