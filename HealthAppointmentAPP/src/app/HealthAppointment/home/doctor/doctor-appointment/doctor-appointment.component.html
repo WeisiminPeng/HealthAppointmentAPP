@@ -1,9 +1,8 @@
-<p>doctor-appointment works!</p>
 <app-doctor-sidebar></app-doctor-sidebar>
 <div class="doctor-appointment-wrapper">
     <div class="workdays-wrapper">
         <header>
-            <div class="title">Breaks Hours</div>
+            <div class="title">Break Hours</div>
             <div class="edit-break-hours" (click)='onEditBreak()'>
                 <button ejs-button cssClass="e-small e-round" iconCss="e-icons e-add-icon"></button>
                 <span class="button-label">Edit</span>
@@ -19,28 +18,28 @@
 </div>
 <div class="break-hour-edit-container" style="display:none">
     <ejs-dialog #breakHourObj width='445px' cssClass='break-hour-dialog' [isModal]='true' [visible]='false'
-        [animationSettings]='animationSettings' header='Work Hours' [showCloseIcon]='true' target='body'>
+        [animationSettings]='animationSettings' header='Break Hours' [showCloseIcon]='true' target='body'>
         <!-- <ng-template #content> -->
         <form>
             <div class="break-hour-instruction">
-                * Click on day to add break, double click to take time off and third click to remove break
+                Click on day to add break, double click to take time off and third click to remove break
             </div>
             <!-- <div class="work-hour header">
                 <div>Work Start Time</div>
                 <div>Work End Time</div>
             </div>
             <div class="work-start-container">
-                <ejs-timepicker cssClass="e-field1" id=workStart 
+                <ejs-timepicker cssClass="e-field1" id=workStart
                     [value]=day.WorkStartHour [showClearButton]=false></ejs-timepicker>
             </div>
             <div class="work-end-container">
-                <ejs-timepicker cssClass="e-field1" id=workEnd 
+                <ejs-timepicker cssClass="e-field1" id=workEnd
                     [value]=day.WorkEndHour [showClearButton]=false></ejs-timepicker>
             </div> -->
             <div class="break-hour header">
-                <div></div>
-                <div>Break Start Time</div>
-                <div>Break End Time</div>
+                <div class="break-hour-start-end">
+                  <p>Break Start Time &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Break End Time</p>
+                </div>
             </div>
             <div class="break-hour-days" *ngFor="let day of breakHoursData">
                 <div class="day-button {{day.State}}">

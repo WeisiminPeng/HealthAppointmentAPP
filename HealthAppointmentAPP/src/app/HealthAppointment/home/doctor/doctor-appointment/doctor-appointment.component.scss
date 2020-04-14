@@ -12,6 +12,13 @@ $planner-font-color2: #666666;
 $planner-tooltip-bg-color:#000;
 
 // 这个文件的SCSS改的小心一点吧..谢了
+.break-hour-start-end:first-child{
+  margin-left: 50px;
+  font-weight: bold;
+}
+.break-hour-instruction{
+  color: #666666;
+}
 .break-hour-dialog {
     width: 445px;
     max-height: 98% !important;
@@ -60,7 +67,7 @@ $planner-tooltip-bg-color:#000;
                 height: 32px;
                 width: 32px;
 
-                .e-btn {                    
+                .e-btn {
                     background: $planner-element-bg-color;
                     border-color: $planner-element-bg-color;
                     height: 32px;
@@ -120,7 +127,7 @@ $planner-tooltip-bg-color:#000;
         header {
             flex-direction: row;
             margin: 10px 0;
-            
+
             .detail-header-title {
                 flex: auto;
             }
@@ -160,13 +167,13 @@ $planner-tooltip-bg-color:#000;
 
             .active-doctor-info {
                 .info-field-container {
-                    &.basic-detail {    
+                    &.basic-detail {
                         .name {
                             height: 29px;
                             padding-bottom: 3px;
                         }
                     }
-                }                
+                }
             }
 
             .work-days-container {
@@ -185,7 +192,7 @@ $planner-tooltip-bg-color:#000;
                             padding-right: 6.6px;
                             margin: auto 0;
                         }
-                    }                    
+                    }
                 }
 
                 .work-days-content {
@@ -197,5 +204,12 @@ $planner-tooltip-bg-color:#000;
             }
         }
     }
+}
+.button-container{
+  margin-left: 28%;
+  margin-top:10px;
+  :first-child{
+    margin-right: 5%;
+  }
 }
 
