@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { SidebarComponent } from '@syncfusion/ej2-angular-navigations';
 
 import { PatientService } from '../../../services/patient.service'
 
@@ -14,6 +15,12 @@ export class PatientSidebarComponent implements OnInit {
   public patientAppointment:string;
   public patientSchdule:string;
 
+  @ViewChild('sidebar') 
+  public sidebar: SidebarComponent;
+  public isOpen: boolean = true;
+  public closeOnDocumentClick: boolean = true;
+  public type: string = 'Push';
+
   constructor(public patientService: PatientService, public routes: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -22,6 +29,14 @@ export class PatientSidebarComponent implements OnInit {
     this.patientSchdule = '/doctorSchdule/'+this.username;
     // console.log(this.doctorAppointment)
   }
+
+  public onCreated(args: any) {
+    this.sidebar.element.style.visibility = '';
+}
+
+showSidebar():void{
+ this.sidebar.show();
+}
 
   onItemClick(args: any) {
   

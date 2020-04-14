@@ -18,8 +18,6 @@ export class DoctorSidebarComponent implements OnInit {
 
   @ViewChild('sidebar') 
   public sidebar: SidebarComponent;
-  @ViewChild('idebarBtn')
-  public idebarBtn: ButtonComponent;
   public isOpen: boolean = true;
   public closeOnDocumentClick: boolean = true;
   public type: string = 'Push';
