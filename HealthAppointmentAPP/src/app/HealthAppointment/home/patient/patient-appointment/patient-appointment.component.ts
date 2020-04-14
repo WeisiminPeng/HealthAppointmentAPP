@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 // import { DropDownListComponent } from '@syncfusion/ej2-angular-dropdowns';
 // import { Router } from '@angular/router';
@@ -28,9 +28,10 @@ export class PatientAppointmentComponent implements OnInit {
 
   public patient: patientData;
   public username: string;
+  public DoctorUsername:string;
 
 
-  constructor(public doctorService: DoctorService, public patientService: PatientService, public routes: ActivatedRoute) {
+  constructor(public doctorService: DoctorService, public patientService: PatientService, public routes: ActivatedRoute, private router: Router) {
     // this.doctorsData = this.filteredDoctors = this.dataService.getDoctorsData();
     // this.activeDoctorData = this.doctorsData[0];
     // this.specializationData = this.dataService.specialistData;
@@ -73,12 +74,13 @@ export class PatientAppointmentComponent implements OnInit {
   }
 
   onSpecialistClick(args: any) {
-    //   this.tooltipObj.close();
-    //   const specialistId: string = args.currentTarget.querySelector('.specialist-item')['id'].split('_')[1];
-    //   const filteredData: Object[] = this.doctorsData.filter(
-    //     (item: any) => item.Id === parseInt(specialistId as string, 10));
-    //   this.dataService.setActiveDoctorData(<{ [key: string]: Object }>filteredData[0]);
-    //   this.router.navigateByUrl('/doctor-details/' + specialistId);
+      // this.tooltipObj.close();
+      this.DoctorUsername = args.currentTarget.querySelector('.specialist-item')['id'].split('_')[1];
+      // console.log(this.DoctorUsername);
+      // // const filteredData: Object[] = this.doctorsData.filter(
+      //   (item: any) => item.Id === parseInt(specialistId as string, 10));
+      // this.dataService.setActiveDoctorData(<{ [key: string]: Object }>filteredData[0]);
+      this.router.navigateByUrl('/patientDoctorDetail/' + this.username + '_' + this.DoctorUsername);
   }
 
   getEducation(text: Object) {

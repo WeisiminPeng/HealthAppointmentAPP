@@ -45,6 +45,12 @@ const routes: Routes = [
     // path: 'patientAppointment',
     component: PatientScheduleComponent
 
+  },
+  {
+    path: 'patientDoctorDetail/:username',
+    // path: 'patientAppointment',
+    component: PatientScheduleComponent
+
   }
 ];
 @NgModule({
