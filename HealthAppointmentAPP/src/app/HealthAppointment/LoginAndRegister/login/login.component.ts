@@ -33,7 +33,7 @@ sign(){
         return;
       }
     }
-    alert('Username doesn\'t exist! please go register');
+    alert('Username doesn"t exist! please go register');
 
   });
 } else if (this.kindOfUser === 'doctor') {

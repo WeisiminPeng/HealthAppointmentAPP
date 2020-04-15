@@ -123,9 +123,7 @@ ngOnInit(): void {
   }
 register() {
   const httpOptions = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
-  if(this.kindOfUser === ''){
-    alert('Please choose you are patient or doctor');
- } else if (this.kindOfUser === 'patient') {
+  if (this.kindOfUser === 'patient') {
       this.http.get('http://localhost:3000/patients').subscribe((response: any ) => {
         console.log(response);
         this.List = response;
