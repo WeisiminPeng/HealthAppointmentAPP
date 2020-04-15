@@ -87,7 +87,7 @@ ngOnInit(): void {
     new Date(2018, 1, 9, 17, 0),
     new Date(2018, 1, 9, 12, 0),
     new Date(2018, 1, 9, 13, 0), 'AddBreak'));
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 7; i++) {
     this.availableDayList.push(i);
   }
   console.log(this.availableDayList);
