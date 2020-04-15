@@ -135,7 +135,7 @@ register() {
             return;
         }
       }
-        let api = 'http://localhost:3000/patients';
+        const api = 'http://localhost:3000/patients';
         this.http.post(api, {
           'username': this.Username,
           'Name': this.Name,
@@ -171,7 +171,7 @@ register() {
             return;
         }
       }
-        let api = 'http://localhost:3000/doctors';
+        const api = 'http://localhost:3000/doctors';
         this.http.post(api, {
               'username': this.Username,
               'Name': this.Name,
@@ -200,26 +200,26 @@ back() {
   }
 
 AddOption(){
-  let newDiv = document.createElement('div');
-  let newTr = document.createElement('tr');
-  let newTr2 = document.createElement('tr');
-  let td1 = document.createElement('td');
+  const newDiv = document.createElement('div');
+  const newTr = document.createElement('tr');
+  const newTr2 = document.createElement('tr');
+  const td1 = document.createElement('td');
   td1.innerHTML = 'Specialization :';
-  let td2 = document.createElement('td');
+  const td2 = document.createElement('td');
   td2.innerHTML = 'Experience :';
-  let select1 = document.createElement('select');
+  const select1 = document.createElement('select');
   select1.id = 'select1';
-  let option1 = document.createElement('option');
+  const option1 = document.createElement('option');
   option1.innerHTML = 'General Medicine';
-  let option2 = document.createElement('option');
+  const option2 = document.createElement('option');
   option2.innerHTML = 'Neurology';
-  let option3 = document.createElement('option');
+  const option3 = document.createElement('option');
   option3.innerHTML = 'Dermatology';
-  let option4 = document.createElement('option');
+  const option4 = document.createElement('option');
   option4.innerHTML = 'Orthopedics';
-  let option5 = document.createElement('option');
+  const option5 = document.createElement('option');
   option5.innerHTML = 'Diabetology';
-  let option6 = document.createElement('option');
+  const option6 = document.createElement('option');
   option6.innerHTML = 'Cardiology';
   select1.appendChild(option1);
   select1.appendChild(option2);
@@ -229,18 +229,18 @@ AddOption(){
   select1.appendChild(option6);
   newTr.appendChild(td1);
   newTr.appendChild(select1);
-  let option7 = document.createElement('option');
+  const option7 = document.createElement('option');
   option7.innerHTML = '1-3 years';
-  let option8 = document.createElement('option');
+  const option8 = document.createElement('option');
   option8.innerHTML = '4-6 years';
-  let option9 = document.createElement('option');
+  const option9 = document.createElement('option');
   option9.innerHTML = '7-9 years';
-  let option10 = document.createElement('option');
+  const option10 = document.createElement('option');
   option10.innerHTML = '9-11 years';
-  let option11 = document.createElement('option');
+  const option11 = document.createElement('option');
   option11.innerHTML = '11+ years';
 
-  let select2 = document.createElement('select');
+  const select2 = document.createElement('select');
   select2.id = 'select2';
   select2.appendChild(option7);
   select2.appendChild(option8);
