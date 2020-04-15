@@ -110,15 +110,6 @@ ngOnInit(): void {
       console.log('right number!');
     }
   };
-  // checkPhone(){
-//     var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
-//     if((this.phone.match(phoneno))) {
-
-//           alert("message");
-//     }
-
-//   }
-
 
   }
 register() {
