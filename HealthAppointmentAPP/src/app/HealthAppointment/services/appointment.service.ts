@@ -33,4 +33,10 @@ export class AppointmentService {
     const newTodo$ = this.http.post<appointmentData>(this.ROUTE_URL, todoitem, {headers : header});
     return newTodo$;
   }
+
+   //Delete one todo
+   public delete(id: string): Observable<success> {
+    const deleteMsg$ = this.http.delete<success>(`${this.ROUTE_URL}/${id}`);
+    return deleteMsg$;
+  }
 }

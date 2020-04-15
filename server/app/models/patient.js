@@ -19,10 +19,6 @@ let Patient = new Schema({
     Gender: {
         type: String
     },
-    Text: {
-        type: String
-    },
-
     DOB: {
         type: Date
     },

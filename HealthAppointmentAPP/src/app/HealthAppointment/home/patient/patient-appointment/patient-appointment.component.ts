@@ -24,7 +24,10 @@ export class PatientAppointmentComponent implements OnInit {
 
   public doctors: Array<doctorsData>;
   public filteredDoctors: Array<doctorsData>;
-  public specializationData: string[] = ["General Medicine", "Neurology"];
+  public specializationData: string[] = ["General Medicine", "Neurology", 
+                                         "Dermatology", "Orthopedics", 
+                                         "Diabetology", "Cardiology"];
+
 
   public patient: patientData;
   public username: string;
@@ -32,9 +35,6 @@ export class PatientAppointmentComponent implements OnInit {
 
 
   constructor(public doctorService: DoctorService, public patientService: PatientService, public routes: ActivatedRoute, private router: Router) {
-    // this.doctorsData = this.filteredDoctors = this.dataService.getDoctorsData();
-    // this.activeDoctorData = this.doctorsData[0];
-    // this.specializationData = this.dataService.specialistData;
 
   }
 
@@ -47,9 +47,6 @@ export class PatientAppointmentComponent implements OnInit {
     });
 
     this.username = this.routes.snapshot.paramMap.get('username');
-    // this.id = +this.route.snapshot.params.id;
-    // console.log(this.routes.snapshot.paramMap.get('username'));
-    // console.log(this.id);
     this.patientService.get(this.username).subscribe(patient => {
       this.patient = patient;
       console.log(this.patient);
@@ -58,9 +55,8 @@ export class PatientAppointmentComponent implements OnInit {
 
   }
 
+  // refresh doctor list
   onSpecializationChange(args?: any) {
-
-    // let filteredData: { [key: string]: Object }[];
     if (args && args.value) {
       this.selectedSpecialization = args ? args.itemData.value : this.selectedSpecialization;
       console.log(this.selectedSpecialization)
@@ -73,13 +69,9 @@ export class PatientAppointmentComponent implements OnInit {
     this.filteredDoctors = this.selectedDoctors;
   }
 
+  // inspect which doctor is selected
   onSpecialistClick(args: any) {
-      // this.tooltipObj.close();
       this.DoctorUsername = args.currentTarget.querySelector('.specialist-item')['id'].split('_')[1];
-      // console.log(this.DoctorUsername);
-      // // const filteredData: Object[] = this.doctorsData.filter(
-      //   (item: any) => item.Id === parseInt(specialistId as string, 10));
-      // this.dataService.setActiveDoctorData(<{ [key: string]: Object }>filteredData[0]);
       this.router.navigateByUrl('/patientDoctorDetail/' + this.username + '_' + this.DoctorUsername);
   }
 

@@ -3,12 +3,12 @@
 const controller = require('../controllers/controllerPatient');
 module.exports = function(app){
     app.route('/patients')
-        .get(controller.list) //List all the todos
-        .post(controller.save); //Create a new todos
+        .get(controller.list) //List all the patients
+        .post(controller.save); //Create a new patient
 
     app.route('/patients/:username')
-        .get(controller.get) //Fetch one todo
-        .put(controller.update) //Update one todo
-        .delete(controller.delete); //Delete one todo
+        .get(controller.get) //Fetch one patient by username
+        .put(controller.update) //Update one patient by username
+        .delete(controller.delete); //Delete one patient  by username
         
 };

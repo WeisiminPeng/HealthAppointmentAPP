@@ -1,8 +1,4 @@
-<p>patient-sidebar works!</p>
 <div class="planner-wrapper">
-    <!-- <ejs-sidebar #sideBar id="plannerSiderBar" [enableGestures]='false' [showBackdrop]='showBackdrop'
-      [closeOnDocumentClick]='closeOnDocumentClick'> -->
-
     <ejs-sidebar #sidebar id="Siderbar" (created)="onCreated($event)" style="visibility: hidden" [closeOnDocumentClick]="closeOnDocumentClick">
         <div class="dock">
             <div class="info align-center">
@@ -13,8 +9,6 @@
                 </div>
             </div>
             <div class="sidebar-item schdule" [routerLink]="patientSchdule">
-                <!-- <div class="sidebar-item dashboard" > -->
-                <!-- <span class="dashboard-image"><span class="icon-dashboard item-image"></span></span> -->
                 <span class="text" title="dashboard">Schdule</span>
             </div>
             <div class="sidebar-item appointment" [routerLink]="patientAppointment">
