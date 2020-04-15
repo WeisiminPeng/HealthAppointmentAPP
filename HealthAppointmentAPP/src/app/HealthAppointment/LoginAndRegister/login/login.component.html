@@ -1,16 +1,19 @@
 <div id="login">
-    <tr>
-        <input type="radio" value="patient" name="people" id="people1" [(ngModel)]="kindOfUser"> <label for="people1">Patient</label>
-        <input type="radio" value="doctor" name="people" id="people2" [(ngModel)]="kindOfUser"> <label for="people2">Doctor</label>
-    </tr>
-    <tr>
-        <td>Username:</td> <input type="text" [(ngModel)]="Username">
 
-    </tr>
-    <tr>
-        <td>Password:</td> <input type="password" [(ngModel)]="password">
-    </tr>
+    <div class="log_wrapper">
+        <h2>Northeastern Health Center</h2>
+        <div class="kind">
+            I'm a:
+            <input type="radio" value="patient" name="people" id="people1" [(ngModel)]="kindOfUser"> <label for="people1"> Patient </label>
+            <input type="radio" value="doctor" name="people" id="people2" [(ngModel)]="kindOfUser"> <label for="people2"> Doctor </label>
+        </div>
 
+        <p class="log_input">Username:</p>
+        <input class="input-box" type="text" id="username" [(ngModel)]="Username">
+        <p class="log_input">Password:</p>
+        <input class="input-box" type="password" [(ngModel)]="password">
+        <br>
+        <button class="loginbtn" (click)="sign()"> Log in</button><br>
+        <button class="backBtn" (click)="back()"> < back</button>
+    </div>
 </div>
-<button id="sign-in" (click)="sign()">Sign-in </button>
-<button (click)="back()">back</button>

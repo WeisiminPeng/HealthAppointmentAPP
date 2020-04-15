@@ -15,6 +15,7 @@ export class PatientSidebarComponent implements OnInit {
   public patientAppointment:string;
   public patientSchdule:string;
   public personalInfo: string;
+  public SignOut: string = '';
 
   @ViewChild('sidebar') 
   public sidebar: SidebarComponent;

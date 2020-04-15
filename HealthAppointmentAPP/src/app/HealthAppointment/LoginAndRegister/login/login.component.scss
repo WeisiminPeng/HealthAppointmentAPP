@@ -1,0 +1,67 @@
+
+$normal-font:  "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+#login{
+  background-color: white;
+}
+.log_wrapper{
+  text-align: center;
+  font-size: larger;
+  font-family: 'Times New Roman', Times, serif;
+  position: absolute;
+  background-color: white;
+  border: #666666;
+  width: 400px;
+  height: 430px;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 10px;
+  padding-top: 20px;
+}
+.kind{
+  position: relative;
+  margin-left: -38px;
+  font-size: 15px;
+  font-weight: bold;
+  font-family: $normal-font;
+
+}
+.log_input{
+  margin-left: -165px;
+  margin-bottom: 2px;
+  margin-top: 30px;
+  font-size: 15px;
+  font-weight: bold;
+  font-family: $normal-font;
+}
+.input-box{
+  width: 240px;
+  height: 40px;
+  border: 5px #666666;
+  border-radius: 5px;
+  box-shadow: 0 0 2px #666666;
+  font-size: 15px;
+  padding-left: 10px;
+  font-family: $normal-font;
+}
+.loginbtn{
+  @extend .input-box;
+  width: 250px;
+  height: 45px;
+  background-color: rgb(70,154,212);
+  box-shadow: 0 0 3px #666666;
+  margin-top: 30px;
+  color: whitesmoke;
+  font-size: 15px;
+  font-weight: bold;
+}
+.backBtn{
+  border: none;
+  font-size: 15px;
+  font-family: $normal-font;
+  color: #666666;
+  margin-top: 20px;
+  margin-left: -195px;
+}
