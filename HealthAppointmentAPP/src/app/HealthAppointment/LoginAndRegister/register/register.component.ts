@@ -198,6 +198,8 @@ back() {
   }
 
 AddOption(){
+  const optionDiv = document.getElementById('newDiv');
+  if(optionDiv === null){
   const newDiv = document.createElement('div');
   const newTr = document.createElement('tr');
   const newTr2 = document.createElement('tr');
@@ -253,6 +255,9 @@ AddOption(){
   newDiv.id = 'newDiv';
   const body = document.getElementById('registerBody');
   body.insertBefore(newDiv, body.childNodes[body.childNodes.length - 1]);
+  } else {
+    return;
+  }
 }
 DeleteOption(){
   const body = document.getElementById('registerBody');
