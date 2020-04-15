@@ -19,9 +19,6 @@ let Doctor = new Schema({
     Gender: {
         type: String
     },
-    Text: {
-        type: String
-    },
     Education: {
         type: String
     },
@@ -31,12 +28,6 @@ let Doctor = new Schema({
     Experience: {
         type: String
     },
-    Designation: {
-        type: String
-    },
-    DutyTiming: {
-        type: String
-    },
     Email: {
         type: String
     },
@@ -44,12 +35,6 @@ let Doctor = new Schema({
         type: String
     },
     Availability: {
-        type: String
-    },
-    StartHour: {
-        type: String
-    },
-    EndHour: {
         type: String
     },
     AvailableDays: {

@@ -3,7 +3,7 @@
 //Import specific operations to database
 const service = require('../services/serviceAppointment');
 
-//Create and return a new todo in JSON based on the HTTP request
+//Create and return a new appointment in JSON based on the HTTP request
 exports.save = function (req, res) {
     const newAppointment = Object.assign({}, req.body);
     const result = (appointment) => {
@@ -13,12 +13,11 @@ exports.save = function (req, res) {
 
     const promise = service.save(newAppointment);
     promise
-        // service.save(Newtodo)
         .then(result)
         .catch(renderErrorResponse(res));
 };
 
-//Return an updated todo in JSON based on the update parameters
+//Return an updated appointment in JSON based on the update parameters
 exports.update = function (req, res) {
     const appointment = Object.assign({}, req.body);
     const result = (appointment) => {
@@ -35,7 +34,7 @@ exports.update = function (req, res) {
         .catch(renderErrorResponse(res));
 }
 
-//Return a todo in JSON based on the search parameter
+//Return a appointment in JSON based on the search parameter
 exports.get = function (req, res) {
     const result = (appointment) => {
         res.status(200);
@@ -47,7 +46,7 @@ exports.get = function (req, res) {
         .catch(renderErrorResponse(res));
 };
 
-//Return a list of todos in JSON based on the search parameters
+//Return a list of appointments in JSON based on the search parameters
 exports.list = function (req, res) {
     const totalQuery = req.query.total;
     const params = {};
@@ -64,7 +63,7 @@ exports.list = function (req, res) {
         .catch(renderErrorResponse(res));
 };
 
-//Delete and return the number of todo successfully deleted
+//Delete and return the number of appointment successfully deleted
 exports.delete = function (req, res) {
     const result = () => {
         res.status(200);
@@ -78,17 +77,17 @@ console.log("req.params.id: "+ req.params.id)
         .catch(renderErrorResponse(res));
 };
 
-// search by patient||doctor username
-exports.searchAppointment = function (req, res) {
-    const result = (appointments) => {
-        res.status(200);
-        res.json(appointments);
-    }
+// // search by patient||doctor username
+// exports.searchAppointment = function (req, res) {
+//     const result = (appointments) => {
+//         res.status(200);
+//         res.json(appointments);
+//     }
 
-    service.searchByUsername(req.query)
-        .then(result)
-        .catch(renderErrorResponse(res));
-}
+//     service.searchByUsername(req.query)
+//         .then(result)
+//         .catch(renderErrorResponse(res));
+// }
 
 
 //Throw error if error object is present

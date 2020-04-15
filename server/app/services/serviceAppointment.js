@@ -16,8 +16,8 @@ exports.search = function (params) {
     return promise;
 };
 
+// search appointments by doctor||patient username
 exports.get = function (username) {
-    // const promise = Appointment.findById(id).exec();
     const promise = Appointment.find({
         $or: [
             {
@@ -39,20 +39,5 @@ exports.update = function (appointment) {
 exports.delete = function (id) {
     console.log(id)
     const promise = Appointment.remove({ _id: id }).exec();
-    return promise;
-}
-
-// search by patient||doctor username
-exports.searchByUsername = function (params) {
-    const promise = Appointment.fins({
-        $or: [
-            {
-                PatientUsername: { $eq: params.PatientUsername }
-            },
-            {
-                DoctorUsername: { $eq: params.DoctorUsername }
-            }
-        ]
-    }).exec();
     return promise;
 }

@@ -41,7 +41,7 @@ export class DoctorAppointmentComponent implements OnInit {
   ngOnInit(): void {
     // get username
     this.username = this.routes.snapshot.paramMap.get('username');
-    console.log("this.username: "+this.username)
+    console.log("this.username: " + this.username)
 
     // get doctor's workhours
     this.doctorService.get(this.username).subscribe(doctor => {
@@ -51,6 +51,7 @@ export class DoctorAppointmentComponent implements OnInit {
       // this.breakHoursData = JSON.parse(JSON.stringify(this.workHoursData));
       // console.log("test!: "+JSON.parse(JSON.stringify(this.workHoursData)))
       this.breakHoursData = this.doctor.WorkDays;
+      console.log(this.breakHoursData)
       // this.workStartHoursData = new Date(<Date>this.doctor.StartHour);
       // new Date(<Date>workDays[i].WorkStartHour);
       // console.log("this.breakHoursData: " + this.breakHoursData)
@@ -70,13 +71,14 @@ export class DoctorAppointmentComponent implements OnInit {
     this.breakHourObj.show();
   }
 
-  getWorkDayName(day: string) {
-    return day.charAt(0).toUpperCase() + day.slice(1);
-  }
+  // getWorkDayName(day: string) {
+  //   return day;
+  // }
   getDayName(day: string) {
-    return day.split('')[0].toUpperCase();
+    return day.split('')[0];
   }
 
+  // three states: Timeoff/RemoveBreak/Addbreak
   onChangeStates(args: any) {
     args.preventDefault();
     const currentState: string = args.target.getAttribute('data-state');
@@ -99,7 +101,7 @@ export class DoctorAppointmentComponent implements OnInit {
 
     //find the switched day and change state
     for (let i = 0; i < (<{ [key: string]: Object }[]>this.breakHoursData).length; i++) {
-      if (this.breakHoursData[i].Day === currentDay) {
+      if (this.breakHoursData[i].day === currentDay) {
         this.breakHoursData[i].State = newState;
       }
     }
@@ -117,7 +119,7 @@ export class DoctorAppointmentComponent implements OnInit {
   }
   //change showing style
   getBreakEndHour(BreakEndHour: string) {
-    return this.dataBreakEndHourDetail= new Date(BreakEndHour)
+    return this.dataBreakEndHourDetail = new Date(BreakEndHour)
     // return `${this.intl.formatDate(this.dataBreakEndHourDetail, { skeleton: 'hm' })}`;
   }
 
@@ -161,7 +163,7 @@ export class DoctorAppointmentComponent implements OnInit {
       const valueName: string = curElement.parentElement.getAttribute('id').split('_')[1];
       const instance: TimePicker = (curElement.parentElement as EJ2Instance).ej2_instances[0] as TimePicker;
       for (let i = 0; i < workDays.length; i++) {
-        if (workDays[i].Day === dayName) {
+        if (workDays[i].day === dayName) {
           if (valueName === 'start') {
             workDays[i].BreakStartHour = instance.value;
             // console.log("instance.value;: "+instance.value)
@@ -187,7 +189,7 @@ export class DoctorAppointmentComponent implements OnInit {
     const availableDays: Array<number> = [];
     workDays.forEach(workDay => {
       if (workDay.Enable) {
-        availableDays.push(<number>workDay['Index']);
+        availableDays.push(<number>workDay['index']);
       }
     });
     var editDoctorWorkDays: any = {};
@@ -200,19 +202,6 @@ export class DoctorAppointmentComponent implements OnInit {
     });
     this.breakHourObj.hide();
 
-
-
-
-    // const availableDays: Array<number> = [];
-    // workDays.forEach(workDay => {
-    //   if (workDay.Enable) {
-    //     availableDays.push(<number>workDay['Index']);
-    //   }
-    // });
-    // this.activeData.AvailableDays = availableDays;
-    // this.activeData.WorkDays = workDays;
-    // this.dataService.onUpdateData('WorkDays', workDays, 'doctor', this.activeData);
-    // this.breakHourObj.hide();
   }
 
 
