@@ -8,14 +8,14 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class MainComponent implements OnInit {
 
-  constructor(public route:ActivatedRoute,private router:Router) { }
+  constructor(public route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
   }
-  goRegister(){
+  goRegister() {
     this.router.navigate(['/register']);
   }
-  goLogin(){
+  goLogin() {
     this.router.navigate(['/login']);
   }
 }

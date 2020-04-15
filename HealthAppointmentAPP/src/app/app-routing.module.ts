@@ -21,16 +21,16 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   {
 
-    path:'login',
-    component:LoginComponent
+    path: 'login',
+    component: LoginComponent
   },
   {
-    path:'register',
-    component:RegisterComponent
+    path: 'register',
+    component: RegisterComponent
   },
   {
-    path:'',
-    component:MainComponent
+    path: '',
+    component: MainComponent
   },
   {
     path: 'doctorAppointment/:username',
@@ -77,12 +77,12 @@ const routes: Routes = [
 
   },
   {
-    path:'changePassword/:username',
-    component:PasswordManagementComponent
+    path: 'changePassword/:username',
+    component: PasswordManagementComponent
   },
   {
-    path:'changePassword2/:username',
-    component:PasswordManagement2Component
+    path: 'changePassword2/:username',
+    component: PasswordManagement2Component
   }
 ];
 @NgModule({
