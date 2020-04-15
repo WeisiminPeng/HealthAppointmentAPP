@@ -2,8 +2,8 @@
     <div>
         <table>
             <tr>
-                <input type="radio" value="patient" name="people" id="people1" [(ngModel)]="kindOfUser"> <label for="people1" (click)="DeleteOption()">Patient</label>
-                <input type="radio" value="doctor" name="people" id="people2" [(ngModel)]="kindOfUser"> <label for="people2" (click)="AddOption()">Doctor</label>
+                <input type="radio" value="patient" name="people" id="people1" (click)="DeleteOption()" [(ngModel)]="kindOfUser"> <label for="people1" (click)="DeleteOption()">Patient</label>
+                <input type="radio" value="doctor" name="people" id="people2" (click)="AddOption()" [(ngModel)]="kindOfUser"> <label for="people2" (click)="AddOption()">Doctor</label>
             </tr>
             <tr>
                 <td>Name:</td> <input type="text" id="name" [(ngModel)]="Name">
