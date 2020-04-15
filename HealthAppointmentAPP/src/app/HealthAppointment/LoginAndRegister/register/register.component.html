@@ -1,7 +1,9 @@
 <body id="registerBody">
-    <div>
+    <div class="register-wrapper">
+      <h2>Northeastern Health Center</h2>
         <table>
             <tr>
+              I'm a:
                 <input type="radio" value="patient" name="people" id="people1" [(ngModel)]="kindOfUser"> <label for="people1" (click)="DeleteOption()">Patient</label>
                 <input type="radio" value="doctor" name="people" id="people2" [(ngModel)]="kindOfUser"> <label for="people2" (click)="AddOption()">Doctor</label>
             </tr>
@@ -10,6 +12,7 @@
             </tr>
 
             <tr>
+              Gender:
                 <input type="radio" value="Male" name="gender" id="sex1" [(ngModel)]="sex"> <label for="sex1">Male</label>
                 <input type="radio" value="Female" name="gender" id="sex2" [(ngModel)]="sex"> <label for="sex2">Female</label>
             </tr>
@@ -33,10 +36,11 @@
                     <td>Password:</td> <input type="password" [(ngModel)]="Password"><br>{{Password | json}}
                 </tr>
         </table>
+      <div style="margin-left: 70px">
+        <button class="registerBtn" (click)="register()">Register</button><br>
+        <button class="backBtn" (click)="back()"> < Back</button>
+      </div>
     </div>
-    <div>
-        <button id="registerBtn" (click)="register()">Confirm</button>
-        <button id="return" (click)="back()">Back</button>
-    </div>
+
 
 </body>

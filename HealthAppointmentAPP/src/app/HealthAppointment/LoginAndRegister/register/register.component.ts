@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';  //import HTML service
+import { HttpClient, HttpHeaders } from '@angular/common/http';  // import HTML service
 import {Router} from '@angular/router';
 // import { ActivatedRoute } from '@angular/router';
 
@@ -102,7 +102,7 @@ ngOnInit(): void {
   };
   const nameInput = document.getElementById('name');
   nameInput.onclick = () => {
-    if(this.kindOfUser === '') {
+    if (this.kindOfUser === '') {
       alert('Please choose you are patient or doctor');
    }
   };
@@ -112,7 +112,7 @@ ngOnInit(): void {
   };
   phone.onchange = () => {
     const phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
-    if((!phone.value.match(phoneno))){
+    if ((!phone.value.match(phoneno))) {
         phone.value = '';
         alert('You have entered an invalid phone number!');
     } else {
@@ -135,14 +135,14 @@ register() {
       }
         const api = 'http://localhost:3000/patients';
         this.http.post(api, {
-          'username': this.Username,
-          'Name': this.Name,
-          'Gender': this.sex,
-          'DOB': this.DateOfBirth,
-          'Mobile': this.phone,
-          'Email': this.email,
-          'Address': this.address,
-          'Password': this.Password
+          username: this.Username,
+          Name: this.Name,
+          Gender: this.sex,
+          DOB: this.DateOfBirth,
+          Mobile: this.phone,
+          Email: this.email,
+          Address: this.address,
+          Password: this.Password
     // tslint:disable-next-line: no-shadowed-variable
     }, httpOptions).subscribe((response) => {
       console.log(response);
@@ -164,25 +164,26 @@ register() {
         this.List = response;
         // tslint:disable-next-line: prefer-for-of
         for (let i = 0; i < this.List.length; i++ ) {
-          if (this.List[i].username === this.Username){
+          if (this.List[i].username === this.Username) {
             alert('Username has existed');
             return;
         }
       }
         const api = 'http://localhost:3000/doctors';
         this.http.post(api, {
-              'username': this.Username,
-              'Name': this.Name,
-              'Gender': this.sex,
-              'DOB': this.DateOfBirth,
-              'Mobile': this.phone,
-              'Email': this.email,
-              'Address': this.address,
-              'Password': this.Password,
-              'WorkDays': this.WorkDayList,
-              "AvailableDays": this.availableDayList,
-              "Specialization": this.Specialization,
-              'Experience': this.Experience
+              username: this.Username,
+              Name: this.Name,
+              Gender: this.sex,
+              DOB: this.DateOfBirth,
+              Mobile: this.phone,
+              Email: this.email,
+              Address: this.address,
+              Password: this.Password,
+              WorkDays: this.WorkDayList,
+              AvailableDays: this.availableDayList,
+              Specialization: this.Specialization,
+              Experience: this.Experience
+          // tslint:disable-next-line:no-shadowed-variable
               }, httpOptions).subscribe((response) => {
               console.log(response);
               alert('Register successfully!');
@@ -197,7 +198,7 @@ back() {
     // this.router.navigate(['/register']);
   }
 
-AddOption(){
+AddOption() {
   const newDiv = document.createElement('div');
   const newTr = document.createElement('tr');
   const newTr2 = document.createElement('tr');
@@ -254,7 +255,7 @@ AddOption(){
   const body = document.getElementById('registerBody');
   body.insertBefore(newDiv, body.childNodes[body.childNodes.length - 1]);
 }
-DeleteOption(){
+DeleteOption() {
   const body = document.getElementById('registerBody');
   const newdiv = document.getElementById('newDiv');
   if (newdiv != null) {

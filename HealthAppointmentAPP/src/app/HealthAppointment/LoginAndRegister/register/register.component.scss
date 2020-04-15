@@ -1,12 +1,53 @@
+$normal-font:  "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 body {
     margin: auto;
     div {
         input {
-            width: auto9;
+            width: auto;
         }
     }
     a {
         text-align: center;
         color: lightgray;
     }
+}
+
+.register-wrapper {
+  h2{
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+  }
+  table{
+    margin-left: 50px;
+  }
+  tr{
+    padding: 10px;
+
+  }
+  text-align: left;
+  font-size: larger;
+  font-family: $normal-font;
+  position: absolute;
+  background-color: white;
+  border: #666666;
+  width: 430px;
+  height: 430px;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 10px;
+  padding-top: 20px;
+}
+.registerBtn{
+  width: 250px;
+  height: 45px;
+  background-color: rgb(70,154,212);
+  box-shadow: 0 0 3px #666666;
+  margin-top: 30px;
+  color: whitesmoke;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 5px;
 }
