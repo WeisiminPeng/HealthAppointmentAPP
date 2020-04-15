@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient,HttpHeaders } from '@angular/common/http';  //import HTML service
+import { HttpClient, HttpHeaders } from '@angular/common/http';  //import HTML service
 import {Router} from '@angular/router';
 // import { ActivatedRoute } from '@angular/router';
 
@@ -13,28 +13,20 @@ import {Router} from '@angular/router';
 export class RegisterComponent implements OnInit {
 
   public List: any[] = [];
-  public kindOfUser: string;
+  public kindOfUser = '';
   public Name: string;
   public Username: string;
   public Password: string;
   public sex: string;
   public DateOfBirth: any;
-  public phone: number;
-  public email: string;
-  public address: string;
+  public phone: any;
+  public email: any;
+  public address = '';
   public WorkDayList: any[] = [];
   public availableDayList: any[] = [];
+  public Specialization: string;
+  public Experience: string;
 
-  // public WorkDay: any = {
-  //     Day: String,
-  //     index: Number,
-  //     Enable: true,
-  //     WorkStartHour: Date,
-  //     WorkEndHour: Date,
-  //     BreakStartHour: Date,
-  //     BreakEndHour: Date,
-  //     State: String
-  // };
 
 constructor( public http: HttpClient, private router: Router) {}
 
@@ -92,17 +84,53 @@ ngOnInit(): void {
   }
   console.log(this.availableDayList);
   console.log(this.WorkDayList);
+  const emailInput = document.getElementById('email') as HTMLInputElement;
+  emailInput.click = () => {
+    console.log(emailInput.value);
+    emailInput.value = '';
+  };
+  emailInput.onchange = () => {
+
+    const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (!emailInput.value.match(mailformat)) {
+      emailInput.value = '';
+      alert('You have entered an invalid email address!');
+    } else {
+      console.log('right email');
+      console.log(emailInput.value);
+    }
+  };
+  const phone = document.getElementById('phone') as HTMLInputElement;
+  phone.onchange = () => {
+    const phoneno = /^\d{10}$/;
+    if((!phone.value.match(phoneno))){
+        phone.value = '';
+        alert('You have entered an invalid phone number!');
+    } else {
+      console.log('right number!');
+    }
+  };
+  // checkPhone(){
+//     var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+//     if((this.phone.match(phoneno))) {
+
+//           alert("message");
+//     }
+
+//   }
+
 
   }
-register(){
-    const httpOptions = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
-
-    if (this.kindOfUser === 'patient') {
+register() {
+  const httpOptions = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
+  if(this.kindOfUser === ''){
+    alert('Please choose you are patient or doctor');
+ } else if (this.kindOfUser === 'patient') {
       this.http.get('http://localhost:3000/patients').subscribe((response: any ) => {
         console.log(response);
         this.List = response;
-        for(let i = 0; i < this.List.length;i++) {
-          if(this.List[i].username === this.Username) {
+        for (let i = 0; i < this.List.length; i++) {
+          if (this.List[i].username === this.Username) {
             alert('Username has existed');
             return;
         }
@@ -125,42 +153,118 @@ register(){
     });
       });
     } else if (this.kindOfUser === 'doctor') {
-      this.http.get('http://localhost:3000/doctors').subscribe((response:any)=>{
+      const select1 = document.getElementById('select1') as HTMLSelectElement;
+      const index1 = select1.selectedIndex;
+      const value1 = select1.options[index1].text;
+      this.Specialization = value1;
+      const select2 = document.getElementById('select2') as HTMLSelectElement;
+      const index2 = select2.selectedIndex;
+      const value2 = select2.options[index2].text;
+      this.Experience = value2;
+      this.http.get('http://localhost:3000/doctors').subscribe((response: any) => {
         console.log(response);
         this.List = response;
         // tslint:disable-next-line: prefer-for-of
         for (let i = 0; i < this.List.length; i++ ) {
-          if(this.List[i].username=== this.Username){
+          if (this.List[i].username === this.Username){
             alert('Username has existed');
             return;
         }
       }
         let api = 'http://localhost:3000/doctors';
-        this.http.post(api,{
+        this.http.post(api, {
               'username': this.Username,
               'Name': this.Name,
               'Gender': this.sex,
               'DOB': this.DateOfBirth,
               'Mobile': this.phone,
               'Email': this.email,
-              'Address':this.address,
-              'Password':this.Password,
-              'WorkDays':this.WorkDayList,
-              "AvailableDays":this.availableDayList
-              },httpOptions).subscribe((response)=>{
+              'Address': this.address,
+              'Password': this.Password,
+              'WorkDays': this.WorkDayList,
+              "AvailableDays": this.availableDayList,
+              "Specialization": this.Specialization,
+              'Experience': this.Experience
+              }, httpOptions).subscribe((response) => {
               console.log(response);
               alert('Register successfully!');
               this.router.navigate(['/login']);
-              })
+              });
 
       });
       }
   }
-back(){
+back() {
     this.router.navigate(['']);
     // this.router.navigate(['/register']);
   }
+
+AddOption(){
+  let newDiv = document.createElement('div');
+  let newTr = document.createElement('tr');
+  let newTr2 = document.createElement('tr');
+  let td1 = document.createElement('td');
+  td1.innerHTML = 'Specialization :';
+  let td2 = document.createElement('td');
+  td2.innerHTML = 'Experience :';
+  let select1 = document.createElement('select');
+  select1.id = 'select1';
+  let option1 = document.createElement('option');
+  option1.innerHTML = 'General Medicine';
+  let option2 = document.createElement('option');
+  option2.innerHTML = 'Neurology';
+  let option3 = document.createElement('option');
+  option3.innerHTML = 'Dermatology';
+  let option4 = document.createElement('option');
+  option4.innerHTML = 'Orthopedics';
+  let option5 = document.createElement('option');
+  option5.innerHTML = 'Diabetology';
+  let option6 = document.createElement('option');
+  option6.innerHTML = 'Cardiology';
+  select1.appendChild(option1);
+  select1.appendChild(option2);
+  select1.appendChild(option3);
+  select1.appendChild(option4);
+  select1.appendChild(option5);
+  select1.appendChild(option6);
+  newTr.appendChild(td1);
+  newTr.appendChild(select1);
+  let option7 = document.createElement('option');
+  option7.innerHTML = '1-3 years';
+  let option8 = document.createElement('option');
+  option8.innerHTML = '4-6 years';
+  let option9 = document.createElement('option');
+  option9.innerHTML = '7-9 years';
+  let option10 = document.createElement('option');
+  option10.innerHTML = '9-11 years';
+  let option11 = document.createElement('option');
+  option11.innerHTML = '11+ years';
+
+  let select2 = document.createElement('select');
+  select2.id = 'select2';
+  select2.appendChild(option7);
+  select2.appendChild(option8);
+  select2.appendChild(option9);
+  select2.appendChild(option10);
+  select2.appendChild(option11);
+  newTr2.appendChild(td2);
+  newTr2.appendChild(select2);
+  newDiv.appendChild(newTr);
+  newDiv.appendChild(newTr2);
+  newDiv.style.cssText = 'text-align: center;';
+  newDiv.id = 'newDiv';
+  const body = document.getElementById('registerBody');
+  body.insertBefore(newDiv, body.childNodes[body.childNodes.length - 1]);
 }
+DeleteOption(){
+  const body = document.getElementById('registerBody');
+  const newdiv = document.getElementById('newDiv');
+  if (newdiv != null) {
+    body.removeChild(newdiv);
+ }
+}
+}
+
 class WorkDay {
   private day: string;
   private index: number;
