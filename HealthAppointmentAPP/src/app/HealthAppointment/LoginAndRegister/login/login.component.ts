@@ -9,13 +9,19 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class LoginComponent implements OnInit {
   public List: any[] = [];
-  public kindOfUser: string;
+  public kindOfUser = '';
   public Username: string;
   public password: any;
 
   constructor(public route:ActivatedRoute,public http:HttpClient,private router:Router) { }
 
   ngOnInit(): void {
+    const usernameInput = document.getElementById('username');
+    usernameInput.onclick = () => {
+      if(this.kindOfUser === '') {
+        alert('Please choose you are patient or doctor');
+     }
+    };
   }
 sign(){
   if(this.kindOfUser==='patient'){
