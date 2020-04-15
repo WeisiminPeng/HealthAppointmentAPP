@@ -1,4 +1,3 @@
-<p>doctor-appointment works!</p>
 <app-doctor-sidebar></app-doctor-sidebar>
 <div class="doctor-appointment-wrapper">
     <div class="workdays-wrapper">
@@ -11,16 +10,16 @@
         </header>
         <div class="break-hours-content">
             <div class="works-day" *ngFor="let data of breakHoursData">
-                <div class="day-name">{{getWorkDayName(data.Day)}}</div>
+                <div class="day-name">{{data.day}}</div>
                 <div class="day-break-hours {{data.State}}">{{getBreakDetails(data)}}</div>
             </div>
         </div>
     </div>
 </div>
+<!-- popup page-edit breakhour -->
 <div class="break-hour-edit-container" style="display:none">
     <ejs-dialog #breakHourObj width='445px' cssClass='break-hour-dialog' [isModal]='true' [visible]='false'
         [animationSettings]='animationSettings' header='Work Hours' [showCloseIcon]='true' target='body'>
-        <!-- <ng-template #content> -->
         <form>
             <div class="break-hour-instruction">
                 * Click on day to add break, double click to take time off and third click to remove break
@@ -44,15 +43,15 @@
             </div>
             <div class="break-hour-days" *ngFor="let day of breakHoursData">
                 <div class="day-button {{day.State}}">
-                    <button ejs-button id={{day.Day}}_button cssClass="e-small e-round" [isPrimary]="true"
-                        (click)='onChangeStates($event)' [attr.data-state]=day.State>{{getDayName(day.Day)}}</button>
+                    <button ejs-button id={{day.day}}_button cssClass="e-small e-round" [isPrimary]="true"
+                        (click)='onChangeStates($event)' [attr.data-state]=day.State>{{getDayName(day.day)}}</button>
                 </div>
                 <div class="start-container {{day.State}}">
-                    <ejs-timepicker cssClass="e-field" id={{day.Day}}_start [enabled]=getStatus(day.State)
+                    <ejs-timepicker cssClass="e-field" id={{day.day}}_start [enabled]=getStatus(day.State)
                         [value]=day.BreakStartHour [showClearButton]=false></ejs-timepicker>
                 </div>
                 <div class="end-container {{day.State}}">
-                    <ejs-timepicker cssClass='e-field' id={{day.Day}}_end [enabled]=getStatus(day.State)
+                    <ejs-timepicker cssClass='e-field' id={{day.day}}_end [enabled]=getStatus(day.State)
                         [value]=day.BreakEndHour [showClearButton]=false></ejs-timepicker>
                 </div>
                 <div class='state-container {{day.State}}'>
@@ -64,6 +63,5 @@
             <button ejs-button cssClass="e-normal" (click)='onCancelClick()'>Cancel</button>
             <button ejs-button cssClass="e-normal" [isPrimary]="true" (click)='onSaveClick()'>Save</button>
         </div>
-        <!-- </ng-template> -->
     </ejs-dialog>
 </div>
