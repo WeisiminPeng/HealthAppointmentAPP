@@ -111,7 +111,7 @@ ngOnInit(): void {
     this.phone = '';
   };
   phone.onchange = () => {
-    const phoneno = /^\d{10}$/;
+    const phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
     if((!phone.value.match(phoneno))){
         phone.value = '';
         alert('You have entered an invalid phone number!');
