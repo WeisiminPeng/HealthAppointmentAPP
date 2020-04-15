@@ -72,7 +72,7 @@ exports.delete = function (req, res) {
             message: "Successfully Deleted."
         });
     }
-
+console.log("req.params.id: "+ req.params.id)
     service.delete(req.params.id)
         .then(result)
         .catch(renderErrorResponse(res));

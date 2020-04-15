@@ -17,12 +17,18 @@ let Appointment = new Schema({
         type:String
     },
     StartTime: {
-        type: Date
+        type: String
     },
     EndTime:{
-        type: Date
+        type: String
     },
     Symptims:{
+        type: String
+    },
+    Id:{
+        type: String
+    },
+    CategoryColor: {
         type: String
     }
     // createDate: {

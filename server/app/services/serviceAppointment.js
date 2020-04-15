@@ -37,6 +37,7 @@ exports.update = function (appointment) {
 }
 
 exports.delete = function (id) {
+    console.log(id)
     const promise = Appointment.remove({ _id: id }).exec();
     return promise;
 }

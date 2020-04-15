@@ -8,8 +8,6 @@ module.exports = function (app) {
 
     app.route('/appointments/:username')
         .get(controller.get)
-        .put(controller.update)
-        .delete(controller.delete);
 
     app.route('appointments/search')
         .get(controller.searchAppointment)
