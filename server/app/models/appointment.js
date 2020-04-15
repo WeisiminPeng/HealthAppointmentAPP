@@ -17,28 +17,22 @@ let Appointment = new Schema({
         type:String
     },
     StartTime: {
-        type: Date
+        type: String
     },
     EndTime:{
-        type: Date
+        type: String
     },
     Symptims:{
         type: String
+    },
+    Id:{
+        type: String
+    },
+    CategoryColor: {
+        type: String
     }
-    // createDate: {
-    //     type: Date,
-    //     default: Date.now
-    // },
-    // modifiedDate: {
-    //     type: Date,
-    //     default: Date.now
-    // }
 }, {
     versionKey: false, 
-    // timestamps: {
-    //     createdAt: 'createDate',
-    //     updatedAt: 'modifiedDate'
-    // }
 });
 
 // Duplicate the id field as mongoose returns _id field instead of id.

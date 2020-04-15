@@ -52,5 +52,15 @@ export interface appointmentData{
     DoctorName: string,
     StartTime: Date,
     EndTime: Date,
-    Symptims: string
+    Symptims: string,
+    RecurrenceRule:string,
+    IsBlock: boolean
+}
+
+export interface breakhour{
+    PatientName:string,
+    StartTime: Date,
+    EndTime: Date,
+    IsBlock:boolean
+
 }

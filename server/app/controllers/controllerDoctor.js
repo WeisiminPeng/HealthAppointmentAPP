@@ -3,7 +3,7 @@
 //Import specific operations to database
 const service = require('../services/serviceDoctor');
 
-//Create and return a new todo in JSON based on the HTTP request
+//Create and return a new doctor in JSON based on the HTTP request
 exports.save = function(req, res){
     const newDoctor = Object.assign({}, req.body);
     const result = (doctor) => {
@@ -18,7 +18,7 @@ exports.save = function(req, res){
         .catch(renderErrorResponse(res));
 };
 
-//Return an updated todo in JSON based on the update parameters
+//Return an updated doctor in JSON based on the update parameters
 exports.update = function(req, res){
     const doctor = Object.assign({}, req.body);
     const result = (doctor) => {
@@ -35,7 +35,7 @@ exports.update = function(req, res){
         .catch(renderErrorResponse(res));
 }
 
-//Return a todo in JSON based on the search parameter
+//Return a doctor in JSON based on the search parameter
 exports.get = function(req, res){
     const result = (doctor) => {
         res.status(200);
@@ -47,7 +47,7 @@ exports.get = function(req, res){
         .catch(renderErrorResponse(res));
 };
 
-//Return a list of todos in JSON based on the search parameters
+//Return a list of doctors in JSON based on the search parameters
 exports.list = function(req, res){
     const totalQuery = req.query.total;
     const params = {};
@@ -64,7 +64,7 @@ exports.list = function(req, res){
         .catch(renderErrorResponse(res));
 };
 
-//Delete and return the number of todo successfully deleted
+//Delete and return the number of doctor successfully deleted
 exports.delete = function(req, res){
     const result = () => {
         res.status(200);
