@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {FormsModule} from "@angular/forms";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule} from '@angular/forms';
+import {ReactiveFormsModule} from '@angular/forms';
 import { MainComponent } from './HealthAppointment/LoginAndRegister/main/main.component';
 import { LoginComponent } from './HealthAppointment/LoginAndRegister/login/login.component';
 import { RegisterComponent } from './HealthAppointment/LoginAndRegister/register/register.component';
