@@ -1,6 +1,9 @@
 <div class="main">
-    <p>
-        <button class="register" (click)="goRegister()">register</button>
-        <button class="login" (click)="goLogin()">login</button>
-    </p>
+
+  <div class="login_wrapper">
+    <h2>Northeastern Health Center</h2>
+    <button class="goToLogin" (click)="goLogin()"> Go To Login</button>
+    <p>New to NHC? <button class="goToRegister" (click)="goRegister()">Register</button></p>
+    <router-outlet></router-outlet>
+  </div>
 </div>

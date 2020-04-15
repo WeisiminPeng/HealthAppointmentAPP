@@ -57,9 +57,6 @@ let Doctor = new Schema({
 Doctor.set('toJSON', {
     virtuals: true
 });
-// <<<<<<< HEAD
 
 module.exports = mongoose.model('Doctor', Doctor);
-// =======
-module.exports = mongoose.model('Doctor', Doctor);
-// >>>>>>> d4716122552e048ea0b43fe6f3f67b4248b200df
+
