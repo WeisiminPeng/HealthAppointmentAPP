@@ -40,12 +40,6 @@ let Doctor = new Schema({
     AvailableDays: {
         type: Array
     },
-<<<<<<< HEAD
-=======
-    username: {
-        type: String
-    },
->>>>>>> 34830eb75e7e7afd107a1d7f54368c555ee87c42
     WorkDays: {
         type: Array
     }
