@@ -19,8 +19,8 @@ export class RegisterComponent implements OnInit {
   public Password: string;
   public sex: string;
   public DateOfBirth: any;
-  public phone: any;
-  public email: any;
+  public phone = 'xxx-xxx-xxxx';
+  public email = 'xxxx@xxxx.xxx';
   public address = '';
   public WorkDayList: any[] = [];
   public availableDayList: any[] = [];
@@ -85,9 +85,9 @@ ngOnInit(): void {
   console.log(this.availableDayList);
   console.log(this.WorkDayList);
   const emailInput = document.getElementById('email') as HTMLInputElement;
-  emailInput.click = () => {
-    console.log(emailInput.value);
-    emailInput.value = '';
+  emailInput.onclick = () => {
+    console.log(this.email);
+    this.email = '';
   };
   emailInput.onchange = () => {
 
@@ -100,7 +100,16 @@ ngOnInit(): void {
       console.log(emailInput.value);
     }
   };
+  const nameInput = document.getElementById('name');
+  nameInput.onclick = () => {
+    if(this.kindOfUser === '') {
+      alert('Please choose you are patient or doctor');
+   }
+  };
   const phone = document.getElementById('phone') as HTMLInputElement;
+  phone.onclick = () => {
+    this.phone = '';
+  };
   phone.onchange = () => {
     const phoneno = /^\d{10}$/;
     if((!phone.value.match(phoneno))){

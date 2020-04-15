@@ -6,7 +6,7 @@
                 <input type="radio" value="doctor" name="people" id="people2" [(ngModel)]="kindOfUser"> <label for="people2" (click)="AddOption()">Doctor</label>
             </tr>
             <tr>
-                <td>Name:</td> <input type="text" [(ngModel)]="Name">
+                <td>Name:</td> <input type="text" id="name" [(ngModel)]="Name">
             </tr>
 
             <tr>
@@ -17,22 +17,21 @@
                 <td>Date Of Birth:</td> <input type="date" [(ngModel)]="DateOfBirth">
             </tr>
             <tr>
-                <td>Phone:</td><input type="text" id="phone" [(ngModel)]="phone"><a>format: xxx-xxx-xxxx</a>
+                <td>Phone:</td><input type="text" id="phone" [(ngModel)]="phone">
             </tr>
 
             <tr>
-                <td>Email:</td> <input type="email" id='email' [(ngModel)]="email"><a>format: xxxx@xxxx.xxx</a>
-            </tr>
+                <td>Email:</td> <input type="email" id='email' [(ngModel)]="email">
 
-            <tr>
-                <td>Address:</td> <input type="text" [(ngModel)]="address">
-            </tr>
-            <tr>
-                <td>Username:</td> <input type="text" [(ngModel)]="Username">
-            </tr>
-            <tr>
-                <td>Password:</td> <input type="password" [(ngModel)]="Password"><br>{{Password | json}}
-            </tr>
+                <tr>
+                    <td>Address:</td> <input type="text" [(ngModel)]="address">
+                </tr>
+                <tr>
+                    <td>Username:</td> <input type="text" [(ngModel)]="Username">
+                </tr>
+                <tr>
+                    <td>Password:</td> <input type="password" [(ngModel)]="Password"><br>{{Password | json}}
+                </tr>
         </table>
     </div>
     <div>
