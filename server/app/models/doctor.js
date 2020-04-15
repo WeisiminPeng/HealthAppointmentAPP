@@ -55,7 +55,7 @@ let Doctor = new Schema({
     AvailableDays: {
         type: Array
     },
-    username:{
+    username: {
         type: String
     },
     WorkDays: {

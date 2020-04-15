@@ -24,6 +24,8 @@ import { CheckBoxModule, ButtonModule, SwitchModule, RadioButtonModule } from '@
 import { DoctorDetailComponent } from './HealthAppointment/home/patient/doctor-detail/doctor-detail.component';
 import { PatientInfoComponent } from './HealthAppointment/home/patient/patient-info/patient-info.component';
 import { DoctorInfoComponent } from './HealthAppointment/home/doctor/doctor-info/doctor-info.component';
+import { PasswordManagementComponent } from './HealthAppointment/home/patient/password-management/password-management.component';
+import { PasswordManagement2Component  } from './HealthAppointment/home/doctor/password-management2/password-management2.component';
 
 
 @NgModule({
@@ -40,7 +42,9 @@ import { DoctorInfoComponent } from './HealthAppointment/home/doctor/doctor-info
     DoctorSidebarComponent,
     DoctorDetailComponent,
     PatientInfoComponent,
-    DoctorInfoComponent
+    DoctorInfoComponent,
+    PasswordManagementComponent,
+    PasswordManagement2Component
   ],
   imports: [
     BrowserModule,
