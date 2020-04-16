@@ -100,7 +100,7 @@ export class DoctorScheduleComponent implements OnInit {
   public newTodo: appointmentData;
   public currentEvent;
   public updateAppointmentItem: string;
-  // public showQuickInfo: Boolean = false;
+  public showQuickInfo: Boolean = false;
 
 
 
