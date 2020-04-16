@@ -19,8 +19,8 @@ export class RegisterComponent implements OnInit {
   public Password: string;
   public sex: string;
   public DateOfBirth: any;
-  public phone = 'xxx-xxx-xxxx';
-  public email = 'xxxx@xxxx.xxx';
+  public phone = '';
+  public email = '';
   public address = '';
   public WorkDayList: any[] = [];
   public availableDayList: any[] = [];
@@ -212,7 +212,14 @@ AddOption() {
     // initialize Specialization
     const newTr = document.createElement('tr');
     const td1 = document.createElement('td');
-    td1.innerHTML = 'Specialization:';
+    // <option value="none" selected disabled hidden>-- select --</option>
+    const placeholder = document.createElement('option');
+    placeholder.value = 'none';
+    placeholder.selected = true;
+    placeholder.disabled = true;
+    placeholder.hidden = true;
+    placeholder.innerHTML = '-- select --';
+    td1.innerHTML = 'Speciality:';
     const select1 = document.createElement('select');
     select1.id = 'select1';
     const option1 = document.createElement('option');
@@ -227,6 +234,13 @@ AddOption() {
     option5.innerHTML = 'Diabetology';
     const option6 = document.createElement('option');
     option6.innerHTML = 'Cardiology';
+    const placeholder1 = document.createElement('option');
+    placeholder1.value = 'none';
+    placeholder1.selected = true;
+    placeholder1.disabled = true;
+    placeholder1.hidden = true;
+    placeholder1.innerHTML = '-- select --';
+    select1.appendChild(placeholder1);
     select1.appendChild(option1);
     select1.appendChild(option2);
     select1.appendChild(option3);
@@ -252,6 +266,7 @@ AddOption() {
 
     const select2 = document.createElement('select');
     select2.id = 'select2';
+    select2.appendChild(placeholder);
     select2.appendChild(option7);
     select2.appendChild(option8);
     select2.appendChild(option9);
@@ -259,9 +274,22 @@ AddOption() {
     select2.appendChild(option11);
     newTr2.appendChild(td2);
     newTr2.appendChild(select2);
-    // newDiv.appendChild(newTr);
-    // newDiv.appendChild(newTr2);
-    // newDiv.style.cssText = 'text-align: left;';
+    select2.style.cssText = 'border: 1px solid #ccc;\n' +
+      '  appearance:none;\n' +
+      '  -moz-appearance:none;\n' +
+      '  -webkit-appearance:none;\n' +
+      '  width: 178px;\n' +
+      '  height: 25px;\n' +
+      '  padding-left: 5px;';
+    select1.style.cssText = 'border: 1px solid #ccc;\n' +
+      '  appearance:none;\n' +
+      '  -moz-appearance:none;\n' +
+      '  -webkit-appearance:none;\n' +
+      '  width: 178px;\n' +
+      '  height: 25px;\n' +
+      '  padding-left: 5px;';
+    td1.style.cssText = 'font-size: 15px';
+    td2.style.cssText = 'font-size: 15px';
     newTr.id = 'newTr';
     newTr2.id = 'newTr2';
     // newDiv.id = 'newDiv';

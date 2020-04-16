@@ -1,16 +1,16 @@
 $normal-font:  "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-body {
-    margin: auto;
-    div {
-        input {
-            width: auto;
-        }
-    }
-    a {
-        text-align: center;
-        color: lightgray;
-    }
-}
+//body {
+//    margin: auto;
+//    div {
+//        input {
+//            width: auto;
+//        }
+//    }
+//    a {
+//        text-align: center;
+//        color: lightgray;
+//    }
+//}
 
 .register-wrapper {
   h2{
@@ -18,11 +18,34 @@ body {
     font-family: 'Times New Roman', Times, serif;
   }
   table{
+    border-spacing: 5px;
     margin-left: 70px;
+    td{
+      font-size: 15px;
+    }
+    label{
+      font-size: 15px;
+    }
+    input{
+      //margin-left: 20px;
+    }
   }
   tr{
-    padding: 10px;
-
+    margin: 15px;
+    .inputbox{
+      outline-style: none ;
+      border: 1px solid #ccc;
+      width: 170px;
+      height: 20px;
+      padding-left: 5px;
+      border-radius: 5px;
+      :focus{
+        border-color: #66afe9;
+        outline: 0;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+        box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)
+      }
+    }
   }
   text-align: left;
   font-size: larger;
@@ -31,7 +54,7 @@ body {
   background-color: white;
   border: #666666;
   width: 430px;
-  height: 500px;
+  height: 570px;
   margin: auto;
   top: 0;
   left: 0;
@@ -41,11 +64,12 @@ body {
   padding-top: 20px;
 }
 .registerBtn{
-  width: 250px;
-  height: 45px;
+  width: 280px;
+  height: 50px;
   background-color: rgb(70,154,212);
   box-shadow: 0 0 3px #666666;
   margin-top: 30px;
+  margin-left: 5px;
   color: whitesmoke;
   font-size: 15px;
   font-weight: bold;
@@ -56,3 +80,23 @@ body {
   font-size: larger;
   font-family: $normal-font;
 }
+
+select{
+  border: 1px solid #ccc;
+  appearance:none;
+  -moz-appearance:none;
+  -webkit-appearance:none;
+  width: 178px;
+  height: 25px;
+  padding-left: 5px;
+}
+.backBtn{
+  border: none;
+  font-size: 15px;
+  font-family: $normal-font;
+  color: #666666;
+  margin-top: 20px;
+  margin-left: 5px;
+}
+
+
