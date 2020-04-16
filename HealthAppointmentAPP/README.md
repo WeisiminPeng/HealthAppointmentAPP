@@ -1,7 +1,5 @@
 # HealthAppointmentAPP
 
-<<<<<<< HEAD
-=======
 <!-- 
 建一个文件夹
 vscode terminal转到这个文件夹
@@ -20,13 +18,6 @@ npm install
 
 
 
-
-
-
-
-
-
->>>>>>> 02f40859851a15e612243d518e6e9587f4edad06
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.6.
 
 ## Development server

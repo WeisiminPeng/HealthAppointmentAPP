@@ -127,6 +127,7 @@ register() {
       this.http.get('http://localhost:3000/patients').subscribe((response: any ) => {
         console.log(response);
         this.List = response;
+        // tslint:disable-next-line:prefer-for-of
         for (let i = 0; i < this.List.length; i++) {
           if (this.List[i].username === this.Username) {
             alert('Username has existed');
@@ -199,13 +200,15 @@ back() {
   }
 
 AddOption() {
+  const optionDiv = document.getElementById('newDiv');
+  if (optionDiv === null) {
   const newDiv = document.createElement('div');
   const newTr = document.createElement('tr');
   const newTr2 = document.createElement('tr');
   const td1 = document.createElement('td');
-  td1.innerHTML = 'Specialization :';
+  td1.innerHTML = 'Specialization:';
   const td2 = document.createElement('td');
-  td2.innerHTML = 'Experience :';
+  td2.innerHTML = 'Experience:';
   const select1 = document.createElement('select');
   select1.id = 'select1';
   const option1 = document.createElement('option');
@@ -254,6 +257,9 @@ AddOption() {
   newDiv.id = 'newDiv';
   const body = document.getElementById('registerBody');
   body.insertBefore(newDiv, body.childNodes[body.childNodes.length - 1]);
+  } else {
+    return;
+  }
 }
 DeleteOption() {
   const body = document.getElementById('registerBody');

@@ -1,11 +1,11 @@
-<body id="registerBody">
+<body >
     <div class="register-wrapper">
       <h2>Northeastern Health Center</h2>
-        <table>
+        <table id="registerBody">
             <tr>
               I'm a:
-                <input type="radio" value="patient" name="people" id="people1" [(ngModel)]="kindOfUser"> <label for="people1" (click)="DeleteOption()">Patient</label>
-                <input type="radio" value="doctor" name="people" id="people2" [(ngModel)]="kindOfUser"> <label for="people2" (click)="AddOption()">Doctor</label>
+                <input type="radio" value="patient" name="people" id="people1" (click)="DeleteOption()" [(ngModel)]="kindOfUser"> <label for="people1" (click)="DeleteOption()">Patient</label>
+                <input type="radio" value="doctor" name="people" id="people2" (click)="AddOption()" [(ngModel)]="kindOfUser"> <label for="people2" (click)="AddOption()">Doctor</label>
             </tr>
             <tr>
                 <td>Name:</td> <input type="text" id="name" [(ngModel)]="Name">
@@ -22,19 +22,19 @@
             <tr>
                 <td>Phone:</td><input type="text" id="phone" [(ngModel)]="phone">
             </tr>
+            <td>Email:</td> <input type="email" id='email' [(ngModel)]="email">
 
             <tr>
-                <td>Email:</td> <input type="email" id='email' [(ngModel)]="email">
+              <td>Address:</td> <input type="text" [(ngModel)]="address">
+            </tr>
+            <tr>
+              <td>Username:</td> <input type="text" [(ngModel)]="Username">
+            </tr>
+            <tr>
+              <td>Password:</td> <input type="password" [(ngModel)]="Password"><br>{{Password | json}}
+            </tr>
 
-                <tr>
-                    <td>Address:</td> <input type="text" [(ngModel)]="address">
-                </tr>
-                <tr>
-                    <td>Username:</td> <input type="text" [(ngModel)]="Username">
-                </tr>
-                <tr>
-                    <td>Password:</td> <input type="password" [(ngModel)]="Password"><br>{{Password | json}}
-                </tr>
+
         </table>
       <div style="margin-left: 70px">
         <button class="registerBtn" (click)="register()">Register</button><br>

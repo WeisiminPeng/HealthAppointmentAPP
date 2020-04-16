@@ -79,6 +79,7 @@ export class DoctorScheduleComponent implements OnInit {
   public currentView: string = 'Week';
   public workDays: Array<number>;
   public workHours: WorkHoursModel = { start: '08:00', end: '21:00' };
+  // tslint:disable-next-line:ban-types
   public animationSettings: Object = { effect: 'None' };
   public timeScale: TimeScaleModel = { enable: true, interval: 60 };
   public firstDayOfWeek: Number = 0;
@@ -100,7 +101,7 @@ export class DoctorScheduleComponent implements OnInit {
   public newTodo: appointmentData;
   public currentEvent;
   public updateAppointmentItem: string;
-  // public showQuickInfo: Boolean = false;
+  public showQuickInfo: Boolean = false;
 
 
 
