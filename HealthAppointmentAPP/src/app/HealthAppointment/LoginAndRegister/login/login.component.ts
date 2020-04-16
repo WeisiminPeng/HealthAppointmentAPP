@@ -23,8 +23,8 @@ export class LoginComponent implements OnInit {
      }
     };
   }
-sign(){
-  if(this.kindOfUser==='patient'){
+sign() {
+  if (this.kindOfUser === 'patient'){
   this.http.get('http://localhost:3000/patients').subscribe((response:any)=>{
     console.log(response);
     this.List = response;
