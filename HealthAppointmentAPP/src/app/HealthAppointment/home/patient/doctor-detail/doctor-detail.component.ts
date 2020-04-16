@@ -87,20 +87,12 @@ export class DoctorDetailComponent implements OnInit {
   public currentDate: Date = this.selectedDate;
 
   public eventSettings: EventSettingsModel;
-
-  public data: object[] = [{
-    Id: 2,
-    Subject: 'Paris',
-    StartTime: new Date(Date.UTC(2020, 1, 14, 10, 0)),
-    EndTime: new Date(Date.UTC(2020, 1, 14, 12, 30)),
-    IsBlock: true,
-  }];
   public updateModifyDate: string;
   public todoUpdate: success;
   public newTodo: appointmentData;
   public currentEvent;
   public updateAppointmentItem: string;
-  // public showQuickInfo: Boolean = false;
+  public showQuickInfo: Boolean = false;
 
 
 
