@@ -1,16 +1,4 @@
 $normal-font:  "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-//body {
-//    margin: auto;
-//    div {
-//        input {
-//            width: auto;
-//        }
-//    }
-//    a {
-//        text-align: center;
-//        color: lightgray;
-//    }
-//}
 
 .register-wrapper {
   h2{
@@ -66,19 +54,18 @@ $normal-font:  "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 .registerBtn{
   width: 280px;
   height: 50px;
+  margin-left: 6px;
   background-color: rgb(70,154,212);
   box-shadow: 0 0 3px #666666;
   margin-top: 30px;
-  margin-left: 5px;
   color: whitesmoke;
   font-size: 15px;
   font-weight: bold;
+  border: 5px #666666;
   border-radius: 5px;
-}
-#newdiv{
-  text-align: left;
-  font-size: larger;
+  padding-left: 10px;
   font-family: $normal-font;
+
 }
 
 select{

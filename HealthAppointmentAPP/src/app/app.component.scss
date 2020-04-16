@@ -3,8 +3,48 @@
   height: 1000px;
   background-image: url("HealthAppointment/img/home_background.jpeg");
   background-size: 100%;
+  position: relative;
 }
 
+footer{
+  //background-color: rgb(50,57,62);
+  background-color:rgb(96,112,120);
+  color: whitesmoke;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100px;
+  //float: bottom;
+}
+
+.footer-left{
+  margin-left: 30px;
+  width: 400px;
+  display: inline-block;
+  float: left;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.footer-right{
+  width: 400px;
+  display: inline;
+}
+
+.contact{
+  float: right;
+  margin-right: 30px;
+  margin-top: 10px;
+}
+.clear{
+  clear: both;
+}
+
+.final{
+  text-align: center;
+  //margin-top: -18px;
+}
 $planner-hover-bg-color: #f5f5f5;
 $planner-element-bg-color: #7575FF;
 $planner-element-back-color: #FFFFFF;

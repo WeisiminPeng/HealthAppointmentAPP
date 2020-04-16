@@ -1,3 +1,5 @@
+$normal-font:  "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+
 .main {
   width: 100%;
   height: 1000px;
@@ -28,15 +30,20 @@
 }
 .goToLogin{
   font-size: 25px;
-  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-  color: white;
+
   width: 350px;
   height: 60px;
   position: center;
   background-color: rgb(70,154,212);
   box-shadow: 0 0 3px #666666;
+  margin-top: 30px;
+  color: whitesmoke;
+
+  font-weight: bold;
+  border: 5px #666666;
   border-radius: 5px;
-  margin-top: 40px;
+  padding-left: 10px;
+  font-family: $normal-font;
 }
 .goToRegister{
   border: none;
