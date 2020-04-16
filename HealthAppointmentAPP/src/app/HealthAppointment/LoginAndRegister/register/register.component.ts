@@ -204,73 +204,80 @@ back() {
   }
 
 AddOption() {
-  const optionDiv = document.getElementById('newDiv');
-  if (optionDiv === null) {
-  const newDiv = document.createElement('div');
-  const newTr = document.createElement('tr');
-  const newTr2 = document.createElement('tr');
-  const td1 = document.createElement('td');
-  td1.innerHTML = 'Specialization:';
-  const td2 = document.createElement('td');
-  td2.innerHTML = 'Experience:';
-  const select1 = document.createElement('select');
-  select1.id = 'select1';
-  const option1 = document.createElement('option');
-  option1.innerHTML = 'General Medicine';
-  const option2 = document.createElement('option');
-  option2.innerHTML = 'Neurology';
-  const option3 = document.createElement('option');
-  option3.innerHTML = 'Dermatology';
-  const option4 = document.createElement('option');
-  option4.innerHTML = 'Orthopedics';
-  const option5 = document.createElement('option');
-  option5.innerHTML = 'Diabetology';
-  const option6 = document.createElement('option');
-  option6.innerHTML = 'Cardiology';
-  select1.appendChild(option1);
-  select1.appendChild(option2);
-  select1.appendChild(option3);
-  select1.appendChild(option4);
-  select1.appendChild(option5);
-  select1.appendChild(option6);
-  newTr.appendChild(td1);
-  newTr.appendChild(select1);
-  const option7 = document.createElement('option');
-  option7.innerHTML = '1-3 years';
-  const option8 = document.createElement('option');
-  option8.innerHTML = '4-6 years';
-  const option9 = document.createElement('option');
-  option9.innerHTML = '7-9 years';
-  const option10 = document.createElement('option');
-  option10.innerHTML = '9-11 years';
-  const option11 = document.createElement('option');
-  option11.innerHTML = '11+ years';
-
-  const select2 = document.createElement('select');
-  select2.id = 'select2';
-  select2.appendChild(option7);
-  select2.appendChild(option8);
-  select2.appendChild(option9);
-  select2.appendChild(option10);
-  select2.appendChild(option11);
-  newTr2.appendChild(td2);
-  newTr2.appendChild(select2);
-  newDiv.appendChild(newTr);
-  newDiv.appendChild(newTr2);
-  newDiv.style.cssText = 'text-align: left;';
-  newDiv.id = 'newDiv';
-  const body = document.getElementById('registerBody');
-  body.insertBefore(newDiv, body.childNodes[body.childNodes.length - 1]);
-  } else {
+  const optionTr = document.getElementById('newTr');
+  if (optionTr !== null) {
     return;
+  } else {
+    // const newDiv = document.createElement('div');
+    // initialize Specialization
+    const newTr = document.createElement('tr');
+    const td1 = document.createElement('td');
+    td1.innerHTML = 'Specialization:';
+    const select1 = document.createElement('select');
+    select1.id = 'select1';
+    const option1 = document.createElement('option');
+    option1.innerHTML = 'General Medicine';
+    const option2 = document.createElement('option');
+    option2.innerHTML = 'Neurology';
+    const option3 = document.createElement('option');
+    option3.innerHTML = 'Dermatology';
+    const option4 = document.createElement('option');
+    option4.innerHTML = 'Orthopedics';
+    const option5 = document.createElement('option');
+    option5.innerHTML = 'Diabetology';
+    const option6 = document.createElement('option');
+    option6.innerHTML = 'Cardiology';
+    select1.appendChild(option1);
+    select1.appendChild(option2);
+    select1.appendChild(option3);
+    select1.appendChild(option4);
+    select1.appendChild(option5);
+    select1.appendChild(option6);
+    newTr.appendChild(td1);
+    newTr.appendChild(select1);
+    // initialize Experience
+    const newTr2 = document.createElement('tr');
+    const td2 = document.createElement('td');
+    td2.innerHTML = 'Experience:';
+    const option7 = document.createElement('option');
+    option7.innerHTML = '1-3 years';
+    const option8 = document.createElement('option');
+    option8.innerHTML = '4-6 years';
+    const option9 = document.createElement('option');
+    option9.innerHTML = '7-9 years';
+    const option10 = document.createElement('option');
+    option10.innerHTML = '9-11 years';
+    const option11 = document.createElement('option');
+    option11.innerHTML = '11+ years';
+
+    const select2 = document.createElement('select');
+    select2.id = 'select2';
+    select2.appendChild(option7);
+    select2.appendChild(option8);
+    select2.appendChild(option9);
+    select2.appendChild(option10);
+    select2.appendChild(option11);
+    newTr2.appendChild(td2);
+    newTr2.appendChild(select2);
+    // newDiv.appendChild(newTr);
+    // newDiv.appendChild(newTr2);
+    // newDiv.style.cssText = 'text-align: left;';
+    newTr.id = 'newTr';
+    newTr2.id = 'newTr2';
+    // newDiv.id = 'newDiv';
+    const body = document.getElementById('registerBody');
+    body.insertBefore(newTr, body.childNodes[body.childNodes.length - 1]);
+    body.insertBefore(newTr2, body.childNodes[body.childNodes.length - 1]);
   }
 }
 DeleteOption() {
   const body = document.getElementById('registerBody');
-  const newdiv = document.getElementById('newDiv');
-  if (newdiv != null) {
-    body.removeChild(newdiv);
- }
+  const newTr = document.getElementById('newTr');
+  const newTr2 = document.getElementById('newTr2');
+  if (newTr != null) {
+    body.removeChild(newTr);
+    body.removeChild(newTr2);
+  }
 }
 }
 
