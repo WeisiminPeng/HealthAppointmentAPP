@@ -122,6 +122,10 @@ ngOnInit(): void {
 
   }
 register() {
+  const genderSelect = document.getElementById('genderSelect') as HTMLSelectElement;
+  const index3 = genderSelect.selectedIndex;
+  const value3 = genderSelect.options[index3].text;
+  this.sex = value3;
   const httpOptions = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
   if (this.kindOfUser === 'patient') {
       this.http.get('http://localhost:3000/patients').subscribe((response: any ) => {
