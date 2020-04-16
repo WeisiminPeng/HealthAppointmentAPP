@@ -15,6 +15,7 @@ export class DoctorSidebarComponent implements OnInit {
   public doctorAppointment: string;
   public doctorSchdule: string;
   public personalInfo: string;
+  public SignOut: string = '';
   // private doctorSchdule1 = '/doctorSchdule';
 
   @ViewChild('sidebar')
@@ -40,5 +41,4 @@ export class DoctorSidebarComponent implements OnInit {
   showSidebar(): void {
     this.sidebar.show();
   }
-
 }

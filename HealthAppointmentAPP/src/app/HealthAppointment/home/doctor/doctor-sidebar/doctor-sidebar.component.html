@@ -4,20 +4,23 @@
         [closeOnDocumentClick]="closeOnDocumentClick">
         <div class="dock">
 
-          <div class="info align-center">
+            <!-- <div class="info align-center">
                 <div class="content nameContent">
                     <p class='name'>Jane Deo</p>
                     <p class='user-type'>Admin</p>
                 </div>
-            </div>
+            </div> -->
             <div class="sidebar-item schdule" [routerLink]="doctorSchdule">
-                <span class="text" title="schdule">Schdule</span>
+                <span class="text" title="schdule">My Schdule</span>
             </div>
             <div class="sidebar-item appointment" [routerLink]="doctorAppointment">
-                <span class="text" title="appointment">Appointment</span>
+                <span class="text" title="appointment">Work Time</span>
             </div>
             <div class="sidebar-item info" [routerLink]="personalInfo">
                 <span class="text" title="info">Personal Info</span>
+            </div>
+            <div style="padding:100px" class="SignOut" [routerLink]="SignOut">
+                <span class="text" title="SignOut">Sign Out</span>
             </div>
         </div>
     </ejs-sidebar>

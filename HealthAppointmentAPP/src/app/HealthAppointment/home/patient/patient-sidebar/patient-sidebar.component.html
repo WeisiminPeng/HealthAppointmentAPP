@@ -1,26 +1,29 @@
 <div class="planner-wrapper">
-    <ejs-sidebar #sidebar id="Siderbar" (created)="onCreated($event)" style="visibility: hidden" [closeOnDocumentClick]="closeOnDocumentClick">
+    <ejs-sidebar #sidebar id="Siderbar" (created)="onCreated($event)" style="visibility: hidden"
+        [closeOnDocumentClick]="closeOnDocumentClick">
         <div class="dock">
-            <div class="info align-center">
-                <!-- <div class="image"><img src="./assets/images/Admin.png" /></div> -->
-                <div class="content nameContent">
+            <!-- <div class="info align-center">
+                <div class="image"><img src="./assets/images/Admin.png" /></div> 
+                 <div class="content nameContent">
                     <p class='name'>Jane Deo</p>
                     <p class='user-type'>Admin</p>
                 </div>
-            </div>
+            </div> -->
             <div class="sidebar-item schdule" [routerLink]="patientSchdule">
-                <span class="text" title="dashboard">Schdule</span>
+                <span class="text" title="dashboard">My Appointment</span>
             </div>
             <div class="sidebar-item appointment" [routerLink]="patientAppointment">
                 <!-- <span class="scheduler-image"><span class="icon-schedule item-image"></span></span> -->
-                <span class="text" title="appointment">Appointment</span>
+                <span class="text" title="appointment">Make Appointment</span>
+            </div>
+            <div class="sidebar-item info" [routerLink]="personalInfo">
+                <!-- <span class="scheduler-image"><span class="icon-schedule item-image"></span></span> -->
+                <span class="text" title="info">Personal Info</span>
+            </div>
+            <div style="padding:100px" class="SignOut" [routerLink]="SignOut">
+                <span class="text" title="SignOut">Sign Out</span>
             </div>
         </div>
-        <div class="sidebar-item info" [routerLink]="personalInfo">
-            <!-- <span class="scheduler-image"><span class="icon-schedule item-image"></span></span> -->
-            <span class="text" title="info">Personal Info</span>
-        </div>
-
     </ejs-sidebar>
     <div style="padding:100px" class="showsidebar">
         <button ejs-button #SidebarBtn id="toggle" (click)="showSidebar()">Open Sidebar</button>
