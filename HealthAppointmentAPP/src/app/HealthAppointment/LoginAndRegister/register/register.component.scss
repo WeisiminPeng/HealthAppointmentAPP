@@ -18,7 +18,7 @@ body {
     font-family: 'Times New Roman', Times, serif;
   }
   table{
-    margin-left: 50px;
+    margin-left: 70px;
   }
   tr{
     padding: 10px;
@@ -30,8 +30,8 @@ body {
   position: absolute;
   background-color: white;
   border: #666666;
-  width: 430px;
-  height: 430px;
+  width: 460px;
+  height: 500px;
   margin: auto;
   top: 0;
   left: 0;
@@ -50,4 +50,9 @@ body {
   font-size: 15px;
   font-weight: bold;
   border-radius: 5px;
+}
+#newdiv{
+  text-align: left;
+  font-size: larger;
+  font-family: $normal-font;
 }

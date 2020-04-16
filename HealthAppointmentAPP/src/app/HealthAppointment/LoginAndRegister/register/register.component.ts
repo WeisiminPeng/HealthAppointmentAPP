@@ -253,7 +253,7 @@ AddOption() {
   newTr2.appendChild(select2);
   newDiv.appendChild(newTr);
   newDiv.appendChild(newTr2);
-  newDiv.style.cssText = 'text-align: center;';
+  newDiv.style.cssText = 'text-align: left;';
   newDiv.id = 'newDiv';
   const body = document.getElementById('registerBody');
   body.insertBefore(newDiv, body.childNodes[body.childNodes.length - 1]);
