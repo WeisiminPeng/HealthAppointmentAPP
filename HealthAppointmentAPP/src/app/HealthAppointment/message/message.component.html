@@ -1,0 +1,25 @@
+<div class="content">
+    <div class="left">
+        <ul>
+            <li *ngFor="let item of namelist">
+                <span tabindex="1" (click)="getMessageList(item.id)">{{item.name}}</span>
+            </li>
+        </ul>
+    </div>
+    <div class="right">
+        <div class="showMessage">
+            <li *ngFor="let item of chatListSmall">
+                <span>{{item.id}}</span>
+                <br>
+                <span>{{item.content}}</span>
+            </li>
+        </div>
+        <div class="addMessage">
+            <form>
+                <button (click)="addMessage()">Send</button>
+                <br>
+                <textarea name="msgContent" id="msgContent" [(ngModel)]="msg.content"></textarea>
+            </form>
+        </div>
+    </div>
+</div>
