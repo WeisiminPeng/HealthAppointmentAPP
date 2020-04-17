@@ -28,7 +28,7 @@ export class DoctorSidebarComponent implements OnInit {
   constructor(public doctorService: DoctorService, public routes: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.username = this.routes.snapshot.paramMap.get('username');
+    this.username = this.routes.snapshot.paramMap.get('username').split('_')[0];
     this.doctorAppointment = '/doctorAppointment/' + this.username;
     this.doctorSchdule = '/doctorSchdule/' + this.username;
     this.personalInfo = '/doctorInfo/' + this.username;
