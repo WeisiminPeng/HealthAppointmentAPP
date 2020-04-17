@@ -18,6 +18,34 @@ import { Message } from './model/message.model';
   styleUrls: ['./message.component.scss']
 })
 
+
+
+// **************可爱的小彭来啦**************
+
+// ** import **
+// import { DoctorService } from '../../../services/doctor.service'
+// import { PatientService } from '../../../services/patient.service'
+// import { doctorsData,patientData } from 'src/app/HealthAppointment/healthappoint.model';
+
+// ** constructor **
+// constructor(public doctorService: DoctorService, public patientService: PatientService, public routes: ActivatedRoute) {}
+
+// get username
+// this.username = this.routes.snapshot.paramMap.get('username').split('_')[0];
+
+
+// ** list all the doctor **
+// this.doctorService.list().subscribe(doctors => {
+//   this.doctors = doctors;
+// });
+
+// ** get one doctor **
+// this.doctorService.get(this.usernameDoctor).subscribe(doctor => {
+//   this.currentDoctor = doctor;
+// });
+
+// **************可爱的小彭走啦**************
+
 export class MessageComponent implements OnInit {
 
   @Output() newMessageEmitted = new EventEmitter<Message>();
@@ -35,7 +63,7 @@ export class MessageComponent implements OnInit {
       name: "doctor3"
     }
   ];
-  messagelist:any[]=[];//all the data in the messages collection
+  messagelist: any[] = [];//all the data in the messages collection
   // messagelist:any[] = [
   //   {
   //     idD: "1d",//id of doctor
@@ -70,12 +98,12 @@ export class MessageComponent implements OnInit {
   // ];
 
   idTo: string;//message is to the user with idTo
-  idFrom: string="1p";//message is from the user with idFrom
-  chatList: any[]=[];//the list only contain the chat content of the user with idFrom
-  chatListSmall: any[]=[];//the list contain the chat content between the users with idFrom and idTo
-  msg:any={//new message
-    id:this.idFrom,
-    content:""
+  idFrom: string = "1p";//message is from the user with idFrom
+  chatList: any[] = [];//the list only contain the chat content of the user with idFrom
+  chatListSmall: any[] = [];//the list contain the chat content between the users with idFrom and idTo
+  msg: any = {//new message
+    id: this.idFrom,
+    content: ""
   }
 
   //declare services
@@ -84,8 +112,8 @@ export class MessageComponent implements OnInit {
 
   ngOnInit(): void {
     //get all the messages form messages collection
-    this.messageService.list().subscribe((data)=>{
-      this.messagelist=data;
+    this.messageService.list().subscribe((data) => {
+      this.messagelist = data;
       console.log("data");
       console.log(this.messagelist);
     })
@@ -93,20 +121,20 @@ export class MessageComponent implements OnInit {
 
   //get message list of the selected people in the name list
   getMessageList(id) {
-    this.idTo=id;
+    this.idTo = id;
     // console.log("messagelist");
     // console.log(this.messagelist);
-    for(let i = 0; i<this.messagelist.length; i++){
-      if(this.messagelist[i].idD==this.idFrom||this.messagelist[i].idP==this.idFrom){
+    for (let i = 0; i < this.messagelist.length; i++) {
+      if (this.messagelist[i].idD == this.idFrom || this.messagelist[i].idP == this.idFrom) {
         this.chatList.push(this.messagelist[i]);
       }
     }
     // console.log("chatList");
     // console.log(this.chatList);
-    
-    for(let i=0; i<this.messagelist.length; i++){
-      if(this.messagelist[i].idD==this.idTo||this.messagelist[i].idP==this.idTo){
-        this.chatListSmall=this.messagelist[i].chatlist;
+
+    for (let i = 0; i < this.messagelist.length; i++) {
+      if (this.messagelist[i].idD == this.idTo || this.messagelist[i].idP == this.idTo) {
+        this.chatListSmall = this.messagelist[i].chatlist;
       }
     }
     console.log("chatListsamll");
@@ -114,10 +142,10 @@ export class MessageComponent implements OnInit {
   }
 
   //add a message
-  addMessage(){
+  addMessage() {
     let index;
-    for(let i=0; i<this.messagelist.length; i++){
-      if(this.messagelist[i].idD==this.idTo){
+    for (let i = 0; i < this.messagelist.length; i++) {
+      if (this.messagelist[i].idD == this.idTo) {
         this.messagelist[i].chatlist.push(this.msg);
         index = i;
       }
@@ -125,7 +153,7 @@ export class MessageComponent implements OnInit {
     // console.log("messagelist");
     // console.log(this.messagelist);
 
-    let updatedMessage$: Observable<Message> = this.messageService.updateMessage(this.messagelist[index],this.messagelist[index]._id);
+    let updatedMessage$: Observable<Message> = this.messageService.updateMessage(this.messagelist[index], this.messagelist[index]._id);
     updatedMessage$.subscribe(updatedmessage => {
       this.newMessageEmitted.emit(updatedmessage);
     });

@@ -86,7 +86,8 @@ const routes: Routes = [
     component: PasswordManagement2Component
   },
   {
-    path:"messages", component:MessageComponent
+    path:"messages/:username", 
+    component:MessageComponent
   }
 ];
 @NgModule({
