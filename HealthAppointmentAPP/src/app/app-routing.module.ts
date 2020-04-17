@@ -13,6 +13,7 @@ import { DoctorDetailComponent } from './HealthAppointment/home/patient/doctor-d
 import { PatientInfoComponent } from './HealthAppointment/home/patient/patient-info/patient-info.component';
 import { DoctorInfoComponent } from './HealthAppointment/home/doctor/doctor-info/doctor-info.component';
 
+import { MessageComponent } from './HealthAppointment/message/message.component';
 
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -83,6 +84,9 @@ const routes: Routes = [
   {
     path: 'changePassword2/:username',
     component: PasswordManagement2Component
+  },
+  {
+    path:"messages", component:MessageComponent
   }
 ];
 @NgModule({

@@ -27,6 +27,8 @@ import { DoctorInfoComponent } from './HealthAppointment/home/doctor/doctor-info
 import { PasswordManagementComponent } from './HealthAppointment/home/patient/password-management/password-management.component';
 import { PasswordManagement2Component  } from './HealthAppointment/home/doctor/password-management2/password-management2.component';
 
+import { MessageService } from './HealthAppointment/services/message.service';
+import { MessageComponent } from './HealthAppointment/message/message.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,8 @@ import { PasswordManagement2Component  } from './HealthAppointment/home/doctor/p
     PatientInfoComponent,
     DoctorInfoComponent,
     PasswordManagementComponent,
-    PasswordManagement2Component
+    PasswordManagement2Component,
+    MessageComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +66,7 @@ import { PasswordManagement2Component  } from './HealthAppointment/home/doctor/p
     RecurrenceEditorModule,
     RouterModule
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
