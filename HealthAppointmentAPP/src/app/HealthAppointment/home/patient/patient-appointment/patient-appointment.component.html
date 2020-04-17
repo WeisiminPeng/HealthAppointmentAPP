@@ -9,14 +9,13 @@
     <div class="specialization-detail-wrapper">
         <div class="specialization-types">
 
-            <ejs-dropdownlist id='Specialization'  [dataSource]='specializationData'
-                [showClearButton]='true' (change)='onSpecializationChange($event)'
-                placeholder='Select a Specialization' popupHeight='230px'>
+            <ejs-dropdownlist id='Specialization' [dataSource]='specializationData' [showClearButton]='true'
+                (change)='onSpecializationChange($event)' placeholder='Select a Specialization' popupHeight='230px'>
             </ejs-dropdownlist>
 
         </div>
         <div #specialistItemObj class='specialist-display'>
-                <div (click)='onSpecialistClick($event)' *ngFor="let data of filteredDoctors">
+            <div (click)='onSpecialistClick($event)' *ngFor="let data of filteredDoctors">
                 <div class='specialist-item' id=Specialist_{{data.username}}>
                     <div class="specialist-detail">
                         <div class="name">Dr. {{data.Name}}</div>

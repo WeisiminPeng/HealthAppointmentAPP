@@ -16,6 +16,7 @@ export class PatientSidebarComponent implements OnInit {
   public patientSchdule:string;
   public personalInfo: string;
   public SignOut: string = '';
+  public Message: string;
 
   @ViewChild('sidebar') 
   public sidebar: SidebarComponent;
@@ -30,6 +31,7 @@ export class PatientSidebarComponent implements OnInit {
     this.patientAppointment = '/patientAppointment/'+this.username;
     this.patientSchdule = '/patientSchdule/'+this.username;
     this.personalInfo = '/patientInfo/'+this.username;
+    this.Message = '/messages/'+this.username+'_patient';
     // console.log(this.doctorAppointment)
   }
 
