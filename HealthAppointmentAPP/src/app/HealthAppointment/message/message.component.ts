@@ -164,6 +164,17 @@ export class MessageComponent implements OnInit {
     })
   }
 
+  // sidebar function
+  public onCreated(args: any) {
+    this.sidebar.element.style.visibility = '';
+  }
+
+  showSidebar(): void {
+    this.sidebar.show();
+  }
+   // sidebar function done!
+
+
   //get message list of the selected people in the name list
   getMessageList(id) {
     this.idTo = id;
