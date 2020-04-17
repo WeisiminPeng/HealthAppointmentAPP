@@ -1,4 +1,6 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { SidebarComponent } from '@syncfusion/ej2-angular-navigations';
 
 //import service
 import { MessageService } from '../services/message.service';
@@ -51,6 +53,24 @@ import { Message } from './model/message.model';
 // **************可爱的小彭走啦**************
 
 export class MessageComponent implements OnInit {
+
+  // sidebar variables
+  @ViewChild('sidebar')
+  public sidebar: SidebarComponent;
+  public isOpen: boolean = true;
+  public closeOnDocumentClick: boolean = true;
+  public type: string = 'Push';
+
+  public username: string;
+  public sidebarOneJump: string;
+  public sidebarTwoJump: string;
+  public Info: string;
+  public sidebarOne: string;
+  public sidebarTwo: string;
+  public Message: string;
+  public SignOut: string = '';
+  public personTell: string;
+  // sidebar variables done!
 
   @Output() newMessageEmitted = new EventEmitter<Message>();
   namelist: any[] = [
@@ -111,10 +131,31 @@ export class MessageComponent implements OnInit {
   }
 
   //declare services
-  constructor(public messageService: MessageService, public http: HttpClient, public router: Router) {
+  constructor(public messageService: MessageService, public http: HttpClient, public router: Router, public routes: ActivatedRoute) {
   }
 
   ngOnInit(): void {
+    // sidebar jump control
+    this.username = this.routes.snapshot.paramMap.get('username').split('_')[0];
+    this.personTell = this.routes.snapshot.paramMap.get('username').split('_')[1];
+    if (this.personTell == 'patient') {
+      this.sidebarOne = "My Appointment";
+      this.sidebarTwo = "Make Appointment";
+      this.sidebarTwoJump = '/patientAppointment/' + this.username;
+      this.sidebarOneJump = '/patientSchdule/' + this.username;
+      this.Info = '/patientInfo/' + this.username;
+      this.Message = '/messages/' + this.username + '_patient';
+    } else {
+      this.sidebarOne = "My Schdule";
+      this.sidebarTwo = "Work Time";
+      this.sidebarTwoJump = '/doctorAppointment/' + this.username;
+      this.sidebarOneJump = '/doctorSchdule/' + this.username;
+      this.Info = '/doctorInfo/' + this.username;
+      this.Message = '/messages/' + this.username + '_doctor';
+    }
+    // sidebar jump control done!
+
+
     //get all the messages form messages collection
     this.messageService.list().subscribe((data) => {
       this.messagelist = data;
