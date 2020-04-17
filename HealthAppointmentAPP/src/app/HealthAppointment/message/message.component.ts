@@ -22,6 +22,10 @@ import { Message } from './model/message.model';
 
 // **************可爱的小彭来啦**************
 
+// ** sidebar(就是导航) **
+// <app-patient-sidebar></app-patient-sidebar>
+// <app-doctor-sidebar></app-doctor-sidebar>
+
 // ** import **
 // import { DoctorService } from '../../../services/doctor.service'
 // import { PatientService } from '../../../services/patient.service'
