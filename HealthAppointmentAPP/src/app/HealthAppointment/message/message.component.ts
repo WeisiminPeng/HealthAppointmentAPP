@@ -74,18 +74,18 @@ export class MessageComponent implements OnInit {
 
   @Output() newMessageEmitted = new EventEmitter<Message>();
   namelist: any[] = [
-    {
-      id: "1d",
-      name: "doctor1"
-    },
-    {
-      id: "2d",
-      name: "doctor2"
-    },
-    {
-      id: "3d",
-      name: "doctor3"
-    }
+    // {
+    //   id: "1d",
+    //   name: "doctor1"
+    // },
+    // {
+    //   id: "2d",
+    //   name: "doctor2"
+    // },
+    // {
+    //   id: "3d",
+    //   name: "doctor3"
+    // }
   ];
   messagelist: any[] = [];//all the data in the messages collection
   // messagelist:any[] = [
@@ -121,12 +121,13 @@ export class MessageComponent implements OnInit {
   //   }
   // ];
 
-  idTo: string;//message is to the user with idTo
-  idFrom: string = "1p";//message is from the user with idFrom
+  usernameTo: string;//message is to the user with usernameTo
+  usernameFrom: string = "";//message is from the user with usernameFrom
+  role: string = "";//the role of this user
   chatList: any[] = [];//the list only contain the chat content of the user with idFrom
   chatListSmall: any[] = [];//the list contain the chat content between the users with idFrom and idTo
   msg: any = {//new message
-    id: this.idFrom,
+    usernameFrom: "",
     content: ""
   }
 
@@ -136,7 +137,7 @@ export class MessageComponent implements OnInit {
 
   ngOnInit(): void {
     // sidebar jump control
-    this.username = this.routes.snapshot.paramMap.get('username').split('_')[0];
+    // this.username = this.routes.snapshot.paramMap.get('username').split('_')[0];
     this.personTell = this.routes.snapshot.paramMap.get('username').split('_')[1];
     if (this.personTell == 'patient') {
       this.sidebarOne = "My Appointment";
@@ -155,13 +156,24 @@ export class MessageComponent implements OnInit {
     }
     // sidebar jump control done!
 
-
     //get all the messages form messages collection
     this.messageService.list().subscribe((data) => {
       this.messagelist = data;
-      console.log("data");
-      console.log(this.messagelist);
-    })
+      // console.log("data");
+      // console.log(this.messagelist);
+    });
+
+    //get usernameFrom
+    this.routes.params.subscribe((data)=>{
+      // console.log(data.username);
+      this.usernameFrom=data.username.split('_')[0];
+      this.role=data.username.split('_')[1];
+      // console.log(this.usernameFrom);
+      // console.log(this.role);
+    });
+
+    //get the name list of this user
+    
   }
 
   // sidebar function
@@ -176,12 +188,12 @@ export class MessageComponent implements OnInit {
 
 
   //get message list of the selected people in the name list
-  getMessageList(id) {
-    this.idTo = id;
+  getMessageList(username) {
+    this.usernameTo = username;
     // console.log("messagelist");
     // console.log(this.messagelist);
     for (let i = 0; i < this.messagelist.length; i++) {
-      if (this.messagelist[i].idD == this.idFrom || this.messagelist[i].idP == this.idFrom) {
+      if (this.messagelist[i].idD == this.usernameFrom || this.messagelist[i].idP == this.usernameFrom) {
         this.chatList.push(this.messagelist[i]);
       }
     }
@@ -189,19 +201,19 @@ export class MessageComponent implements OnInit {
     // console.log(this.chatList);
 
     for (let i = 0; i < this.messagelist.length; i++) {
-      if (this.messagelist[i].idD == this.idTo || this.messagelist[i].idP == this.idTo) {
+      if (this.messagelist[i].idD == this.usernameTo || this.messagelist[i].idP == this.usernameTo) {
         this.chatListSmall = this.messagelist[i].chatlist;
       }
     }
-    console.log("chatListsamll");
-    console.log(this.chatListSmall);
+    // console.log("chatListsamll");
+    // console.log(this.chatListSmall);
   }
 
   //add a message
   addMessage() {
     let index;
     for (let i = 0; i < this.messagelist.length; i++) {
-      if (this.messagelist[i].idD == this.idTo) {
+      if (this.messagelist[i].idD == this.usernameTo) {
         this.messagelist[i].chatlist.push(this.msg);
         index = i;
       }
