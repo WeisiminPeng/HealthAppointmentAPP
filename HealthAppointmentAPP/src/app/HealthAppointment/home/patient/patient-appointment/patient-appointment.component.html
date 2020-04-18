@@ -10,15 +10,16 @@
   <main>
     <section class="upperHalf">
       <div class="imgWrapper">
-        <img id="lightbluesky" src="../../../../../assets/img/jianmo.png" />
+        <img id="lightbluesky" src="../../../../../assets/img/lightblue-cut.jpeg" />
+<!--        <p>Northeastern Health Center</p>-->
       </div>
     </section>
     <section class="lowerHalf">
       <div class="maincontent">
         <div class="module-title">
           <div class="title">Make Appointment</div>
-        <div class="underline"></div>
-      </div>
+          <div class="underline"><hr style="color: #595959"></div>
+        </div>
         <div class="specialization-detail-wrapper">
           <div class="specialization-types">
             <ejs-dropdownlist id='Specialization' [dataSource]='specializationData' [showClearButton]='true'
@@ -26,18 +27,19 @@
             </ejs-dropdownlist>
           </div>
           <div #specialistItemObj class='specialist-display'>
-            <div (click)='onSpecialistClick($event)' *ngFor="let data of filteredDoctors">
+            <div (click)='onSpecialistClick($event)' *ngFor="let data of filteredDoctors" class="doctors">
               <div class='specialist-item' id=Specialist_{{data.username}}>
                 <div class="specialist-detail">
                   <div class="name">Dr. {{data.Name}}</div>
                   <div class="specialist-experience">
                     <div class="specialization">
-                      <span class="label-text">Specialization</span>
+                      <span class="label-text">Specialization<br></span>
                       <span class="specialization-text">{{data.Specialization}}</span>
                     </div>
                     <div class="experience">
-                      <span class="label-text">Experience</span>
+                      <span class="label-text">Experience<br></span>
                       <span class="specialization-text">{{data.Experience}}</span>
+                      <p>|</p>
                     </div>
                   </div>
                 </div>

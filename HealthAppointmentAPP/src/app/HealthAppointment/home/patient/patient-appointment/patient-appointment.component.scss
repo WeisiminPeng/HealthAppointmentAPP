@@ -6,12 +6,6 @@
   //height: 800px;
 }
 #lightbluesky{
-  //等比例缩小
-  //width: auto;
-  //height: auto;
-  //max-height: 100%;
-  //max-width: 100%;
-  //margin-top: -200px;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -19,31 +13,39 @@
   z-index: -1;
 }
 .specialization-types{
-  width: 300px;
-  text-align: center;
-  margin: auto;
+  margin-top: -40px;
+  margin-left: 680px;
+  width: 170px;
+  text-align: right;
+  //margin: auto;
   top: 0;
   left: 0;
 }
 
 .upperHalf{
-  height: 400px;
+  height: 450px;
   width: 100%;
 }
 .imgWrapper{
-  height: 400px;
+  height: 450px;
   width: 100%;
+  p{
+    margin-top: -250px;
+    font-size: 25px;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    color: cadetblue;
+  }
 }
 
 .lowerHalf{
   background-color: #eeeeee;
-  height: 600px;
+  height: 620px;
   z-index: 2;
 }
 
 .maincontent{
   position: relative;
-  margin-top: -150px;
+  margin-top: -220px;
   height: 500px;
   width: 900px;
   background-color: #fff;
@@ -51,3 +53,78 @@
   margin-right: auto;
   box-shadow: 0 10px 20px rgba(0,0,0,.15);
 }
+
+.module-title{
+  width: 900px;
+  .title{
+    padding-top: 20px;
+    padding-left: 25px;
+    text-align: left;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    //color: #E6BD62;
+    color: #666666;
+    font-weight: bold;
+    font-size: 20px;
+
+  }
+}
+.specialist-display{
+
+  margin: 15px;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 10px;
+  grid-row-gap: 1em;
+
+  .doctors{
+    width: 250px;
+  }
+  .doctors:hover{
+    box-shadow: 0px 0px 10px #57B5B1;
+    width: 250px;
+    height: 89px;
+
+    //height: 60px;
+  }
+
+  .specialist-item{
+    width: 250px;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: 2px;
+    box-shadow: 0 0px 10px rgba(0,0,0,.15);
+    //margin-top: 15px;
+    padding: 10px 0px 10px;
+    .specialist-detail{
+      text-align: left;
+      padding: 0 10px 0 10px;
+      .name{
+        //font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+        font-weight: bolder;
+        font-size: larger;
+        color: #57B5B1;
+      }
+    }
+    .specialist-experience{
+      height: 40px;
+      margin-top: 5px;
+      .label-text{
+        color: #666666;
+      }
+      .specialization{
+        float: left;
+      }
+      .experience{
+        float: right;
+        margin-right: 30px;
+        p{
+          margin-top: -39px;
+          margin-left: -10px;
+          font-size: 40px;
+          color: rgba(0,0,0,.15);
+        }
+      }
+    }
+  }
+}
+

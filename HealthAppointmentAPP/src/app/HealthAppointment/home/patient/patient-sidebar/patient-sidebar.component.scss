@@ -24,6 +24,24 @@ $planner-tooltip-bg-color:#000;
     background:rgb(96,112,120);
     margin-top: -10px;
     // display: inline-block;
+  .title{
+    //color: #66afe9;
+    color: #B2D1E1;
+    font-size: 25px;
+    //margin-bottom: -10px;
+    text-align: center;
+    margin-left: 350px;
+    margin-top: 5px;
+    float: right;
+    margin-right: 30px;
+    img{
+      margin-right: 10px;
+    }
+  }
+  .title1{
+    @extend .title;
+    margin-left: 0px;
+  }
 }
 .menubtn{
   border: none;
