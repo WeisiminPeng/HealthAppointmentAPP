@@ -1,7 +1,7 @@
 #first {
   width: 100%;
   height: 1000px;
-  background-image: url("HealthAppointment/img/home_background.jpeg");
+  background-image: url("../assets/img/home_background.jpeg");
   background-size: 100%;
   position: relative;
 }
@@ -28,8 +28,9 @@ footer{
 }
 
 .footer-right{
-  width: 400px;
+  width: 300px;
   display: inline;
+  float: right;
 }
 
 .contact{
@@ -44,6 +45,12 @@ footer{
 .final{
   text-align: center;
   //margin-top: -18px;
+}
+
+img{
+  padding-right: 20px;
+  padding-top: 10px;
+
 }
 $planner-hover-bg-color: #f5f5f5;
 $planner-element-bg-color: #7575FF;
