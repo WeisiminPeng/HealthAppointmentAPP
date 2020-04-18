@@ -20,6 +20,15 @@ $planner-tooltip-bg-color:#000;
 }
 
 .showsidebar {
-    background: rgb(70,154,212);
+    //background: rgb(70,154,212);
+    background:rgb(96,112,120);
+    margin-top: -10px;
     // display: inline-block;
+}
+.menubtn{
+  border: none;
+  background: none;
+  box-shadow: none;
+  //width: 30px;
+  //height: 30px;
 }
