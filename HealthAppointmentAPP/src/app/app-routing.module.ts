@@ -88,6 +88,10 @@ const routes: Routes = [
   {
     path:"messages/:username", 
     component:MessageComponent
+  },
+  {
+    path:"messages", 
+    component:MessageComponent
   }
 ];
 @NgModule({
