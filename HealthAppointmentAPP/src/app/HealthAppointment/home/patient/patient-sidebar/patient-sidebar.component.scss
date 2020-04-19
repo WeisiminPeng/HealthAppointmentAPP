@@ -20,10 +20,10 @@ $planner-tooltip-bg-color:#000;
 }
 
 .showsidebar {
-    //background: rgb(70,154,212);
     background:rgb(96,112,120);
     margin-top: -10px;
-    // display: inline-block;
+    position: sticky;
+    top: 0;
   .title{
     //color: #66afe9;
     color: #B2D1E1;
