@@ -1,10 +1,10 @@
 export class Message {
-    idD: string;
-    idP: string;
-    chatlist: [];
-    constructor(idD: string, idP: string) {
-        this.idD=idD;
-        this.idP=idP;
-        this.chatlist=[];
+    username1: string;
+    username2: string;
+    chatlist: any[];
+    constructor(username1: string, username2: string, chatlist:any[]) {
+        this.username1=username1;
+        this.username2=username2;
+        this.chatlist=chatlist;
     }
 }

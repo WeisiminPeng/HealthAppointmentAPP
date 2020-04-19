@@ -1,9 +1,16 @@
 import { Component, OnInit, Output, EventEmitter, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { SidebarComponent } from '@syncfusion/ej2-angular-navigations';
+
 
 //import service
 import { MessageService } from '../services/message.service';
+import { AppointmentService } from '../services/appointment.service';
+import { DoctorService } from '../services/doctor.service';
+import { PatientService } from '../services/patient.service';
+
+//import model
+import { Message } from './model/message.model';
+
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -11,7 +18,7 @@ import { Observable } from 'rxjs';
 import { Router } from '@angular/router'
 
 //import component
-import { Message } from './model/message.model';
+import { SidebarComponent } from '@syncfusion/ej2-angular-navigations';
 
 
 @Component({
@@ -19,38 +26,6 @@ import { Message } from './model/message.model';
   templateUrl: './message.component.html',
   styleUrls: ['./message.component.scss']
 })
-
-
-
-// **************可爱的小彭来啦**************
-
-// ** sidebar(就是导航) **
-// <app-patient-sidebar></app-patient-sidebar>
-// <app-doctor-sidebar></app-doctor-sidebar>
-
-// ** import **
-// import { DoctorService } from '../../../services/doctor.service'
-// import { PatientService } from '../../../services/patient.service'
-// import { doctorsData,patientData } from 'src/app/HealthAppointment/healthappoint.model';
-
-// ** constructor **
-// constructor(public doctorService: DoctorService, public patientService: PatientService, public routes: ActivatedRoute) {}
-
-// get username
-// this.username = this.routes.snapshot.paramMap.get('username').split('_')[0];
-
-
-// ** list all the doctor **
-// this.doctorService.list().subscribe(doctors => {
-//   this.doctors = doctors;
-// });
-
-// ** get one doctor **
-// this.doctorService.get(this.usernameDoctor).subscribe(doctor => {
-//   this.currentDoctor = doctor;
-// });
-
-// **************可爱的小彭走啦**************
 
 export class MessageComponent implements OnInit {
 
@@ -73,65 +48,27 @@ export class MessageComponent implements OnInit {
   // sidebar variables done!
 
   @Output() newMessageEmitted = new EventEmitter<Message>();
-  namelist: any[] = [
-    {
-      id: "1d",
-      name: "doctor1"
-    },
-    {
-      id: "2d",
-      name: "doctor2"
-    },
-    {
-      id: "3d",
-      name: "doctor3"
-    }
-  ];
-  messagelist: any[] = [];//all the data in the messages collection
-  // messagelist:any[] = [
-  //   {
-  //     idD: "1d",//id of doctor
-  //     idP: "1p",//id of patient
-  //     chatlist: [
-  //       { id: "1d", content: "content 1." },
-  //       { id: "1d", content: "content 2." },
-  //       { id: "1d", content: "content 3." },
-  //       { id: "1p", content: "content 4." }
-  //     ]
-  //   },
-  //   {
-  //     idD: "2d",//id of doctor
-  //     idP: "1p",//id of patient
-  //     chatlist: [
-  //       { id: "2d", content: "content 1." },
-  //       { id: "1p", content: "content 2." },
-  //       { id: "2d", content: "content 3." },
-  //       { id: "1p", content: "content 4." }
-  //     ]
-  //   },
-  //   {
-  //     idD: "3d",//id of doctor
-  //     idP: "1p",//id of patient
-  //     chatlist: [
-  //       { id: "3d", content: "content 1." },
-  //       { id: "3d", content: "content 2." },
-  //       { id: "1p", content: "content 3." },
-  //       { id: "3d", content: "content 4." }
-  //     ]
-  //   }
-  // ];
+  appointmentlist: any[] = [];
+  usernamelist: any[] = [];
+  namelist: any[] = [];
 
-  idTo: string;//message is to the user with idTo
-  idFrom: string = "1p";//message is from the user with idFrom
+  messageAll: any[] = [];
+
+  usernameTo: string;//message is to the user with usernameTo
+  usernameFrom: string = "";//message is from the user with usernameFrom
+  role: string = "";//the role of this user
   chatList: any[] = [];//the list only contain the chat content of the user with idFrom
   chatListSmall: any[] = [];//the list contain the chat content between the users with idFrom and idTo
+
+  // chatListSmallName: any[] = [];
   msg: any = {//new message
-    id: this.idFrom,
+    usernameMsg: "",
+    nameMsg: "",
     content: ""
   }
 
   //declare services
-  constructor(public messageService: MessageService, public http: HttpClient, public router: Router, public routes: ActivatedRoute) {
+  constructor(public messageService: MessageService, public appointmentService: AppointmentService, public doctorService: DoctorService, public patientService: PatientService, public http: HttpClient, public router: Router, public routes: ActivatedRoute) {
   }
 
   ngOnInit(): void {
@@ -155,13 +92,85 @@ export class MessageComponent implements OnInit {
     }
     // sidebar jump control done!
 
-
     //get all the messages form messages collection
     this.messageService.list().subscribe((data) => {
-      this.messagelist = data;
-      console.log("data");
-      console.log(this.messagelist);
-    })
+      this.messageAll = data;
+      // console.log("messageAll");
+      // console.log(this.messageAll);
+    });
+
+    //get usernameFrom
+    this.routes.params.subscribe((data) => {
+      // console.log(data.username);
+      this.usernameFrom = data.username.split('_')[0];
+      this.role = data.username.split('_')[1];
+      this.msg.usernameMsg = this.usernameFrom;
+      // console.log("msg");
+      // console.log(this.msg);
+      // console.log(this.usernameFrom);
+      // console.log(this.role);
+    });
+
+    if (this.role == "patient") {
+      console.log("patient");
+      this.patientService.list().subscribe((data) => {
+        // console.log(data);
+        let patientlist = data;
+        for (let i = 0; i < patientlist.length; i++) {
+          if (patientlist[i].username == this.usernameFrom) {
+            this.msg.nameMsg = patientlist[i].Name;
+            // console.log(this.msg);
+          }
+        }
+      })
+    } else {
+      console.log("doctor");
+      this.doctorService.list().subscribe((data) => {
+        // console.log(data);
+        let doctorlist = data;
+        for (let i = 0; i < doctorlist.length; i++) {
+          if (doctorlist[i].username == this.usernameFrom) {
+            this.msg.nameMsg = doctorlist[i].Name;
+            // console.log(this.msg);
+          }
+        }
+      })
+    }
+
+    this.appointmentService.get(this.usernameFrom).subscribe((data) => {
+      //get the appointment list of this user
+      this.appointmentlist = data;
+
+      //get the namelist data
+      if (this.role == "patient") {
+        // console.log("doctor namelist");
+        for (let i = 0; i < this.appointmentlist.length; i++) {
+          if (this.appointmentlist[i].PatientUsername == this.usernameFrom) {
+            if (this.usernamelist.indexOf(this.appointmentlist[i].DoctorUsername) == -1) {
+              this.usernamelist.push(this.appointmentlist[i].DoctorUsername);
+              this.namelist.push({ name: this.appointmentlist[i].DoctorName, username: this.appointmentlist[i].DoctorUsername });
+            }
+          }
+        }
+      } else if (this.role == "doctor") {
+        console.log("doctor namelist");
+        console.log("appointmentlist");
+        console.log(this.appointmentlist);
+        for (let i = 0; i < this.appointmentlist.length; i++) {
+          if (this.appointmentlist[i].DoctorUsername == this.usernameFrom) {
+            let patientUsername: string = this.appointmentlist[i].PatientUsername;
+            // console.log(this.namelist.indexOf(patientUsername));
+            if (this.usernamelist.indexOf(patientUsername) == -1) {
+              this.usernamelist.push(this.appointmentlist[i].PatientUsername);
+              this.namelist.push({ name: this.appointmentlist[i].PatientName, username: this.appointmentlist[i].PatientUsername });
+            }
+          }
+        }
+      }
+      // console.log("usernamelist+namelist");
+      // console.log(this.usernamelist);
+      // console.log(this.namelist);
+    });
   }
 
   // sidebar function
@@ -172,46 +181,181 @@ export class MessageComponent implements OnInit {
   showSidebar(): void {
     this.sidebar.show();
   }
-   // sidebar function done!
+  // sidebar function done!
+
 
 
   //get message list of the selected people in the name list
-  getMessageList(id) {
-    this.idTo = id;
-    // console.log("messagelist");
-    // console.log(this.messagelist);
-    for (let i = 0; i < this.messagelist.length; i++) {
-      if (this.messagelist[i].idD == this.idFrom || this.messagelist[i].idP == this.idFrom) {
-        this.chatList.push(this.messagelist[i]);
+  getMessageList(usernameTo) {
+    this.usernameTo = usernameTo;
+    // console.log(this.usernameTo);
+    this.chatList = [];
+    this.chatListSmall = [];
+    // this.chatListSmallName = [];
+    if (this.messageAll.length == 0) {
+      // console.log("messageAll=0");
+    } else {
+      for (let i = 0; i < this.messageAll.length; i++) {
+        if (this.messageAll[i].username1 == this.usernameFrom || this.messageAll[i].username2 == this.usernameFrom) {
+          this.chatList.push(this.messageAll[i]);
+        }
       }
+      // console.log("chatlist");
+      // console.log(this.chatList);
+      for (let i = 0; i < this.chatList.length; i++) {
+        // console.log("chatlist");
+        // console.log(this.chatList[i]);
+        // console.log("this.chatList[i].username1" + this.chatList[i].username1);
+        if (this.chatList[i].username1 == this.usernameTo || this.chatList[i].username2 == this.usernameTo) {
+          this.chatListSmall = this.chatList[i].chatlist;
+        }
+      }
+      // console.log("chatlistsmall");
+      // console.log(this.chatListSmall);
     }
-    // console.log("chatList");
-    // console.log(this.chatList);
 
-    for (let i = 0; i < this.messagelist.length; i++) {
-      if (this.messagelist[i].idD == this.idTo || this.messagelist[i].idP == this.idTo) {
-        this.chatListSmall = this.messagelist[i].chatlist;
-      }
-    }
-    console.log("chatListsamll");
-    console.log(this.chatListSmall);
   }
 
   //add a message
   addMessage() {
-    let index;
-    for (let i = 0; i < this.messagelist.length; i++) {
-      if (this.messagelist[i].idD == this.idTo) {
-        this.messagelist[i].chatlist.push(this.msg);
-        index = i;
-      }
+    if (typeof (this.usernameTo) == "undefined") {
+      alert("Please select a person to send your message!");
+      return;
     }
-    // console.log("messagelist");
-    // console.log(this.messagelist);
+    if (this.msg.content == "") {
+      alert("The content of the message should not be empty!");
+      return;
+    }
+    if (this.messageAll.length == 0) {
+      console.log("this.messageAll.length == 0");
+      let messagelist = new Message(this.usernameFrom, this.usernameTo, [this.msg]);
+      this.messageService.addMessage(messagelist).subscribe((data) => {
+        this.newMessageEmitted.emit(data);
+        this.messageService.list().subscribe((data) => {
+          this.messageAll = data;
+          // console.log("messageAll1");
+          // console.log(this.messageAll);
+          for (let i = 0; i < this.messageAll.length; i++) {
+            if (this.messageAll[i].username1 == this.usernameFrom || this.messageAll[i].username2 == this.usernameFrom) {
+              this.chatList.push(this.messageAll[i]);
+            }
+          }
+          // console.log("chatlist");
+          // console.log(this.chatList);
+          for (let i = 0; i < this.chatList.length; i++) {
+            // console.log("chatlist");
+            // console.log(this.chatList[i]);
+            if (this.chatList[i].username1 == this.usernameTo || this.chatList[i].username2 == this.usernameTo) {
+              this.chatListSmall = this.chatList[i].chatlist;
+            }
+          }
+          // console.log("chatListSmall");
+          // console.log(this.chatListSmall);
+          console.log("***********************");
+        });
+      });
 
-    let updatedMessage$: Observable<Message> = this.messageService.updateMessage(this.messagelist[index], this.messagelist[index]._id);
-    updatedMessage$.subscribe(updatedmessage => {
-      this.newMessageEmitted.emit(updatedmessage);
-    });
+      (<HTMLInputElement>document.getElementById("msgContent")).value = "";
+    } else {
+      if (this.chatListSmall.length == 0) {
+        // console.log("this.chatListSmall.length == 0");
+
+        let messagelist = new Message(this.usernameFrom, this.usernameTo, [this.msg]);
+        this.messageService.addMessage(messagelist).subscribe((data) => {
+          this.newMessageEmitted.emit(data);
+          this.messageService.list().subscribe((data) => {
+            this.messageAll = data;
+            // console.log("messageAll1");
+            // console.log(this.messageAll);
+            this.chatList = [];
+            for (let i = 0; i < this.messageAll.length; i++) {
+              if (this.messageAll[i].username1 == this.usernameFrom || this.messageAll[i].username2 == this.usernameFrom) {
+                this.chatList.push(this.messageAll[i]);
+              }
+            }
+            // console.log("chatlist");
+            // console.log(this.chatList);
+            for (let i = 0; i < this.chatList.length; i++) {
+              // console.log("chatlist");
+              // console.log(this.chatList[i]);
+              if (this.chatList[i].username1 == this.usernameTo || this.chatList[i].username2 == this.usernameTo) {
+                this.chatListSmall = this.chatList[i].chatlist;
+              }
+            }
+            // console.log("chatListSmall");
+            // console.log(this.chatListSmall);
+            // console.log("***********************");
+          });
+        });
+        this.messageService.list().subscribe((data) => {
+          this.messageAll = data;
+          // console.log("messageAll1");
+          // console.log(this.messageAll);
+          this.chatList = [];
+          for (let i = 0; i < this.messageAll.length; i++) {
+            if (this.messageAll[i].username1 == this.usernameFrom || this.messageAll[i].username2 == this.usernameFrom) {
+              this.chatList.push(this.messageAll[i]);
+            }
+          }
+          // console.log("chatlist");
+          // console.log(this.chatList);
+          for (let i = 0; i < this.chatList.length; i++) {
+            // console.log("chatlist");
+            // console.log(this.chatList[i]);
+            if (this.chatList[i].username1 == this.usernameTo || this.chatList[i].username2 == this.usernameTo) {
+              this.chatListSmall = this.chatList[i].chatlist;
+            }
+          }
+          // console.log("chatListSmall");
+          // console.log(this.chatListSmall);
+          // console.log("***********************");
+        });
+      } else {
+        // console.log("this.chatListSmall.length != 0");
+        let index;
+        for (let i = 0; i < this.messageAll.length; i++) {
+          if ((this.messageAll[i].username1 == this.usernameFrom && this.messageAll[i].username2 == this.usernameTo) || (this.messageAll[i].username1 == this.usernameTo && this.messageAll[i].username2 == this.usernameFrom)) {
+            this.messageAll[i].chatlist.push(this.msg);
+            index = i;
+          }
+        }
+        // console.log("this.messageAll[index]");
+        // console.log(this.messageAll[index]);
+        // console.log("tthis.messageAll[index]._id");
+        // console.log(this.messageAll[index]._id);
+        let updatedMessage$: Observable<Message> = this.messageService.updateMessage(this.messageAll[index], this.messageAll[index]._id);
+        updatedMessage$.subscribe(updatedmessage => {
+          this.newMessageEmitted.emit(updatedmessage);
+          //get new message list
+          this.messageService.list().subscribe((data) => {
+            this.messageAll = data;
+            // console.log("messageAll1");
+            // console.log(this.messageAll);
+            this.chatList = [];
+            this.chatListSmall = [];
+            for (let i = 0; i < this.messageAll.length; i++) {
+              if (this.messageAll[i].username1 == this.usernameFrom || this.messageAll[i].username2 == this.usernameFrom) {
+                this.chatList.push(this.messageAll[i]);
+              }
+            }
+            // console.log("chatlist");
+            // console.log(this.chatList);
+            for (let i = 0; i < this.chatList.length; i++) {
+              // console.log("chatlist[i]");
+              // console.log(this.chatList[i]);
+              if (this.chatList[i].username1 == this.usernameTo || this.chatList[i].username2 == this.usernameTo) {
+                this.chatListSmall = this.chatList[i].chatlist;
+              }
+            }
+            // console.log("chatListSmall");
+            // console.log(this.chatListSmall);
+            // console.log("***********************");
+          });
+        });
+      }
+      (<HTMLInputElement>document.getElementById("msgContent")).value = "";
+    }
+
   }
+
 }

@@ -16,14 +16,14 @@ const Schema = mongoose.Schema;
 * */
 //Create the data model
 let Message = new Schema({
-    idD:{//id of doctor
+    username1:{//username of user1
         type:String
     },
-    idP:{//id of patient
+    username2:{//username of user2
         type:String
     },
     chatlist:{
-        type: Array
+        type:Array
     }
 }, {
     versionKey: false, 

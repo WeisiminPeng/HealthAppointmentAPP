@@ -13,30 +13,30 @@ export class AppointmentService {
 
   constructor(private http: HttpClient) { }
 
-   //get one doctor
+   //get all the appointments
    public get(username: string): Observable<Array<appointmentData>> {
     const appointment$ = this.http.get<appointmentData[]>(`${this.ROUTE_URL}/${username}`);
     // console.log(`${this.ROUTE_URL}/${id}`);
     return appointment$;
   }
 
-   //Update one todo
+   //Update one appointment
    public update(appointmentItem:string,id: string): Observable<success> {
     let header = new HttpHeaders({'content-type': 'application/json'});
-    const todoUpdate$ = this.http.put<success>(`${this.ROUTE_URL}/${id}`, appointmentItem, {headers : header});
+    const appointmentUpdate$ = this.http.put<success>(`${this.ROUTE_URL}/${id}`, appointmentItem, {headers : header});
     // this.http.post<Todoitem>(this.ROUTE_URL, todoitem);
-    return todoUpdate$;
+    return appointmentUpdate$;
   }
 
-  public save(todoitem:string): Observable<appointmentData> {
+  public save(appointmentItem:string): Observable<appointmentData> {
     let header = new HttpHeaders({'content-type': 'application/json'});
-    const newTodo$ = this.http.post<appointmentData>(this.ROUTE_URL, todoitem, {headers : header});
-    return newTodo$;
+    const newAppointment$ = this.http.post<appointmentData>(this.ROUTE_URL, appointmentItem, {headers : header});
+    return newAppointment$;
   }
 
-   //Delete one todo
+   //Delete one appointment
    public delete(id: string): Observable<success> {
-    const deleteMsg$ = this.http.delete<success>(`${this.ROUTE_URL}/${id}`);
-    return deleteMsg$;
+    const deleteAppointment$ = this.http.delete<success>(`${this.ROUTE_URL}/${id}`);
+    return deleteAppointment$;
   }
 }
