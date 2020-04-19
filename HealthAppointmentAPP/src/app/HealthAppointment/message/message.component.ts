@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, ViewChild, ɵɵNgOnChangesFeature } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewChild} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 
