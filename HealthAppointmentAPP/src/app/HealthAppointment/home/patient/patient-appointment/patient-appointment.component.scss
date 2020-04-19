@@ -29,12 +29,6 @@
 .imgWrapper{
   height: 450px;
   width: 100%;
-  p{
-    margin-top: -250px;
-    font-size: 25px;
-    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-    color: cadetblue;
-  }
 }
 
 .lowerHalf{
@@ -93,13 +87,11 @@
     border: 1px solid rgba(0,0,0,.15);
     border-radius: 2px;
     box-shadow: 0 0px 10px rgba(0,0,0,.15);
-    //margin-top: 15px;
     padding: 10px 0px 10px;
     .specialist-detail{
       text-align: left;
       padding: 0 10px 0 10px;
       .name{
-        //font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
         font-weight: bolder;
         font-size: larger;
         color: #57B5B1;
