@@ -3,6 +3,8 @@
     margin: 30px 50px;
     color: #9aa5bb;
     letter-spacing: .05px;
+    background: #eeeeee;
+  height: auto;
     .e-all-day-appointment-wrapper,.e-timeline-wrapper{
         font-size: 0;
     }
@@ -13,6 +15,7 @@
         .schedule-container {
             padding-right: 25px;
             width: 100%;
+
 
             .e-schedule-toolbar-container {
                 .e-toolbar-items {
@@ -31,7 +34,7 @@
                             .e-block-indicator {
                                 visibility: hidden;
                             }
-    
+
                             .e-appointment {
                                 .e-time,
                                 .e-subject {
@@ -43,6 +46,6 @@
                 }
             }
         }
-        
+
     }
 }

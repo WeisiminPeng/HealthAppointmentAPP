@@ -29,6 +29,7 @@ import { PasswordManagement2Component  } from './HealthAppointment/home/doctor/p
 
 import { MessageService } from './HealthAppointment/services/message.service';
 import { MessageComponent } from './HealthAppointment/message/message.component';
+import { FooterComponent } from './HealthAppointment/LoginAndRegister/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { MessageComponent } from './HealthAppointment/message/message.component'
     DoctorInfoComponent,
     PasswordManagementComponent,
     PasswordManagement2Component,
-    MessageComponent
+    MessageComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

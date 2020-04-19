@@ -1,14 +1,33 @@
 <app-patient-sidebar></app-patient-sidebar>
-<div class='patient-schedule'>
-        <div class='appointment-item' *ngFor="let data of appointments">
+
+<main>
+  <section class="upperHalf">
+    <div class="imgWrapper">
+      <img id="lightbluesky" src="../../../../../assets/img/lightblue-cut.jpeg" />
+    </div>
+  </section>
+  <section class="lowerHalf">
+    <div class="maincontent">
+      <div class="module-title">
+        <div class="title">My Appointment</div>
+        <div class="underline"><hr style="color: #595959"></div>
+      </div>
+      <div class="specialization-detail-wrapper">
+        <div class='patient-schedule'>
+          <div class='appointment-item' *ngFor="let data of appointments">
             <div class="appointment-detail">
-                <div class="DoctorName">Dr. {{data.DoctorName}}</div>
-                <div class="getStartTimeDetails">
-                    {{getStartTimeDetails(data)}}
-                </div>
-                <div class="getEndTimeDetails">
-                    {{getEndTimeDetails(data)}}
-                </div>
+              <div class="DoctorName">Dr. {{data.DoctorName}}</div>
+              <div class="getStartTimeDetails">
+                {{getStartTimeDetails(data)}}
+              </div>
+              <div class="getEndTimeDetails">
+                {{getEndTimeDetails(data)}}
+              </div>
             </div>
+          </div>
         </div>
-</div>
+      </div>
+    </div>
+
+  </section>
+</main>
