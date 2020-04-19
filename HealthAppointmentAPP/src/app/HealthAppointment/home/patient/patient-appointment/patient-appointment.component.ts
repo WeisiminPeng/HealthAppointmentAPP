@@ -24,9 +24,9 @@ export class PatientAppointmentComponent implements OnInit {
 
   public doctors: Array<doctorsData>;
   public filteredDoctors: Array<doctorsData>;
-  public specializationData: string[] = ["General Medicine", "Neurology", 
-                                         "Dermatology", "Orthopedics", 
-                                         "Diabetology", "Cardiology"];
+  public specializationData: string[] = ["General Medicine", "Neurology",
+    "Dermatology", "Orthopedics",
+    "Diabetology", "Cardiology"];
 
 
   public patient: patientData;
@@ -71,8 +71,8 @@ export class PatientAppointmentComponent implements OnInit {
 
   // inspect which doctor is selected
   onSpecialistClick(args: any) {
-      this.DoctorUsername = args.currentTarget.querySelector('.specialist-item')['id'].split('_')[1];
-      this.router.navigateByUrl('/patientDoctorDetail/' + this.username + '_' + this.DoctorUsername);
+    this.DoctorUsername = args.currentTarget.querySelector('.specialist-item')['id'].split('_')[1];
+    this.router.navigateByUrl('/patientDoctorDetail/' + this.username + '_' + this.DoctorUsername);
   }
 
   getEducation(text: Object) {

@@ -1,37 +1,89 @@
 <app-patient-sidebar></app-patient-sidebar>
+
 <div class="doctors-wrapper">
     <header>
-        <div class="module-title">
-            <div class="title">DOCTORS LIST</div>
-            <div class="underline"></div>
-        </div>
+<!--        <div class="module-title">-->
+<!--            <div class="title">DOCTORS LIST</div>-->
+<!--            <div class="underline"></div>-->
+<!--        </div>-->
     </header>
-    <div class="specialization-detail-wrapper">
-        <div class="specialization-types">
-
+<!--  This is where yang's code start -->
+  <main>
+    <section class="upperHalf">
+      <div class="imgWrapper">
+        <img id="lightbluesky" src="../../../../../assets/img/lightblue-cut.jpeg" />
+      </div>
+    </section>
+    <section class="lowerHalf">
+      <div class="maincontent">
+        <div class="module-title">
+          <div class="title">Make Appointment</div>
+          <div class="underline"><hr style="color: #595959"></div>
+        </div>
+        <div class="specialization-detail-wrapper">
+          <div class="specialization-types">
             <ejs-dropdownlist id='Specialization' [dataSource]='specializationData' [showClearButton]='true'
-                (change)='onSpecializationChange($event)' placeholder='Select a Specialization' popupHeight='230px'>
+                              (change)='onSpecializationChange($event)' placeholder='Select a Specialization' popupHeight='230px'>
             </ejs-dropdownlist>
-
-        </div>
-        <div #specialistItemObj class='specialist-display'>
-            <div (click)='onSpecialistClick($event)' *ngFor="let data of filteredDoctors">
-                <div class='specialist-item' id=Specialist_{{data.username}}>
-                    <div class="specialist-detail">
-                        <div class="name">Dr. {{data.Name}}</div>
-                        <div class="specialist-experience">
-                            <div class="specialization">
-                                <span class="label-text">Specialization</span>
-                                <span class="specialization-text">{{data.Specialization}}</span>
-                            </div>
-                            <div class="experience">
-                                <span class="label-text">Experience</span>
-                                <span class="specialization-text">{{data.Experience}}</span>
-                            </div>
-                        </div>
+          </div>
+          <div #specialistItemObj class='specialist-display'>
+            <div (click)='onSpecialistClick($event)' *ngFor="let data of filteredDoctors" class="doctors">
+              <div class='specialist-item' id=Specialist_{{data.username}}>
+                <div class="specialist-detail">
+                  <div class="name">Dr. {{data.Name}}</div>
+                  <div class="specialist-experience">
+                    <div class="specialization">
+                      <span class="label-text">Specialization<br></span>
+                      <span class="specialization-text">{{data.Specialization}}</span>
                     </div>
+                    <div class="experience">
+                      <span class="label-text">Experience<br></span>
+                      <span class="specialization-text">{{data.Experience}}</span>
+                      <p>|</p>
+                    </div>
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
+      </div>
+
+
+    </section>
+  </main>
+
+<!--  This is where yang's code ends -->
+
+<!--  this is where Pengwei's code start -->
+
+
+<!--    <div class="specialization-detail-wrapper">-->
+<!--        <div class="specialization-types">-->
+<!--            <ejs-dropdownlist id='Specialization' [dataSource]='specializationData' [showClearButton]='true'-->
+<!--                (change)='onSpecializationChange($event)' placeholder='Select a Specialization' popupHeight='230px'>-->
+<!--            </ejs-dropdownlist>-->
+<!--        </div>-->
+<!--        <div #specialistItemObj class='specialist-display'>-->
+<!--            <div (click)='onSpecialistClick($event)' *ngFor="let data of filteredDoctors">-->
+<!--                <div class='specialist-item' id=Specialist_{{data.username}}>-->
+<!--                    <div class="specialist-detail">-->
+<!--                        <div class="name">Dr. {{data.Name}}</div>-->
+<!--                        <div class="specialist-experience">-->
+<!--                            <div class="specialization">-->
+<!--                                <span class="label-text">Specialization</span>-->
+<!--                                <span class="specialization-text">{{data.Specialization}}</span>-->
+<!--                            </div>-->
+<!--                            <div class="experience">-->
+<!--                                <span class="label-text">Experience</span>-->
+<!--                                <span class="specialization-text">{{data.Experience}}</span>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+
+  <!--  this is where Pengwei's code end -->
 </div>

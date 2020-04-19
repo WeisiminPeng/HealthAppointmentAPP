@@ -27,17 +27,17 @@ export class PatientScheduleComponent implements OnInit {
     this.username = this.routes.snapshot.paramMap.get('username');
     this.appointmentService.get(this.username).subscribe(appointments => {
       this.appointments = appointments;
-  });
-}
+    });
+  }
 
-getStartTimeDetails(data: any) {
+  getStartTimeDetails(data: any) {
     this.dataStartHour = new Date(data.StartTime);
     return `${this.intl.formatDate(this.dataStartHour, { skeleton: "yMMMEd"  })} - ${this.intl.formatDate(this.dataStartHour, { skeleton: "hm"})}`;
-}
+  }
 
-getEndTimeDetails(data: any) {
-  this.dataEndHour = new Date(data.EndTime);
-  return `${this.intl.formatDate(this.dataEndHour, { skeleton: "yMMMEd"  })} - ${this.intl.formatDate(this.dataEndHour, { skeleton: "hm"})}`;
-}
+  getEndTimeDetails(data: any) {
+    this.dataEndHour = new Date(data.EndTime);
+    return `${this.intl.formatDate(this.dataEndHour, { skeleton: "yMMMEd"  })} - ${this.intl.formatDate(this.dataEndHour, { skeleton: "hm"})}`;
+  }
 
 }
