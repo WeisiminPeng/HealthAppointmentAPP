@@ -21,6 +21,10 @@ export class PatientScheduleComponent implements OnInit {
   public appointments: Array<appointmentData>;
   public dataStartHour: Date;
   public dataEndHour: Date;
+  public dataWeek: Date;
+  public dataMonth: Date;
+  public dataDay: Date;
+  public dataYear: Date;
   public intl: Internationalization = new Internationalization();
 
   ngOnInit(): void {
@@ -30,14 +34,37 @@ export class PatientScheduleComponent implements OnInit {
     });
   }
 
-  getStartTimeDetails(data: any) {
-    this.dataStartHour = new Date(data.StartTime);
-    return `${this.intl.formatDate(this.dataStartHour, { skeleton: "yMMMEd"  })} - ${this.intl.formatDate(this.dataStartHour, { skeleton: "hm"})}`;
+  // getStartTimeDetails(data: any) {
+  //   this.dataStartHour = new Date(data.StartTime);
+  //   return `${this.intl.formatDate(this.dataStartHour, { skeleton: "yMMMEd"  })} - ${this.intl.formatDate(this.dataStartHour, { skeleton: "hm"})}`;
+  // }
+
+  // getEndTimeDetails(data: any) {
+  //   this.dataEndHour = new Date(data.EndTime);
+  //   return `${this.intl.formatDate(this.dataEndHour, { skeleton: "yMMMEd"  })} - ${this.intl.formatDate(this.dataEndHour, { skeleton: "hm"})}`;
+  // }
+
+  getWeekDetails(data: any) {
+    this.dataWeek = new Date(data.StartTime);
+    return `${this.intl.formatDate(this.dataWeek, { skeleton: "E"  })}`;
   }
 
-  getEndTimeDetails(data: any) {
+  getMonthDetails(data: any) {
+    this.dataMonth = new Date(data.StartTime);
+    return `${this.intl.formatDate(this.dataMonth, { skeleton: "MMM"  })}`;
+  }
+  getDayDetails(data: any) {
+    this.dataDay = new Date(data.StartTime);
+    return `${this.intl.formatDate(this.dataDay, { skeleton: "d"  })}`;
+  }
+  getYearDetails(data: any) {
+    this.dataYear = new Date(data.StartTime);
+    return `${this.intl.formatDate(this.dataYear, { skeleton: "y"  })}`;
+  }
+  getTimeDetails(data: any) {
+    this.dataStartHour = new Date(data.StartTime);
     this.dataEndHour = new Date(data.EndTime);
-    return `${this.intl.formatDate(this.dataEndHour, { skeleton: "yMMMEd"  })} - ${this.intl.formatDate(this.dataEndHour, { skeleton: "hm"})}`;
+    return `${this.intl.formatDate(this.dataStartHour, { skeleton: "hm"})} - ${this.intl.formatDate(this.dataEndHour, { skeleton: "hm"})}`;
   }
 
 }
