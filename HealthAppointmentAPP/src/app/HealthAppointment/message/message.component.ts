@@ -51,7 +51,6 @@ export class MessageComponent implements OnInit {
   appointmentlist: any[] = [];
   usernamelist: any[] = [];
   namelist: any[] = [];
-  nameAll: any[] = [];
 
   messageAll: any[] = [];
 

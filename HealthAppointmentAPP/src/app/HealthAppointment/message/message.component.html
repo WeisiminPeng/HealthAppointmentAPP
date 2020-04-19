@@ -46,7 +46,8 @@
             <li *ngFor="let chat of chatListSmall">
                 <!-- <span>{{chat.usernameMsg}}</span>
                 <br> -->
-                <span>{{chat.nameMsg}}</span>
+                <span *ngIf="chat.usernameMsg == usernameFrom">me</span>
+                <span *ngIf="chat.usernameMsg != usernameFrom">{{chat.nameMsg}}</span>
                 <br>
                 <span>{{chat.content}}</span>
             </li>
