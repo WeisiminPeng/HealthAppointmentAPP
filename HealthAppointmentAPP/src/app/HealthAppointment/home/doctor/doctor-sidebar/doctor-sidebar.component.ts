@@ -33,7 +33,7 @@ export class DoctorSidebarComponent implements OnInit {
     this.doctorSchdule = '/doctorSchdule/' + this.username;
     this.personalInfo = '/doctorInfo/' + this.username;
     this.Message = '/messages/'+this.username+'_doctor';
-    console.log(this.doctorAppointment)
+    // console.log(this.doctorAppointment)
   }
 
   public onCreated(args: any) {
