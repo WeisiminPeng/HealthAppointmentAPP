@@ -135,23 +135,23 @@ export class DoctorDetailComponent implements OnInit {
       this.patientService.get(this.usernamePatient).subscribe(patient => {
         this.currentPatient = patient;
         this.currentPatientName = this.currentPatient.Text;
-        console.log(this.currentPatientName)
+        // console.log(this.currentPatientName)
         // get all the appoint of this doctor
         this.appointmentService.get(this.usernameDoctor).subscribe(appointments => {
           this.appointments = appointments;
-          console.log(this.appointments);
+          // console.log(this.appointments);
           // console.log("***"+this.appointments.length)
           for (var j = 0; j < this.appointments.length; j++) {
             if (this.appointments[j].PatientUsername !== this.usernamePatient) {
               this.appointments[j].IsBlock = true;
             }
           }
-          console.log(this.appointments)
+          // console.log(this.appointments)
           // combine this two array
           this.arraytemp = this.currentBreakHourArray.concat(this.appointments);
           // }
-          console.log("%%%%%%%%%")
-          console.log(this.arraytemp)
+          // console.log("%%%%%%%%%")
+          // console.log(this.arraytemp)
 
           this.eventData = this.arraytemp;
 
@@ -162,20 +162,12 @@ export class DoctorDetailComponent implements OnInit {
               subject: {
                 name: 'PatientName',
                 title: 'PatientName',
-                // validation: {
-                //   required: [true, 'Enter valid Patient Name'],
-                //   // range: [this.nameValidation, 'Entered patient name is not present, please add new patient or select from list']
-                // }
               },
               startTime: { title: 'From', validation: { required: true } },
               endTime: { title: 'To', validation: { required: true } },
               description: {
                 name: 'Symptims',
                 title: 'Symptims',
-                // validation: {
-                //   required: [true, 'Please enter disease Symptoms'],
-                //   minLength: [this.minValidation, 'Need atleast 5 letters to be entered']
-                // }
               }
             },
             resourceColorField: this.bookingColor
@@ -184,11 +176,6 @@ export class DoctorDetailComponent implements OnInit {
       });
     });
   }
-
-  // // input's lenth must larger than 5 for symptoms
-  // public minValidation: (args: { [key: string]: string }) => boolean = (args: { [key: string]: string; }) => {
-  //   return args['value'].length >= 5;
-  // }
 
   getEventDetails(data: Object) {
     return (this.instance.formatDate(new Date(data['StartTime']), { type: 'date', skeleton: 'long' }) +
@@ -214,7 +201,7 @@ export class DoctorDetailComponent implements OnInit {
       const eventData: { [key: string]: Object } = this.scheduleObj.eventWindow.getObjectFromFormData('e-schedule-dialog');
       this.scheduleObj.eventWindow.convertToEventData(data as { [key: string]: Object }, eventData);
       eventData.Id = this.scheduleObj.eventBase.getEventMaxID() as number + 1;
-      console.log(eventData)
+      // console.log(eventData)
       var addAppointment: any = {};
       addAppointment.PatientName = this.currentPatient.Name;
       addAppointment.PatientUsername = this.usernamePatient;
@@ -226,10 +213,10 @@ export class DoctorDetailComponent implements OnInit {
       addAppointment.EndTime = eventData.EndTime;
       addAppointment.CategoryColor = '#666666';
       this.updateAppointmentItem = JSON.stringify(addAppointment);
-      console.log(this.updateAppointmentItem);
+      // console.log(this.updateAppointmentItem);
       this.appointmentService.save(this.updateAppointmentItem).subscribe(newTodo => {
         this.newTodo = newTodo;
-        console.log(this.newTodo);
+        // console.log(this.newTodo);
       });
       location.reload();
 
@@ -240,10 +227,10 @@ export class DoctorDetailComponent implements OnInit {
   public eventDelete(e) {
     const eventData: { [key: string]: Object } = this.scheduleObj.activeEventData.event as any;
     this.appointmentID = String(eventData.id);
-    console.log(eventData)
+    // console.log(eventData)
     this.appointmentService.delete(this.appointmentID).subscribe(deleteMsg => {
       this.resMsg = deleteMsg;
-      console.log(this.resMsg)
+      // console.log(this.resMsg)
     });
     this.dialogClose();
     location.reload();
@@ -259,8 +246,8 @@ export class DoctorDetailComponent implements OnInit {
       const eventData: { [key: string]: Object } = this.scheduleObj.eventWindow.getObjectFromFormData('e-schedule-dialog');
       eventData.Id = this.currentEvent.Id;
       this.appointmentID = String(eventDataOriginal.id);
-      console.log(eventDataOriginal)
-      console.log(eventData)
+      // console.log(eventDataOriginal)
+      // console.log(eventData)
       var updateAppointment: any = {};
       // updateAppointment.PatientName = String(eventData.PatientName);
       // updateAppointment.PatientUsername = this.usernamePatient;
@@ -271,10 +258,10 @@ export class DoctorDetailComponent implements OnInit {
       updateAppointment.StartTime = eventData.StartTime;
       updateAppointment.EndTime = eventData.EndTime;
       this.updateAppointmentItem = JSON.stringify(updateAppointment);
-      console.log(this.updateAppointmentItem);
+      // console.log(this.updateAppointmentItem);
       this.appointmentService.update(this.updateAppointmentItem, this.appointmentID).subscribe(appointmentUpdate => {
         this.resMsg = appointmentUpdate;
-        console.log(this.resMsg);
+        // console.log(this.resMsg);
       });
       this.scheduleObj.saveEvent(eventData);
       this.dialogClose();

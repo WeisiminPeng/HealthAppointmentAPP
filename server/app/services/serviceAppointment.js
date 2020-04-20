@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const Appointment = mongoose.model('Appointment');
 
 exports.save = function (params) {
-    console.log(params);
+    // console.log(params);
     const newAppointment = new Appointment(params);
     return newAppointment.save();
     // const promise = newTodo.save();
@@ -37,7 +37,7 @@ exports.update = function (appointment) {
 }
 
 exports.delete = function (id) {
-    console.log(id)
+    // console.log(id)
     const promise = Appointment.remove({ _id: id }).exec();
     return promise;
 }
