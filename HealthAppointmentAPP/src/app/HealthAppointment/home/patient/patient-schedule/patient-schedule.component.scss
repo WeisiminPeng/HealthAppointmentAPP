@@ -29,8 +29,12 @@
   margin-left: auto;
   margin-right: auto;
   //this is to make main content scroll
-  overflow: auto;
+
   box-shadow: 0 10px 20px rgba(0,0,0,.15);
+}
+.specialization-detail-wrapper{
+  height: 500px;
+  overflow: auto;
 }
 .module-title{
   width: 1000px;
