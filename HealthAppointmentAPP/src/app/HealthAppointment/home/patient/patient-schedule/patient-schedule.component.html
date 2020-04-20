@@ -56,13 +56,13 @@
                 </div>
               </div>
               <div class="appointment-btn">
-                <button  class="menubtn">
+                <button  class="menubtn" (click)='deleteAppointment(data)'>
                   <img src="../../../../../assets/img/icons8-取消-50.png" height="30" width="30"/>
                 </button>
-                <button  class="menubtn">
+                <button  class="menubtn" (click)='gotoAppointment(data)'>
                   <img src="../../../../../assets/img/icons8-加-64.png" height="30" width="30"/>
                 </button>
-                <button  class="sendMessage">
+                <button (click)='sendMsg()' class="sendMessage">
                   Send Message
                 </button>
 

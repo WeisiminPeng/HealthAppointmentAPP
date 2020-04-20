@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Internationalization } from '@syncfusion/ej2-base';
 
 import { PatientService } from '../../../services/patient.service';
@@ -14,7 +14,7 @@ import { doctorsData, workHours, appointmentData, success, breakhour, patientDat
 })
 export class PatientScheduleComponent implements OnInit {
 
-  constructor(public patientService: PatientService, public appointmentService: AppointmentService, public routes: ActivatedRoute) { }
+  constructor(public patientService: PatientService, public appointmentService: AppointmentService, public routes: ActivatedRoute, private router: Router) { }
 
   public username: string;
   public currentPatient: patientData;
@@ -28,6 +28,7 @@ export class PatientScheduleComponent implements OnInit {
   public intl: Internationalization = new Internationalization();
   public dataStart: Date;
   public dateNow = Date.now();
+  public resMsg: success;
 
   ngOnInit(): void {
     this.username = this.routes.snapshot.paramMap.get('username');
@@ -83,6 +84,24 @@ export class PatientScheduleComponent implements OnInit {
     } else {
       return `Upcoming`;
     }
+  }
+
+  deleteAppointment(data: any){
+    // console.log(data.id);
+    this.appointmentService.delete(data.id).subscribe(deleteMsg => {
+      this.resMsg = deleteMsg;
+      // console.log(this.resMsg)
+      location.reload();
+    });
+  }
+
+  gotoAppointment(data: any){
+    this.router.navigateByUrl('/patientDoctorDetail/' + data.PatientUsername + '_' + data.DoctorUsername);
+  }
+
+  sendMsg(){
+    // this.DoctorUsername = args.currentTarget.querySelector('.specialist-item')['id'].split('_')[1];
+    this.router.navigateByUrl('/messages/'+this.username+'_patient');
   }
 
 
