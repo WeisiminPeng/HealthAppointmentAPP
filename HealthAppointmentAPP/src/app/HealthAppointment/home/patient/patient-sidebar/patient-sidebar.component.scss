@@ -25,21 +25,19 @@ $planner-tooltip-bg-color:#000;
     position: sticky;
     top: 0;
   .title{
-    //color: #66afe9;
     color: #B2D1E1;
     font-size: 25px;
     text-align: center;
     margin-left: 30%;
     margin-top: 5px;
-    //margin: auto;
-    //top: 0;
-    //left: 20%;
-    img{
-      float: right;
-      //margin-right: 10px;
-      //margin-left: 80%;
-      //margin-top: 10px;
-    }
+  }
+}
+.icons{
+  float: right;
+  margin-right: 30px;
+  img{
+    margin-right: 10px;
+    margin-top: 5px;
   }
 }
 .menubtn{
