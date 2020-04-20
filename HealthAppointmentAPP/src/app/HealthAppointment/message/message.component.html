@@ -3,12 +3,12 @@
         [closeOnDocumentClick]="closeOnDocumentClick">
         <div class="dock">
             <!-- <div class="info align-center">
-                <div class="image"><img src="./assets/images/Admin.png" /></div> 
-                 <div class="content nameContent">
-                    <p class='name'>Jane Deo</p>
-                    <p class='user-type'>Admin</p>
-                </div>
-            </div> -->
+                    <div class="image"><img src="./assets/images/Admin.png" /></div> 
+                     <div class="content nameContent">
+                        <p class='name'>Jane Deo</p>
+                        <p class='user-type'>Admin</p>
+                    </div>
+                </div> -->
             <div class="sidebar-item schdule" [routerLink]="sidebarOneJump">
                 <span class="text" title="dashboard">{{sidebarOne}}</span>
             </div>
@@ -35,23 +35,27 @@
 
 <div class="content">
     <div class="left">
-        <ul>
-            <li *ngFor="let usernameTo of namelist">
-                <span tabindex="1" (click)="getMessageList(usernameTo.username)">{{usernameTo.name}}</span>
+        <ul class="namelist">
+            <li id="nameli" class="name-span" *ngFor="let usernameTo of namelist"(click)="getMessageList(usernameTo.username)">
+                {{usernameTo.name}}
+                <!-- <span tabindex="1" (click)="getMessageList(usernameTo.username)">{{usernameTo.name}}</span> -->
             </li>
         </ul>
     </div>
     <div class="right">
         <div class="showMessage">
-            <li *ngFor="let chat of chatListSmall">
-                <!-- <span>{{chat.usernameMsg}}</span>
-                <br> -->
-                <span *ngIf="chat.usernameMsg == usernameFrom">me</span>
-                <span *ngIf="chat.usernameMsg != usernameFrom">{{chat.nameMsg}}</span>
-                <br>
-                <span>{{chat.content}}</span>
-            </li>
-            <!-- {{msg.content}} -->
+            <ul class="messagelist">
+                <li *ngFor="let chat of chatListSmall">
+                    
+                    <span *ngIf="chat.usernameMsg == usernameFrom" class="right-name">me</span>
+                    <span *ngIf="chat.usernameMsg != usernameFrom" class="left-name">{{chat.nameMsg}}</span>
+                    <br>
+                    <img *ngIf="role == 'doctor'" src="../../../assets/img/user-md-solid.svg">
+                    <img *ngIf="role == 'patient'" src="../../../assets/img/user-solid.svg">
+                    <span *ngIf="chat.usernameMsg == usernameFrom" class="right-content">{{chat.content}}</span>
+                    <span *ngIf="chat.usernameMsg != usernameFrom" class="left-content">{{chat.content}}</span>
+                </li>
+            </ul>
         </div>
         <div class="addMessage">
             <form>
@@ -62,3 +66,4 @@
         </div>
     </div>
 </div>
+
