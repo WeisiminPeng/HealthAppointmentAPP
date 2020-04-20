@@ -1,7 +1,7 @@
-var cors = require('cors');//add
+// var cors = require('cors');//add
 let express = require('express'),
-    app = express(cors()),
-
+    // app = express(cors()),
+    app = express(),
     port = process.env.PORT || 3000,
     mongoose = require('mongoose'),
     bodyParser = require('body-parser');

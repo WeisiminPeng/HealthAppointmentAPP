@@ -43,7 +43,9 @@ $normal-font:  "Lucida Sans Unicode", "Lucida Grande", sans-serif;
             padding: 0;
             background: #eee;
             overflow-y:auto;
+            
             .messagelist{
+                // z-index: -1;
                 list-style-type: none;
                 li{
                     padding:10px;
@@ -145,6 +147,7 @@ $normal-font:  "Lucida Sans Unicode", "Lucida Grande", sans-serif;
         }
         .addMessage{
             height: 210px;
+            // top: 1000px;
             button{
                 float: right;
                 width: 100px;
@@ -163,6 +166,23 @@ $normal-font:  "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
 img{
-    width:10px;
-    
+    width:20px;
+}
+.emoji-button{
+    width: 25px;
+    padding-left: 10px;
+    padding-top: 5px;
+}
+.emoji-div{
+    position: absolute;; 
+    // left:0px; 
+    // top:0px; 
+    // display:none; 
+    margin-top: -100px;
+    // top: 100px;
+    z-index:1;
+    width: 300px;
+    height: 100px;
+    overflow-y:auto;
+    background-color: whitesmoke;
 }

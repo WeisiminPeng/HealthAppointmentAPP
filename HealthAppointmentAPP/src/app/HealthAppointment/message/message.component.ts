@@ -1,7 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-
 //import service
 import { MessageService } from '../services/message.service';
 import { AppointmentService } from '../services/appointment.service';
@@ -57,7 +56,7 @@ export class MessageComponent implements OnInit {
   usernameTo: string;//message is to the user with usernameTo
   usernameFrom: string = "";//message is from the user with usernameFrom
   role: string = "";//the role of this user
-  role2: string="";
+  role2: string = "";
   chatList: any[] = [];//the list only contain the chat content of the user with idFrom
   chatListSmall: any[] = [];//the list contain the chat content between the users with idFrom and idTo
 
@@ -67,6 +66,11 @@ export class MessageComponent implements OnInit {
     nameMsg: "",
     content: ""
   }
+
+  //used for reload
+  private timer;
+
+  isShowEmoji:boolean=false;
 
   //declare services
   constructor(public messageService: MessageService, public appointmentService: AppointmentService, public doctorService: DoctorService, public patientService: PatientService, public http: HttpClient, public router: Router, public routes: ActivatedRoute) {
@@ -105,10 +109,10 @@ export class MessageComponent implements OnInit {
       // console.log(data.username);
       this.usernameFrom = data.username.split('_')[0];
       this.role = data.username.split('_')[1];
-      if(this.role=="patient"){
-        this.role2="doctor";
-      }else{
-        this.role2="patient";
+      if (this.role == "patient") {
+        this.role2 = "doctor";
+      } else {
+        this.role2 = "patient";
       }
       this.msg.usernameMsg = this.usernameFrom;
       // console.log("msg");
@@ -118,7 +122,7 @@ export class MessageComponent implements OnInit {
     });
 
     if (this.role == "patient") {
-      console.log("patient");
+      // console.log("patient");
       this.patientService.list().subscribe((data) => {
         // console.log(data);
         let patientlist = data;
@@ -130,7 +134,7 @@ export class MessageComponent implements OnInit {
         }
       })
     } else {
-      console.log("doctor");
+      // console.log("doctor");
       this.doctorService.list().subscribe((data) => {
         // console.log(data);
         let doctorlist = data;
@@ -159,9 +163,9 @@ export class MessageComponent implements OnInit {
           }
         }
       } else if (this.role == "doctor") {
-        console.log("doctor namelist");
-        console.log("appointmentlist");
-        console.log(this.appointmentlist);
+        // console.log("doctor namelist");
+        // console.log("appointmentlist");
+        // console.log(this.appointmentlist);
         for (let i = 0; i < this.appointmentlist.length; i++) {
           if (this.appointmentlist[i].DoctorUsername == this.usernameFrom) {
             let patientUsername: string = this.appointmentlist[i].PatientUsername;
@@ -177,6 +181,26 @@ export class MessageComponent implements OnInit {
       // console.log(this.usernamelist);
       // console.log(this.namelist);
     });
+
+    //timer, reload the webpage
+    this.timer = setInterval(() => {
+      // console.log("reload!");
+      this.chatList=[];
+      this.chatListSmall=[];
+      this.messageService.list().subscribe((data) => {
+        this.messageAll = data;
+        for (let i = 0; i < this.messageAll.length; i++) {
+          if (this.messageAll[i].username1 == this.usernameFrom || this.messageAll[i].username2 == this.usernameFrom) {
+            this.chatList.push(this.messageAll[i]);
+          }
+        }
+        for (let i = 0; i < this.chatList.length; i++) {
+          if (this.chatList[i].username1 == this.usernameTo || this.chatList[i].username2 == this.usernameTo) {
+            this.chatListSmall = this.chatList[i].chatlist;
+          }
+        }
+      });
+    }, 50000);
   }
 
   // sidebar function
@@ -222,6 +246,26 @@ export class MessageComponent implements OnInit {
 
   }
 
+
+  //add an emoji
+
+
+  addEmoji(e){
+    // alert("add emoji");
+    let selectedEmoji=e.toElement.alt;
+    this.msg.content=this.msg.content+" "+selectedEmoji+" "
+    console.log(this.msg.content);
+    this.isShowEmoji=false;
+    console.log("add"+this.isShowEmoji);
+  }
+
+  showEmoji(){
+    // alert("show emoji");
+    this.isShowEmoji=true;
+    console.log("show"+this.isShowEmoji);
+  }
+
+
   //add a message
   addMessage() {
     if (typeof (this.usernameTo) == "undefined") {
@@ -233,7 +277,7 @@ export class MessageComponent implements OnInit {
       return;
     }
     if (this.messageAll.length == 0) {
-      console.log("this.messageAll.length == 0");
+      // console.log("this.messageAll.length == 0");
       let messagelist = new Message(this.usernameFrom, this.usernameTo, [this.msg]);
       this.messageService.addMessage(messagelist).subscribe((data) => {
         this.newMessageEmitted.emit(data);
@@ -257,7 +301,7 @@ export class MessageComponent implements OnInit {
           }
           // console.log("chatListSmall");
           // console.log(this.chatListSmall);
-          console.log("***********************");
+          // console.log("***********************");
         });
       });
 
@@ -362,6 +406,13 @@ export class MessageComponent implements OnInit {
       (<HTMLInputElement>document.getElementById("msgContent")).value = "";
     }
 
+  }
+
+  ngOnDestroy() {
+    //deestroy the timer
+    if (this.timer) {
+      clearInterval(this.timer);
+    }
   }
 
 }
