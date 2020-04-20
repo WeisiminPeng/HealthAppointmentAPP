@@ -1,56 +1,54 @@
 <app-patient-sidebar></app-patient-sidebar>
 
 <main>
-  <section class="upperHalf">
-    <div class="imgWrapper">
-      <img id="lightbluesky" src="../../../../../assets/img/lightblue-cut.jpeg" />
-    </div>
-  </section>
-  <section class="lowerHalf">
-    <div class="maincontent">
-      <div class="module-title">
-        <div class="title">Personal Info</div>
-        <div class="underline"><hr style="color: #595959"></div>
-      </div>
-      <div class="personalInfoDiv">
-<!--        <h2>Personal-Info</h2>-->
-        <table>
-          <tr>
-            <td>Name:</td><input type="text" [(ngModel)]="people.Name" />
-          </tr>
-          <br>
-          <tr>
-            <td>DOB:</td><input type="text" [(ngModel)]="people.DOB" placeholder="yyyy-mm-dd" />
-          </tr>
-          <br>
-          <tr>
-            <td>Phone:</td><input type="text" [(ngModel)]="people.Mobile" />
-          </tr>
-          <br>
-          <tr>
-            <td>Address:</td><input type="text" [(ngModel)]="people.Address" />
-          </tr>
-          <br>
-          <tr>
-            <td>Email:</td><input type="text" [(ngModel)]="people.Email" /> <br>
-          </tr>
-          <br>
-<!--          <tr>-->
-<!--            <td>Password:</td><input type="password" [(ngModel)]="people.Password" /> <br>-->
-<!--          </tr>-->
+    <section class="upperHalf">
+        <div class="imgWrapper">
+            <img id="lightbluesky" src="../../../../../assets/img/lightblue-cut.jpeg" />
+        </div>
+    </section>
+    <section class="lowerHalf">
+        <div class="maincontent">
+            <div class="module-title">
+                <div class="title">Personal Info</div>
+                <div class="underline">
+                    <hr style="color: #595959">
+                </div>
+            </div>
+            <div class="personalInfoDiv">
+                <!--        <h2>Personal-Info</h2>-->
+                <table>
+                    <tr>
+                        <td>Name:</td><input type="text" [(ngModel)]="name" />
+                    </tr>
+                    <br>
+                    <tr>
+                        <td>DOB:</td><input type="text" [(ngModel)]="dob" placeholder="yyyy-mm-dd" />
+                    </tr>
+                    <br>
+                    <tr>
+                        <td>Phone:</td><input type="text" [(ngModel)]="phone" />
+                    </tr>
+                    <br>
+                    <tr>
+                        <td>Address:</td><input type="text" [(ngModel)]="address" />
+                    </tr>
+                    <br>
+                    <tr>
+                        <td>Email:</td><input type="text" [(ngModel)]="email" /> <br>
+                    </tr>
+                    <br>
 
-        </table>
+                </table>
 
-        <br>
+                <br>
 
-        <button class="update" (click)="update()">Update</button><br>
-        <button class="changePassword" (click)="changePassword()">Change Password</button>
-      </div>
-    </div>
-    <div class="modal" [hidden]=true>
-      <app-password-management></app-password-management>
-    </div>
+                <button class="update" (click)="update()">Update</button><br>
+                <button class="changePassword" (click)="changePassword()">Change Password</button>
+            </div>
+        </div>
+        <div id="modal" [hidden]=true>
+            <app-password-management></app-password-management>
+        </div>
 
-  </section>
+    </section>
 </main>
-

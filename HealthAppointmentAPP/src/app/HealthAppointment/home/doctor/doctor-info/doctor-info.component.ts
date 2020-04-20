@@ -9,25 +9,23 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./doctor-info.component.scss']
 })
 export class DoctorInfoComponent implements OnInit {
-  public List:any[] = [];
-  public people:any;
-  public username:string;
+  public name = '';
+  public mobile = '';
+  public email = '';
+  public people: any;
+  public username: string;
   constructor(public routes:ActivatedRoute,public http:HttpClient,public router:Router) { }
 
   ngOnInit(): void {
     this.username = this.routes.snapshot.paramMap.get('username').split('_')[0];
-    this.http.get('http://localhost:3000/doctors').subscribe((response:any)=>{
-      console.log(response);
-      this.List = response;
-      for(let i = 0 ; i < this.List.length;i++){
-        if(this.List[i].username === this.username){
-          this.people = this.List[i];
-          return;
-        }
-      }
+    this.http.get('http://localhost:3000/doctors/' + this.username).subscribe((response:any)=>{
+      this.people = response;
+      this.name = this.people.Name;
+      this.mobile = this.people.Mobile;
+      this.email = this.people.Email;
     });
   }
-  update(){
+  update() {
     const httpOptions = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
     // let id=this.people._id;
     // '/patients/:username'
@@ -35,14 +33,14 @@ export class DoctorInfoComponent implements OnInit {
     this.http.put(api,{
       "Name": this.people.Name,
       "Mobile": this.people.Mobile,
-      "Address":this.people.Address,
       "Email":this.people.Email
     }, httpOptions).subscribe((response)=>{
       console.log(response);
-      alert("Updated Successfully!")
-    })
+      alert('Updated Successfully!')
+    });
   }
   changePassword(){
-    this.router.navigate(['/changePassword2/'+ this.people.username]);
+    const modal = document.getElementById('cgpassword');
+    modal.hidden = false;
   }
 }

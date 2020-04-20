@@ -20,7 +20,7 @@ let Patient = new Schema({
         type: String
     },
     DOB: {
-        type: Date
+        type: String
     },
     Mobile: {
         type: String

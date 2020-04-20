@@ -3,19 +3,15 @@
     <h2>Personal-Info</h2>
     <table>
         <tr>
-            <td>Name:</td><input type="text" [(ngModel)]="people.Name" />
-        </tr>
-
-
-        <tr>
-            <td>Phone:</td><input type="text" [(ngModel)]="people.Mobile" />
+            <td>Name:</td><input type="text" [(ngModel)]="name" />
         </tr>
         <br>
         <tr>
-            <td>Email:</td><input type="text" [(ngModel)]="people.Email" /> <br>
+            <td>Phone:</td><input type="text" [(ngModel)]="mobile" />
         </tr>
+        <br>
         <tr>
-            <td>Password:</td><input type="password" [(ngModel)]="people.Password" /> <br>
+            <td>Email:</td><input type="text" [(ngModel)]="email" /> <br>
         </tr>
 
     </table>
@@ -23,5 +19,8 @@
     <br>
 
     <button class="update" (click)="update()">Update</button>
-    <button class="changePassword" (click)="changePassword()">Change Password</button>
+    <button id="changePassword" (click)="changePassword()">Change Password</button>
+</div>
+<div id="cgpassword" [hidden]=true>
+    <app-password-management2></app-password-management2>
 </div>
