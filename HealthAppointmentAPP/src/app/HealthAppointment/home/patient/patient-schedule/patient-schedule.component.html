@@ -35,9 +35,13 @@
                       <td class="lable">Ends at:</td>
                       <td class="info">{{getEndTimeDetails(data)}}</td>
                     </tr>
+
                     <tr>
                       <td class="lable">Location:</td>
-                      <td class="info">360 Huntington Ave., Boston</td>
+                      <td class="info"><a href="https://www.google.com/maps/place/360+Huntington+Ave,+Boston,+MA+02115/@42.3394668,-71.0907173,17z/data=!3m1!4b1!4m5!3m4!1s0x89e37a18eb671617:0x9cd32e303a7cec87!8m2!3d42.3394629!4d-71.0885286" target="_blank">
+                        360 Huntington Ave., Boston
+                      </a>
+                      </td>
                     </tr>
                     <tr>
                       <td class="lable">Status:</td>
@@ -45,15 +49,33 @@
                     </tr>
                     </tbody>
                   </table>
-
+                </div>
+                <div class="symptom-wrapper">
+                  <div class="symptom">Symptom:</div>
+                  <div>{{data.Symptims}}</div>
                 </div>
               </div>
-              <div class="getWeekDetails">{{getWeekDetails(data)}}</div>
-              <div class="getMontheDetails">{{getMonthDetails(data)}}</div>
-              <div class="getDayDetails">{{getDayDetails(data)}}</div>
-              <div class="getYearDetails">{{getYearDetails(data)}}</div>
-              <div class="getTimeDetails">{{getStartTimeDetails(data)}}</div>
+              <div class="appointment-btn">
+                <button  class="menubtn">
+                  <img src="../../../../../assets/img/icons8-取消-50.png" height="30" width="30"/>
+                </button>
+                <button  class="menubtn">
+                  <img src="../../../../../assets/img/icons8-加-64.png" height="30" width="30"/>
+                </button>
+                <button  class="sendMessage">
+                  Send Message
+                </button>
+
+              </div>
+
+<!--              PengWei's code -->
+<!--              <div class="getWeekDetails">{{getWeekDetails(data)}}</div>-->
+<!--              <div class="getMontheDetails">{{getMonthDetails(data)}}</div>-->
+<!--              <div class="getDayDetails">{{getDayDetails(data)}}</div>-->
+<!--              <div class="getYearDetails">{{getYearDetails(data)}}</div>-->
+<!--              <div class="getTimeDetails">{{getStartTimeDetails(data)}}</div>-->
             </div>
+
           </div>
         </div>
       </div>

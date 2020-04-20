@@ -79,11 +79,12 @@ export class PatientScheduleComponent implements OnInit {
     this.dataStart = new Date(data.StartTime);
     // this.dateNow =  new Date.now();
     if (this.dataStart.getTime() <= this.dateNow) {
-      return `Completed`;
+      return `Expired`;
     } else {
       return `Upcoming`;
     }
   }
+
 
 
 }
