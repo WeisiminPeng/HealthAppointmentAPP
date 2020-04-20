@@ -1,24 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';  // import HTML service
 import {Router} from '@angular/router';
+import {DatePipe} from '@angular/common';
 // import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  styleUrls: ['./register.component.scss'],
+  providers: [DatePipe]
 })
 
 export class RegisterComponent implements OnInit {
 
   public List: any[] = [];
   public kindOfUser = '';
-  public Name: string;
-  public Username: string;
-  public Password: string;
-  public sex: string;
-  public DateOfBirth: any;
+  public Name = '';
+  public Username = '';
+  public Password = '';
+  public sex = '';
+  public DateOfBirth: Date;
   public phone = '';
   public email = '';
   public address = '';
@@ -28,7 +30,7 @@ export class RegisterComponent implements OnInit {
   public Experience: string;
 
 
-constructor( public http: HttpClient, private router: Router) {}
+constructor( public http: HttpClient, private router: Router, private datepipe: DatePipe) {}
 
 ngOnInit(): void {
   this.WorkDayList.push(
@@ -82,8 +84,7 @@ ngOnInit(): void {
   for (let i = 0; i < 7; i++) {
     this.availableDayList.push(i);
   }
-  console.log(this.availableDayList);
-  console.log(this.WorkDayList);
+
   const emailInput = document.getElementById('email') as HTMLInputElement;
   emailInput.onclick = () => {
     console.log(this.email);
@@ -97,15 +98,15 @@ ngOnInit(): void {
       alert('You have entered an invalid email address!');
     } else {
       console.log('right email');
-      console.log(emailInput.value);
+
     }
   };
-  const nameInput = document.getElementById('name');
-  nameInput.onclick = () => {
-    if (this.kindOfUser === '') {
-      alert('Please choose you are patient or doctor');
-   }
-  };
+  // const nameInput = document.getElementById('name');
+  // nameInput.onclick = () => {
+  //   if (this.kindOfUser === '') {
+  //     alert('Please choose you are patient or doctor');
+  //  }
+  // };
   const phone = document.getElementById('phone') as HTMLInputElement;
   phone.onclick = () => {
     this.phone = '';
@@ -126,10 +127,31 @@ register() {
   const index3 = genderSelect.selectedIndex;
   const value3 = genderSelect.options[index3].text;
   this.sex = value3;
+  if (this.kindOfUser === '') {
+      alert('Please choose you are patient or doctor');
+      return;
+   } else if (this.Name === '') {
+    alert('Please input your name!');
+    return;
+   } else if (this.sex === '-- select --') {
+    alert('Please choose your gender!');
+    return;
+   } else if (this.email === '') {
+    alert('Please input your email!');
+    return;
+   } else if (this.Username === '') {
+    alert('Please input your Username!');
+    return;
+   } else if (this.Password === '') {
+    alert('Please input your Password!');
+    return;
+   }
+
+  console.log(this.sex);
   const httpOptions = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
   if (this.kindOfUser === 'patient') {
       this.http.get('http://localhost:3000/patients').subscribe((response: any ) => {
-        console.log(response);
+        // console.log(response);
         this.List = response;
         // tslint:disable-next-line:prefer-for-of
         for (let i = 0; i < this.List.length; i++) {
@@ -143,14 +165,14 @@ register() {
           username: this.Username,
           Name: this.Name,
           Gender: this.sex,
-          DOB: this.DateOfBirth,
+          DOB: this.datepipe.transform(this.DateOfBirth, 'yyyy-MM-dd'),
           Mobile: this.phone,
           Email: this.email,
           Address: this.address,
           Password: this.Password
     // tslint:disable-next-line: no-shadowed-variable
     }, httpOptions).subscribe((response) => {
-      console.log(response);
+      // console.log(response);
       alert('Register successfully!');
       this.router.navigate(['/login']);
     });
@@ -165,7 +187,7 @@ register() {
       const value2 = select2.options[index2].text;
       this.Experience = value2;
       this.http.get('http://localhost:3000/doctors').subscribe((response: any) => {
-        console.log(response);
+        // console.log(response);
         this.List = response;
         // tslint:disable-next-line: prefer-for-of
         for (let i = 0; i < this.List.length; i++ ) {
@@ -190,13 +212,14 @@ register() {
               Experience: this.Experience
           // tslint:disable-next-line:no-shadowed-variable
               }, httpOptions).subscribe((response) => {
-              console.log(response);
+              // console.log(response);
               alert('Register successfully!');
               this.router.navigate(['/login']);
               });
-
       });
       }
+
+
   }
 back() {
     this.router.navigate(['']);

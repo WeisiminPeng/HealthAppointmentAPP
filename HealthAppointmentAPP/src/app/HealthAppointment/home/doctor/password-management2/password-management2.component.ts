@@ -19,38 +19,38 @@ export class PasswordManagement2Component implements OnInit {
 
   ngOnInit(): void {
     this.username = this.routes.snapshot.paramMap.get('username').split('_')[0];
-  }
-  check() : boolean{
-    this.http.get('http://localhost:3000/doctors').subscribe((response:any)=>{
-      console.log(response);
-      this.List = response;
-      for(let i = 0 ; i < this.List.length;i++){
-        if(this.List[i].username === this.username){
-          this.people = this.List[i];
-          return;
-        }
-      }
+    this.http.get('http://localhost:3000/doctors/' + this.username).subscribe((response:any)=>{
+      this.people = response;
     });
-    if(this.first === this.people.Password && this.second === this.people.Password){
-        alert('Two password input is consistent');
-        return true;
-      }else{
-        alert('Two passwords are inconsistent, please check and re-enter');
-        return false;
+    const originalPassword = document.getElementById('oriPassword');
+    originalPassword.onchange = () => {
+      if (this.first !== this.people.Password) {
+        alert(' You entered the wrong original password');
+        this.first = '';
       }
-    }
-    confirm(){
+     };
+    const conPassword = document.getElementById('confirm');
+    conPassword.onchange = () => {
+      if (this.second !== this.newPassword) {
+        alert('Two passwords are inconsistent');
+        this.second = this.newPassword = '';
+        return;
+      }
+    };
+  }
+    confirm() {
       const httpOptions = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
-      // let id=this.people._id;
-      // '/patients/:username'
       let api='http://localhost:3000/doctors/'+this.people.username;
       this.http.put(api,{
-
         "Password":this.newPassword
       }, httpOptions).subscribe((response)=>{
         console.log(response);
         alert("Updated Successfully!");
         this.router.navigate(['/login']);
       })
+    }
+    back(){
+      const modal = document.getElementById('cgpassword');
+      modal.hidden = true;
     }
 }

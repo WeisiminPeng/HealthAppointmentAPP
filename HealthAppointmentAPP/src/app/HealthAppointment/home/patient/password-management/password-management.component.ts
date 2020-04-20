@@ -13,45 +13,43 @@ export class PasswordManagementComponent implements OnInit {
   public second: string;
   public newPassword: string;
   public username: string;
-  public List:any[] = [];
-  public people:any;
+  public people: any;
   constructor(public routes:ActivatedRoute,public http:HttpClient,public router:Router) { }
 
   ngOnInit(): void {
     this.username = this.routes.snapshot.paramMap.get('username').split('_')[0];
+    this.http.get('http://localhost:3000/patients/'+ this.username).subscribe((response: any) => {
+        this.people = response;
+      });
+    const firstInput = document.getElementById('first');
+    firstInput.onchange = () => {
+        if (this.first !== this.people.Password) {
+          alert(' You entered the wrong original password');
+          this.first = '';
+          return;
+          }
+    };
+    const newInput = document.getElementById('new');
+    newInput.onchange = () => {
+        if (this.second !== this.newPassword) {
+          alert('Two passwords are inconsistent');
+          this.second = this.newPassword = '';
+          return;
+        }
+    };
   }
- check() : boolean{
-  this.http.get('http://localhost:3000/patients').subscribe((response:any)=>{
-    console.log(response);
-    this.List = response;
-    for(let i = 0 ; i < this.List.length;i++){
-      if(this.List[i].username === this.username){
-        this.people = this.List[i];
-        return;
-      }
-    }
-  });
-  if(this.first === this.people.Password && this.second === this.people.Password){
-      alert('Two password input is consistent');
-      return true;
-    }else{
-      alert('Two passwords are inconsistent, please check and re-enter');
-      return false;
-    }
-  }
-  confirm(){
+  confirm() {
     const httpOptions = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
-    // let id=this.people._id;
-    // '/patients/:username'
-    let api='http://localhost:3000/patients/'+this.people.username;
-    this.http.put(api,{
-
-      "Password":this.newPassword
+    const api = 'http://localhost:3000/patients/' + this.username;
+    this.http.put(api, {
+      'Password': this.newPassword
     }, httpOptions).subscribe((response)=>{
-      console.log(response);
-      alert("Updated Successfully!");
+      alert('Updated Successfully!');
       this.router.navigate(['/login']);
-    })
+    });
+}
+  back(){
+    const modal = document.getElementById('modal');
+    modal.hidden = true;
   }
-
 }

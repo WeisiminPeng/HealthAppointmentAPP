@@ -10,19 +10,20 @@
     <div class="maincontent">
       <div class="module-title">
         <div class="title">My Appointment</div>
-        <div class="underline"><hr style="color: #595959"></div>
+        <div class="underline">
+          <hr style="color: #595959">
+        </div>
       </div>
       <div class="specialization-detail-wrapper">
         <div class='patient-schedule'>
           <div class='appointment-item' *ngFor="let data of appointments">
             <div class="appointment-detail">
               <div class="DoctorName">Dr. {{data.DoctorName}}</div>
-              <div class="getStartTimeDetails">
-                {{getStartTimeDetails(data)}}
-              </div>
-              <div class="getEndTimeDetails">
-                {{getEndTimeDetails(data)}}
-              </div>
+              <div class="getWeekDetails">{{getWeekDetails(data)}}</div>
+              <div class="getMontheDetails">{{getMonthDetails(data)}}</div>
+              <div class="getDayDetails">{{getDayDetails(data)}}</div>
+              <div class="getYearDetails">{{getYearDetails(data)}}</div>
+              <div class="getTimeDetails">{{getTimeDetails(data)}}</div>
             </div>
           </div>
         </div>
