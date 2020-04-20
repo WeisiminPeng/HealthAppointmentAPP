@@ -1,61 +1,63 @@
 
+<div class="bg">
+  <body>
+  <div class="register-wrapper">
+    <h2>Northeastern Health Center</h2>
+    <table id="registerBody">
+      <tr>
+        <td>I'm a:</td>
+        <input type="radio" value="patient" name="people" id="people1" (click)="DeleteOption()" [(ngModel)]="kindOfUser"> <label for="people1" (click)="DeleteOption()">Patient</label>
+        <input type="radio" value="doctor" name="people" id="people2" (click)="AddOption()" [(ngModel)]="kindOfUser"> <label for="people2" (click)="AddOption()">Doctor</label>
+      </tr>
+      <tr>
+        <td>Name:</td> <input class="inputbox" type="text" id="name" [(ngModel)]="Name">
+      </tr>
 
-<body>
-    <div class="register-wrapper">
-        <h2>Northeastern Health Center</h2>
-        <table id="registerBody">
-            <tr>
-                <td>I'm a:</td>
-                <input type="radio" value="patient" name="people" id="people1" (click)="DeleteOption()" [(ngModel)]="kindOfUser"> <label for="people1" (click)="DeleteOption()">Patient</label>
-                <input type="radio" value="doctor" name="people" id="people2" (click)="AddOption()" [(ngModel)]="kindOfUser"> <label for="people2" (click)="AddOption()">Doctor</label>
-            </tr>
-            <tr>
-                <td>Name:</td> <input class="inputbox" type="text" id="name" [(ngModel)]="Name">
-            </tr>
-
-            <!-- <tr>
-                Gender:
-                <input type="radio" value="Male" name="gender" id="sex1" [(ngModel)]="sex"> <label for="sex1">Male</label>
-                <input type="radio" value="Female" name="gender" id="sex2" [(ngModel)]="sex"> <label for="sex2">Female</label>
-            </tr> -->
-            <tr>
-                <td>Gender:</td>
-                <select id="genderSelect">
-                  <option value="none" selected disabled hidden>-- select --</option>
-                  <option value=" Male"> Male</option>
-                  <option value=" Female"> Female</option>
-              </select>
-            </tr>
-            <tr>
-                <td>Date of Birth:</td> <input class="inputbox" type="date" [(ngModel)]="DateOfBirth">
-            </tr>
-            <tr>
-                <td>Phone:</td><input class="inputbox" type="text" id="phone" [(ngModel)]="phone">
-            </tr>
-            <tr>
-                <td>Email:</td> <input class="inputbox" type="email" id='email' [(ngModel)]="email">
-            </tr>
-
-
-            <tr>
-                <td>Address:</td> <input class="inputbox" type="text" [(ngModel)]="address">
-            </tr>
-            <tr>
-                <td>Username:</td> <input class="inputbox" type="text" [(ngModel)]="Username">
-            </tr>
-            <tr>
-                <td>Password:</td> <input class="inputbox" type="password" [(ngModel)]="Password"><br>
-            </tr>
+      <!-- <tr>
+          Gender:
+          <input type="radio" value="Male" name="gender" id="sex1" [(ngModel)]="sex"> <label for="sex1">Male</label>
+          <input type="radio" value="Female" name="gender" id="sex2" [(ngModel)]="sex"> <label for="sex2">Female</label>
+      </tr> -->
+      <tr>
+        <td>Gender:</td>
+        <select id="genderSelect">
+          <option value="none" selected disabled hidden>-- select --</option>
+          <option value=" Male"> Male</option>
+          <option value=" Female"> Female</option>
+        </select>
+      </tr>
+      <tr>
+        <td>Date of Birth:</td> <input class="inputbox" type="date" [(ngModel)]="DateOfBirth">
+      </tr>
+      <tr>
+        <td>Phone:</td><input class="inputbox" type="text" id="phone" [(ngModel)]="phone">
+      </tr>
+      <tr>
+        <td>Email:</td> <input class="inputbox" type="email" id='email' [(ngModel)]="email">
+      </tr>
 
 
-        </table>
-        <div style="margin-left: 70px">
-            <button class="registerBtn" (click)="register()">Register</button><br>
-            <button class="backBtn" (click)="back()"> < Back</button>
-        </div>
+      <tr>
+        <td>Address:</td> <input class="inputbox" type="text" [(ngModel)]="address">
+      </tr>
+      <tr>
+        <td>Username:</td> <input class="inputbox" type="text" [(ngModel)]="Username">
+      </tr>
+      <tr>
+        <td>Password:</td> <input class="inputbox" type="password" [(ngModel)]="Password"><br>
+      </tr>
+
+
+    </table>
+    <div style="margin-left: 70px">
+      <button class="registerBtn" (click)="register()">Register</button><br>
+      <button class="backBtn" (click)="back()"> < Back</button>
     </div>
+  </div>
 
 
-</body>
+  </body>
 
-<app-footer></app-footer>
+  <app-footer></app-footer>
+</div>
+
