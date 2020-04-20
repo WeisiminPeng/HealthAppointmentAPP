@@ -45,19 +45,33 @@
   }
 }
 
-.patient-schedule{
-  margin: 15px;
-  padding: 10px;
-  display: grid;
-  grid-template-columns: 1fr 1fr ;
-  grid-column-gap: 10px;
-  grid-row-gap: 1em;
-}
+
 
 .appointment-detail{
-  padding: 10px;
-  border: 1px solid rgba(0,0,0,.15);
-  border-radius: 2px;
-  box-shadow: 0 0px 10px rgba(0,0,0,.15);
+  padding: 30px;
 
+  //box-shadow: 0 0px 10px rgba(0,0,0,.15);
+
+}
+// this controls the grid layout
+.patient-schedule{
+  margin-top: 30px;
+  //padding: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 1em;
+
+}
+
+// following controls the card showing of appointments
+.appointment-item{
+  width: 100%;
+  border-right: 1px solid #ececec;
+  border-top: 1px solid #ececec;
+  border-bottom: 1px solid #ececec;
+  //padding-bottom: 0;
+  margin-top: -1px;
+  overflow: visible;
+  padding: 0;
 }

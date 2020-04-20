@@ -19,11 +19,40 @@
           <div class='appointment-item' *ngFor="let data of appointments">
             <div class="appointment-detail">
               <div class="DoctorName">Dr. {{data.DoctorName}}</div>
+              <div class="appointment-info">
+                <div class="appointment-overview">
+                  <table>
+                    <tbody>
+                    <tr>
+                      <td class="lable">Date:</td>
+                      <td class="info">{{getMonthDetails(data)}}-{{getDayDetails(data)}}-{{getYearDetails(data)}}, {{getWeekDetails(data)}} </td>
+                    </tr>
+                    <tr>
+                      <td class="lable">Starts at:</td>
+                      <td class="info">{{getStartTimeDetails(data)}}</td>
+                    </tr>
+                    <tr>
+                      <td class="lable">Ends at:</td>
+                      <td class="info">{{getEndTimeDetails(data)}}</td>
+                    </tr>
+                    <tr>
+                      <td class="lable">Location:</td>
+                      <td class="info">360 Huntington Ave., Boston</td>
+                    </tr>
+                    <tr>
+                      <td class="lable">Status:</td>
+                      <td class="info">{{compareDate(data)}}</td>
+                    </tr>
+                    </tbody>
+                  </table>
+
+                </div>
+              </div>
               <div class="getWeekDetails">{{getWeekDetails(data)}}</div>
               <div class="getMontheDetails">{{getMonthDetails(data)}}</div>
               <div class="getDayDetails">{{getDayDetails(data)}}</div>
               <div class="getYearDetails">{{getYearDetails(data)}}</div>
-              <div class="getTimeDetails">{{getTimeDetails(data)}}</div>
+              <div class="getTimeDetails">{{getStartTimeDetails(data)}}</div>
             </div>
           </div>
         </div>
