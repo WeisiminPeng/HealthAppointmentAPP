@@ -25,6 +25,7 @@
         "@syncfusion/ej2-angular-navigations": "^18.1.43",
         "@syncfusion/ej2-angular-popups": "^18.1.43",
         "@syncfusion/ej2-angular-schedule": "^18.1.43",
+        "bootstrap": "^3.4.1",
         "rxjs": "~6.5.4",
         "tslib": "^1.10.0",
         "vue": "^2.6.11",

@@ -57,6 +57,7 @@ export class MessageComponent implements OnInit {
   usernameTo: string;//message is to the user with usernameTo
   usernameFrom: string = "";//message is from the user with usernameFrom
   role: string = "";//the role of this user
+  role2: string="";
   chatList: any[] = [];//the list only contain the chat content of the user with idFrom
   chatListSmall: any[] = [];//the list contain the chat content between the users with idFrom and idTo
 
@@ -104,6 +105,11 @@ export class MessageComponent implements OnInit {
       // console.log(data.username);
       this.usernameFrom = data.username.split('_')[0];
       this.role = data.username.split('_')[1];
+      if(this.role=="patient"){
+        this.role2="doctor";
+      }else{
+        this.role2="patient";
+      }
       this.msg.usernameMsg = this.usernameFrom;
       // console.log("msg");
       // console.log(this.msg);
