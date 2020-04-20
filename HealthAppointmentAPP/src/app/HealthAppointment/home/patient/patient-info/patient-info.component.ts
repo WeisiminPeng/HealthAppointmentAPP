@@ -8,29 +8,33 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./patient-info.component.scss']
 })
 export class PatientInfoComponent implements OnInit {
-  public List:any[] = [];
-  public people:any;
-  public username:string;
-  constructor(public routes:ActivatedRoute,public http:HttpClient,public router:Router) { }
+  public people: any;
+  public name = '';
+  public dob = '';
+  public phone = '';
+  public email = '';
+  public address = '';
+  public username: string;
+  constructor(public routes: ActivatedRoute, public http: HttpClient, public router: Router) { }
 
   ngOnInit(): void {
-    this.username = this.routes.snapshot.paramMap.get('username').split('_')[0];
-    this.http.get('http://localhost:3000/patients').subscribe((response:any)=>{
-      console.log(response);
-      this.List = response;
-      for(let i = 0 ; i < this.List.length;i++){
-        if(this.List[i].username === this.username){
-          this.people = this.List[i];
-          return;
-        }
-      }
-    });
+
+      this.username = this.routes.snapshot.paramMap.get('username').split('_')[0];
+      this.http.get('http://localhost:3000/patients/' + this.username).subscribe((response: any) => {
+        this.people = response;
+        this.name = this.people.Name;
+        this.dob = this.people.DOB;
+        this.phone = this.people.Mobile;
+        this.address = this.people.Address;
+        this.email = this.people.Email;
+      });
+      // for(let i = 0 ; i < this.List.length;i++){
+          // if(this.List[i].username === this.username){
+
   }
-  update(){
+  update() {
     const httpOptions = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
-    // let id=this.people._id;
-    // '/patients/:username'
-    let api='http://localhost:3000/patients/'+this.people.username;
+    const api ='http://localhost:3000/patients/'+this.people.username;
     this.http.put(api,{
       "Name": this.people.Name,
       "Mobile": this.people.Mobile,
@@ -41,7 +45,8 @@ export class PatientInfoComponent implements OnInit {
       alert("Updated Successfully!")
     })
   }
-  changePassword(){
-    this.router.navigate(['/changePassword/'+ this.people.username]);
+  changePassword() {
+    const modal = document.getElementById('modal');
+    modal.hidden = false;
   }
 }
