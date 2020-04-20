@@ -1,21 +1,24 @@
 <app-doctor-sidebar></app-doctor-sidebar>
-<div class="doctor-appointment-wrapper">
-    <div class="workdays-wrapper">
-        <header>
-            <div class="title">Break Hours</div>
-            <div class="edit-break-hours" (click)='onEditBreak()'>
-                <button ejs-button cssClass="e-small e-round" iconCss="e-icons e-add-icon"></button>
-                <span class="button-label">Edit</span>
-            </div>
-        </header>
-        <div class="break-hours-content">
-            <div class="works-day" *ngFor="let data of breakHoursData">
-                <div class="day-name">{{data.day}}</div>
-                <div class="day-break-hours {{data.State}}">{{getBreakDetails(data)}}</div>
-            </div>
-        </div>
-    </div>
-</div>
+
+<!--this part has been moved in to lowerhalf-->
+<!--<div class="doctor-appointment-wrapper">-->
+<!--    <div class="workdays-wrapper">-->
+<!--        <header>-->
+<!--            <div class="title">Break Hours</div>-->
+<!--            <div class="edit-break-hours" (click)='onEditBreak()'>-->
+<!--                <button ejs-button cssClass="e-small e-round" iconCss="e-icons e-add-icon"></button>-->
+<!--                <span class="button-label">Edit</span>-->
+<!--            </div>-->
+<!--        </header>-->
+<!--        <div class="break-hours-content">-->
+<!--            <div class="works-day" *ngFor="let data of breakHoursData">-->
+<!--                <div class="day-name">{{data.day}}</div>-->
+<!--                <div class="day-break-hours {{data.State}}">{{getBreakDetails(data)}}</div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
 <!-- popup page-edit breakhour -->
 <div class="break-hour-edit-container" style="display:none">
     <ejs-dialog #breakHourObj width='445px' cssClass='break-hour-dialog' [isModal]='true' [visible]='false'
@@ -23,7 +26,7 @@
         <!-- <ng-template #content> -->
         <form>
             <div class="break-hour-instruction">
-                Click on day to add break, double click to take time off and third click to remove break
+                Click on day to add break, double click to take day off and third click to remove break
             </div>
             <div class="break-hour header">
                 <div class="break-hour-start-end">
@@ -44,7 +47,7 @@
                         [value]=day.BreakEndHour [showClearButton]=false></ejs-timepicker>
                 </div>
                 <div class='state-container {{day.State}}'>
-                    <div>Time Off</div>
+                    <div>Day Off</div>
                 </div>
             </div>
         </form>
@@ -54,3 +57,52 @@
         </div>
     </ejs-dialog>
 </div>
+
+<!--yang's code starts from here-->
+<main>
+  <section class="upperHalf">
+    <div class="imgWrapper">
+      <img id="lightbluesky" src="../../../../../assets/img/lightblue-cut.jpeg" />
+    </div>
+  </section>
+  <section class="lowerHalf">
+    <div class="maincontent">
+      <div class="module-title">
+        <div class="title">Break Hours</div>
+        <div class="underline">
+          <hr style="color: #595959">
+        </div>
+      </div>
+      <div class="personalInfoDiv">
+        <div class="doctor-appointment-wrapper">
+          <div class="workdays-wrapper">
+            <header>
+<!--              <div class="title">Break Hours</div>-->
+              <div class="edit-break-hours" (click)='onEditBreak()'>
+                <button ejs-button cssClass="e-small e-round" iconCss="e-icons e-add-icon"></button>
+                <span class="button-label">Edit</span>
+              </div>
+            </header>
+            <div class="break-hours-content">
+              <div class="works-day" *ngFor="let data of breakHoursData">
+                <div class="day-name">{{data.day}}</div>
+                <div class="day-break-hours {{data.State}}">{{getBreakDetails(data)}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <table>
+
+
+        </table>
+
+
+
+
+      </div>
+    </div>
+
+
+  </section>
+</main>
+<app-patient-footer></app-patient-footer>
