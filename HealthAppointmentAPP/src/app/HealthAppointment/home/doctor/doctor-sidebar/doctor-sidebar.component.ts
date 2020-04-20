@@ -37,6 +37,7 @@ export class DoctorSidebarComponent implements OnInit {
   }
 
   public onCreated(args: any) {
+    this.sidebar.isOpen = false;
     this.sidebar.element.style.visibility = '';
   }
 

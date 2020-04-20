@@ -36,18 +36,22 @@
 <div class="content">
     <div class="left">
         <ul>
-            <li *ngFor="let item of namelist">
-                <span tabindex="1" (click)="getMessageList(item.id)">{{item.name}}</span>
+            <li *ngFor="let usernameTo of namelist">
+                <span tabindex="1" (click)="getMessageList(usernameTo.username)">{{usernameTo.name}}</span>
             </li>
         </ul>
     </div>
     <div class="right">
         <div class="showMessage">
-            <li *ngFor="let item of chatListSmall">
-                <span>{{item.id}}</span>
+            <li *ngFor="let chat of chatListSmall">
+                <!-- <span>{{chat.usernameMsg}}</span>
+                <br> -->
+                <span *ngIf="chat.usernameMsg == usernameFrom">me</span>
+                <span *ngIf="chat.usernameMsg != usernameFrom">{{chat.nameMsg}}</span>
                 <br>
-                <span>{{item.content}}</span>
+                <span>{{chat.content}}</span>
             </li>
+            <!-- {{msg.content}} -->
         </div>
         <div class="addMessage">
             <form>
