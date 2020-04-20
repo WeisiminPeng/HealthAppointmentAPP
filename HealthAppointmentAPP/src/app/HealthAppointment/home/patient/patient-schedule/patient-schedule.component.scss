@@ -22,10 +22,10 @@
 
 .maincontent{
   position: relative;
-  margin-top: -220px;
+  margin-top: -250px;
   height: 600px;
   width: 1000px;
-  background-color: #fff;
+  background-color:  #FFFFFF;
   margin-left: auto;
   margin-right: auto;
   box-shadow: 0 10px 20px rgba(0,0,0,.15);
@@ -45,19 +45,107 @@
   }
 }
 
+
+
+
+// this controls the grid layout
 .patient-schedule{
-  margin: 15px;
-  padding: 10px;
+  margin-top: 30px;
+  //padding: 10px;
   display: grid;
-  grid-template-columns: 1fr 1fr ;
-  grid-column-gap: 10px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 0px;
   grid-row-gap: 1em;
 }
 
+// following controls the card showing of appointments
 .appointment-detail{
-  padding: 10px;
-  border: 1px solid rgba(0,0,0,.15);
-  border-radius: 2px;
-  box-shadow: 0 0px 10px rgba(0,0,0,.15);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  //font-family: OpenSans,sans-serif;
+  font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+  color: #333333;
+  line-height: 32px;
+}
+.DoctorName{
+  width: 100%;
+  font-size: 16px;
+  margin-bottom: 12px;
+  font-weight: 600;
+  text-align: left;
+  line-height: 1.1;
 
+}
+.appointment-info{
+
+
+}
+.appointment-overview{
+  table{
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    tbody{
+      display: table-row-group;
+      vertical-align: middle;
+    }
+    .info{
+      padding-left: 20px;
+      a{
+        text-decoration: none;
+        color: #90B3C2;
+        &:hover{
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+.appointment-item{
+  width: 100%;
+  border-right: 1px solid #ececec;
+  border-top: 1px solid #ececec;
+  border-bottom: 1px solid #ececec;
+  //padding-bottom: 0;
+  margin-top: -1px;
+  overflow: visible;
+  padding: 0;
+}
+
+.symptom-wrapper{
+  font-size: 14px;
+  margin-top: 20px;
+  padding: 0px 20px 0 10px;
+  border: 1px solid #e7e7e7;
+  text-align: left;
+  .symptom{
+    color: #90B3C2;
+  }
+}
+
+.appointment-btn{
+  display: inline-block;
+  margin-top: 20px;
+}
+.menubtn{
+  border: none;
+  background: none;
+  box-shadow: none;
+}
+.sendMessage{
+  font-size: 16px;
+  width: 180px;
+  height: 35px;
+  margin-top: -20px;
+  position: center;
+  background-color: #B3D2E2;
+  color: whitesmoke;
+  font-weight: bold;
+  border: 5px #666666;
+  border-radius: 5px;
+  padding-left: 10px;
 }
