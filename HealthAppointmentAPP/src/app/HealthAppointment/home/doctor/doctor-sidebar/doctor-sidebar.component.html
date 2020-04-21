@@ -10,11 +10,10 @@
                 </div>
             </div> -->
             <div id="sidebar-item-Avatar">
-                <div id="imgDiv">
-                    <img id="avatar" *ngIf="imgURL" [src]="imgURL">
-                </div>
-
                 <!-- alse (change)="fileChange($event.target.files)" -->
+            </div>
+            <div id="imgDiv">
+                <img id="avatar" *ngIf="imgURL" [src]="imgURL">
             </div>
             <div class="sidebar-item schdule" [routerLink]="doctorSchdule">
                 <span class="text" title="schdule">My Schdule</span>
