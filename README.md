@@ -20,37 +20,37 @@ As a doctor, I am able to leave a message to the patient who has made an appoint
   
 
 ## Technical Requirements:
-Use create, read, update and delete (CRUD) operations
+Use create, read, update and delete (CRUD) operations.  
 Use angular HTTP client module to fetch data from the Nodejs server.  
 Use angular component and data binding features.  
 Use SCSS for CSS.  
 Use angular-cli for building the project.  
-Use REST API and Node.js for back-end.
-Use the express framework for developing the endpoints.
-Use MongoDB for the persistence layer.
-  
+Use REST API and Node.js for back-end.  
+Use the express framework for developing the endpoints.  
+Use MongoDB for the persistence layer.  
+   
     
 ## Our information
 Name: Yang Huang  
 NUID: 001059638  
-Responsibilities: scss
+Responsibilities: scss  
   
 Name: Weisimin Peng  
 NUID: 001057546  
-Responsibilities: Back-end server(patient, doctor and appointment); 
-                  Front-end services(patient, doctor and appointment); 
-                  doctor-appointment/schedule/sidebar component; 
-                  patient-appointment/schedule/doctordetail/sidebar component; 
+Responsibilities: Back-end server(patient, doctor and appointment);  
+                  Front-end services(patient, doctor and appointment);  
+                  doctor-appointment/schedule/sidebar component;  
+                  patient-appointment/schedule/doctordetail/sidebar component;  
   
 Name: Muhua Shuai  
 NUID: 001470329  
-Responsibilities: Back-end server(message); 
-                  All the component in message file; 
-                  Front-end services(message); 
+Responsibilities: Back-end server(message);  
+                  All the component in message file;  
+                  Front-end services(message);  
   
 Name: Tao Wang  
-NUID: 001056563  
-Responsibilities: login, registration and personal info of docor/patient page;
+NUID: 001056563   
+Responsibilities: login, registration and personal info of docor/patient page; 
   
     
 ## Technologies used
@@ -61,13 +61,13 @@ Angular-cli, SCSS, CSS, Node.js, REST API, MongoDB, express, syncfusion.
 Run the code on the website.  
 
 ## Steps to run
-Clone the repository to your local file
-Back-end:
-Start MongoDB database in the terminal.  
-Change your termianl path to server
+Clone the repository to your local file  
+Back-end:  
+Start MongoDB database in the terminal.   
+Change your termianl path to server  
 Start the http-server in the terminal with the command "node server.js".  
-Front-end
+Front-end  
 Open a web browser.  
-Change your teriminal path to HealthAppointmentAPP
+Change your teriminal path to HealthAppointmentAPP  
 Start the front-end in the terminal with the command "npm run start".   
 Enter "localhost:4200" in the address bar of the web browser.  

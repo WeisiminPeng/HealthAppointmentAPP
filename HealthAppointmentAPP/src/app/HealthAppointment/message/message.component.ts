@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import html2canvas from 'html2canvas';
 
 // import service
 import { MessageService } from '../services/message.service';
@@ -70,7 +71,11 @@ export class MessageComponent implements OnInit {
   // used for reload
   private timer;
 
-  isShowEmoji = false;
+  isShowEmoji: boolean = false;
+  isShowSearchBar: boolean = false;
+  searchKeywords = "";
+  searchChatListSmall: any[] = [];
+
 
   // declare services
   constructor(public messageService: MessageService, public appointmentService: AppointmentService, public doctorService: DoctorService, public patientService: PatientService, public http: HttpClient, public router: Router, public routes: ActivatedRoute) {
@@ -201,6 +206,16 @@ export class MessageComponent implements OnInit {
         }
       });
     }, 50000);
+
+    //hide search bar and emoji div
+    document.addEventListener('mouseup', (e) => {
+      let classname = (<HTMLTextAreaElement>e.target).className;
+      if (classname != "search-button" && classname != "search-enter" && classname != "search-div" && (classname.indexOf("search-input")) && classname != "emoji-button" && classname != "emoji-div" && classname != "emojione") {
+        this.isShowEmoji = false;
+        this.isShowSearchBar = false;
+        // console.log(classname);
+      }
+    });
   }
 
   // sidebar function
@@ -259,29 +274,243 @@ export class MessageComponent implements OnInit {
   }
 
 
-  // add an emoji
-
-
+  //add an emoji
   addEmoji(e) {
     // alert("add emoji");
-    const selectedEmoji = e.toElement.alt;
-    this.msg.content = this.msg.content + ' ' + selectedEmoji + ' ';
+    let selectedEmoji = e.toElement.alt;
+    this.msg.content = this.msg.content + " " + selectedEmoji + " "
     console.log(this.msg.content);
     this.isShowEmoji = false;
-    console.log('add' + this.isShowEmoji);
+
+    // console.log("add" + this.isShowEmoji);
+
   }
 
   showEmoji() {
     // alert("show emoji");
     this.isShowEmoji = true;
-    console.log('show' + this.isShowEmoji);
+    this.isShowSearchBar = false;
+    // console.log("show" + this.isShowEmoji);
   }
 
 
-  // add a message
+  // //add a image
+  // addImage(e) {
+  //   let file = e.target.files[0];
+  //   if (!file.type.match('image/*')) {
+  //     alert('please upload a image！');
+  //     e.target.value = "";
+  //     return;
+  //   }
+
+  //   this.msg.contentType="image";
+  //   // this.http.post("http://localhost:3000/")
+  //   // let reader = new FileReader(); 
+  //   // reader.readAsDataURL(file); 
+  //   // reader.onload = function(e){
+  //   //    console.log(e.target.result);//(<HTMLImageElement>document.getElementById('mImg')).src =
+  //   // }
+  //   // console.log(reader.onload);
+  // }
+
+
+  //search content
+  showSearchBar() {
+    if (typeof (this.usernameTo) == "undefined") {
+      alert("Please select a person to search!");
+      return;
+    }
+    this.isShowSearchBar = true;
+    this.isShowEmoji = false;
+  }
+
+  searchContent() {
+    this.searchChatListSmall = [];
+    if (this.searchKeywords == "") {
+      alert("The search content should not be empty!");
+      return;
+    }
+    // console.log(this.chatListSmall);
+    for (let i = 0; i < this.chatListSmall.length; i++) {
+      if (this.chatListSmall[i].content.includes(this.searchKeywords)) {
+        // console.log(this.chatListSmall[i].content);
+        this.searchChatListSmall.push(this.chatListSmall[i]);
+      }
+    }
+    // console.log(this.searchChatListSmall);
+    // console.log(this.searchKeywords);
+  }
+
+
+
+  screenShot(e) {
+    let canvas = <HTMLCanvasElement> document.body;
+    let ctx = canvas.getContext('2d');
+
+    let x1,y1,x2,y2;
+    addEventListener("mousemove", e => {
+
+    });
+    addEventListener("mousedown", e => {
+      x1=e.pageX;
+      y1=e.pageY;
+    });
+    addEventListener('mouseup', e => {
+      x2=e.pageX;
+      y2=e.pageY;
+    })
+    // html2canvas(document.body).then(function (canvas) {
+      // document.body.appendChild(canvas);
+      // let that = this;
+      // console.log(this.http);
+    //   let image = canvas.toDataURL("image/png");
+    //   console.log(image);
+    //   that.http.post("desktop/screenshot", image).subscribe(
+    //     data => {
+    //     console.log("POST Request is successful ", data);
+    //     },
+    //     error => {
+    //     console.log("Error", error);
+    //     }
+    //     );
+    // });
+  }
+
+
+  // async screenShot(e) {
+  //     let screenshot = await this.makeScreenshot(); // png dataUrl
+  //     let box = await this.getBox(e);   
+  //     this.send(screenshot,box); // sed post request  with bug image, region and description
+  //     alert('To see POST requset with image go to: chrome console > network tab');
+  // }
+
+  // async makeScreenshot(){
+  //   return new Promise((resolve, reject) => { 
+  //     html2canvas(document.body).then(canvas => {
+  //       document.body.appendChild(canvas)
+  //     }); 
+  //   });
+  // }
+
+  // async getBox(e) {
+  //   return new Promise((resolve, reject) => {
+  //     let start = 0;
+  //     let sx, sy, ex, ey = -1;
+  //     let active_box = document.createElement("div");
+  //     // console.log(e);
+
+  //     //create box
+  //     let drawBox = () => {
+  //       active_box.style.left = (ex > 0 ? sx : sx + ex) + 'px';
+  //       active_box.style.top = (ey > 0 ? sy : sy + ey) + 'px';
+  //       active_box.style.width = Math.abs(ex) + 'px';
+  //       active_box.style.height = Math.abs(ey) + 'px';
+  //     };
+
+  //     addEventListener("click", e => {
+  //       if (start == 0) {
+  //         sx = e.pageX;
+  //         sy = e.pageY;
+  //         ex = 0;
+  //         ey = 0;
+  //         drawBox();
+  //       }
+  //       console.log(active_box);
+  //     });
+
+  //     addEventListener("mousemove", e=>{
+  //       //console.log(e)
+  //       if(start==1) {
+  //           ex=e.pageX-sx;
+  //           ey=e.pageY-sy
+  //           drawBox();
+  //       }
+  //       console.log("e: "+ex + " " + ey);
+  //     });
+
+  //     addEventListener("click", e=>{
+  //       start=0;
+  //       // let a=100/75 //zoom out img 75%      
+  //       resolve({
+  //          x:Math.floor(ex > 0 ? sx : sx+ex ),
+  //          y:Math.floor(ey > 0 ? sy : sy+ey ),
+  //          width:Math.floor(Math.abs(ex)),
+  //          height:Math.floor(Math.abs(ex)),
+  //         //  desc: q('.bug-desc').value
+  //       });
+  //     });
+  //   });
+  // }
+
+  // send(image,box) {
+
+  //     let formData = new FormData();
+  //     let req = new XMLHttpRequest();
+
+  //     formData.append("box", JSON.stringify(box));
+  //     formData.append("screenshot", image);    
+
+  //     req.open("POST", 'Users/shmh/desktop/screenshot');
+  //     req.send(formData);
+  // }
+  //take a screenshot
+  // screenShot(e) {
+  //   e = e || window.event;
+  //   let start = 0;
+  //   let sx, sy, ex, ey = -1;
+  //   let active_box = document.createElement("div");
+  //   // console.log(e);
+
+  //   //create box
+  //   let drawBox = () => {
+  //     active_box.style.left = (ex > 0 ? sx : sx + ex) + 'px';
+  //     active_box.style.top = (ey > 0 ? sy : sy + ey) + 'px';
+  //     active_box.style.width = Math.abs(ex) + 'px';
+  //     active_box.style.height = Math.abs(ey) + 'px';
+  //   }
+
+  //   addEventListener("click", e => {
+  //     if (start == 0) {
+  //       sx = e.pageX;
+  //       sy = e.pageY;
+  //       ex = 0;
+  //       ey = 0;
+  //       drawBox();
+  //     }
+  //     console.log(active_box);
+  //   });
+
+  //   addEventListener("mousemove", e=>{
+  //     //console.log(e)
+  //     if(start==1) {
+  //         ex=e.pageX-sx;
+  //         ey=e.pageY-sy
+  //         drawBox();
+  //     }
+  //     console.log("e: "+ex + " " + ey);
+  //   });
+
+  //   addEventListener("click", e=>{
+  //     start=0;
+  //     let a=100/75 //zoom out img 75%      
+  //     resolve({
+  //        x:Math.floor(((ex > 0 ? sx : sx+ex )-scr.offsetLeft)*a),
+  //        y:Math.floor(((ey > 0 ? sy : sy+ey )-b.offsetTop)*a),
+  //        width:Math.floor(Math.abs(ex)*a),
+  //        height:Math.floor(Math.abs(ex)*a),
+  //        desc: q('.bug-desc').value
+  //        });
+
+  //   });
+  // }
+
+
+
+  //add a message
   addMessage() {
-    if (typeof (this.usernameTo) == 'undefined') {
-      alert('Please select a person to send your message!');
+    // this.msg.contentType="string";
+    if (typeof (this.usernameTo) == "undefined") {
+      alert("Please select a person to send your message!");
       return;
     }
     if (this.msg.content == '') {

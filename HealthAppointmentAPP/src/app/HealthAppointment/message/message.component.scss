@@ -191,7 +191,75 @@ img{
     height: 100px;
     overflow-y:auto;
     background-color: whitesmoke;
+    margin-left:10px;
 }
+
+
+//style of the search function
+.search-button{
+    width: 25px;
+    padding-left: 20px;
+    padding-top: 5px;
+}
+.search-div{
+    position: absolute;
+    margin-top: -550px;
+    margin-left:350px;
+    z-index:1;
+    width: 550px;
+    height: 500px;
+    overflow-y:auto;
+    background-color: lightgray;
+    opacity: 0.5;
+    .search-input{
+        margin-top: 15px;
+        margin-left: 45px;
+        width: 400px;
+        height: 25px;
+    }
+    .search-enter{
+        padding-left: 8px;
+    }
+    .showSearchMessage{
+        height: 400px;
+        width: 300px;
+        background-color: whitesmoke;
+        height: 400px;
+        width: 500px;
+        margin-top: 10px;
+        margin-left: 25px;
+        .searchMessagelist{
+            list-style-type: none;
+            padding: 0px;
+            li{
+                padding-top: 5px;
+                padding-left: 5px;
+                padding-right: 5px;
+                .search-name1, .search-name2{
+                    color: black;
+                    padding-left: 10px;
+                    font-size: 12px;
+
+                }
+                .search-content{
+                    color: black;
+                    padding-left: 15px;
+                    font-size: 20px;
+                }
+            }
+        }
+    } 
+}
+
+.box {
+    background: #f00;
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    opacity: 0.5;
+    cursor: move;
+}
+
 
 .send{
   font-family: $normal-font;
@@ -202,5 +270,4 @@ img{
     color: white;
   }
 }
-
 
