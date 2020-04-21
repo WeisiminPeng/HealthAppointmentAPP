@@ -78,16 +78,25 @@
           <div class="workdays-wrapper">
             <header>
 <!--              <div class="title">Break Hours</div>-->
-              <div class="edit-break-hours" (click)='onEditBreak()'>
-                <button ejs-button cssClass="e-small e-round" iconCss="e-icons e-add-icon"></button>
-                <span class="button-label">Edit</span>
-              </div>
+
             </header>
             <div class="break-hours-content">
-              <div class="works-day" *ngFor="let data of breakHoursData">
-                <div class="day-name">{{data.day}}</div>
-                <div class="day-break-hours {{data.State}}">{{getBreakDetails(data)}}</div>
-              </div>
+              <table>
+
+                <tr class="works-day" *ngFor="let data of breakHoursData">
+                  <td class="day-name">{{data.day}}</td>
+                  <td class="day-break-hours {{data.State}}">{{getBreakDetails(data)}}</td>
+                </tr>
+              </table>
+              <button class="edit-break-hours" (click)='onEditBreak()'>
+<!--                <button ejs-button cssClass="e-small e-round" iconCss="e-icons e-add-icon"></button>-->
+<!--                <span class="button-label">Edit</span>-->
+                Edit
+              </button>
+<!--              <div class="works-day" *ngFor="let data of breakHoursData">-->
+<!--                <div class="day-name">{{data.day}}</div>-->
+<!--                <div class="day-break-hours {{data.State}}">{{getBreakDetails(data)}}</div>-->
+<!--              </div>-->
             </div>
           </div>
         </div>
