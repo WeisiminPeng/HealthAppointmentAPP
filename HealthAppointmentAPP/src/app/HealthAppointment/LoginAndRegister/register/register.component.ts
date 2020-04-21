@@ -35,52 +35,52 @@ constructor( public http: HttpClient, private router: Router, private datepipe: 
 ngOnInit(): void {
   this.WorkDayList.push(
     new WorkDay('Sunday', 0, true,
-    new Date(2018, 1, 3, 8, 0),
-    new Date(2018, 1, 3, 17, 0),
-    new Date(2018, 1, 3, 12, 0),
-    new Date(2018, 1, 3, 13, 0), 'AddBreak'));
-
-  this.WorkDayList.push(
-    new WorkDay('Monday', 1, true,
     new Date(2018, 1, 4, 8, 0),
     new Date(2018, 1, 4, 17, 0),
     new Date(2018, 1, 4, 12, 0),
     new Date(2018, 1, 4, 13, 0), 'AddBreak'));
 
   this.WorkDayList.push(
-    new WorkDay('Tuesday', 2, true,
+    new WorkDay('Monday', 1, true,
     new Date(2018, 1, 5, 8, 0),
     new Date(2018, 1, 5, 17, 0),
     new Date(2018, 1, 5, 12, 0),
     new Date(2018, 1, 5, 13, 0), 'AddBreak'));
 
   this.WorkDayList.push(
-    new WorkDay('Wednesday', 3, true,
+    new WorkDay('Tuesday', 2, true,
     new Date(2018, 1, 6, 8, 0),
     new Date(2018, 1, 6, 17, 0),
     new Date(2018, 1, 6, 12, 0),
     new Date(2018, 1, 6, 13, 0), 'AddBreak'));
 
   this.WorkDayList.push(
-    new WorkDay('Thursday', 4, true,
+    new WorkDay('Wednesday', 3, true,
     new Date(2018, 1, 7, 8, 0),
     new Date(2018, 1, 7, 17, 0),
     new Date(2018, 1, 7, 12, 0),
     new Date(2018, 1, 7, 13, 0), 'AddBreak'));
 
   this.WorkDayList.push(
-    new WorkDay('Friday', 5, true,
+    new WorkDay('Thursday', 4, true,
     new Date(2018, 1, 8, 8, 0),
     new Date(2018, 1, 8, 17, 0),
     new Date(2018, 1, 8, 12, 0),
     new Date(2018, 1, 8, 13, 0), 'AddBreak'));
 
   this.WorkDayList.push(
-    new WorkDay('Saturday', 6, true,
+    new WorkDay('Friday', 5, true,
     new Date(2018, 1, 9, 8, 0),
     new Date(2018, 1, 9, 17, 0),
     new Date(2018, 1, 9, 12, 0),
     new Date(2018, 1, 9, 13, 0), 'AddBreak'));
+
+  this.WorkDayList.push(
+    new WorkDay('Saturday', 6, true,
+    new Date(2018, 1, 10, 8, 0),
+    new Date(2018, 1, 10, 17, 0),
+    new Date(2018, 1, 10, 12, 0),
+    new Date(2018, 1, 10, 13, 0), 'AddBreak'));
   for (let i = 0; i < 7; i++) {
     this.availableDayList.push(i);
   }
