@@ -86,7 +86,7 @@ export class PatientScheduleComponent implements OnInit {
     }
   }
 
-  deleteAppointment(data: any){
+  deleteAppointment(data: any) {
     // console.log(data.id);
     this.appointmentService.delete(data.id).subscribe(deleteMsg => {
       this.resMsg = deleteMsg;
@@ -95,15 +95,28 @@ export class PatientScheduleComponent implements OnInit {
     });
   }
 
-  gotoAppointment(data: any){
+  gotoAppointment(data: any) {
     this.router.navigateByUrl('/patientDoctorDetail/' + data.PatientUsername + '_' + data.DoctorUsername);
   }
 
-  sendMsg(){
+  sendMsg() {
     // this.DoctorUsername = args.currentTarget.querySelector('.specialist-item')['id'].split('_')[1];
-    this.router.navigateByUrl('/messages/'+this.username+'_patient');
+    this.router.navigateByUrl('/messages/' + this.username + '_patient');
   }
-
+  showText() {
+    document.getElementById('deleteImg').hidden = true;
+    if (document.getElementById('appStatus').innerText === 'Expired') {
+      document.getElementById('deleteOrCancle').hidden = false;
+      document.getElementById('deleteOrCancle').innerText = 'DELETE';
+    } else {
+      document.getElementById('deleteOrCancle').hidden = false;
+      document.getElementById('deleteOrCancle').innerText = 'DELETE';
+    }
+  }
+  showImg() {
+      document.getElementById('deleteImg').hidden = false;
+      document.getElementById('deleteOrCancle').hidden = true;
+  }
 
 
 }

@@ -1,5 +1,5 @@
 $planner-hover-bg-color: #f5f5f5;
-$planner-element-bg-color: #7575FF;
+$planner-element-bg-color: #3D7CB5;
 $planner-element-back-color: #FFFFFF;
 $planner-delete-btn-color: #FF0000;
 $planner-box-shadow: 1px 2px 20px 0 rgba(173, 173, 255, 0.20);
@@ -19,19 +19,19 @@ $planner-tooltip-bg-color:#000;
     }
 }
 
-.showsidebar {
-    background:rgb(96,112,120);
-    margin-top: -10px;
-    position: sticky;
-    top: 0;
-  .title{
-    color: #B2D1E1;
-    font-size: 25px;
-    text-align: center;
-    margin-left: 30%;
-    margin-top: 5px;
-  }
-}
+//.showsidebar {
+//    background:rgb(96,112,120);
+//    margin-top: -10px;
+//    position: sticky;
+//    top: 0;
+//  .title{
+//    color: #B2D1E1;
+//    font-size: 25px;
+//    text-align: center;
+//    margin-left: 30%;
+//    margin-top: 5px;
+//  }
+//}
 .icons{
   float: right;
   margin-right: 30px;
@@ -40,7 +40,84 @@ $planner-tooltip-bg-color:#000;
     margin-top: 5px;
   }
 }
-.menubtn{
+
+
+
+#Siderbar {
+  div.sidebar-item {
+    .text {
+      text-align: center;
+      font-size: 20px;
+      padding: 15px;
+    }
+    &:hover {
+      background-color: $planner-hover-bg-color;
+    }
+  }
+}
+
+#imgDiv {
+  height: 100px;
+  width: 100px;
+  text-align: center;
+  //margin-top: 30px;
+  img{
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: -100px;
+  }
+}
+
+#avatar {
+  height: 250px;
+  width: 250px;
+}
+
+.showsidebar {
+  background: #eee;
+  // display: inline-block;
+}
+
+div.sidebar-item {
+  .text {
+    text-align: center;
+    font-size: 20px;
+    padding: 15px;
+    height: 30px;
+  }
+  &:hover {
+    background-color: $planner-hover-bg-color;
+    color: #3D7CB5;
+  }
+}
+
+
+.showsidebar {
+  background: rgb(96, 112, 120);
+  margin-top: -10px;
+  position: sticky;
+  top: 0;
+  .title {
+    //color: #66afe9;
+    color: #B2D1E1;
+    font-size: 25px;
+    //margin-bottom: -10px;
+    text-align: center;
+    margin-left: 400px;
+    margin-top: 5px;
+    float: right;
+    margin-right: 30px;
+    img {
+      margin-right: 10px;
+    }
+  }
+  .title1 {
+    @extend .title;
+    margin-left: 0px;
+  }
+}
+
+.menubtn {
   border: none;
   background: none;
   box-shadow: none;
@@ -48,9 +125,9 @@ $planner-tooltip-bg-color:#000;
   //height: 30px;
 }
 
-// this is the styly of sidebar
 .dock{
   background-color: rgb(96,112,120);
   color: whitesmoke;
-
+  text-align: center;
+  height: 1200px;
 }

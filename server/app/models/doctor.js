@@ -47,6 +47,12 @@ let Doctor = new Schema({
         type: String,
         default: '',
         trim: true
+    },
+    Address:{
+        type: String,
+    },
+    DOB:{
+        type: String,
     }
 }, {
     versionKey: false,
