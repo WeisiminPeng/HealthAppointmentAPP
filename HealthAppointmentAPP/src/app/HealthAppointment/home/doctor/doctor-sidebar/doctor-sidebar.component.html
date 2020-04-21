@@ -2,15 +2,7 @@
 
     <ejs-sidebar #sidebar id="Siderbar" (created)="onCreated($event)" style="visibility: hidden" [closeOnDocumentClick]="closeOnDocumentClick">
         <div class="dock">
-
-            <!-- <div class="info align-center">
-                <div class="content nameContent">
-                    <p class='name'>Jane Deo</p>
-                    <p class='user-type'>Admin</p>
-                </div>
-            </div> -->
             <div id="sidebar-item-Avatar">
-                <!-- alse (change)="fileChange($event.target.files)" -->
             </div>
             <div id="imgDiv">
                 <img id="avatar" *ngIf="imgURL" [src]="imgURL">
@@ -32,10 +24,6 @@
             </div>
         </div>
     </ejs-sidebar>
-
-    <div style="padding:100px" class="showsidebar">
-        <button ejs-button #SidebarBtn id="toggle" (click)="showSidebar()">Open Sidebar</button>
-    </div>
 
     <div style="padding:5px" class="showsidebar">
         <button ejs-button #SidebarBtn id="toggle" (click)="showSidebar()" class="menubtn">
