@@ -30,6 +30,7 @@ import { MessageService } from './HealthAppointment/services/message.service';
 import { MessageComponent } from './HealthAppointment/message/message.component';
 import { FooterComponent } from './HealthAppointment/LoginAndRegister/footer/footer.component';
 import { UploadComponent } from './upload/upload.component';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 
 
 
@@ -52,7 +53,8 @@ import { UploadComponent } from './upload/upload.component';
     PasswordManagement2Component,
     MessageComponent,
     FooterComponent,
-    UploadComponent
+    UploadComponent,
+    ForgetPasswordComponent
   ],
   imports: [
     BrowserModule,

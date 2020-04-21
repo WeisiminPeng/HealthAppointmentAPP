@@ -1,3 +1,4 @@
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { UploadComponent } from './upload/upload.component';
 import { PasswordManagement2Component } from './HealthAppointment/home/doctor/password-management2/password-management2.component';
 import { PasswordManagementComponent } from './HealthAppointment/home/patient/password-management/password-management.component';
@@ -97,6 +98,10 @@ const routes: Routes = [
   {
     path: ':username/upload',
     component: UploadComponent
+  },
+  {
+    path: 'resetPassword',
+    component: ForgetPasswordComponent
   }
 ];
 @NgModule({
