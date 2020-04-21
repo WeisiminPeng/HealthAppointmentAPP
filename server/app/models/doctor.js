@@ -42,6 +42,11 @@ let Doctor = new Schema({
     },
     WorkDays: {
         type: Array
+    },
+    Avatar: {
+        type: String,
+        default: '',
+        trim: true
     }
 }, {
     versionKey: false,
@@ -59,4 +64,3 @@ Doctor.set('toJSON', {
 });
 
 module.exports = mongoose.model('Doctor', Doctor);
-
