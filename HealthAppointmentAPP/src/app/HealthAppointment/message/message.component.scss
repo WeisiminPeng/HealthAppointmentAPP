@@ -22,11 +22,11 @@ $normal-font:  "Lucida Sans Unicode", "Lucida Grande", sans-serif;
                 list-style-type: none;
                 width: 180px;
                 height: 30px;
-                text-align: center;
+                text-align: left;
                 padding-top: 18px;
                 text-decoration: none;
             }
-            .name-span:hover{
+            .name-span:checked{
                 background-color:lightblue;
                 opacity: 0.8;
             }

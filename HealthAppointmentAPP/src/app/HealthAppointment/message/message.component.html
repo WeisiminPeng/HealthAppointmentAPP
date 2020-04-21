@@ -38,7 +38,7 @@
     <div class="left">
         <ul class="namelist">
             <li id="nameli" class="name-span" *ngFor="let usernameTo of namelist"(click)="getMessageList(usernameTo.username)">
-                {{usernameTo.name}}
+                Dr.{{usernameTo.name}}
                 <!-- <span tabindex="1" (click)="getMessageList(usernameTo.username)">{{usernameTo.name}}</span> -->
             </li>
         </ul>
@@ -100,5 +100,5 @@
         </div>
     </div>
 </div>
-<!--<app-patient-footer></app-patient-footer>-->
+<app-patient-footer></app-patient-footer>
 
