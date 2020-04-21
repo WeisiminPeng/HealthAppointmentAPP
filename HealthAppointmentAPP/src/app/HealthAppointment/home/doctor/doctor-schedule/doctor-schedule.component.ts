@@ -102,6 +102,7 @@ export class DoctorScheduleComponent implements OnInit {
   public currentEvent;
   public updateAppointmentItem: string;
   public showQuickInfo: Boolean = false;
+  public yes: Boolean = true;
 
 
 
@@ -177,7 +178,10 @@ export class DoctorScheduleComponent implements OnInit {
 
   // delete appointment
   public eventDelete(e) {
-    alert("Are you sure to delete this appointment?");
+    if (this.yes) {
+      alert("Are you sure this appointment is completed?");
+      this.yes = false;
+    } else {
     const eventData: { [key: string]: Object } = this.scheduleObj.activeEventData.event as any;
     this.appointmentID = String(eventData.id);
     this.appointmentService.delete(this.appointmentID).subscribe(deleteMsg => {
@@ -185,6 +189,8 @@ export class DoctorScheduleComponent implements OnInit {
     });
     this.dialogClose();
     location.reload();
+    this.yes = true;
+  }
   }
 
   //  edit appointment

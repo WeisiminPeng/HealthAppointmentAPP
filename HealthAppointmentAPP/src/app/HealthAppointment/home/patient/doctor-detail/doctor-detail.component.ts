@@ -95,6 +95,7 @@ export class DoctorDetailComponent implements OnInit {
   public updateAppointmentItem: string;
   public addAppointmentItem: string;
   public showQuickInfo: Boolean = false;
+  public yes: Boolean = true;
 
 
 
@@ -116,16 +117,16 @@ export class DoctorDetailComponent implements OnInit {
       // disable cell in canlender when it is breakhour
       this.temp = this.currentDoctor.WorkDays
       for (var i = 0; i < 7; i++) {
-        if(this.temp[i].State != 'RemoveBreak'){
-        this.BreakStartHour = this.temp[i].BreakStartHour;
-        this.BreakEndHour = this.temp[i].BreakEndHour;
-        var addAppointment: any = {};
-        addAppointment.PatientName = 'Break Hour';
-        addAppointment.StartTime = this.BreakStartHour;
-        addAppointment.EndTime = this.BreakEndHour;
-        addAppointment.IsBlock = true;
-        addAppointment.RecurrenceRule = 'FREQ=WEEKLY;INTERVAL=1;COUNT = 1000';
-        this.currentBreakHourArray.push(addAppointment);
+        if (this.temp[i].State != 'RemoveBreak') {
+          this.BreakStartHour = this.temp[i].BreakStartHour;
+          this.BreakEndHour = this.temp[i].BreakEndHour;
+          var addAppointment: any = {};
+          addAppointment.PatientName = 'Break Hour';
+          addAppointment.StartTime = this.BreakStartHour;
+          addAppointment.EndTime = this.BreakEndHour;
+          addAppointment.IsBlock = true;
+          addAppointment.RecurrenceRule = 'FREQ=WEEKLY;INTERVAL=1;COUNT = 1000';
+          this.currentBreakHourArray.push(addAppointment);
         }
       }
 
@@ -211,17 +212,22 @@ export class DoctorDetailComponent implements OnInit {
     }
   }
   public eventDelete(e) {
-    alert("Are you sure to delete this appointment?");
-    const eventData: { [key: string]: Object } = this.scheduleObj.activeEventData.event as any;
-    this.appointmentID = String(eventData.id);
-    this.appointmentService.delete(this.appointmentID).subscribe(deleteMsg => {
-      this.resMsg = deleteMsg;
-    });
-    this.dialogClose();
-    location.reload();
+    if (this.yes) {
+      alert("Are you sure to delete this appointment?");
+      this.yes = false;
+    } else {
+      const eventData: { [key: string]: Object } = this.scheduleObj.activeEventData.event as any;
+      this.appointmentID = String(eventData.id);
+      this.appointmentService.delete(this.appointmentID).subscribe(deleteMsg => {
+        this.resMsg = deleteMsg;
+      });
+      this.dialogClose();
+      location.reload();
+      this.yes = true;
+    }
   }
 
-// edit appointment
+  // edit appointment
   public editEvent(e) {
     var inputValue = (<HTMLInputElement>document.getElementById("Description")).value;
     if (inputValue == '') {

@@ -29,6 +29,7 @@ export class PatientScheduleComponent implements OnInit {
   public dataStart: Date;
   public dateNow = Date.now();
   public resMsg: success;
+  public yes: Boolean = true;
 
   ngOnInit(): void {
     this.username = this.routes.snapshot.paramMap.get('username');
@@ -77,11 +78,16 @@ export class PatientScheduleComponent implements OnInit {
   }
 
   deleteAppointment(data: any) {
-    alert("Are you sure to delete this appointment?");
+    if (this.yes) {
+      alert("Are you sure to delete this appointment?");
+      this.yes = false;
+    } else {
     this.appointmentService.delete(data.id).subscribe(deleteMsg => {
       this.resMsg = deleteMsg;
       location.reload();
+      this.yes = true;
     });
+  }
   }
 
   gotoAppointment(data: any) {
