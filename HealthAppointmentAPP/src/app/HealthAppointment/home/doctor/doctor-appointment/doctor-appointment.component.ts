@@ -84,7 +84,7 @@ export class DoctorAppointmentComponent implements OnInit {
     }
   }
 
-  //if state is no break, unenable it 
+  //if state is no break, unenable it
   getStatus(state: string) {
     return state === 'RemoveBreak' ? false : true;
   }
@@ -102,7 +102,7 @@ export class DoctorAppointmentComponent implements OnInit {
 
   getBreakDetails(data: any) {
     if (data.State === 'TimeOff') {
-      return 'TIME OFF';
+      return 'DAY OFF';
     } else if (data.State === 'RemoveBreak') {
       return '---';
     } else {
