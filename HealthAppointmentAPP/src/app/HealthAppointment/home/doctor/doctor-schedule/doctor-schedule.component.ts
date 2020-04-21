@@ -84,18 +84,18 @@ export class DoctorScheduleComponent implements OnInit {
   public timeScale: TimeScaleModel = { enable: true, interval: 60 };
   public firstDayOfWeek: Number = 0;
   public bookingColor: '#FF0000';
-  public selectedDate: Date = new Date(2020, 1, 5);
+  public selectedDate: Date = new Date(Date.now());
   public currentDate: Date = this.selectedDate;
 
   public eventSettings: EventSettingsModel;
 
-  public data: object[] = [{
-    Id: 2,
-    Subject: 'Paris',
-    StartTime: new Date(Date.UTC(2020, 1, 14, 10, 0)),
-    EndTime: new Date(Date.UTC(2020, 1, 14, 12, 30)),
-    IsBlock: true,
-  }];
+  // public data: object[] = [{
+  //   Id: 2,
+  //   Subject: 'Paris',
+  //   StartTime: new Date(Date.UTC(2020, 1, 14, 10, 0)),
+  //   EndTime: new Date(Date.UTC(2020, 1, 14, 12, 30)),
+  //   IsBlock: true,
+  // }];
   public updateModifyDate: string;
   public todoUpdate: success;
   public newTodo: appointmentData;
@@ -122,6 +122,8 @@ export class DoctorScheduleComponent implements OnInit {
 
       // disable breakhour
       for (var i = 0; i < 7; i++) {
+        // console.log(this.temp[i])
+        if(this.temp[i].State != 'RemoveBreak'){
         this.BreakStartHour = this.temp[i].BreakStartHour;
         this.BreakEndHour = this.temp[i].BreakEndHour;
         // this.BreakStartHour = new Date(2018,1,2,12,0);
@@ -135,6 +137,7 @@ export class DoctorScheduleComponent implements OnInit {
           addAppointment.RecurrenceRule = 'FREQ=WEEKLY;INTERVAL=1;UNTIL = 20300530T041343Z';
         // console.log(addAppointment)
         this.currentBreakHourArray.push(addAppointment);
+      }
       }
 
 

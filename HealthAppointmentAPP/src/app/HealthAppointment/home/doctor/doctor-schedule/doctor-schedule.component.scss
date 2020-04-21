@@ -1,10 +1,10 @@
 .doctor-schedule {
     font-size: 14px;
-    margin: 30px 50px;
+    //margin: 30px 50px;
     color: #9aa5bb;
     letter-spacing: .05px;
     background: #eeeeee;
-  height: auto;
+    //height: auto;
     .e-all-day-appointment-wrapper,.e-timeline-wrapper{
         font-size: 0;
     }
@@ -13,7 +13,7 @@
         justify-content: space-between;
 
         .schedule-container {
-            padding-right: 25px;
+            //padding-right: 25px;
             width: 100%;
 
 
@@ -49,3 +49,126 @@
 
     }
 }
+//
+//
+//.textarea{
+//  width:350px;height:80px;position:absolute;background:none;z-index:9
+//}
+//.note{
+//  position:absolute;line-height:20px;padding:3px 5px;
+//}
+//.doctor-schedule {
+//  font-size: 14px;
+//  //margin: 30px 50px;
+//  color: #9aa5bb;
+//  letter-spacing: .05px;
+//  background: #eeeeee;
+//  height: auto;
+//  .e-all-day-appointment-wrapper,.e-timeline-wrapper{
+//    font-size: 0;
+//  }
+//  .putAclassHere {
+//    display: flex;
+//    justify-content: space-between;
+//
+//    .schedule-container {
+//      //padding-right: 25px;
+//      width: 100%;
+//
+//
+//      .e-schedule-toolbar-container {
+//        .e-toolbar-items {
+//          .e-toolbar-center {
+//            .planner-dropdown {
+//              margin-top: 5px;
+//              margin-left: 20px;
+//            }
+//          }
+//        }
+//      }
+//      .e-table-container {
+//        .e-month-view {
+//          .e-content-wrap {
+//            .e-work-cells {
+//              .e-block-indicator {
+//                visibility: hidden;
+//              }
+//
+//              .e-appointment {
+//                .e-time,
+//                .e-subject {
+//                  padding: 2px;
+//                }
+//              }
+//            }
+//          }
+//        }
+//      }
+//    }
+//
+//  }
+//}
+
+// http://localhost:4200/patientAppointment
+
+
+#lightbluesky{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  //width: 1700px;
+  z-index: -1;
+}
+
+
+.upperHalf{
+  height: 560px;
+  width: 100%;
+}
+.imgWrapper{
+  height: 560px;
+  width: 100%;
+}
+
+.lowerHalf{
+  background-color: #eeeeee;
+  height: 900px;
+  z-index: 2;
+}
+
+.maincontent{
+  position: relative;
+  margin-top: -400px;
+  height: 700px;
+  width: 1300px;
+  background-color: #FFFFFF;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 10px 20px rgba(0,0,0,.15);
+}
+//.doctor-schedule-wrapper{
+//  height: 800px;
+//  overflow: auto;
+//}
+.doctor-schedule{
+  height: 800px;
+  overflow: auto;
+}
+
+.module-title{
+
+  .title{
+    padding-top: 15px;
+    padding-bottom: 5px;
+    text-align: center;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    //color: #E6BD62;
+    color: #666666;
+    font-weight: bold;
+    font-size: 30px;
+
+  }
+}
+
+
+

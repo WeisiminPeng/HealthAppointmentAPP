@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient,HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {Router} from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 @Component({
@@ -10,16 +10,16 @@ import { ActivatedRoute } from '@angular/router';
 export class PasswordManagement2Component implements OnInit {
 
   public first: string;
-  public second: string;
-  public newPassword: string;
+  public second = '';
+  public newPassword = '';
   public username: string;
-  public List:any[] = [];
-  public people:any;
-  constructor(public routes:ActivatedRoute,public http:HttpClient,public router:Router) { }
+  public List: any[] = [];
+  public people: any;
+  constructor(public routes: ActivatedRoute, public http: HttpClient, public router: Router) { }
 
   ngOnInit(): void {
     this.username = this.routes.snapshot.paramMap.get('username').split('_')[0];
-    this.http.get('http://localhost:3000/doctors/' + this.username).subscribe((response:any)=>{
+    this.http.get('http://localhost:3000/doctors/' + this.username).subscribe((response: any) => {
       this.people = response;
     });
     const originalPassword = document.getElementById('oriPassword');
@@ -39,15 +39,21 @@ export class PasswordManagement2Component implements OnInit {
     };
   }
     confirm() {
-      const httpOptions = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
-      let api='http://localhost:3000/doctors/'+this.people.username;
-      this.http.put(api,{
-        "Password":this.newPassword
-      }, httpOptions).subscribe((response)=>{
+      if (this.second === '' || this.newPassword === ''){
+        alert ('empty content,please enter new password!');
+      } else {
+        console.log(this.second);
+        console.log(this.newPassword);
+        const httpOptions = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
+        let api = 'http://localhost:3000/doctors/' + this.people.username;
+        this.http.put(api, {
+        'Password': this.newPassword
+      }, httpOptions).subscribe((response) => {
         console.log(response);
-        alert("Updated Successfully!");
+        alert('Updated Successfully!');
         this.router.navigate(['/login']);
       })
+    }
     }
     back(){
       const modal = document.getElementById('cgpassword');

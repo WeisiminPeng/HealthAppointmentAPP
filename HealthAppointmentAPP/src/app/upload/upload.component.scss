@@ -1,0 +1,97 @@
+
+
+$normal-font: "Lucida Sans Unicode",
+"Lucida Grande",
+sans-serif;
+.bg {
+  width: 100%;
+  height: 1000px;
+  background-image: url("../../assets/img/home_background.jpeg");
+  background-size: 100%;
+  position: relative;
+}
+
+.register-wrapper {
+  h2 {
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+  }
+  .contentWrapper {
+    border-spacing: 5px;
+    //margin-left: 70px;
+    text-align: center;
+    td {
+      font-size: 15px;
+    }
+    label {
+      font-size: 15px;
+    }
+    input {
+      //margin-left: 20px;
+    }
+  }
+  tr {
+    margin: 15px;
+    .inputbox {
+      outline-style: none;
+      border: 1px solid #ccc;
+      width: 170px;
+      height: 20px;
+      padding-left: 5px;
+      border-radius: 5px;
+      :focus {
+        border-color: #66afe9;
+        outline: 0;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6)
+      }
+    }
+  }
+  text-align: left;
+  font-size: larger;
+  font-family: $normal-font;
+  position: absolute;
+  background-color: white;
+  border: #666666;
+  width: 430px;
+  height: 500px;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 10px;
+  padding-top: 20px;
+}
+
+#imgDiv{
+  width: 200px;
+  height: 260px;
+  border: 1px solid #666666;
+  margin-left: 100px;
+  overflow: auto;
+}
+#avatar1 {
+  width: 200px;
+  height: auto;
+  max-height: 260px;
+  object-fit: cover;
+
+}
+
+.upload{
+    width: 280px;
+    height: 50px;
+    margin-left: 6px;
+    background-color: #3D7CB5;
+    box-shadow: 0 0 3px #666666;
+    margin-top: 30px;
+    color: whitesmoke;
+    font-size: 15px;
+    font-weight: bold;
+    border: 5px #666666;
+    border-radius: 5px;
+    padding-left: 10px;
+    font-family: $normal-font;
+
+}

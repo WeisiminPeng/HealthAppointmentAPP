@@ -59,4 +59,7 @@ back(){
   this.router.navigate(['']);
   // this.router.navigate(['/register']);
 }
+goReset(){
+  this.router.navigate(['/resetPassword']);
+}
 }

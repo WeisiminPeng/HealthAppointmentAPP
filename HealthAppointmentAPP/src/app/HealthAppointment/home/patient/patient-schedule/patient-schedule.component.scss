@@ -28,7 +28,13 @@
   background-color:  #FFFFFF;
   margin-left: auto;
   margin-right: auto;
+  //this is to make main content scroll
+
   box-shadow: 0 10px 20px rgba(0,0,0,.15);
+}
+.specialization-detail-wrapper{
+  height: 500px;
+  overflow: auto;
 }
 .module-title{
   width: 1000px;
@@ -56,6 +62,7 @@
   grid-template-columns: 1fr 1fr 1fr;
   grid-column-gap: 0px;
   grid-row-gap: 1em;
+
 }
 
 // following controls the card showing of appointments
@@ -76,6 +83,11 @@
   font-weight: 600;
   text-align: left;
   line-height: 1.1;
+  button{
+    float: right;
+    margin-right: -10px;
+    margin-top: -10px;
+  }
 
 }
 .appointment-info{
@@ -132,20 +144,47 @@
   margin-top: 20px;
 }
 .menubtn{
-  border: none;
+  border: 1px solid #666666;
   background: none;
   box-shadow: none;
+  width: 35px;
+  height: 35px;
+  margin-right: 10px;
+  &:hover{
+    border: 1px solid #90B3C2;
+  }
 }
 .sendMessage{
   font-size: 16px;
   width: 180px;
-  height: 35px;
-  margin-top: -20px;
-  position: center;
+  height: 38px;
+  margin-top: -37px;
+  margin-left: 95px;
   background-color: #B3D2E2;
   color: whitesmoke;
   font-weight: bold;
   border: 5px #666666;
-  border-radius: 5px;
+  //border-radius: 5px;
   padding-left: 10px;
+  &:hover{
+    background-color: white;
+    color: #B3D2E2;
+    border: 1px solid #90B3C2;
+  }
+}
+.unableToSendMessage{
+  font-size: 16px;
+  width: 180px;
+  height: 38px;
+  margin-top: -37px;
+  margin-left: 95px;
+  background-color: #666666;
+  color: whitesmoke;
+  font-weight: bold;
+  border: 5px #666666;
+  //border-radius: 5px;
+  padding-left: 10px;
+  &:hover{
+    cursor: text;
+  }
 }

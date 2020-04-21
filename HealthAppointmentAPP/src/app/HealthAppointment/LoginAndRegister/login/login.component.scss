@@ -1,5 +1,13 @@
 
 $normal-font:  "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+.bg {
+  width: 100%;
+  height: 1000px;
+  background-image: url("../../../../assets/img/home_background.jpeg");
+  background-size: 100%;
+  position: relative;
+}
+
 #login{
   background-color: white;
 }
@@ -50,7 +58,7 @@ $normal-font:  "Lucida Sans Unicode", "Lucida Grande", sans-serif;
   @extend .input-box;
   width: 250px;
   height: 45px;
-  background-color: rgb(70,154,212);
+  background-color: #3D7CB5;
   box-shadow: 0 0 3px #666666;
   margin-top: 30px;
   color: whitesmoke;
@@ -63,5 +71,12 @@ $normal-font:  "Lucida Sans Unicode", "Lucida Grande", sans-serif;
   font-family: $normal-font;
   color: #666666;
   margin-top: 20px;
-  margin-left: -195px;
+  margin-left: -55px;
+}
+.goReset{
+  border: none;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  font-size: 15px;
+  color: #666666;
+  text-decoration: underline;
 }

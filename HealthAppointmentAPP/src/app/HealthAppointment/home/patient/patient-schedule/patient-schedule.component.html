@@ -18,7 +18,10 @@
         <div class='patient-schedule'>
           <div class='appointment-item' *ngFor="let data of appointments">
             <div class="appointment-detail">
-              <div class="DoctorName">Dr. {{data.DoctorName}}</div>
+              <div class="DoctorName">
+                Dr. {{data.DoctorName}}
+
+              </div>
               <div class="appointment-info">
                 <div class="appointment-overview">
                   <table>
@@ -45,7 +48,7 @@
                     </tr>
                     <tr>
                       <td class="lable">Status:</td>
-                      <td class="info">{{compareDate(data)}}</td>
+                      <td class="info" id="appStatus">{{compareDate(data)}}</td>
                     </tr>
                     </tbody>
                   </table>
@@ -56,17 +59,20 @@
                 </div>
               </div>
               <div class="appointment-btn">
-                <button  class="menubtn">
-                  <img src="../../../../../assets/img/icons8-取消-50.png" height="30" width="30"/>
+                <button  class="menubtn" (click)='deleteAppointment(data)' (focus)="showText()" (blur)="showImg()">
+                  <span id="deleteOrCancle" [hidden]=true>111</span>
+                  <img id=" deleteImg" [hidden]=false src="../../../../../assets/img/icons8-删除-50.png" height="20" width="20"/>
                 </button>
-                <button  class="menubtn">
-                  <img src="../../../../../assets/img/icons8-加-64.png" height="30" width="30"/>
+                <button  class="menubtn" (click)='gotoAppointment(data)'>
+                  <img src="../../../../../assets/img/icons8-加法-16.png" height="20" width="20"/>
                 </button>
-                <button  class="sendMessage">
-                  Send Message
-                </button>
-
               </div>
+              <button (click)='sendMsg()' class="sendMessage" [hidden]="compareDate(data) =='Expired' ">
+                Send Message
+              </button>
+              <button  class="unableToSendMessage" [hidden]="compareDate(data) =='Upcoming' ">
+                Send Message
+              </button>
 
 <!--              PengWei's code -->
 <!--              <div class="getWeekDetails">{{getWeekDetails(data)}}</div>-->

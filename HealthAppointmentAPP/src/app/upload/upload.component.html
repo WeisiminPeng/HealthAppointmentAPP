@@ -1,0 +1,28 @@
+
+
+<div class="bg">
+  <body>
+  <div class="register-wrapper">
+    <h2>Northeastern Health Center</h2>
+    <div class="contentWrapper">
+      <div id="imgDiv" aria-hidden="false">
+        <img id="avatar1" *ngIf="imgURL" [src]="imgURL">
+      </div>
+      <div>
+        <input type="file" id="img" accept=".jpg,.png,.jpeg" aria-hidden="false" (change)="uploadImg($event.target.files)">
+      </div>
+      <div>
+        <button class="upload" (click)="goLogin()">Upload</button>
+      </div>
+    </div>
+
+
+
+
+  </div>
+
+
+  </body>
+
+  <app-footer></app-footer>
+</div>

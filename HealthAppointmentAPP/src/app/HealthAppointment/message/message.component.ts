@@ -64,8 +64,7 @@ export class MessageComponent implements OnInit {
   msg: any = {//new message
     usernameMsg: "",
     nameMsg: "",
-    content: "",
-    contentType:""
+    content: ""
   }
 
   //used for reload
@@ -331,7 +330,7 @@ export class MessageComponent implements OnInit {
 
   //add a message
   addMessage() {
-    this.msg.contentType="string";
+    // this.msg.contentType="string";
     if (typeof (this.usernameTo) == "undefined") {
       alert("Please select a person to send your message!");
       return;
