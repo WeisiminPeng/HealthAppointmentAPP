@@ -2,44 +2,49 @@
     <ejs-sidebar #sidebar id="Siderbar" (created)="onCreated($event)" style="visibility: hidden"
         [closeOnDocumentClick]="closeOnDocumentClick">
         <div class="dock">
-            <!-- <div class="info align-center">
-                <div class="image"><img src="./assets/images/Admin.png" /></div>
-                 <div class="content nameContent">
-                    <p class='name'>Jane Deo</p>
-                    <p class='user-type'>Admin</p>
-                </div>
-            </div> -->
+          <div id="sidebar-item-Avatar"></div>
+          <div id="imgDiv">
+            <br><br>
+            <!--                <img id="avatar" *ngIf="imgURL" [src]="imgURL">-->
+            <img src="../../../../../assets/photo/profilepic.jpeg" height="120" width="120"/>
+          </div>
+          <br><br>
+          <div style="padding-top:30px; cursor: pointer" class="SignOut" [routerLink]="SignOut">
+            <span class="text" title="SignOut">Sign Out</span>
+          </div>
+          <br><br><br><br>
             <div class="sidebar-item schdule" [routerLink]="patientSchdule">
                 <span class="text" title="dashboard">My Appointment</span>
             </div>
+          <br>
             <div class="sidebar-item appointment" [routerLink]="patientAppointment">
-                <!-- <span class="scheduler-image"><span class="icon-schedule item-image"></span></span> -->
                 <span class="text" title="appointment">Make Appointment</span>
             </div>
+          <br>
             <div class="sidebar-item info" [routerLink]="personalInfo">
-                <!-- <span class="scheduler-image"><span class="icon-schedule item-image"></span></span> -->
                 <span class="text" title="info">Personal Info</span>
             </div>
-            <div style="padding:100px" class="message" [routerLink]="Message">
-                <span class="text" title="message">Message</span>
+          <br>
+            <div class="sidebar-item info" [routerLink]="Message">
+                <span class="text" title="message">Messages</span>
             </div>
-            <div style="padding:100px" class="SignOut" [routerLink]="SignOut">
-                <span class="text" title="SignOut">Sign Out</span>
-            </div>
+          <br>
+
         </div>
     </ejs-sidebar>
     <div style="padding:5px" class="showsidebar">
       <button ejs-button #SidebarBtn id="toggle" (click)="showSidebar()" class="menubtn">
         <img src="../../../../../assets/img/menu.png" height="30" width="30"/>
       </button>
-      <span class="title">Welcome to Northeastern Health Center</span>
-      <div class="icons">
+
+      <div class="title">
         <img src="../assets/img/icons8-twitter-圈-30.png">
         <img src="../assets/img/icons8-instagram-30.png">
         <img src="../assets/img/icons8-facebook-30.png">
         <img src="../assets/img/icons8-linkedin-30.png">
         <img src="../assets/img/icons8-vk-圈-30.png">
       </div>
+      <span class="title1">Welcome to Northeastern Health Center</span>
 
     </div>
 </div>

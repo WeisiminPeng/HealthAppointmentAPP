@@ -2,26 +2,32 @@
 
     <ejs-sidebar #sidebar id="Siderbar" (created)="onCreated($event)" style="visibility: hidden" [closeOnDocumentClick]="closeOnDocumentClick">
         <div class="dock">
-            <div id="sidebar-item-Avatar">
-            </div>
+            <div id="sidebar-item-Avatar"></div>
             <div id="imgDiv">
-                <img id="avatar" *ngIf="imgURL" [src]="imgURL">
+              <br><br>
+<!--                <img id="avatar" *ngIf="imgURL" [src]="imgURL">-->
+              <img src="../../../../../assets/photo/profilepic.jpeg" height="100" width="100"/>
             </div>
+          <div style="padding-top:30px; cursor: pointer" class="SignOut" [routerLink]="SignOut">
+            <span class="text" title="SignOut">Sign Out</span>
+          </div>
+          <br><br><br><br><br>
             <div class="sidebar-item schdule" [routerLink]="doctorSchdule">
                 <span class="text" title="schdule">My Schdule</span>
             </div>
+          <br>
             <div class="sidebar-item appointment" [routerLink]="doctorAppointment">
                 <span class="text" title="appointment">Work Time</span>
             </div>
+          <br>
             <div class="sidebar-item info" [routerLink]="personalInfo">
                 <span class="text" title="info">Personal Info</span>
             </div>
-            <div style="padding:100px" class="message" [routerLink]="Message">
-                <span class="text" title="message">Message</span>
+          <br>
+            <div class="sidebar-item info" [routerLink]="Message">
+                <span class="text" title="message">Messages</span>
             </div>
-            <div style="padding:100px" class="SignOut" [routerLink]="SignOut">
-                <span class="text" title="SignOut">Sign Out</span>
-            </div>
+
         </div>
     </ejs-sidebar>
 
