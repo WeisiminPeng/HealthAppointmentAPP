@@ -77,6 +77,7 @@ export class PatientScheduleComponent implements OnInit {
   }
 
   deleteAppointment(data: any) {
+    alert("Are you sure to delete this appointment?");
     this.appointmentService.delete(data.id).subscribe(deleteMsg => {
       this.resMsg = deleteMsg;
       location.reload();

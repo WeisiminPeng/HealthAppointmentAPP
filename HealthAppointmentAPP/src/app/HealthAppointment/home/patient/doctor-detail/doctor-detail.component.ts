@@ -211,6 +211,7 @@ export class DoctorDetailComponent implements OnInit {
     }
   }
   public eventDelete(e) {
+    alert("Are you sure to delete this appointment?");
     const eventData: { [key: string]: Object } = this.scheduleObj.activeEventData.event as any;
     this.appointmentID = String(eventData.id);
     this.appointmentService.delete(this.appointmentID).subscribe(deleteMsg => {
