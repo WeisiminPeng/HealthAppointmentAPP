@@ -1,7 +1,6 @@
 <div class="sidebar-wrapper">
 
-    <ejs-sidebar #sidebar id="Siderbar" (created)="onCreated($event)" style="visibility: hidden"
-        [closeOnDocumentClick]="closeOnDocumentClick">
+    <ejs-sidebar #sidebar id="Siderbar" (created)="onCreated($event)" style="visibility: hidden" [closeOnDocumentClick]="closeOnDocumentClick">
         <div class="dock">
 
             <!-- <div class="info align-center">
@@ -10,6 +9,13 @@
                     <p class='user-type'>Admin</p>
                 </div>
             </div> -->
+            <div id="sidebar-item-Avatar">
+                <div id="imgDiv">
+                    <img id="avatar" *ngIf="imgURL" [src]="imgURL">
+                </div>
+
+                <!-- alse (change)="fileChange($event.target.files)" -->
+            </div>
             <div class="sidebar-item schdule" [routerLink]="doctorSchdule">
                 <span class="text" title="schdule">My Schdule</span>
             </div>

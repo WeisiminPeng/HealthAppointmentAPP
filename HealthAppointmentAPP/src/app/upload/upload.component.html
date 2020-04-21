@@ -1,0 +1,9 @@
+<div id="imgDiv" aria-hidden="true">
+    <img id="avatar1" *ngIf="imgURL" [src]="imgURL">
+</div>
+<div>
+    <input type="file" id="img" accept=".jpg,.png,.jpeg" aria-hidden="false" (change)="uploadImg($event.target.files)">
+</div>
+<div>
+    <button (click)="goLogin()">Confirm</button>
+</div>

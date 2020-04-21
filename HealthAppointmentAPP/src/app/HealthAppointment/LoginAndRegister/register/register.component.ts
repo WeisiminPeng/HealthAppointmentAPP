@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';  // import HTML service
 import {Router} from '@angular/router';
 import {DatePipe} from '@angular/common';
+
 // import { ActivatedRoute } from '@angular/router';
 
 
@@ -13,7 +14,7 @@ import {DatePipe} from '@angular/common';
 })
 
 export class RegisterComponent implements OnInit {
-
+  imgURL: any = '';
   public List: any[] = [];
   public kindOfUser = '';
   public Name = '';
@@ -209,18 +210,18 @@ register() {
               WorkDays: this.WorkDayList,
               AvailableDays: this.availableDayList,
               Specialization: this.Specialization,
-              Experience: this.Experience
+              Experience: this.Experience,
+              Avatar: this.imgURL.changingThisBreaksApplicationSecurity
           // tslint:disable-next-line:no-shadowed-variable
               }, httpOptions).subscribe((response) => {
               // console.log(response);
-              alert('Register successfully!');
-              this.router.navigate(['/login']);
+              // alert('Register successfully!');
+              this.router.navigate(['/' + this.Username +'/upload']);
               });
       });
       }
-
-
   }
+
 back() {
     this.router.navigate(['']);
     // this.router.navigate(['/register']);

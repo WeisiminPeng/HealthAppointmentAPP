@@ -10,8 +10,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class PasswordManagementComponent implements OnInit {
   public first: string;
-  public second: string;
-  public newPassword: string;
+  public second = '';
+  public newPassword = '';
   public username: string;
   public people: any;
   constructor(public routes:ActivatedRoute,public http:HttpClient,public router:Router) { }
@@ -39,6 +39,9 @@ export class PasswordManagementComponent implements OnInit {
     };
   }
   confirm() {
+    if (this.second === '' || this.newPassword === '') {
+      alert('Empty content, please enter new password!');
+    } else {
     const httpOptions = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
     const api = 'http://localhost:3000/patients/' + this.username;
     this.http.put(api, {
@@ -47,6 +50,7 @@ export class PasswordManagementComponent implements OnInit {
       alert('Updated Successfully!');
       this.router.navigate(['/login']);
     });
+  }
 }
   back(){
     const modal = document.getElementById('modal');

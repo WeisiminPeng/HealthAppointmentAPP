@@ -1,6 +1,9 @@
 <app-doctor-sidebar></app-doctor-sidebar>
 <div class="personalInfoDiv">
     <h2>Personal-Info</h2>
+    <div id="imgDiv">
+        <img id="avatar3" *ngIf="imgURL" [src]="imgURL">
+    </div>
     <table>
         <tr>
             <td>Name:</td><input type="text" [(ngModel)]="name" />
