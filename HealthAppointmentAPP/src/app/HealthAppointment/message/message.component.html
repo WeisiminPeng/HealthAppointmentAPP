@@ -18,8 +18,10 @@
                     <span *ngIf="chat.usernameMsg == usernameFrom" class="right-name">me</span>
                     <span *ngIf="chat.usernameMsg != usernameFrom" class="left-name">{{chat.nameMsg}}</span>
                     <br>
-                    <img *ngIf="role == 'doctor'" src="../../../assets/img/user-md-solid.svg">
-                    <img *ngIf="role == 'patient'" src="../../../assets/img/user-solid.svg">
+                    <img *ngIf="role == 'doctor' && chat.usernameMsg == usernameFrom" src="../../../assets/img/user-md-solid.svg">
+                    <img *ngIf="role == 'doctor' && chat.usernameMsg !== usernameFrom" src="../../../assets/img/user-solid.svg">
+                    <img *ngIf="role == 'patient' && chat.usernameMsg == usernameFrom" src="../../../assets/img/user-solid.svg">
+                    <img *ngIf="role == 'patient' && chat.usernameMsg !== usernameFrom" src="../../../assets/img/user-md-solid.svg">
                     <span *ngIf="chat.usernameMsg == usernameFrom" class="right-content">{{chat.content}}</span>
                     <span *ngIf="chat.usernameMsg != usernameFrom" class="left-content">{{chat.content}}</span>
                 </li>
