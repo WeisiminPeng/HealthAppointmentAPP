@@ -110,12 +110,28 @@
       background-color: rgba(0, 0, 0, 0.5);
     }
 
-    #imgDiv{
-      float: left;
-      width: 300px;
+    //#imgDiv{
+    //  float: left;
+    //  width: 300px;
+    //  height: auto;
+    //  img{
+    //    overflow: hidden;
+    //  }
+    //}
+    #imgDiv {
+      width: 200px;
       height: auto;
+      float: left;
+      //text-align: center;
+      //margin-top: 30px;
+      margin-left: 100px;
       img{
-        overflow: hidden;
+        object-fit: cover;
+        width: 100%;
+        height: auto;
+        max-height: 500px;
+        border-radius: 50%;
+        //margin-right: -50px;
       }
     }
 

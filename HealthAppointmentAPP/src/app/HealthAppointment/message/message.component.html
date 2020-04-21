@@ -4,9 +4,9 @@
 
 <div class="content">
     <div class="left">
-        <ul class="namelist">
-            <li id="nameli" class="name-span" *ngFor="let usernameTo of namelist"(click)="getMessageList(usernameTo.username)">
-                Dr.{{usernameTo.name}}
+        <ul id= 'namelist-wrapper' class="namelist">
+            <li id="nameli-{{usernameTo.name}}" class="name-span" *ngFor="let usernameTo of namelist"(click)="getMessageList(usernameTo.username)" >
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{usernameTo.name}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <!-- <span tabindex="1" (click)="getMessageList(usernameTo.username)">{{usernameTo.name}}</span> -->
             </li>
         </ul>
@@ -18,8 +18,10 @@
                     <span *ngIf="chat.usernameMsg == usernameFrom" class="right-name">me</span>
                     <span *ngIf="chat.usernameMsg != usernameFrom" class="left-name">{{chat.nameMsg}}</span>
                     <br>
-                    <img *ngIf="role == 'doctor'" src="../../../assets/img/user-md-solid.svg">
-                    <img *ngIf="role == 'patient'" src="../../../assets/img/user-solid.svg">
+                    <img *ngIf="role == 'doctor' && chat.usernameMsg == usernameFrom" src="../../../assets/img/user-md-solid.svg">
+                    <img *ngIf="role == 'doctor' && chat.usernameMsg !== usernameFrom" src="../../../assets/img/user-solid.svg">
+                    <img *ngIf="role == 'patient' && chat.usernameMsg == usernameFrom" src="../../../assets/img/user-solid.svg">
+                    <img *ngIf="role == 'patient' && chat.usernameMsg !== usernameFrom" src="../../../assets/img/user-md-solid.svg">
                     <span *ngIf="chat.usernameMsg == usernameFrom" class="right-content">{{chat.content}}</span>
                     <span *ngIf="chat.usernameMsg != usernameFrom" class="left-content">{{chat.content}}</span>
                 </li>
@@ -90,6 +92,7 @@
                         src="https://cdn.jsdelivr.net/emojione/assets/3.1/png/32/1f920.png">
                 </div>
                 <img class="emoji-button" (click)="showEmoji()" src="../../../assets/img/smile-regular.svg">
+
                 <!-- <div class="imageUpload" accept="image/*">
                     <img src="../../../assets/img/images-regular.svg" >
                     <input type="file" id="uploadImage" (change)="addImage($event)">
@@ -121,12 +124,13 @@
                     <img id="mImg" src="">
                 </div>
                 <input type="file" id="imageUpload" /> -->
-                <button (click)="addMessage()">Send</button>
+                <button (click)="addMessage()" class="send">Send</button>
                 <br>
                 <textarea name="msgContent" id="msgContent" [(ngModel)]="msg.content"></textarea>
             </form>
         </div>
     </div>
 </div>
+
 <app-patient-footer></app-patient-footer>
 

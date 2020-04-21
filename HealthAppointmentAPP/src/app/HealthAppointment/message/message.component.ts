@@ -2,22 +2,22 @@ import { Component, OnInit, Output, EventEmitter, ViewChild } from '@angular/cor
 import { ActivatedRoute } from '@angular/router';
 import html2canvas from 'html2canvas';
 
-//import service
+// import service
 import { MessageService } from '../services/message.service';
 import { AppointmentService } from '../services/appointment.service';
 import { DoctorService } from '../services/doctor.service';
 import { PatientService } from '../services/patient.service';
 
-//import model
+// import model
 import { Message } from './model/message.model';
 
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-//import router
-import { Router } from '@angular/router'
+// import router
+import { Router } from '@angular/router';
 
-//import component
+// import component
 import { SidebarComponent } from '@syncfusion/ej2-angular-navigations';
 
 
@@ -32,9 +32,9 @@ export class MessageComponent implements OnInit {
   // sidebar variables
   @ViewChild('sidebar')
   public sidebar: SidebarComponent;
-  public isOpen: boolean = true;
-  public closeOnDocumentClick: boolean = true;
-  public type: string = 'Push';
+  public isOpen = true;
+  public closeOnDocumentClick = true;
+  public type = 'Push';
 
   public username: string;
   public sidebarOneJump: string;
@@ -43,7 +43,7 @@ export class MessageComponent implements OnInit {
   public sidebarOne: string;
   public sidebarTwo: string;
   public Message: string;
-  public SignOut: string = '';
+  public SignOut = '';
   public personTell: string;
   // sidebar variables done!
 
@@ -54,21 +54,21 @@ export class MessageComponent implements OnInit {
 
   messageAll: any[] = [];
 
-  usernameTo: string;//message is to the user with usernameTo
-  usernameFrom: string = "";//message is from the user with usernameFrom
-  role: string = "";//the role of this user
-  role2: string = "";
-  chatList: any[] = [];//the list only contain the chat content of the user with idFrom
-  chatListSmall: any[] = [];//the list contain the chat content between the users with idFrom and idTo
+  usernameTo: string; // message is to the user with usernameTo
+  usernameFrom = ''; // message is from the user with usernameFrom
+  role = ''; // the role of this user
+  role2 = '';
+  chatList: any[] = []; // the list only contain the chat content of the user with idFrom
+  chatListSmall: any[] = []; // the list contain the chat content between the users with idFrom and idTo
 
   // chatListSmallName: any[] = [];
-  msg: any = {//new message
-    usernameMsg: "",
-    nameMsg: "",
-    content: ""
-  }
+  msg: any = {// new message
+    usernameMsg: '',
+    nameMsg: '',
+    content: ''
+  };
 
-  //used for reload
+  // used for reload
   private timer;
 
   isShowEmoji: boolean = false;
@@ -76,7 +76,8 @@ export class MessageComponent implements OnInit {
   searchKeywords = "";
   searchChatListSmall: any[] = [];
 
-  //declare services
+
+  // declare services
   constructor(public messageService: MessageService, public appointmentService: AppointmentService, public doctorService: DoctorService, public patientService: PatientService, public http: HttpClient, public router: Router, public routes: ActivatedRoute) {
   }
 
@@ -85,15 +86,15 @@ export class MessageComponent implements OnInit {
     this.username = this.routes.snapshot.paramMap.get('username').split('_')[0];
     this.personTell = this.routes.snapshot.paramMap.get('username').split('_')[1];
     if (this.personTell == 'patient') {
-      this.sidebarOne = "My Appointment";
-      this.sidebarTwo = "Make Appointment";
+      this.sidebarOne = 'My Appointment';
+      this.sidebarTwo = 'Make Appointment';
       this.sidebarTwoJump = '/patientAppointment/' + this.username;
       this.sidebarOneJump = '/patientSchdule/' + this.username;
       this.Info = '/patientInfo/' + this.username;
       this.Message = '/messages/' + this.username + '_patient';
     } else {
-      this.sidebarOne = "My Schdule";
-      this.sidebarTwo = "Work Time";
+      this.sidebarOne = 'My Schdule';
+      this.sidebarTwo = 'Work Time';
       this.sidebarTwoJump = '/doctorAppointment/' + this.username;
       this.sidebarOneJump = '/doctorSchdule/' + this.username;
       this.Info = '/doctorInfo/' + this.username;
@@ -101,22 +102,22 @@ export class MessageComponent implements OnInit {
     }
     // sidebar jump control done!
 
-    //get all the messages form messages collection
+    // get all the messages form messages collection
     this.messageService.list().subscribe((data) => {
       this.messageAll = data;
       // console.log("messageAll");
       // console.log(this.messageAll);
     });
 
-    //get usernameFrom
+    // get usernameFrom
     this.routes.params.subscribe((data) => {
       // console.log(data.username);
       this.usernameFrom = data.username.split('_')[0];
       this.role = data.username.split('_')[1];
-      if (this.role == "patient") {
-        this.role2 = "doctor";
+      if (this.role == 'patient') {
+        this.role2 = 'doctor';
       } else {
-        this.role2 = "patient";
+        this.role2 = 'patient';
       }
       this.msg.usernameMsg = this.usernameFrom;
       // console.log("msg");
@@ -125,38 +126,38 @@ export class MessageComponent implements OnInit {
       // console.log(this.role);
     });
 
-    if (this.role == "patient") {
+    if (this.role == 'patient') {
       // console.log("patient");
       this.patientService.list().subscribe((data) => {
         // console.log(data);
-        let patientlist = data;
+        const patientlist = data;
         for (let i = 0; i < patientlist.length; i++) {
           if (patientlist[i].username == this.usernameFrom) {
             this.msg.nameMsg = patientlist[i].Name;
             // console.log(this.msg);
           }
         }
-      })
+      });
     } else {
       // console.log("doctor");
       this.doctorService.list().subscribe((data) => {
         // console.log(data);
-        let doctorlist = data;
+        const doctorlist = data;
         for (let i = 0; i < doctorlist.length; i++) {
           if (doctorlist[i].username == this.usernameFrom) {
             this.msg.nameMsg = doctorlist[i].Name;
             // console.log(this.msg);
           }
         }
-      })
+      });
     }
 
     this.appointmentService.get(this.usernameFrom).subscribe((data) => {
-      //get the appointment list of this user
+      // get the appointment list of this user
       this.appointmentlist = data;
 
-      //get the namelist data
-      if (this.role == "patient") {
+      // get the namelist data
+      if (this.role == 'patient') {
         // console.log("doctor namelist");
         for (let i = 0; i < this.appointmentlist.length; i++) {
           if (this.appointmentlist[i].PatientUsername == this.usernameFrom) {
@@ -166,13 +167,13 @@ export class MessageComponent implements OnInit {
             }
           }
         }
-      } else if (this.role == "doctor") {
+      } else if (this.role == 'doctor') {
         // console.log("doctor namelist");
         // console.log("appointmentlist");
         // console.log(this.appointmentlist);
         for (let i = 0; i < this.appointmentlist.length; i++) {
           if (this.appointmentlist[i].DoctorUsername == this.usernameFrom) {
-            let patientUsername: string = this.appointmentlist[i].PatientUsername;
+            const patientUsername: string = this.appointmentlist[i].PatientUsername;
             // console.log(this.namelist.indexOf(patientUsername));
             if (this.usernamelist.indexOf(patientUsername) == -1) {
               this.usernamelist.push(this.appointmentlist[i].PatientUsername);
@@ -186,7 +187,7 @@ export class MessageComponent implements OnInit {
       // console.log(this.namelist);
     });
 
-    //timer, reload the webpage
+    // timer, reload the webpage
     this.timer = setInterval(() => {
       // console.log("reload!");
       this.chatList = [];
@@ -226,12 +227,24 @@ export class MessageComponent implements OnInit {
     this.sidebar.show();
   }
   // sidebar function done!
+  
 
-
-
-  //get message list of the selected people in the name list
+  // get message list of the selected people in the name list
   getMessageList(usernameTo) {
     this.usernameTo = usernameTo;
+    const id = 'nameli-' + this.usernameTo;
+    const parent = document.getElementById('namelist-wrapper');
+    for(let i =0; i < parent.childElementCount; i++){
+      // tslint:disable-next-line:triple-equals
+      if(parent.children[i].id === id){
+        parent.children[i].className = 'selected';
+      } else {
+        parent.children[i].className = 'name-span';
+      }
+    }
+    // document.getElementById(id).style = 'background-color:lightblue;\n' +
+    //   '              color: white;\n' +
+    //   '              text-align: right;';
     // console.log(this.usernameTo);
     this.chatList = [];
     this.chatListSmall = [];
@@ -270,6 +283,7 @@ export class MessageComponent implements OnInit {
     this.isShowEmoji = false;
 
     // console.log("add" + this.isShowEmoji);
+
   }
 
   showEmoji() {
@@ -499,13 +513,13 @@ export class MessageComponent implements OnInit {
       alert("Please select a person to send your message!");
       return;
     }
-    if (this.msg.content == "") {
-      alert("The content of the message should not be empty!");
+    if (this.msg.content == '') {
+      alert('The content of the message should not be empty!');
       return;
     }
     if (this.messageAll.length == 0) {
       // console.log("this.messageAll.length == 0");
-      let messagelist = new Message(this.usernameFrom, this.usernameTo, [this.msg]);
+      const messagelist = new Message(this.usernameFrom, this.usernameTo, [this.msg]);
       this.messageService.addMessage(messagelist).subscribe((data) => {
         this.newMessageEmitted.emit(data);
         this.messageService.list().subscribe((data) => {
@@ -532,12 +546,12 @@ export class MessageComponent implements OnInit {
         });
       });
 
-      (<HTMLInputElement>document.getElementById("msgContent")).value = "";
+      (document.getElementById('msgContent') as HTMLInputElement).value = '';
     } else {
       if (this.chatListSmall.length == 0) {
         // console.log("this.chatListSmall.length == 0");
 
-        let messagelist = new Message(this.usernameFrom, this.usernameTo, [this.msg]);
+        const messagelist = new Message(this.usernameFrom, this.usernameTo, [this.msg]);
         this.messageService.addMessage(messagelist).subscribe((data) => {
           this.newMessageEmitted.emit(data);
           this.messageService.list().subscribe((data) => {
@@ -600,10 +614,10 @@ export class MessageComponent implements OnInit {
         // console.log(this.messageAll[index]);
         // console.log("tthis.messageAll[index]._id");
         // console.log(this.messageAll[index]._id);
-        let updatedMessage$: Observable<Message> = this.messageService.updateMessage(this.messageAll[index], this.messageAll[index]._id);
+        const updatedMessage$: Observable<Message> = this.messageService.updateMessage(this.messageAll[index], this.messageAll[index]._id);
         updatedMessage$.subscribe(updatedmessage => {
           this.newMessageEmitted.emit(updatedmessage);
-          //get new message list
+          // get new message list
           this.messageService.list().subscribe((data) => {
             this.messageAll = data;
             // console.log("messageAll1");
@@ -630,13 +644,13 @@ export class MessageComponent implements OnInit {
           });
         });
       }
-      (<HTMLInputElement>document.getElementById("msgContent")).value = "";
+      (document.getElementById('msgContent') as HTMLInputElement).value = '';
     }
 
   }
 
   ngOnDestroy() {
-    //deestroy the timer
+    // deestroy the timer
     if (this.timer) {
       clearInterval(this.timer);
     }

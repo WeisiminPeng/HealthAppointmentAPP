@@ -28,7 +28,15 @@
         <div class="specialization-detail-wrapper">
           <div #specialistItemObj class='specialist-display'>
             <div (click)='onSpecialistClick($event)' *ngFor="let data of filteredDoctors" class="doctors">
-              <div class='specialist-item' id=Specialist_{{data.username}}>
+              <table class='specialist-item' id=Specialist_{{data.username}}>
+                <tr>
+                <td>
+                <div id="imgDiv">
+
+                  <img src="../../../../../assets/photo/profilepic.jpeg" height="80px" width="80px"/>
+<!--                  <img id="avatar3" *ngIf="data.Avatar" [src]='getImg(data)'>-->
+                </div></td>
+                <td>
                 <div class="specialist-detail">
                   <div class="name">Dr. {{data.Name}}</div>
                   <div class="specialist-experience">
@@ -36,14 +44,16 @@
                       <span class="label-text">Specialization<br></span>
                       <span class="specialization-text">{{data.Specialization}}</span>
                     </div>
+                    <img src="../../../../../assets/img/icons8-线-50.png" height="25px" width="25px"/>
                     <div class="experience">
                       <span class="label-text">Experience<br></span>
                       <span class="specialization-text">{{data.Experience}}</span>
-                      <p>|</p>
                     </div>
                   </div>
                 </div>
-              </div>
+                </td>
+                </tr>
+              </table>
             </div>
           </div>
         </div>

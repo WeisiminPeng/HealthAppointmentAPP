@@ -29,6 +29,7 @@ export class PatientScheduleComponent implements OnInit {
   public dataStart: Date;
   public dateNow = Date.now();
   public resMsg: success;
+  public yes: Boolean = true;
 
   ngOnInit(): void {
     this.username = this.routes.snapshot.paramMap.get('username');
@@ -36,16 +37,6 @@ export class PatientScheduleComponent implements OnInit {
       this.appointments = appointments;
     });
   }
-
-  // getStartTimeDetails(data: any) {
-  //   this.dataStartHour = new Date(data.StartTime);
-  //   return `${this.intl.formatDate(this.dataStartHour, { skeleton: "yMMMEd"  })} - ${this.intl.formatDate(this.dataStartHour, { skeleton: "hm"})}`;
-  // }
-
-  // getEndTimeDetails(data: any) {
-  //   this.dataEndHour = new Date(data.EndTime);
-  //   return `${this.intl.formatDate(this.dataEndHour, { skeleton: "yMMMEd"  })} - ${this.intl.formatDate(this.dataEndHour, { skeleton: "hm"})}`;
-  // }
 
   getWeekDetails(data: any) {
     this.dataWeek = new Date(data.StartTime);
@@ -87,12 +78,16 @@ export class PatientScheduleComponent implements OnInit {
   }
 
   deleteAppointment(data: any) {
-    // console.log(data.id);
+    if (this.yes) {
+      alert("Are you sure to delete this appointment?");
+      this.yes = false;
+    } else {
     this.appointmentService.delete(data.id).subscribe(deleteMsg => {
       this.resMsg = deleteMsg;
-      // console.log(this.resMsg)
       location.reload();
+      this.yes = true;
     });
+  }
   }
 
   gotoAppointment(data: any) {
@@ -100,7 +95,6 @@ export class PatientScheduleComponent implements OnInit {
   }
 
   sendMsg() {
-    // this.DoctorUsername = args.currentTarget.querySelector('.specialist-item')['id'].split('_')[1];
     this.router.navigateByUrl('/messages/' + this.username + '_patient');
   }
   showText() {

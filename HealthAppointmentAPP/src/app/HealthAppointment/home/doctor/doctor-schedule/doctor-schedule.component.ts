@@ -102,6 +102,7 @@ export class DoctorScheduleComponent implements OnInit {
   public currentEvent;
   public updateAppointmentItem: string;
   public showQuickInfo: Boolean = false;
+  public yes: Boolean = true;
 
 
 
@@ -113,44 +114,33 @@ export class DoctorScheduleComponent implements OnInit {
     this.arraytemp = [];
     this.doctorService.get(this.usernameDoctor).subscribe(doctor => {
       this.currentDoctor = doctor;
-      // console.log("^^^^^^^^^^")
-      // console.log(this.currentDoctor.AvailableDays)
       var result = Object.values(this.currentDoctor.AvailableDays);
-      // console.log("******"+result)
       this.workDays = result;
       this.temp = this.currentDoctor.WorkDays
 
       // disable breakhour
       for (var i = 0; i < 7; i++) {
-        // console.log(this.temp[i])
         if(this.temp[i].State != 'RemoveBreak'){
         this.BreakStartHour = this.temp[i].BreakStartHour;
         this.BreakEndHour = this.temp[i].BreakEndHour;
-        // this.BreakStartHour = new Date(2018,1,2,12,0);
-        // this.BreakEndHour = new Date(2018,1,2,13,0);
         var addAppointment: any = {};
         addAppointment.PatientName = 'Break Hour';
         addAppointment.StartTime = this.BreakStartHour;
         addAppointment.EndTime = this.BreakEndHour;
         addAppointment.IsBlock = true;
         addAppointment.CategoryColor = '#666666',
-          addAppointment.RecurrenceRule = 'FREQ=WEEKLY;INTERVAL=1;UNTIL = 20300530T041343Z';
-        // console.log(addAppointment)
+        addAppointment.RecurrenceRule = 'FREQ=WEEKLY;INTERVAL=1;UNTIL = 20300530T041343Z';
         this.currentBreakHourArray.push(addAppointment);
       }
       }
 
 
-      // console.log(this.currentBreakHourArray)
-
+// get all the appointment of this doctor
       this.appointmentService.get(this.usernameDoctor).subscribe(appointments => {
         this.appointments = appointments;
-        // console.log(this.appointments);
         this.arraytemp = this.currentBreakHourArray.concat(this.appointments);
-        // console.log(this.arraytemp)
-
+// set all the appointmnet to calender setting
         this.eventData = this.arraytemp;
-
         this.eventSettings = {
           dataSource: this.eventData,
           fields: {
@@ -168,7 +158,6 @@ export class DoctorScheduleComponent implements OnInit {
           resourceColorField: this.bookingColor
         };
       });
-      // console.log("1");
     });
 
   }
@@ -184,41 +173,24 @@ export class DoctorScheduleComponent implements OnInit {
 
   public eventAdd(e) {
     alert("Doctor can't add appointment!")
-    // const data: Object = this.scheduleObj.getCellDetails(this.scheduleObj.getSelectedElements()) as Object;
-    // const eventData: { [key: string]: Object } = this.scheduleObj.eventWindow.getObjectFromFormData('e-schedule-dialog');
-    // this.scheduleObj.eventWindow.convertToEventData(data as { [key: string]: Object }, eventData);
-    // eventData.Id = this.scheduleObj.eventBase.getEventMaxID() as number + 1;
-    // console.log(eventData)
-    // var addAppointment: any = {};
-    // addAppointment.PatientName = this.currentPatient.Name;
-    // addAppointment.PatientUsername = this.usernamePatient;
-    // addAppointment.DoctorName = this.currentDoctor.Name;
-    // addAppointment.DoctorUsername = this.usernameDoctor
-    // addAppointment.Symptims = String(eventData.Symptims);
-    // addAppointment.Id = String(eventData.Id);
-    // addAppointment.StartTime = eventData.StartTime;
-    // addAppointment.EndTime = eventData.EndTime;
-    // this.updateAppointmentItem = JSON.stringify(addAppointment);
-    // console.log(this.updateAppointmentItem);
-    // this.appointmentService.save(this.updateAppointmentItem).subscribe(newTodo => {
-    //   this.newTodo = newTodo;
-    //   console.log(this.newTodo);
-    // });
-    // this.scheduleObj.addEvent(eventData);
     this.dialogClose();
   }
 
   // delete appointment
   public eventDelete(e) {
+    if (this.yes) {
+      alert("Are you sure this appointment is completed?");
+      this.yes = false;
+    } else {
     const eventData: { [key: string]: Object } = this.scheduleObj.activeEventData.event as any;
     this.appointmentID = String(eventData.id);
-    // console.log(eventData)
     this.appointmentService.delete(this.appointmentID).subscribe(deleteMsg => {
       this.resMsg = deleteMsg;
-      // console.log(this.resMsg)
     });
     this.dialogClose();
     location.reload();
+    this.yes = true;
+  }
   }
 
   //  edit appointment
@@ -232,22 +204,16 @@ export class DoctorScheduleComponent implements OnInit {
       const eventData: { [key: string]: Object } = this.scheduleObj.eventWindow.getObjectFromFormData('e-schedule-dialog');
       eventData.Id = this.currentEvent.Id;
       this.appointmentID = String(eventDataOriginal.id);
-      // console.log(eventDataOriginal)
-      // console.log(eventData)
       var updateAppointment: any = {};
       updateAppointment.Symptims = String(eventData.Symptims);
-      // updateAppointment.Id = String(eventData.Id);
       updateAppointment.StartTime = eventData.StartTime;
       updateAppointment.EndTime = eventData.EndTime;
       this.updateAppointmentItem = JSON.stringify(updateAppointment);
-      // console.log(this.updateAppointmentItem);
       this.appointmentService.update(this.updateAppointmentItem, this.appointmentID).subscribe(appointmentUpdate => {
         this.resMsg = appointmentUpdate;
-        // console.log(this.resMsg);
       });
       this.scheduleObj.saveEvent(eventData);
       this.dialogClose();
-      // location.reload();
     }
   }
   public dialogClose() {

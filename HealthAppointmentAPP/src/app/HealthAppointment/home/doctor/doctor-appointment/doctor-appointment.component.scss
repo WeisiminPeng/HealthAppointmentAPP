@@ -289,3 +289,29 @@ $planner-tooltip-bg-color:#000;
     }
   }
 }
+
+.break-hours-content{
+  text-align: center;
+  table{
+    tr{
+      height: 50px;
+    }
+  }
+}
+
+.edit-break-hours{
+  text-align: center;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  font-size: 20px;
+  width: 300px;
+  height: 50px;
+  background-color: #B3D2E2;
+  box-shadow: 0 0 3px #666666;
+  margin-top: 15px;
+  color: whitesmoke;
+  font-weight: bold;
+  border: 5px #666666;
+  border-radius: 5px;
+  padding-left: 10px;
+
+}

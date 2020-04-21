@@ -13,7 +13,7 @@
       <div class="putAclassHere">
         <div class="schedule-container">
           <ejs-schedule #scheduleObj height='800px' cssClass='doctor-appointment-planner' [showWeekend]='false' [startHour]="startHour" [endHour]='endHour' [selectedDate]="selectedDate" [eventSettings]="eventSettings" [timeScale]="timeScale" [workDays]="workDays"
-                        [workHours]="workHours" [firstDayOfWeek]='firstDayOfWeek' [showQuickInfo]='showQuickInfo' [currentView]='currentView' (popupOpen)='onPopupOpen($event)'>
+                        [workHours]="workHours" [firstDayOfWeek]='firstDayOfWeek' [showQuickInfo]='showQuickInfo' [currentView]='currentView' (popupOpen)='onPopupOpen($event)' (actionBegin)="onActionBegin($event)">
 
             <e-views>
               <e-view option="Day"></e-view>

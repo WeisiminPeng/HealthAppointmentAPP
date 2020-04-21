@@ -67,6 +67,7 @@ export class DoctorInfoComponent implements OnInit {
         console.log(this.people.Avatar);
 
         this.imgURL = this.sanitizer.bypassSecurityTrustUrl(this.people.Avatar);
+        console.log(this.imgURL)
 
       // }
       });

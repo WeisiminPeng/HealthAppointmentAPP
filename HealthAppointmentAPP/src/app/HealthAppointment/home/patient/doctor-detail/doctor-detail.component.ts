@@ -95,6 +95,7 @@ export class DoctorDetailComponent implements OnInit {
   public updateAppointmentItem: string;
   public addAppointmentItem: string;
   public showQuickInfo: Boolean = false;
+  public yes: Boolean = true;
 
 
 
@@ -103,9 +104,6 @@ export class DoctorDetailComponent implements OnInit {
     // get doctor/patient username
     this.usernamePatient = this.routes.snapshot.paramMap.get('username').split('_')[0];
     this.usernameDoctor = this.routes.snapshot.paramMap.get('username').split('_')[1];
-    // console.log(this.usernamePatient)
-    // console.log(this.usernameDoctor)
-    // console.log("********")
 
     // all the appointments of this doctor
     this.arraytemp = [];
@@ -119,19 +117,16 @@ export class DoctorDetailComponent implements OnInit {
       // disable cell in canlender when it is breakhour
       this.temp = this.currentDoctor.WorkDays
       for (var i = 0; i < 7; i++) {
-        if(this.temp[i].State != 'RemoveBreak'){
-        this.BreakStartHour = this.temp[i].BreakStartHour;
-        this.BreakEndHour = this.temp[i].BreakEndHour;
-        // this.BreakStartHour = new Date(2018,1,2,12,0);
-        // this.BreakEndHour = new Date(2018,1,2,13,0);
-        var addAppointment: any = {};
-        addAppointment.PatientName = 'Break Hour';
-        addAppointment.StartTime = this.BreakStartHour;
-        addAppointment.EndTime = this.BreakEndHour;
-        addAppointment.IsBlock = true;
-        addAppointment.RecurrenceRule = 'FREQ=WEEKLY;INTERVAL=1;COUNT = 1000';
-        // console.log(addAppointment)
-        this.currentBreakHourArray.push(addAppointment);
+        if (this.temp[i].State != 'RemoveBreak') {
+          this.BreakStartHour = this.temp[i].BreakStartHour;
+          this.BreakEndHour = this.temp[i].BreakEndHour;
+          var addAppointment: any = {};
+          addAppointment.PatientName = 'Break Hour';
+          addAppointment.StartTime = this.BreakStartHour;
+          addAppointment.EndTime = this.BreakEndHour;
+          addAppointment.IsBlock = true;
+          addAppointment.RecurrenceRule = 'FREQ=WEEKLY;INTERVAL=1;COUNT = 1000';
+          this.currentBreakHourArray.push(addAppointment);
         }
       }
 
@@ -139,27 +134,18 @@ export class DoctorDetailComponent implements OnInit {
       this.patientService.get(this.usernamePatient).subscribe(patient => {
         this.currentPatient = patient;
         this.currentPatientName = this.currentPatient.Text;
-        // console.log(this.currentPatientName)
-        // get all the appoint of this doctor
+        // get all the appointment of this doctor
         this.appointmentService.get(this.usernameDoctor).subscribe(appointments => {
           this.appointments = appointments;
-          // console.log(this.appointments);
-          // console.log("***"+this.appointments.length)
           for (var j = 0; j < this.appointments.length; j++) {
             if (this.appointments[j].PatientUsername !== this.usernamePatient) {
               this.appointments[j].IsBlock = true;
             }
           }
-          // console.log(this.appointments)
           // combine this two array
           this.arraytemp = this.currentBreakHourArray.concat(this.appointments);
-          // }
-          // console.log("%%%%%%%%%")
-          // console.log(this.arraytemp)
 
           this.eventData = this.arraytemp;
-
-
           this.eventSettings = {
             dataSource: this.eventData,
             fields: {
@@ -205,7 +191,6 @@ export class DoctorDetailComponent implements OnInit {
       const eventData: { [key: string]: Object } = this.scheduleObj.eventWindow.getObjectFromFormData('e-schedule-dialog');
       this.scheduleObj.eventWindow.convertToEventData(data as { [key: string]: Object }, eventData);
       eventData.Id = this.scheduleObj.eventBase.getEventMaxID() as number + 1;
-      // console.log(eventData)
       var addAppointment: any = {};
       addAppointment.PatientName = this.currentPatient.Name;
       addAppointment.PatientUsername = this.usernamePatient;
@@ -217,10 +202,8 @@ export class DoctorDetailComponent implements OnInit {
       addAppointment.EndTime = eventData.EndTime;
       addAppointment.CategoryColor = '#666666';
       this.addAppointmentItem = JSON.stringify(addAppointment);
-      // console.log(this.updateAppointmentItem);
       this.appointmentService.save(this.addAppointmentItem).subscribe(newAppointment => {
         this.newAppointment = newAppointment;
-        // console.log(this.newTodo);
       });
       location.reload();
 
@@ -229,18 +212,22 @@ export class DoctorDetailComponent implements OnInit {
     }
   }
   public eventDelete(e) {
-    const eventData: { [key: string]: Object } = this.scheduleObj.activeEventData.event as any;
-    this.appointmentID = String(eventData.id);
-    // console.log(eventData)
-    this.appointmentService.delete(this.appointmentID).subscribe(deleteMsg => {
-      this.resMsg = deleteMsg;
-      // console.log(this.resMsg)
-    });
-    this.dialogClose();
-    location.reload();
+    if (this.yes) {
+      alert("Are you sure to delete this appointment?");
+      this.yes = false;
+    } else {
+      const eventData: { [key: string]: Object } = this.scheduleObj.activeEventData.event as any;
+      this.appointmentID = String(eventData.id);
+      this.appointmentService.delete(this.appointmentID).subscribe(deleteMsg => {
+        this.resMsg = deleteMsg;
+      });
+      this.dialogClose();
+      location.reload();
+      this.yes = true;
+    }
   }
 
-// edit appointment
+  // edit appointment
   public editEvent(e) {
     var inputValue = (<HTMLInputElement>document.getElementById("Description")).value;
     if (inputValue == '') {
@@ -250,26 +237,16 @@ export class DoctorDetailComponent implements OnInit {
       const eventData: { [key: string]: Object } = this.scheduleObj.eventWindow.getObjectFromFormData('e-schedule-dialog');
       eventData.Id = this.currentEvent.Id;
       this.appointmentID = String(eventDataOriginal.id);
-      // console.log(eventDataOriginal)
-      // console.log(eventData)
       var updateAppointment: any = {};
-      // updateAppointment.PatientName = String(eventData.PatientName);
-      // updateAppointment.PatientUsername = this.usernamePatient;
-      // updateAppointment.DoctorName = this.currentDoctor.Name;
-      // updateAppointment.DoctorUsername = this.usernameDoctor
       updateAppointment.Symptims = String(eventData.Symptims);
-      // updateAppointment.Id = String(eventData.Id);
       updateAppointment.StartTime = eventData.StartTime;
       updateAppointment.EndTime = eventData.EndTime;
       this.updateAppointmentItem = JSON.stringify(updateAppointment);
-      // console.log(this.updateAppointmentItem);
       this.appointmentService.update(this.updateAppointmentItem, this.appointmentID).subscribe(appointmentUpdate => {
         this.resMsg = appointmentUpdate;
-        // console.log(this.resMsg);
       });
       this.scheduleObj.saveEvent(eventData);
       this.dialogClose();
-      // location.reload();
     }
   }
   public dialogClose() {
