@@ -26,7 +26,6 @@ export class DoctorSidebarComponent implements OnInit {
   public Message: string;
   public people: any;
   public avatar: any;
-  // private doctorSchdule1 = '/doctorSchdule';
 
   @ViewChild('sidebar')
   public sidebar: SidebarComponent;
@@ -34,7 +33,6 @@ export class DoctorSidebarComponent implements OnInit {
   public closeOnDocumentClick: boolean = true;
   public type: string = 'Push';
 
-  // constructor(public http:HttpClient,public router:Router) { }
   constructor(public doctorService: DoctorService, public routes: ActivatedRoute, public http: HttpClient,
               private sanitizer: DomSanitizer) { }
 

@@ -37,16 +37,6 @@ export class PatientScheduleComponent implements OnInit {
     });
   }
 
-  // getStartTimeDetails(data: any) {
-  //   this.dataStartHour = new Date(data.StartTime);
-  //   return `${this.intl.formatDate(this.dataStartHour, { skeleton: "yMMMEd"  })} - ${this.intl.formatDate(this.dataStartHour, { skeleton: "hm"})}`;
-  // }
-
-  // getEndTimeDetails(data: any) {
-  //   this.dataEndHour = new Date(data.EndTime);
-  //   return `${this.intl.formatDate(this.dataEndHour, { skeleton: "yMMMEd"  })} - ${this.intl.formatDate(this.dataEndHour, { skeleton: "hm"})}`;
-  // }
-
   getWeekDetails(data: any) {
     this.dataWeek = new Date(data.StartTime);
     return `${this.intl.formatDate(this.dataWeek, { skeleton: 'E'  })}`;
@@ -87,10 +77,8 @@ export class PatientScheduleComponent implements OnInit {
   }
 
   deleteAppointment(data: any) {
-    // console.log(data.id);
     this.appointmentService.delete(data.id).subscribe(deleteMsg => {
       this.resMsg = deleteMsg;
-      // console.log(this.resMsg)
       location.reload();
     });
   }
@@ -100,7 +88,6 @@ export class PatientScheduleComponent implements OnInit {
   }
 
   sendMsg() {
-    // this.DoctorUsername = args.currentTarget.querySelector('.specialist-item')['id'].split('_')[1];
     this.router.navigateByUrl('/messages/' + this.username + '_patient');
   }
   showText() {

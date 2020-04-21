@@ -38,7 +38,6 @@ export class DoctorAppointmentComponent implements OnInit {
   ngOnInit(): void {
     // get username
     this.username = this.routes.snapshot.paramMap.get('username');
-    // console.log("this.username: " + this.username)
 
     // get doctor's workhours
     this.doctorService.get(this.username).subscribe(doctor => {
@@ -59,11 +58,9 @@ export class DoctorAppointmentComponent implements OnInit {
   onChangeStates(args: any) {
     args.preventDefault();
     const currentState: string = args.target.getAttribute('data-state');
-    // console.log(currentState);
     const currentDay: string = args.target.getAttribute('id').split('_')[0];
     let newState: String = '';
     // switch state
-    // !! not change database
     switch (currentState) {
       case 'TimeOff':
         newState = 'RemoveBreak';
@@ -92,12 +89,10 @@ export class DoctorAppointmentComponent implements OnInit {
   //change showing style
   getBreakStartHour(BreakStartHour: string) {
     return this.dataBreakStartHourDetail = new Date(BreakStartHour)
-    // return `${this.intl.formatDate(this.dataBreakStartHourDetail, { skeleton: 'hm' })}`;
   }
   //change showing style
   getBreakEndHour(BreakEndHour: string) {
     return this.dataBreakEndHourDetail = new Date(BreakEndHour)
-    // return `${this.intl.formatDate(this.dataBreakEndHourDetail, { skeleton: 'hm' })}`;
   }
 
   getBreakDetails(data: any) {
@@ -153,14 +148,11 @@ export class DoctorAppointmentComponent implements OnInit {
     var editDoctorWorkDays: any = {};
     editDoctorWorkDays.WorkDays = workDays;
     editDoctorWorkDays.AvailableDays = availableDays;
-    // console.log(editDoctorWorkDays)
     this.doctorService.update(editDoctorWorkDays, this.username).subscribe(doctorUpdate => {
       this.doctorUpdate = doctorUpdate;
-      // console.log(this.doctorUpdate)
     });
     this.breakHourObj.hide();
 
   }
-
 
 }

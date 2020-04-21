@@ -10,6 +10,7 @@ import { PatientService } from '../../../services/patient.service'
 
 import { doctorsData } from 'src/app/HealthAppointment/healthappoint.model';
 import { patientData } from 'src/app/HealthAppointment/healthappoint.model';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-patient-appointment',
@@ -32,9 +33,10 @@ export class PatientAppointmentComponent implements OnInit {
   public patient: patientData;
   public username: string;
   public DoctorUsername:string;
+  imgURL: any;
 
 
-  constructor(public doctorService: DoctorService, public patientService: PatientService, public routes: ActivatedRoute, private router: Router) {
+  constructor(public doctorService: DoctorService, public patientService: PatientService, public routes: ActivatedRoute, private router: Router, private sanitizer: DomSanitizer) {
 
   }
 
@@ -49,7 +51,6 @@ export class PatientAppointmentComponent implements OnInit {
     this.username = this.routes.snapshot.paramMap.get('username');
     this.patientService.get(this.username).subscribe(patient => {
       this.patient = patient;
-      // console.log(this.patient);
     });
 
 
@@ -59,7 +60,6 @@ export class PatientAppointmentComponent implements OnInit {
   onSpecializationChange(args?: any) {
     if (args && args.value) {
       this.selectedSpecialization = args ? args.itemData.value : this.selectedSpecialization;
-      // console.log(this.selectedSpecialization)
       this.selectedDoctors = this.doctors.filter(
         (item: any) => item.Specialization === this.selectedSpecialization);
     } else {
@@ -77,6 +77,13 @@ export class PatientAppointmentComponent implements OnInit {
 
   getEducation(text: Object) {
     return (<string>text).toUpperCase();
+  }
+
+  getImg(data: any){
+    console.log(data.Avatar)
+    this.imgURL = this.sanitizer.bypassSecurityTrustUrl(data.Avatar);
+    console.log(this.imgURL)
+    return this.imgURL;
   }
 
 

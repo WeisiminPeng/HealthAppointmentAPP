@@ -30,6 +30,11 @@
             <div (click)='onSpecialistClick($event)' *ngFor="let data of filteredDoctors" class="doctors">
               <div class='specialist-item' id=Specialist_{{data.username}}>
                 <div class="specialist-detail">
+                  <div id="imgDiv">
+                    <!-- <img id="avatar3" *ngIf="imgURL" [src]='getImg(data)'> -->
+                    <img id="avatar3" *ngIf="data.Avatar" [src]='getImg(data)'>
+                    <!-- <img id="avatar3" *ngIf="data.Avatar" src='blob:http://localhost:4200/603e1ec4-d045-468f-b8de-5e9b78aca8f2'> -->
+                  </div>
                   <div class="name">Dr. {{data.Name}}</div>
                   <div class="specialist-experience">
                     <div class="specialization">
