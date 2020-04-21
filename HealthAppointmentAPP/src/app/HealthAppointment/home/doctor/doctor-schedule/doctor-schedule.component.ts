@@ -122,6 +122,8 @@ export class DoctorScheduleComponent implements OnInit {
 
       // disable breakhour
       for (var i = 0; i < 7; i++) {
+        console.log(this.temp[i])
+        if(this.temp[i].State != 'RemoveBreak'){
         this.BreakStartHour = this.temp[i].BreakStartHour;
         this.BreakEndHour = this.temp[i].BreakEndHour;
         // this.BreakStartHour = new Date(2018,1,2,12,0);
@@ -135,6 +137,7 @@ export class DoctorScheduleComponent implements OnInit {
           addAppointment.RecurrenceRule = 'FREQ=WEEKLY;INTERVAL=1;UNTIL = 20300530T041343Z';
         // console.log(addAppointment)
         this.currentBreakHourArray.push(addAppointment);
+      }
       }
 
 
