@@ -33,7 +33,7 @@ export class PatientAppointmentComponent implements OnInit {
   public patient: patientData;
   public username: string;
   public DoctorUsername:string;
-  imgURL: any;
+  public imgURL: any;
 
 
   constructor(public doctorService: DoctorService, public patientService: PatientService, public routes: ActivatedRoute, private router: Router, private sanitizer: DomSanitizer) {
