@@ -119,6 +119,7 @@ export class DoctorDetailComponent implements OnInit {
       // disable cell in canlender when it is breakhour
       this.temp = this.currentDoctor.WorkDays
       for (var i = 0; i < 7; i++) {
+        if(this.temp[i].State != 'RemoveBreak'){
         this.BreakStartHour = this.temp[i].BreakStartHour;
         this.BreakEndHour = this.temp[i].BreakEndHour;
         // this.BreakStartHour = new Date(2018,1,2,12,0);
@@ -131,6 +132,7 @@ export class DoctorDetailComponent implements OnInit {
         addAppointment.RecurrenceRule = 'FREQ=WEEKLY;INTERVAL=1;COUNT = 1000';
         // console.log(addAppointment)
         this.currentBreakHourArray.push(addAppointment);
+        }
       }
 
       // get patient info
