@@ -122,7 +122,7 @@ export class DoctorScheduleComponent implements OnInit {
 
       // disable breakhour
       for (var i = 0; i < 7; i++) {
-        console.log(this.temp[i])
+        // console.log(this.temp[i])
         if(this.temp[i].State != 'RemoveBreak'){
         this.BreakStartHour = this.temp[i].BreakStartHour;
         this.BreakEndHour = this.temp[i].BreakEndHour;
