@@ -1,14 +1,14 @@
-<app-footer></app-footer>
-<div id="login">
-
+<div class="bg">
+  <div id="login">
     <div class="log_wrapper">
-        <h2>Northeastern Health Center</h2>
-        <div class="kind">
-            I'm a:
-            <input type="radio" value="patient" name="people" id="people1" [(ngModel)]="kindOfUser"> <label for="people1"> Patient </label>
-            <input type="radio" value="doctor" name="people" id="people2" [(ngModel)]="kindOfUser"> <label for="people2"> Doctor </label>
-        </div>
+      <h2>Northeastern Health Center</h2>
+      <div class="kind">
+        I'm a:
+        <input type="radio" value="patient" name="people" id="people1" [(ngModel)]="kindOfUser"> <label for="people1"> Patient </label>
+        <input type="radio" value="doctor" name="people" id="people2" [(ngModel)]="kindOfUser"> <label for="people2"> Doctor </label>
+      </div>
 
+<<<<<<< HEAD
         <p class="log_input">Username:</p>
         <input class="input-box" type="text" id="username" [(ngModel)]="Username">
         <p class="log_input">Password:</p>
@@ -17,5 +17,17 @@
         <button class="loginbtn" (click)="sign()"> Log in</button><br>
         <button class="backBtn" (click)="back()"> < back</button>
         <button (click)="goReset()">Forget password?</button>
+=======
+      <p class="log_input">Username:</p>
+      <input class="input-box" type="text" id="username" [(ngModel)]="Username">
+      <p class="log_input">Password:</p>
+      <input class="input-box" type="password" [(ngModel)]="password">
+      <br>
+      <button class="loginbtn" (click)="sign()"> Log in</button><br>
+      <button class="backBtn" (click)="back()"> < back</button>
+>>>>>>> master
     </div>
+  </div>
+  <app-footer></app-footer>
 </div>
+

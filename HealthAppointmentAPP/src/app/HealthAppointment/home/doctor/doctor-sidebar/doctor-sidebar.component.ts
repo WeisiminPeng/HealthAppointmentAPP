@@ -53,6 +53,7 @@ export class DoctorSidebarComponent implements OnInit {
     this.doctorSchdule = '/doctorSchdule/' + this.username;
     this.personalInfo = '/doctorInfo/' + this.username;
     this.Message = '/messages/'+this.username+'_doctor';
+
     console.log(this.doctorAppointment);
 
     this.http.get('http://localhost:3000/doctors/' + this.username).subscribe((response:any)=>{
@@ -63,6 +64,9 @@ export class DoctorSidebarComponent implements OnInit {
 
     // }
     });
+
+    // console.log(this.doctorAppointment)
+
   }
 
   public onCreated(args: any) {

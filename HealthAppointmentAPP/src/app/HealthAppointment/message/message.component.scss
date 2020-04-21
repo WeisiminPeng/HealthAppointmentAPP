@@ -4,7 +4,7 @@ $normal-font:  "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 .content{
     width: 100%;
-    height: 810px;
+    height: 800px;
     display: flex;
     background-color: white;
     opacity: 0.95;
@@ -22,15 +22,15 @@ $normal-font:  "Lucida Sans Unicode", "Lucida Grande", sans-serif;
                 list-style-type: none;
                 width: 180px;
                 height: 30px;
-                text-align: center;
+                text-align: left;
                 padding-top: 18px;
                 text-decoration: none;
             }
-            .name-span:hover{
+            .name-span:checked{
                 background-color:lightblue;
                 opacity: 0.8;
             }
-            
+
         }
     }
     .right{
@@ -43,7 +43,9 @@ $normal-font:  "Lucida Sans Unicode", "Lucida Grande", sans-serif;
             padding: 0;
             background: #eee;
             overflow-y:auto;
+
             .messagelist{
+                // z-index: -1;
                 list-style-type: none;
                 li{
                     padding:10px;
@@ -62,7 +64,7 @@ $normal-font:  "Lucida Sans Unicode", "Lucida Grande", sans-serif;
                     border: none;
                     display:inline-block;
                     padding:5px;
-                    margin-bottom:10px;    
+                    margin-bottom:10px;
                 }
                 .left-content {
                     left: 20px;
@@ -74,7 +76,7 @@ $normal-font:  "Lucida Sans Unicode", "Lucida Grande", sans-serif;
                     align-items: center;
                     max-width: 500px;
                     min-width: 100px;
-                    word-wrap: break-word;    
+                    word-wrap: break-word;
                 }
                 .left-content:before{
                     content: '';
@@ -101,7 +103,7 @@ $normal-font:  "Lucida Sans Unicode", "Lucida Grande", sans-serif;
                     border: none;
                     display:inline-block;
                     padding:5px;
-                    margin-bottom:10px;    
+                    margin-bottom:10px;
                 }
                 .right-content {
                     // left: 1000px;
@@ -115,7 +117,7 @@ $normal-font:  "Lucida Sans Unicode", "Lucida Grande", sans-serif;
                     align-items: center;
                     max-width: 500px;
                     min-width: 100px;
-                    word-wrap: break-word;    
+                    word-wrap: break-word;
                 }
                 // .right-content:after{
                 //     content: '';
@@ -141,10 +143,11 @@ $normal-font:  "Lucida Sans Unicode", "Lucida Grande", sans-serif;
                 }
                 //right chat-box css end
             }
-            
+
         }
         .addMessage{
             height: 210px;
+            // top: 1000px;
             button{
                 float: right;
                 width: 100px;
@@ -163,6 +166,23 @@ $normal-font:  "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
 img{
-    width:10px;
-    
+    width:20px;
+}
+.emoji-button{
+    width: 25px;
+    padding-left: 10px;
+    padding-top: 5px;
+}
+.emoji-div{
+    position: absolute;;
+    // left:0px;
+    // top:0px;
+    // display:none;
+    margin-top: -100px;
+    // top: 100px;
+    z-index:1;
+    width: 300px;
+    height: 100px;
+    overflow-y:auto;
+    background-color: whitesmoke;
 }

@@ -84,18 +84,18 @@ export class DoctorScheduleComponent implements OnInit {
   public timeScale: TimeScaleModel = { enable: true, interval: 60 };
   public firstDayOfWeek: Number = 0;
   public bookingColor: '#FF0000';
-  public selectedDate: Date = new Date(2020, 1, 5);
+  public selectedDate: Date = new Date(Date.now());
   public currentDate: Date = this.selectedDate;
 
   public eventSettings: EventSettingsModel;
 
-  public data: object[] = [{
-    Id: 2,
-    Subject: 'Paris',
-    StartTime: new Date(Date.UTC(2020, 1, 14, 10, 0)),
-    EndTime: new Date(Date.UTC(2020, 1, 14, 12, 30)),
-    IsBlock: true,
-  }];
+  // public data: object[] = [{
+  //   Id: 2,
+  //   Subject: 'Paris',
+  //   StartTime: new Date(Date.UTC(2020, 1, 14, 10, 0)),
+  //   EndTime: new Date(Date.UTC(2020, 1, 14, 12, 30)),
+  //   IsBlock: true,
+  // }];
   public updateModifyDate: string;
   public todoUpdate: success;
   public newTodo: appointmentData;
@@ -113,9 +113,8 @@ export class DoctorScheduleComponent implements OnInit {
     this.arraytemp = [];
     this.doctorService.get(this.usernameDoctor).subscribe(doctor => {
       this.currentDoctor = doctor;
-      // var days = String(this.currentDoctor.AvailableDays).split(',');
-      console.log("^^^^^^^^^^")
-      console.log(this.currentDoctor.AvailableDays)
+      // console.log("^^^^^^^^^^")
+      // console.log(this.currentDoctor.AvailableDays)
       var result = Object.values(this.currentDoctor.AvailableDays);
       // console.log("******"+result)
       this.workDays = result;
@@ -123,6 +122,8 @@ export class DoctorScheduleComponent implements OnInit {
 
       // disable breakhour
       for (var i = 0; i < 7; i++) {
+        // console.log(this.temp[i])
+        if(this.temp[i].State != 'RemoveBreak'){
         this.BreakStartHour = this.temp[i].BreakStartHour;
         this.BreakEndHour = this.temp[i].BreakEndHour;
         // this.BreakStartHour = new Date(2018,1,2,12,0);
@@ -137,53 +138,40 @@ export class DoctorScheduleComponent implements OnInit {
         // console.log(addAppointment)
         this.currentBreakHourArray.push(addAppointment);
       }
+      }
 
 
-      console.log(this.currentBreakHourArray)
+      // console.log(this.currentBreakHourArray)
 
       this.appointmentService.get(this.usernameDoctor).subscribe(appointments => {
         this.appointments = appointments;
-        console.log(this.appointments);
+        // console.log(this.appointments);
         this.arraytemp = this.currentBreakHourArray.concat(this.appointments);
-        console.log(this.arraytemp)
+        // console.log(this.arraytemp)
 
         this.eventData = this.arraytemp;
 
         this.eventSettings = {
           dataSource: this.eventData,
-          // dataSource: this.data,
           fields: {
             subject: {
               name: 'PatientName',
               title: 'PatientName',
-              // validation: {
-              //   required: [true, 'Enter valid Patient Name'],
-              //   // range: [this.nameValidation, 'Entered patient name is not present, please add new patient or select from list']
-              // }
             },
             startTime: { title: 'From', validation: { required: true } },
             endTime: { title: 'To', validation: { required: true } },
             description: {
               name: 'Symptims',
               title: 'Symptims',
-              // validation: {
-              //   required: [true, 'Please enter disease Symptoms'],
-              //   minLength: [this.minValidation, 'Need atleast 5 letters to be entered']
-              // }
             }
           },
           resourceColorField: this.bookingColor
         };
       });
-      console.log("1");
+      // console.log("1");
     });
 
   }
-
-  // // input's lenth must larger than 5 for symptoms
-  // public minValidation: (args: { [key: string]: string }) => boolean = (args: { [key: string]: string; }) => {
-  //   return args['value'].length >= 5;
-  // }
 
   getEventDetails(data: Object) {
     return (this.instance.formatDate(new Date(data['StartTime']), { type: 'date', skeleton: 'long' }) +
@@ -224,10 +212,10 @@ export class DoctorScheduleComponent implements OnInit {
   public eventDelete(e) {
     const eventData: { [key: string]: Object } = this.scheduleObj.activeEventData.event as any;
     this.appointmentID = String(eventData.id);
-    console.log(eventData)
+    // console.log(eventData)
     this.appointmentService.delete(this.appointmentID).subscribe(deleteMsg => {
       this.resMsg = deleteMsg;
-      console.log(this.resMsg)
+      // console.log(this.resMsg)
     });
     this.dialogClose();
     location.reload();
@@ -244,22 +232,18 @@ export class DoctorScheduleComponent implements OnInit {
       const eventData: { [key: string]: Object } = this.scheduleObj.eventWindow.getObjectFromFormData('e-schedule-dialog');
       eventData.Id = this.currentEvent.Id;
       this.appointmentID = String(eventDataOriginal.id);
-      console.log(eventDataOriginal)
-      console.log(eventData)
+      // console.log(eventDataOriginal)
+      // console.log(eventData)
       var updateAppointment: any = {};
-      // updateAppointment.PatientName = String(eventData.PatientName);
-      // updateAppointment.PatientUsername = this.usernamePatient;
-      // updateAppointment.DoctorName = this.currentDoctor.Name;
-      // updateAppointment.DoctorUsername = this.usernameDoctor
       updateAppointment.Symptims = String(eventData.Symptims);
       // updateAppointment.Id = String(eventData.Id);
       updateAppointment.StartTime = eventData.StartTime;
       updateAppointment.EndTime = eventData.EndTime;
       this.updateAppointmentItem = JSON.stringify(updateAppointment);
-      console.log(this.updateAppointmentItem);
+      // console.log(this.updateAppointmentItem);
       this.appointmentService.update(this.updateAppointmentItem, this.appointmentID).subscribe(appointmentUpdate => {
         this.resMsg = appointmentUpdate;
-        console.log(this.resMsg);
+        // console.log(this.resMsg);
       });
       this.scheduleObj.saveEvent(eventData);
       this.dialogClose();

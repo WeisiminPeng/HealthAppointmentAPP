@@ -31,8 +31,7 @@ import { MessageComponent } from './HealthAppointment/message/message.component'
 import { FooterComponent } from './HealthAppointment/LoginAndRegister/footer/footer.component';
 import { UploadComponent } from './upload/upload.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
-
-
+import { PatientFooterComponent } from './HealthAppointment/home/patient/patient-footer/patient-footer.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +53,9 @@ import { ForgetPasswordComponent } from './forget-password/forget-password.compo
     MessageComponent,
     FooterComponent,
     UploadComponent,
-    ForgetPasswordComponent
+    ForgetPasswordComponent,
+    PatientFooterComponent
+
   ],
   imports: [
     BrowserModule,

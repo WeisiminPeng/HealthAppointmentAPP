@@ -20,12 +20,12 @@
           <div class="title">Make Appointment</div>
           <div class="underline"><hr style="color: #595959"></div>
         </div>
+        <div class="specialization-types">
+          <ejs-dropdownlist id='Specialization' [dataSource]='specializationData' [showClearButton]='true'
+                            (change)='onSpecializationChange($event)' placeholder='Select a Specialization' popupHeight='230px'>
+          </ejs-dropdownlist>
+        </div>
         <div class="specialization-detail-wrapper">
-          <div class="specialization-types">
-            <ejs-dropdownlist id='Specialization' [dataSource]='specializationData' [showClearButton]='true'
-                              (change)='onSpecializationChange($event)' placeholder='Select a Specialization' popupHeight='230px'>
-            </ejs-dropdownlist>
-          </div>
           <div #specialistItemObj class='specialist-display'>
             <div (click)='onSpecialistClick($event)' *ngFor="let data of filteredDoctors" class="doctors">
               <div class='specialist-item' id=Specialist_{{data.username}}>
@@ -52,7 +52,8 @@
 
     </section>
   </main>
-
+</div>
+<app-patient-footer></app-patient-footer>
 <!--  This is where yang's code ends -->
 
 <!--  this is where Pengwei's code start -->
@@ -84,6 +85,6 @@
 <!--            </div>-->
 <!--        </div>-->
 <!--    </div>-->
-
+<!--</div>-->
   <!--  this is where Pengwei's code end -->
-</div>
+
