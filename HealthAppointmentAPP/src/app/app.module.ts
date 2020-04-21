@@ -26,11 +26,11 @@ import { PatientInfoComponent } from './HealthAppointment/home/patient/patient-i
 import { DoctorInfoComponent } from './HealthAppointment/home/doctor/doctor-info/doctor-info.component';
 import { PasswordManagementComponent } from './HealthAppointment/home/patient/password-management/password-management.component';
 import { PasswordManagement2Component  } from './HealthAppointment/home/doctor/password-management2/password-management2.component';
-
 import { MessageService } from './HealthAppointment/services/message.service';
 import { MessageComponent } from './HealthAppointment/message/message.component';
-
 import { FooterComponent } from './HealthAppointment/LoginAndRegister/footer/footer.component';
+import { UploadComponent } from './upload/upload.component';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { PatientFooterComponent } from './HealthAppointment/home/patient/patient-footer/patient-footer.component';
 
 @NgModule({
@@ -52,7 +52,10 @@ import { PatientFooterComponent } from './HealthAppointment/home/patient/patient
     PasswordManagement2Component,
     MessageComponent,
     FooterComponent,
-    PatientFooterComponent,
+    UploadComponent,
+    ForgetPasswordComponent,
+    PatientFooterComponent
+
   ],
   imports: [
     BrowserModule,

@@ -1,153 +1,204 @@
 <app-doctor-sidebar></app-doctor-sidebar>
+<div class="doctor-schedule">
+    <div class="putAclassHere">
+        <div class="schedule-container">
+            <ejs-schedule #scheduleObj height='800px' cssClass='doctor-appointment-planner' [showWeekend]='false' [startHour]="startHour" [endHour]='endHour' [selectedDate]="selectedDate" [eventSettings]="eventSettings" [timeScale]="timeScale" [workDays]="workDays"
+                [workHours]="workHours" [firstDayOfWeek]='firstDayOfWeek' [showQuickInfo]='showQuickInfo' [currentView]='currentView' (popupOpen)='onPopupOpen($event)'>
+                <e-views>
+                    <e-view option="Day"></e-view>
+                    <e-view option="Week"></e-view>
+                    <e-view option="Month"></e-view>
+                </e-views>
+                <!-- edit-popup -->
+                <ng-template #editorTemplate>
+                    <table class="custom-event-editor" width="100%" cellpadding="5">
+                        <tbody>
+                            <tr>
+                                <td class="e-textlabel">Patient Name</td>
+                                <td colspan="4">
+                                    <!-- {{appointments.PatientName}} -->
+                                    <input disabled="disabled" id="Subject" class="e-field e-input" type="text" value="" name="PatientName" style="width: 100%" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="e-textlabel">Doctor Name</td>
+                                <td colspan="4">
+                                    {{currentDoctor.Name}}
+                                    <!-- <input id="Subject" class="e-field e-input" type="text" value="" name="PatientName" style="width: 100%" /> -->
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="e-textlabel">From</td>
+                                <td colspan="4">
+                                    <input id="StartTime" class="e-field" type="text" name="StartTime" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="e-textlabel">To</td>
+                                <td colspan="4">
+                                    <input id="EndTime" class="e-field" type="text" name="EndTime" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="e-textlabel">Simptom</td>
+                                <td colspan="4">
+                                    <textarea id="Description" class="e-field e-input" name="Symptims" rows="3" cols="50" style="width: 100%; height: 60px !important; resize: vertical"></textarea>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </ng-template>
 
-  <section class="upperHalf">
-    <div class="imgWrapper">
-      <img id="lightbluesky" src="../../../../../assets/img/lightblue-cut.jpeg" />
-    </div>
-  </section>
-  <section class="lowerHalf">
-    <div class="maincontent">
-      <div class="module-title">
-        <div class="title">My Schedule</div>
-      </div>
-      <div class="doctor-schedule">
-        <div class="putAclassHere">
-          <div class="schedule-container">
-            <ejs-schedule #scheduleObj height='800px' cssClass='doctor-appointment-planner'
-                          [showWeekend]='false' [startHour]="startHour" [endHour]='endHour' [selectedDate]="selectedDate"
-                          [eventSettings]="eventSettings" [timeScale]="timeScale" [workDays]="workDays"
-                          [workHours]="workHours" [firstDayOfWeek]='firstDayOfWeek' [showQuickInfo]='showQuickInfo'
-                          [currentView]='currentView' (popupOpen)='onPopupOpen($event)'>
+                <section class="upperHalf">
+                    <div class="imgWrapper">
+                        <img id="lightbluesky" src="../../../../../assets/img/lightblue-cut.jpeg" />
+                    </div>
+                </section>
+                <section class="lowerHalf">
+                    <div class="maincontent">
+                        <div class="module-title">
+                            <div class="title">My Schedule</div>
+                        </div>
+                        <div class="doctor-schedule">
+                            <div class="putAclassHere">
+                                <div class="schedule-container">
+                                    <ejs-schedule #scheduleObj height='800px' cssClass='doctor-appointment-planner' [showWeekend]='false' [startHour]="startHour" [endHour]='endHour' [selectedDate]="selectedDate" [eventSettings]="eventSettings" [timeScale]="timeScale" [workDays]="workDays"
+                                        [workHours]="workHours" [firstDayOfWeek]='firstDayOfWeek' [showQuickInfo]='showQuickInfo' [currentView]='currentView' (popupOpen)='onPopupOpen($event)'>
 
-              <e-views>
-                <e-view option="Day"></e-view>
-                <e-view option="Week"></e-view>
-                <e-view option="Month"></e-view>
-              </e-views>
-              <!-- edit-popup -->
-              <ng-template #editorTemplate>
-                <table class="custom-event-editor" width="100%" cellpadding="5">
-                  <tbody>
-                  <tr>
-                    <td class="e-textlabel">Patient Name</td>
-                    <td colspan="4">
-                      <!-- {{appointments.PatientName}} -->
-                      <input disabled="disabled" id="Subject" class="e-field e-input" type="text" value="" name="PatientName" style="width: 100%" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="e-textlabel">Doctor Name</td>
-                    <td colspan="4">
-                      {{currentDoctor.Name}}
-                      <!-- <input id="Subject" class="e-field e-input" type="text" value="" name="PatientName" style="width: 100%" /> -->
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="e-textlabel">From</td>
-                    <td colspan="4">
-                      <input id="StartTime" class="e-field" type="text" name="StartTime" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="e-textlabel">To</td>
-                    <td colspan="4">
-                      <input id="EndTime" class="e-field" type="text" name="EndTime" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="e-textlabel">Simptom</td>
-                    <td colspan="4">
-                      <textarea id="Description" class="e-field e-input" name="Symptims" rows="3" cols="50" style="width: 100%; height: 60px !important; resize: vertical"></textarea>
-                    </td>
-                  </tr>
-                  </tbody>
-                </table>
-              </ng-template>
-            </ejs-schedule>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+                                        <e-views>
+                                            <e-view option="Day"></e-view>
+                                            <e-view option="Week"></e-view>
+                                            <e-view option="Month"></e-view>
+                                        </e-views>
+                                        <!-- edit-popup -->
+                                        <ng-template #editorTemplate>
+                                            <table class="custom-event-editor" width="100%" cellpadding="5">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="e-textlabel">Patient Name</td>
+                                                        <td colspan="4">
+                                                            <!-- {{appointments.PatientName}} -->
+                                                            <input disabled="disabled" id="Subject" class="e-field e-input" type="text" value="" name="PatientName" style="width: 100%" />
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="e-textlabel">Doctor Name</td>
+                                                        <td colspan="4">
+                                                            {{currentDoctor.Name}}
+                                                            <!-- <input id="Subject" class="e-field e-input" type="text" value="" name="PatientName" style="width: 100%" /> -->
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="e-textlabel">From</td>
+                                                        <td colspan="4">
+                                                            <input id="StartTime" class="e-field" type="text" name="StartTime" />
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="e-textlabel">To</td>
+                                                        <td colspan="4">
+                                                            <input id="EndTime" class="e-field" type="text" name="EndTime" />
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="e-textlabel">Simptom</td>
+                                                        <td colspan="4">
+                                                            <textarea id="Description" class="e-field e-input" name="Symptims" rows="3" cols="50" style="width: 100%; height: 60px !important; resize: vertical"></textarea>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </ng-template>
 
-<app-patient-footer></app-patient-footer>
-
-<!--doctor schedule div can't be inside of main, other wise doctor name won't show -->
-<!--<main>-->
-<!--  <section class="upperHalf">-->
-<!--    <div class="imgWrapper">-->
-<!--      <img id="lightbluesky" src="../../../../../assets/img/lightblue-cut.jpeg" />-->
-<!--    </div>-->
-<!--  </section>-->
-<!--  <section class="lowerHalf">-->
-<!--    <div class="maincontent">-->
-<!--      <div class="module-title">-->
-<!--        <div class="title">My Schedule</div>-->
-<!--      </div>-->
-
-<!--&lt;!&ndash;      <div class="doctor-schedule-wrapper">&ndash;&gt;-->
-<!--        <div class="doctor-schedule">-->
-<!--          <div class="putAclassHere">-->
-<!--            <div class="schedule-container">-->
-<!--              <ejs-schedule #scheduleObj height='800px' cssClass='doctor-appointment-planner' [showWeekend]='false'-->
-<!--                            [startHour]="startHour" [endHour]='endHour' [selectedDate]="selectedDate"-->
-<!--                            [eventSettings]="eventSettings" [timeScale]="timeScale" [workDays]="workDays" [workHours]="workHours"-->
-<!--                            [firstDayOfWeek]='firstDayOfWeek' [currentView]='currentView'  (popupOpen)='onPopupOpen($event)' [showQuickInfo]='showQuickInfo'>-->
-<!--                <e-views>-->
-<!--                  <e-view option="Day"></e-view>-->
-<!--                  <e-view option="Week"></e-view>-->
-<!--                  <e-view option="Month"></e-view>-->
-<!--                </e-views>-->
-<!--                <ng-template #editorTemplate>-->
-<!--                  <table  class="custom-event-editor" width="100%" cellpadding="5">-->
-<!--                    <tbody>-->
-<!--                    <tr>-->
-<!--                      <td class="e-textlabel">Patient Name</td>-->
-<!--                      <td colspan="4">-->
-<!--                        {{currentPatient.Name}}-->
-<!--                        &lt;!&ndash; <input disabled="disabled" id="Subject" class="e-field e-input" type="text" value="" name="PatientName" style="width: 100%" /> &ndash;&gt;-->
-<!--                      </td>-->
-<!--                    </tr>-->
-<!--                    <tr>-->
-<!--                      <td class="e-textlabel">Doctor Name</td>-->
-<!--                      <td colspan="4">-->
-<!--                        {{currentDoctor.Name}}-->
-<!--                        &lt;!&ndash; <input disabled="disabled" id="Subject" class="e-field e-input" type="text" value="" name="PatientName" style="width: 100%" /> &ndash;&gt;-->
-<!--                      </td>-->
-<!--                    </tr>-->
-<!--                    <tr>-->
-<!--                      <td class="e-textlabel">From</td>-->
-<!--                      <td colspan="4">-->
-<!--                        <input id="StartTime" class="e-field" type="text" name="StartTime" />-->
-<!--                      </td>-->
-<!--                    </tr>-->
-<!--                    <tr>-->
-<!--                      <td class="e-textlabel">To</td>-->
-<!--                      <td colspan="4">-->
-<!--                        <input id="EndTime" class="e-field" type="text" name="EndTime" />-->
-<!--                      </td>-->
-<!--                    </tr>-->
-<!--                    <tr>-->
-<!--                      <td class="e-textlabel">Symptoms</td>-->
-<!--                      <td colspan="4">-->
-<!--                        &lt;!&ndash; style="width: 100%; height: 60px !important; resize: vertical"  &ndash;&gt;-->
-<!--                        <textarea  id="Description" class="e-field e-input textarea" name="Symptims" rows="3" cols="50" placeholder="feel/lasting time"></textarea>-->
-<!--                        &lt;!&ndash;                                    <div id="note" class="note" >&ndash;&gt;-->
-<!--                        &lt;!&ndash;                                        <font color="#777"></font>&ndash;&gt;-->
-<!--                        &lt;!&ndash;                                    </div>&ndash;&gt;-->
-<!--                      </td>-->
-<!--                    </tr>-->
-<!--                    </tbody>-->
-<!--                  </table >-->
-<!--                </ng-template>-->
-<!--              </ejs-schedule>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+                                    </ejs-schedule>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
 
-<!--  </section>-->
-<!--</main>-->
 
+                </section>
+
+                <app-patient-footer></app-patient-footer>
+
+                <!--doctor schedule div can't be inside of main, other wise doctor name won't show -->
+                <!--<main>-->
+                <!--  <section class="upperHalf">-->
+                <!--    <div class="imgWrapper">-->
+                <!--      <img id="lightbluesky" src="../../../../../assets/img/lightblue-cut.jpeg" />-->
+                <!--    </div>-->
+                <!--  </section>-->
+                <!--  <section class="lowerHalf">-->
+                <!--    <div class="maincontent">-->
+                <!--      <div class="module-title">-->
+                <!--        <div class="title">My Schedule</div>-->
+                <!--      </div>-->
+
+                <!--&lt;!&ndash;      <div class="doctor-schedule-wrapper">&ndash;&gt;-->
+                <!--        <div class="doctor-schedule">-->
+                <!--          <div class="putAclassHere">-->
+                <!--            <div class="schedule-container">-->
+                <!--              <ejs-schedule #scheduleObj height='800px' cssClass='doctor-appointment-planner' [showWeekend]='false'-->
+                <!--                            [startHour]="startHour" [endHour]='endHour' [selectedDate]="selectedDate"-->
+                <!--                            [eventSettings]="eventSettings" [timeScale]="timeScale" [workDays]="workDays" [workHours]="workHours"-->
+                <!--                            [firstDayOfWeek]='firstDayOfWeek' [currentView]='currentView'  (popupOpen)='onPopupOpen($event)' [showQuickInfo]='showQuickInfo'>-->
+                <!--                <e-views>-->
+                <!--                  <e-view option="Day"></e-view>-->
+                <!--                  <e-view option="Week"></e-view>-->
+                <!--                  <e-view option="Month"></e-view>-->
+                <!--                </e-views>-->
+                <!--                <ng-template #editorTemplate>-->
+                <!--                  <table  class="custom-event-editor" width="100%" cellpadding="5">-->
+                <!--                    <tbody>-->
+                <!--                    <tr>-->
+                <!--                      <td class="e-textlabel">Patient Name</td>-->
+                <!--                      <td colspan="4">-->
+                <!--                        {{currentPatient.Name}}-->
+                <!--                        &lt;!&ndash; <input disabled="disabled" id="Subject" class="e-field e-input" type="text" value="" name="PatientName" style="width: 100%" /> &ndash;&gt;-->
+                <!--                      </td>-->
+                <!--                    </tr>-->
+                <!--                    <tr>-->
+                <!--                      <td class="e-textlabel">Doctor Name</td>-->
+                <!--                      <td colspan="4">-->
+                <!--                        {{currentDoctor.Name}}-->
+                <!--                        &lt;!&ndash; <input disabled="disabled" id="Subject" class="e-field e-input" type="text" value="" name="PatientName" style="width: 100%" /> &ndash;&gt;-->
+                <!--                      </td>-->
+                <!--                    </tr>-->
+                <!--                    <tr>-->
+                <!--                      <td class="e-textlabel">From</td>-->
+                <!--                      <td colspan="4">-->
+                <!--                        <input id="StartTime" class="e-field" type="text" name="StartTime" />-->
+                <!--                      </td>-->
+                <!--                    </tr>-->
+                <!--                    <tr>-->
+                <!--                      <td class="e-textlabel">To</td>-->
+                <!--                      <td colspan="4">-->
+                <!--                        <input id="EndTime" class="e-field" type="text" name="EndTime" />-->
+                <!--                      </td>-->
+                <!--                    </tr>-->
+                <!--                    <tr>-->
+                <!--                      <td class="e-textlabel">Symptoms</td>-->
+                <!--                      <td colspan="4">-->
+                <!--                        &lt;!&ndash; style="width: 100%; height: 60px !important; resize: vertical"  &ndash;&gt;-->
+                <!--                        <textarea  id="Description" class="e-field e-input textarea" name="Symptims" rows="3" cols="50" placeholder="feel/lasting time"></textarea>-->
+                <!--                        &lt;!&ndash;                                    <div id="note" class="note" >&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                                        <font color="#777"></font>&ndash;&gt;-->
+                <!--                        &lt;!&ndash;                                    </div>&ndash;&gt;-->
+                <!--                      </td>-->
+                <!--                    </tr>-->
+                <!--                    </tbody>-->
+                <!--                  </table >-->
+                <!--                </ng-template>-->
+                <!--              </ejs-schedule>-->
+                <!--            </div>-->
+                <!--          </div>-->
+                <!--        </div>-->
+                <!--      </div>-->
+                <!--&lt;!&ndash;    </div>&ndash;&gt;-->
+
+
+                <!--  </section>-->
+                <!--</main>-->
+
+                >>>>>>> master

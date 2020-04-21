@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import {Router} from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-doctor-info',
@@ -14,7 +15,8 @@ export class DoctorInfoComponent implements OnInit {
   public email = '';
   public people: any;
   public username: string;
-  constructor(public routes:ActivatedRoute,public http:HttpClient,public router:Router) { }
+  imgURL: any;
+  constructor(public routes: ActivatedRoute, public http: HttpClient, public router: Router, private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
     this.username = this.routes.snapshot.paramMap.get('username').split('_')[0];
@@ -23,6 +25,14 @@ export class DoctorInfoComponent implements OnInit {
       this.name = this.people.Name;
       this.mobile = this.people.Mobile;
       this.email = this.people.Email;
+      this.http.get('http://localhost:3000/doctors/' + this.username).subscribe((response:any)=>{
+        this.people = response;
+        console.log(this.people.Avatar);
+
+        this.imgURL = this.sanitizer.bypassSecurityTrustUrl(this.people.Avatar);
+
+      // }
+      });
     });
   }
   update() {
