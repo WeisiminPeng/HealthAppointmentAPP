@@ -64,13 +64,17 @@ export class MessageComponent implements OnInit {
   msg: any = {//new message
     usernameMsg: "",
     nameMsg: "",
-    content: ""
+    content: "",
+    contentType:""
   }
 
   //used for reload
   private timer;
 
-  isShowEmoji:boolean=false;
+  isShowEmoji: boolean = false;
+  isShowSearchBar: boolean = false;
+  searchKeywords = "";
+  searchChatListSmall: any[]=[];
 
   //declare services
   constructor(public messageService: MessageService, public appointmentService: AppointmentService, public doctorService: DoctorService, public patientService: PatientService, public http: HttpClient, public router: Router, public routes: ActivatedRoute) {
@@ -185,8 +189,8 @@ export class MessageComponent implements OnInit {
     //timer, reload the webpage
     this.timer = setInterval(() => {
       // console.log("reload!");
-      this.chatList=[];
-      this.chatListSmall=[];
+      this.chatList = [];
+      this.chatListSmall = [];
       this.messageService.list().subscribe((data) => {
         this.messageAll = data;
         for (let i = 0; i < this.messageAll.length; i++) {
@@ -201,6 +205,16 @@ export class MessageComponent implements OnInit {
         }
       });
     }, 50000);
+
+    //hide search bar and emoji div
+    document.addEventListener('mouseup',(e) =>{
+      let classname=(<HTMLTextAreaElement>e.target).className;
+      if(classname!="search-button"&&classname!="search-enter"&&classname!="search-div"&&(classname.indexOf("search-input"))&&classname!="emoji-button"&&classname!="emoji-div"&&classname!="emojione"){
+        this.isShowEmoji=false;
+        this.isShowSearchBar=false;
+        console.log(classname);
+      }
+    });
   }
 
   // sidebar function
@@ -248,26 +262,76 @@ export class MessageComponent implements OnInit {
 
 
   //add an emoji
-
-
-  addEmoji(e){
+  addEmoji(e) {
     // alert("add emoji");
-    let selectedEmoji=e.toElement.alt;
-    this.msg.content=this.msg.content+" "+selectedEmoji+" "
+    let selectedEmoji = e.toElement.alt;
+    this.msg.content = this.msg.content + " " + selectedEmoji + " "
     console.log(this.msg.content);
-    this.isShowEmoji=false;
-    console.log("add"+this.isShowEmoji);
+    this.isShowEmoji = false;
+    
+    // console.log("add" + this.isShowEmoji);
   }
 
-  showEmoji(){
+  showEmoji() {
     // alert("show emoji");
-    this.isShowEmoji=true;
-    console.log("show"+this.isShowEmoji);
+    this.isShowEmoji = true;
+    this.isShowSearchBar=false;
+    // console.log("show" + this.isShowEmoji);
+  }
+
+
+  // //add a image
+  // addImage(e) {
+  //   let file = e.target.files[0];
+  //   if (!file.type.match('image/*')) {
+  //     alert('please upload a image！');
+  //     e.target.value = "";
+  //     return;
+  //   }
+
+  //   this.msg.contentType="image";
+  //   // this.http.post("http://localhost:3000/")
+  //   // let reader = new FileReader(); 
+  //   // reader.readAsDataURL(file); 
+  //   // reader.onload = function(e){
+  //   //    console.log(e.target.result);//(<HTMLImageElement>document.getElementById('mImg')).src =
+  //   // }
+  //   // console.log(reader.onload);
+  // }
+
+
+  //search content
+  showSearchBar(){
+    if (typeof (this.usernameTo) == "undefined") {
+      alert("Please select a person to search!");
+      return;
+    }
+    this.isShowSearchBar=true;
+    this.isShowEmoji=false;
+  }
+
+  searchContent(){
+    this.searchChatListSmall=[];
+    if (this.searchKeywords == "") {
+      alert("The search content should not be empty!");
+      return;
+    }
+    // console.log(this.chatListSmall);
+    for(let i=0; i<this.chatListSmall.length; i++){
+      if(this.chatListSmall[i].content.includes(this.searchKeywords)){
+        // console.log(this.chatListSmall[i].content);
+        this.searchChatListSmall.push(this.chatListSmall[i]);
+      }
+    }
+    // console.log(this.searchChatListSmall);
+    // console.log(this.searchKeywords);
+    // console.log("m1 1".includes(this.searchKeywords));
   }
 
 
   //add a message
   addMessage() {
+    this.msg.contentType="string";
     if (typeof (this.usernameTo) == "undefined") {
       alert("Please select a person to send your message!");
       return;

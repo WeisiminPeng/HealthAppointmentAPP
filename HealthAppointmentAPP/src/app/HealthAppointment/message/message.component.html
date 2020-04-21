@@ -36,7 +36,8 @@
 <div class="content">
     <div class="left">
         <ul class="namelist">
-            <li id="nameli" class="name-span" *ngFor="let usernameTo of namelist"(click)="getMessageList(usernameTo.username)">
+            <li id="nameli" class="name-span" *ngFor="let usernameTo of namelist"
+                (click)="getMessageList(usernameTo.username)">
                 {{usernameTo.name}}
                 <!-- <span tabindex="1" (click)="getMessageList(usernameTo.username)">{{usernameTo.name}}</span> -->
             </li>
@@ -46,7 +47,6 @@
         <div class="showMessage">
             <ul class="messagelist">
                 <li *ngFor="let chat of chatListSmall">
-                    
                     <span *ngIf="chat.usernameMsg == usernameFrom" class="right-name">me</span>
                     <span *ngIf="chat.usernameMsg != usernameFrom" class="left-name">{{chat.nameMsg}}</span>
                     <br>
@@ -59,39 +59,96 @@
         </div>
         <div class="addMessage">
             <form>
-                <div id="emoji-div" class="emoji-div" *ngIf="isShowEmoji" >
-                    <img (click)="addEmoji($event)" class="emojione" alt="😄" title=":smile:" src="https://cdn.jsdelivr.net/emojione/assets/3.1/png/32/1f604.png">
-                    <img (click)="addEmoji($event)" class="emojione" alt="😀" title=":grinning:" src="https://cdn.jsdelivr.net/emojione/assets/3.1/png/32/1f600.png">
-                    <img (click)="addEmoji($event)" class="emojione" alt="😃" title=":smiley:" src="https://cdn.jsdelivr.net/emojione/assets/3.1/png/32/1f603.png">
-                    <img (click)="addEmoji($event)" class="emojione" alt="😄" title=":smile:" src="https://cdn.jsdelivr.net/emojione/assets/3.1/png/32/1f604.png">
-                    <img (click)="addEmoji($event)" class="emojione" alt="😁" title=":grin:" src="https://cdn.jsdelivr.net/emojione/assets/3.1/png/32/1f601.png">
-                    <img (click)="addEmoji($event)" class="emojione" alt="😆" title=":laughing:" src="https://cdn.jsdelivr.net/emojione/assets/3.1/png/32/1f606.png">
-                    <img (click)="addEmoji($event)" class="emojione" alt="😅" title=":sweat_smile:" src="https://cdn.jsdelivr.net/emojione/assets/3.1/png/32/1f605.png">
-                    <img (click)="addEmoji($event)" class="emojione" alt="😂" title=":joy:" src="https://cdn.jsdelivr.net/emojione/assets/3.1/png/32/1f602.png">
-                    <img (click)="addEmoji($event)" class="emojione" alt="🤣" title=":rofl:" src="https://cdn.jsdelivr.net/emojione/assets/3.1/png/32/1f923.png">
-                    <img (click)="addEmoji($event)" class="emojione" alt="😊" title=":blush:" src="https://cdn.jsdelivr.net/emojione/assets/3.1/png/32/1f60a.png">
-                    <img (click)="addEmoji($event)" class="emojione" alt="😇" title=":innocent:" src="https://cdn.jsdelivr.net/emojione/assets/3.1/png/32/1f607.png">
-                    <img (click)="addEmoji($event)" class="emojione" alt="🙂" title=":slight_smile:" src="https://cdn.jsdelivr.net/emojione/assets/3.1/png/32/1f642.png">
-                    <img (click)="addEmoji($event)" class="emojione" alt="🙃" title=":upside_down:" src="https://cdn.jsdelivr.net/emojione/assets/3.1/png/32/1f643.png">
-                    <img (click)="addEmoji($event)" class="emojione" alt="😉" title=":wink:" src="https://cdn.jsdelivr.net/emojione/assets/3.1/png/32/1f609.png">
-                    <img (click)="addEmoji($event)" class="emojione" alt="😌" title=":relieved:" src="https://cdn.jsdelivr.net/emojione/assets/3.1/png/32/1f60c.png">
-                    <img (click)="addEmoji($event)" class="emojione" alt="😍" title=":heart_eyes:" src="https://cdn.jsdelivr.net/emojione/assets/3.1/png/32/1f60d.png">
-                    <img (click)="addEmoji($event)" class="emojione" alt="😘" title=":kissing_heart:" src="https://cdn.jsdelivr.net/emojione/assets/3.1/png/32/1f618.png">
-                    <img (click)="addEmoji($event)" class="emojione" alt="😗" title=":kissing:" src="https://cdn.jsdelivr.net/emojione/assets/3.1/png/32/1f617.png">
-                    <img (click)="addEmoji($event)" class="emojione" alt="😙" title=":kissing_smiling_eyes:" src="https://cdn.jsdelivr.net/emojione/assets/3.1/png/32/1f619.png">
-                    <img (click)="addEmoji($event)" class="emojione" alt="😚" title=":kissing_closed_eyes:" src="https://cdn.jsdelivr.net/emojione/assets/3.1/png/32/1f61a.png">
-                    <img (click)="addEmoji($event)" class="emojione" alt="😋" title=":yum:" src="https://cdn.jsdelivr.net/emojione/assets/3.1/png/32/1f60b.png">
-                    <img (click)="addEmoji($event)" class="emojione" alt="😜" title=":stuck_out_tongue_winking_eye:" src="https://cdn.jsdelivr.net/emojione/assets/3.1/png/32/1f61c.png">
-                    <img (click)="addEmoji($event)" class="emojione" alt="😝" title=":stuck_out_tongue_closed_eyes:" src="https://cdn.jsdelivr.net/emojione/assets/3.1/png/32/1f61d.png">
-                    <img (click)="addEmoji($event)" class="emojione" alt="😛" title=":stuck_out_tongue:" src="https://cdn.jsdelivr.net/emojione/assets/3.1/png/32/1f61b.png">
-                    <img (click)="addEmoji($event)" class="emojione" alt="🤑" title=":money_mouth:" src="https://cdn.jsdelivr.net/emojione/assets/3.1/png/32/1f911.png">
-                    <img (click)="addEmoji($event)" class="emojione" alt="🤗" title=":hugging:" src="https://cdn.jsdelivr.net/emojione/assets/3.1/png/32/1f917.png">
-                    <img (click)="addEmoji($event)" class="emojione" alt="🤓" title=":nerd:" src="https://cdn.jsdelivr.net/emojione/assets/3.1/png/32/1f913.png">
-                    <img (click)="addEmoji($event)" class="emojione" alt="😎" title=":sunglasses:" src="https://cdn.jsdelivr.net/emojione/assets/3.1/png/32/1f60e.png">
-                    <img (click)="addEmoji($event)" class="emojione" alt="🤡" title=":clown:" src="https://cdn.jsdelivr.net/emojione/assets/3.1/png/32/1f921.png">
-                    <img (click)="addEmoji($event)" class="emojione" alt="🤠" title=":cowboy:" src="https://cdn.jsdelivr.net/emojione/assets/3.1/png/32/1f920.png">
+                <div id="emoji-div" class="emoji-div" *ngIf="isShowEmoji">
+                    <img (click)="addEmoji($event)" class="emojione" alt="😄" title=":smile:"
+                        src="https://cdn.jsdelivr.net/emojione/assets/3.1/png/32/1f604.png">
+                    <img (click)="addEmoji($event)" class="emojione" alt="😀" title=":grinning:"
+                        src="https://cdn.jsdelivr.net/emojione/assets/3.1/png/32/1f600.png">
+                    <img (click)="addEmoji($event)" class="emojione" alt="😃" title=":smiley:"
+                        src="https://cdn.jsdelivr.net/emojione/assets/3.1/png/32/1f603.png">
+                    <img (click)="addEmoji($event)" class="emojione" alt="😄" title=":smile:"
+                        src="https://cdn.jsdelivr.net/emojione/assets/3.1/png/32/1f604.png">
+                    <img (click)="addEmoji($event)" class="emojione" alt="😁" title=":grin:"
+                        src="https://cdn.jsdelivr.net/emojione/assets/3.1/png/32/1f601.png">
+                    <img (click)="addEmoji($event)" class="emojione" alt="😆" title=":laughing:"
+                        src="https://cdn.jsdelivr.net/emojione/assets/3.1/png/32/1f606.png">
+                    <img (click)="addEmoji($event)" class="emojione" alt="😅" title=":sweat_smile:"
+                        src="https://cdn.jsdelivr.net/emojione/assets/3.1/png/32/1f605.png">
+                    <img (click)="addEmoji($event)" class="emojione" alt="😂" title=":joy:"
+                        src="https://cdn.jsdelivr.net/emojione/assets/3.1/png/32/1f602.png">
+                    <img (click)="addEmoji($event)" class="emojione" alt="🤣" title=":rofl:"
+                        src="https://cdn.jsdelivr.net/emojione/assets/3.1/png/32/1f923.png">
+                    <img (click)="addEmoji($event)" class="emojione" alt="😊" title=":blush:"
+                        src="https://cdn.jsdelivr.net/emojione/assets/3.1/png/32/1f60a.png">
+                    <img (click)="addEmoji($event)" class="emojione" alt="😇" title=":innocent:"
+                        src="https://cdn.jsdelivr.net/emojione/assets/3.1/png/32/1f607.png">
+                    <img (click)="addEmoji($event)" class="emojione" alt="🙂" title=":slight_smile:"
+                        src="https://cdn.jsdelivr.net/emojione/assets/3.1/png/32/1f642.png">
+                    <img (click)="addEmoji($event)" class="emojione" alt="🙃" title=":upside_down:"
+                        src="https://cdn.jsdelivr.net/emojione/assets/3.1/png/32/1f643.png">
+                    <img (click)="addEmoji($event)" class="emojione" alt="😉" title=":wink:"
+                        src="https://cdn.jsdelivr.net/emojione/assets/3.1/png/32/1f609.png">
+                    <img (click)="addEmoji($event)" class="emojione" alt="😌" title=":relieved:"
+                        src="https://cdn.jsdelivr.net/emojione/assets/3.1/png/32/1f60c.png">
+                    <img (click)="addEmoji($event)" class="emojione" alt="😍" title=":heart_eyes:"
+                        src="https://cdn.jsdelivr.net/emojione/assets/3.1/png/32/1f60d.png">
+                    <img (click)="addEmoji($event)" class="emojione" alt="😘" title=":kissing_heart:"
+                        src="https://cdn.jsdelivr.net/emojione/assets/3.1/png/32/1f618.png">
+                    <img (click)="addEmoji($event)" class="emojione" alt="😗" title=":kissing:"
+                        src="https://cdn.jsdelivr.net/emojione/assets/3.1/png/32/1f617.png">
+                    <img (click)="addEmoji($event)" class="emojione" alt="😙" title=":kissing_smiling_eyes:"
+                        src="https://cdn.jsdelivr.net/emojione/assets/3.1/png/32/1f619.png">
+                    <img (click)="addEmoji($event)" class="emojione" alt="😚" title=":kissing_closed_eyes:"
+                        src="https://cdn.jsdelivr.net/emojione/assets/3.1/png/32/1f61a.png">
+                    <img (click)="addEmoji($event)" class="emojione" alt="😋" title=":yum:"
+                        src="https://cdn.jsdelivr.net/emojione/assets/3.1/png/32/1f60b.png">
+                    <img (click)="addEmoji($event)" class="emojione" alt="😜" title=":stuck_out_tongue_winking_eye:"
+                        src="https://cdn.jsdelivr.net/emojione/assets/3.1/png/32/1f61c.png">
+                    <img (click)="addEmoji($event)" class="emojione" alt="😝" title=":stuck_out_tongue_closed_eyes:"
+                        src="https://cdn.jsdelivr.net/emojione/assets/3.1/png/32/1f61d.png">
+                    <img (click)="addEmoji($event)" class="emojione" alt="😛" title=":stuck_out_tongue:"
+                        src="https://cdn.jsdelivr.net/emojione/assets/3.1/png/32/1f61b.png">
+                    <img (click)="addEmoji($event)" class="emojione" alt="🤑" title=":money_mouth:"
+                        src="https://cdn.jsdelivr.net/emojione/assets/3.1/png/32/1f911.png">
+                    <img (click)="addEmoji($event)" class="emojione" alt="🤗" title=":hugging:"
+                        src="https://cdn.jsdelivr.net/emojione/assets/3.1/png/32/1f917.png">
+                    <img (click)="addEmoji($event)" class="emojione" alt="🤓" title=":nerd:"
+                        src="https://cdn.jsdelivr.net/emojione/assets/3.1/png/32/1f913.png">
+                    <img (click)="addEmoji($event)" class="emojione" alt="😎" title=":sunglasses:"
+                        src="https://cdn.jsdelivr.net/emojione/assets/3.1/png/32/1f60e.png">
+                    <img (click)="addEmoji($event)" class="emojione" alt="🤡" title=":clown:"
+                        src="https://cdn.jsdelivr.net/emojione/assets/3.1/png/32/1f921.png">
+                    <img (click)="addEmoji($event)" class="emojione" alt="🤠" title=":cowboy:"
+                        src="https://cdn.jsdelivr.net/emojione/assets/3.1/png/32/1f920.png">
                 </div>
                 <img class="emoji-button" (click)="showEmoji()" src="../../../assets/img/smile-regular.svg">
+                <!-- <div class="imageUpload" accept="image/*">
+                    <img src="../../../assets/img/images-regular.svg" >
+                    <input type="file" id="uploadImage" (change)="addImage($event)">
+                </div> -->
+                <div id="search-div" class="search-div" *ngIf="isShowSearchBar">
+                    <input type="text" name="search-input" class="search-input" id="search-input"
+                        [(ngModel)]="searchKeywords">
+                    <img id="search-enter" class="search-enter" src="../../../assets/img/search-solid.svg"
+                        (click)="searchContent()">
+                    <div class="showSearchMessage">
+                        <ul class="searchMessagelist">
+                            <li *ngFor="let chat of searchChatListSmall">
+                                <span *ngIf="chat.usernameMsg == usernameFrom" class="search-name1">me</span>
+                                <span *ngIf="chat.usernameMsg != usernameFrom" class="search-name2">{{chat.nameMsg}}</span>
+                                <br>
+                                <span class="search-content">{{chat.content}}</span>
+                                <hr>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <img class="search-button" src="../../../assets/img/search-solid.svg" (click)="showSearchBar()">
+
+                <!-- <div>
+                    <img id="mImg" src="">
+                </div>
+                <input type="file" id="imageUpload" /> -->
                 <button (click)="addMessage()">Send</button>
                 <br>
                 <textarea name="msgContent" id="msgContent" [(ngModel)]="msg.content"></textarea>
@@ -99,4 +156,3 @@
         </div>
     </div>
 </div>
-
