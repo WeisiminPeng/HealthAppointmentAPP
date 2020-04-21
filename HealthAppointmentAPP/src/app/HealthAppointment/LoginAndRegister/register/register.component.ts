@@ -227,6 +227,7 @@ back() {
   }
 
 AddOption() {
+  document.getElementById('regisBtn').innerHTML = 'Set Profile Pic';
   const optionTr = document.getElementById('newTr');
   if (optionTr !== null) {
     return;
@@ -322,6 +323,7 @@ AddOption() {
   }
 }
 DeleteOption() {
+  document.getElementById('regisBtn').innerHTML = 'Register';
   const body = document.getElementById('registerBody');
   const newTr = document.getElementById('newTr');
   const newTr2 = document.getElementById('newTr2');
