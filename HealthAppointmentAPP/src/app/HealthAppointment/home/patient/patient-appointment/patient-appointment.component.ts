@@ -51,7 +51,6 @@ export class PatientAppointmentComponent implements OnInit {
     this.username = this.routes.snapshot.paramMap.get('username');
     this.patientService.get(this.username).subscribe(patient => {
       this.patient = patient;
-      // console.log(this.patient);
     });
 
 
@@ -61,7 +60,6 @@ export class PatientAppointmentComponent implements OnInit {
   onSpecializationChange(args?: any) {
     if (args && args.value) {
       this.selectedSpecialization = args ? args.itemData.value : this.selectedSpecialization;
-      // console.log(this.selectedSpecialization)
       this.selectedDoctors = this.doctors.filter(
         (item: any) => item.Specialization === this.selectedSpecialization);
     } else {
