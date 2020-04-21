@@ -1,13 +1,12 @@
 $normal-font:  "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-*{
-    font-family: $normal-font;
-}
+
 .content{
+    font-family: $normal-font;
     width: 100%;
-    height: 760px;
+    //height: 760px;
     display: flex;
-    background-color: white;
-    opacity: 0.95;
+    //background-color: white;
+    //opacity: 0.95;
     .left{
         width: 180px;
         border-right: 1px solid #eee;
@@ -46,7 +45,7 @@ $normal-font:  "Lucida Sans Unicode", "Lucida Grande", sans-serif;
         flex:1;
         // opacity:1;
         .showMessage{
-            height: 550px;
+            height: 600px;
             padding: 30px;
             margin: 0;
             padding: 0;
@@ -178,17 +177,15 @@ img{
     width:20px;
 }
 .emoji-button{
+  font-family: $normal-font;
     width: 25px;
     padding-left: 10px;
     padding-top: 5px;
 }
 .emoji-div{
-    position: absolute;;
-    // left:0px;
-    // top:0px;
-    // display:none;
+  font-family: $normal-font;
+    position: absolute;
     margin-top: -100px;
-    // top: 100px;
     z-index:1;
     width: 300px;
     height: 100px;
@@ -265,37 +262,12 @@ img{
 
 
 .send{
-    border: none;
-    background-color: white;
-    //color: rgba(145, 195, 226);
-    &:hover{
-      background-color: rgba(145, 195, 226);
-      color: white;
-    }
+  font-family: $normal-font;
+  border: none;
+  background-color: white;
+  &:hover{
+    background-color: rgba(145, 195, 226);
+    color: white;
   }
-//the style of the image upload button
-// .imageUpload{
-//     position: relative;
-//     height: 30px;
-//     width: 30px;
-//     background: white;
-//     // border-radius: 3px;
-//     border: none;
-//     text-align: center;
-//     line-height: 30px;
-//     // font-size: 11px;
-//     // font-family: system-ui;
-//     display: inline-block;
-//     margin-left:10px;
-//     img{
-//         width:30px;
-//     }
-//     input {
-//         position: absolute;
-//         top: 0px;
-//         right: -100px;
-//         height: 30px;
-//         opacity: 0;
-//     }
-// }
+}
 
