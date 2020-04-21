@@ -47,7 +47,10 @@
   margin-right: auto;
   box-shadow: 0 10px 20px rgba(0,0,0,.15);
 }
-
+.specialization-detail-wrapper{
+  height: 500px;
+  overflow: auto;
+}
 .module-title{
   width: 1000px;
   .title{

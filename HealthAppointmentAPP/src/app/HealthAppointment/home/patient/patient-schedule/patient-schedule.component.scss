@@ -28,7 +28,13 @@
   background-color:  #FFFFFF;
   margin-left: auto;
   margin-right: auto;
+  //this is to make main content scroll
+
   box-shadow: 0 10px 20px rgba(0,0,0,.15);
+}
+.specialization-detail-wrapper{
+  height: 500px;
+  overflow: auto;
 }
 .module-title{
   width: 1000px;
@@ -56,6 +62,7 @@
   grid-template-columns: 1fr 1fr 1fr;
   grid-column-gap: 0px;
   grid-row-gap: 1em;
+
 }
 
 // following controls the card showing of appointments

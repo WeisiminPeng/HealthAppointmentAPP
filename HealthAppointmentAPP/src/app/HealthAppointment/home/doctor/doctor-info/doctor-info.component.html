@@ -1,26 +1,79 @@
 <app-doctor-sidebar></app-doctor-sidebar>
-<div class="personalInfoDiv">
-    <h2>Personal-Info</h2>
-    <table>
-        <tr>
+<!--<div class="personalInfoDiv">-->
+<!--    <h2>Personal-Info</h2>-->
+<!--    <table>-->
+<!--        <tr>-->
+<!--            <td>Name:</td><input type="text" [(ngModel)]="name" />-->
+<!--        </tr>-->
+<!--        <br>-->
+<!--        <tr>-->
+<!--            <td>Phone:</td><input type="text" [(ngModel)]="mobile" />-->
+<!--        </tr>-->
+<!--        <br>-->
+<!--        <tr>-->
+<!--            <td>Email:</td><input type="text" [(ngModel)]="email" /> <br>-->
+<!--        </tr>-->
+
+<!--    </table>-->
+
+<!--    <br>-->
+
+<!--    <button class="update" (click)="update()">Update</button>-->
+<!--    <button id="changePassword" (click)="changePassword()">Change Password</button>-->
+<!--</div>-->
+
+<!--yang's code starts from here-->
+<main>
+  <section class="upperHalf">
+    <div class="imgWrapper">
+      <img id="lightbluesky" src="../../../../../assets/img/lightblue-cut.jpeg" />
+    </div>
+  </section>
+  <section class="lowerHalf">
+    <div class="maincontent">
+      <div class="module-title">
+        <div class="title">Personal Info</div>
+        <div class="underline">
+          <hr style="color: #595959">
+        </div>
+      </div>
+      <div class="personalInfoDiv">
+        <!--        <h2>Personal-Info</h2>-->
+        <table>
+          <tr>
             <td>Name:</td><input type="text" [(ngModel)]="name" />
-        </tr>
-        <br>
-        <tr>
+          </tr>
+          <br>
+<!--          <tr>-->
+<!--            <td>DOB:</td><input type="text" [(ngModel)]="dob" placeholder="yyyy-mm-dd" />-->
+<!--          </tr>-->
+<!--          <br>-->
+          <tr>
             <td>Phone:</td><input type="text" [(ngModel)]="mobile" />
-        </tr>
-        <br>
-        <tr>
+          </tr>
+          <br>
+<!--          <tr>-->
+<!--            <td>Address:</td><input type="text" [(ngModel)]="address" />-->
+<!--          </tr>-->
+<!--          <br>-->
+          <tr>
             <td>Email:</td><input type="text" [(ngModel)]="email" /> <br>
-        </tr>
+          </tr>
+          <br>
 
-    </table>
+        </table>
 
-    <br>
+        <br>
 
-    <button class="update" (click)="update()">Update</button>
-    <button id="changePassword" (click)="changePassword()">Change Password</button>
-</div>
-<div id="cgpassword" [hidden]=true>
-    <app-password-management2></app-password-management2>
-</div>
+        <button class="update" (click)="update()">Update</button><br>
+        <button class="changePassword" (click)="changePassword()">Change Password</button>
+      </div>
+    </div>
+    <div id="cgpassword" [hidden]=true>
+      <app-password-management2></app-password-management2>
+    </div>
+
+  </section>
+</main>
+
+<app-patient-footer></app-patient-footer>
