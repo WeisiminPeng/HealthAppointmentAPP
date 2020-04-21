@@ -10,6 +10,7 @@ import { PatientService } from '../../../services/patient.service'
 
 import { doctorsData } from 'src/app/HealthAppointment/healthappoint.model';
 import { patientData } from 'src/app/HealthAppointment/healthappoint.model';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-patient-appointment',
@@ -32,9 +33,10 @@ export class PatientAppointmentComponent implements OnInit {
   public patient: patientData;
   public username: string;
   public DoctorUsername:string;
+  imgURL: any;
 
 
-  constructor(public doctorService: DoctorService, public patientService: PatientService, public routes: ActivatedRoute, private router: Router) {
+  constructor(public doctorService: DoctorService, public patientService: PatientService, public routes: ActivatedRoute, private router: Router, private sanitizer: DomSanitizer) {
 
   }
 
@@ -77,6 +79,13 @@ export class PatientAppointmentComponent implements OnInit {
 
   getEducation(text: Object) {
     return (<string>text).toUpperCase();
+  }
+
+  getImg(data: any){
+    console.log(data.Avatar)
+    this.imgURL = this.sanitizer.bypassSecurityTrustUrl(data.Avatar);
+    console.log(this.imgURL)
+    return this.imgURL;
   }
 
 
