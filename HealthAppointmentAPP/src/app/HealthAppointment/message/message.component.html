@@ -1,5 +1,6 @@
 
-<app-doctor-sidebar></app-doctor-sidebar>
+<app-doctor-sidebar *ngIf="role=='doctor'"></app-doctor-sidebar>
+<app-patient-sidebar *ngIf="role=='patient'"></app-patient-sidebar>
 
 <div class="content">
     <div class="left">
@@ -111,6 +112,10 @@
                     </div>
                 </div>
                 <img class="search-button" src="../../../assets/img/search-solid.svg" (click)="showSearchBar()">
+
+                <!-- <div>
+                    <button (click)="screenShot($event)"></button>
+                </div> -->
 
                 <!-- <div>
                     <img id="mImg" src="">
