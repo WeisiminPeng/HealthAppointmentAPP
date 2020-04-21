@@ -1,54 +1,54 @@
-//.doctor-schedule {
-//    font-size: 14px;
-//    margin: 30px 50px;
-//    color: #9aa5bb;
-//    letter-spacing: .05px;
-//    background: #eeeeee;
-//  height: auto;
-//    .e-all-day-appointment-wrapper,.e-timeline-wrapper{
-//        font-size: 0;
-//    }
-//    .putAclassHere {
-//        display: flex;
-//        justify-content: space-between;
-//
-//        .schedule-container {
-//            //padding-right: 25px;
-//            width: 100%;
-//
-//
-//            .e-schedule-toolbar-container {
-//                .e-toolbar-items {
-//                    .e-toolbar-center {
-//                        .planner-dropdown {
-//                            margin-top: 5px;
-//                            margin-left: 20px;
-//                        }
-//                    }
-//                }
-//            }
-//            .e-table-container {
-//                .e-month-view {
-//                    .e-content-wrap {
-//                        .e-work-cells {
-//                            .e-block-indicator {
-//                                visibility: hidden;
-//                            }
-//
-//                            .e-appointment {
-//                                .e-time,
-//                                .e-subject {
-//                                    padding: 2px;
-//                                }
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//
-//    }
-//}
+.doctor-schedule {
+    font-size: 14px;
+    //margin: 30px 50px;
+    color: #9aa5bb;
+    letter-spacing: .05px;
+    background: #eeeeee;
+    //height: auto;
+    .e-all-day-appointment-wrapper,.e-timeline-wrapper{
+        font-size: 0;
+    }
+    .putAclassHere {
+        display: flex;
+        justify-content: space-between;
+
+        .schedule-container {
+            //padding-right: 25px;
+            width: 100%;
+
+
+            .e-schedule-toolbar-container {
+                .e-toolbar-items {
+                    .e-toolbar-center {
+                        .planner-dropdown {
+                            margin-top: 5px;
+                            margin-left: 20px;
+                        }
+                    }
+                }
+            }
+            .e-table-container {
+                .e-month-view {
+                    .e-content-wrap {
+                        .e-work-cells {
+                            .e-block-indicator {
+                                visibility: hidden;
+                            }
+
+                            .e-appointment {
+                                .e-time,
+                                .e-subject {
+                                    padding: 2px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+}
 //
 //
 //.textarea{
@@ -146,10 +146,15 @@
   margin-right: auto;
   box-shadow: 0 10px 20px rgba(0,0,0,.15);
 }
-.doctor-schedule-wrapper{
+//.doctor-schedule-wrapper{
+//  height: 800px;
+//  overflow: auto;
+//}
+.doctor-schedule{
   height: 800px;
   overflow: auto;
 }
+
 .module-title{
 
   .title{
