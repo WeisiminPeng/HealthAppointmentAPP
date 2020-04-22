@@ -80,19 +80,9 @@ export class PatientAppointmentComponent implements OnInit {
   }
 
   getImg(data: any) {
-    if (data.Avatar) {
-      return this.sanitizer.bypassSecurityTrustUrl(data.Avatar);
-    } else {
       var imgurl: string = '../../../../../assets/photo/'+data.username+'.png';
+
       return imgurl;
     }
-  }
-    // console.log(data.Avatar)
-    // this.imgURL = this.sanitizer.bypassSecurityTrustUrl(data.Avatar);
-    // console.log(this.imgURL)
-    // return this.imgURL;
-
-
-
 
 }

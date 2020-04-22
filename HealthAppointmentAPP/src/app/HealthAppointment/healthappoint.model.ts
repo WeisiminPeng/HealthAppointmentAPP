@@ -18,7 +18,7 @@ export interface doctorsData {
     AvailableDays: object,
     WorkDays: [],
     username: string,
-    Avatar: string
+    Avatar: string,
 }
 
 export interface workHours{

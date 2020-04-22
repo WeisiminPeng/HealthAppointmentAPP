@@ -77,39 +77,27 @@ export class DoctorSidebarComponent implements OnInit {
   showSidebar(): void {
     this.sidebar.show();
   }
-  uploadImg(files) {
+  // uploadImg(files) {
 
-    let temp = '';
-    temp = window.URL.createObjectURL(files[0]);
-    this.imgURL = this.sanitizer.bypassSecurityTrustUrl(temp);
-    // temp = this.imgURL.changingThisBreaksApplicationSecurity;
-    // this.imgURL = this.sanitizer.bypassSecurityTrustResourceUrl(temp);
-    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
-    let api = 'http://localhost:3000/doctors/' + this.username;
-    this.http.put(api, {
-      Avatar: this.imgURL.changingThisBreaksApplicationSecurity
-    }, httpOptions).subscribe((response) => {
-      console.log(response);
-      alert('upload Successfully!');
-    });
-  }
-
+  //   let temp = '';
+  //   temp = window.URL.createObjectURL(files[0]);
+  //   this.imgURL = this.sanitizer.bypassSecurityTrustUrl(temp);
+  //   // temp = this.imgURL.changingThisBreaksApplicationSecurity;
+  //   // this.imgURL = this.sanitizer.bypassSecurityTrustResourceUrl(temp);
+  //   const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
+  //   let api = 'http://localhost:3000/doctors/' + this.username;
+  //   this.http.put(api, {
+  //     Avatar: this.imgURL.changingThisBreaksApplicationSecurity
+  //   }, httpOptions).subscribe((response) => {
+  //     console.log(response);
+  //     alert('upload Successfully!');
+  //   });
+  // }
 
   getImg() {
-      // this.doctorService.get(this.username).subscribe(doctor => {
-      //   this.doctor = doctor;
-      //   console.log(this.doctor.Avatar);
-      //   // if ( this.doctor.Avatar) {
-      //   //   return this.sanitizer.bypassSecurityTrustUrl(this.doctor.Avatar);
-      //   // } else {
-      //     var imgurl: string = '../../../../../assets/photo/'+this.username+'.jpeg';
-      //     return imgurl;
-      // // }  
-      //      });
+    var imgurl: string = '../../../../../assets/photo/'+this.username+'.png';
+
+    return imgurl;
   }
-
-
-
-
 
 }
