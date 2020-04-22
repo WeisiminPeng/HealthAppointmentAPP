@@ -32,7 +32,7 @@ export class PatientAppointmentComponent implements OnInit {
 
   public patient: patientData;
   public username: string;
-  public DoctorUsername:string;
+  public DoctorUsername: string;
   public imgURL: any;
 
 
@@ -79,12 +79,19 @@ export class PatientAppointmentComponent implements OnInit {
     return (<string>text).toUpperCase();
   }
 
-  getImg(data: any){
-    console.log(data.Avatar)
-    this.imgURL = this.sanitizer.bypassSecurityTrustUrl(data.Avatar);
-    console.log(this.imgURL)
-    return this.imgURL;
+  getImg(data: any) {
+    if (data.Avatar) {
+      return this.sanitizer.bypassSecurityTrustUrl(data.Avatar);
+    } else {
+      var imgurl: string = '../../../../../assets/photo/'+data.username+'.png';
+      return imgurl;
+    }
   }
+    // console.log(data.Avatar)
+    // this.imgURL = this.sanitizer.bypassSecurityTrustUrl(data.Avatar);
+    // console.log(this.imgURL)
+    // return this.imgURL;
+
 
 
 
