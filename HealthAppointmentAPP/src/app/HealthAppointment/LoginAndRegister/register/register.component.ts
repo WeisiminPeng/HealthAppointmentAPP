@@ -214,8 +214,9 @@ register() {
           // tslint:disable-next-line:no-shadowed-variable
               }, httpOptions).subscribe((response) => {
               // console.log(response);
-              // alert('Register successfully!');
-              this.router.navigate(['/' + this.Username +'/upload']);
+              alert('Register successfully!');
+              this.router.navigate(['/login']);
+              // this.router.navigate(['/' + this.Username +'/upload']);
               });
       });
       }
@@ -227,7 +228,7 @@ back() {
   }
 
 AddOption() {
-  document.getElementById('regisBtn').innerHTML = 'Set Profile Pic';
+  // document.getElementById('regisBtn').innerHTML = 'Set Profile Pic';
   const optionTr = document.getElementById('newTr');
   if (optionTr !== null) {
     return;

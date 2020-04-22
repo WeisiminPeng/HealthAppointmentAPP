@@ -30,6 +30,10 @@ let Appointment = new Schema({
     },
     CategoryColor: {
         type: String
+    },
+    Status:{
+        type:Boolean,
+        default: false
     }
 }, {
     versionKey: false, 

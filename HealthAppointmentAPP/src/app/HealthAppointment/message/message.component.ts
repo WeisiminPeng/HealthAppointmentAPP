@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import html2canvas from 'html2canvas';
+// import html2canvas from 'html2canvas';
 
 // import service
 import { MessageService } from '../services/message.service';
@@ -308,8 +308,8 @@ export class MessageComponent implements OnInit {
 
   //   this.msg.contentType="image";
   //   // this.http.post("http://localhost:3000/")
-  //   // let reader = new FileReader(); 
-  //   // reader.readAsDataURL(file); 
+  //   // let reader = new FileReader();
+  //   // reader.readAsDataURL(file);
   //   // reader.onload = function(e){
   //   //    console.log(e.target.result);//(<HTMLImageElement>document.getElementById('mImg')).src =
   //   // }
@@ -481,16 +481,16 @@ export class MessageComponent implements OnInit {
 
   // async screenShot(e) {
   //     let screenshot = await this.makeScreenshot(); // png dataUrl
-  //     let box = await this.getBox(e);   
+  //     let box = await this.getBox(e);
   //     this.send(screenshot,box); // sed post request  with bug image, region and description
   //     alert('To see POST requset with image go to: chrome console > network tab');
   // }
 
   // async makeScreenshot(){
-  //   return new Promise((resolve, reject) => { 
+  //   return new Promise((resolve, reject) => {
   //     html2canvas(document.body).then(canvas => {
   //       document.body.appendChild(canvas)
-  //     }); 
+  //     });
   //   });
   // }
 
@@ -532,7 +532,7 @@ export class MessageComponent implements OnInit {
 
   //     addEventListener("click", e=>{
   //       start=0;
-  //       // let a=100/75 //zoom out img 75%      
+  //       // let a=100/75 //zoom out img 75%
   //       resolve({
   //          x:Math.floor(ex > 0 ? sx : sx+ex ),
   //          y:Math.floor(ey > 0 ? sy : sy+ey ),
@@ -550,7 +550,7 @@ export class MessageComponent implements OnInit {
   //     let req = new XMLHttpRequest();
 
   //     formData.append("box", JSON.stringify(box));
-  //     formData.append("screenshot", image);    
+  //     formData.append("screenshot", image);
 
   //     req.open("POST", 'Users/shmh/desktop/screenshot');
   //     req.send(formData);
@@ -594,7 +594,7 @@ export class MessageComponent implements OnInit {
 
   //   addEventListener("click", e=>{
   //     start=0;
-  //     let a=100/75 //zoom out img 75%      
+  //     let a=100/75 //zoom out img 75%
   //     resolve({
   //        x:Math.floor(((ex > 0 ? sx : sx+ex )-scr.offsetLeft)*a),
   //        y:Math.floor(((ey > 0 ? sy : sy+ey )-b.offsetTop)*a),
