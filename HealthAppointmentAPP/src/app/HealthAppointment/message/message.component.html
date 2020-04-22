@@ -1,18 +1,20 @@
-
+<!-- side bar -->
 <app-doctor-sidebar *ngIf="role=='doctor'"></app-doctor-sidebar>
 <app-patient-sidebar *ngIf="role=='patient'"></app-patient-sidebar>
 
+<!-- show name list -->
 <div class="content">
     <div class="left">
         <ul id= 'namelist-wrapper' class="namelist">
-            <li id="nameli-{{usernameTo.name}}" class="name-span" *ngFor="let usernameTo of namelist"(click)="getMessageList(usernameTo.username)" >
+            <li id="nameli-{{usernameTo.username}}" class="name-span" *ngFor="let usernameTo of namelist"(click)="getMessageList(usernameTo.username)" >
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{usernameTo.name}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <!-- <span tabindex="1" (click)="getMessageList(usernameTo.username)">{{usernameTo.name}}</span> -->
             </li>
         </ul>
     </div>
+    <!-- show message -->
     <div class="right">
-        <div class="showMessage">
+        <div class="showMessage" id="showMessage">
             <ul class="messagelist">
                 <li *ngFor="let chat of chatListSmall">
                     <span *ngIf="chat.usernameMsg == usernameFrom" class="right-name">me</span>
@@ -27,8 +29,10 @@
                 </li>
             </ul>
         </div>
+        <!-- add message div -->
         <div class="addMessage">
             <form>
+                <!-- add emoji -->
                 <div id="emoji-div" class="emoji-div" *ngIf="isShowEmoji">
                     <img (click)="addEmoji($event)" class="emojione" alt="😄" title=":smile:"
                         src="https://cdn.jsdelivr.net/emojione/assets/3.1/png/32/1f604.png">
@@ -93,10 +97,7 @@
                 </div>
                 <img class="emoji-button" (click)="showEmoji()" src="../../../assets/img/smile-regular.svg">
 
-                <!-- <div class="imageUpload" accept="image/*">
-                    <img src="../../../assets/img/images-regular.svg" >
-                    <input type="file" id="uploadImage" (change)="addImage($event)">
-                </div> -->
+                <!-- search contents in the chat list -->
                 <div id="search-div" class="search-div" *ngIf="isShowSearchBar">
                     <input type="text" name="search-input" class="search-input" id="search-input"
                         [(ngModel)]="searchKeywords">
@@ -116,14 +117,15 @@
                 </div>
                 <img class="search-button" src="../../../assets/img/search-solid.svg" (click)="showSearchBar()">
 
-                <!-- <div>
+                <!-- screenshot -->
+                <!-- <canvas class="showScreenshot" id="showScreenshot">
+
+                </canvas>
+                <div>
                     <button (click)="screenShot($event)"></button>
                 </div> -->
 
-                <!-- <div>
-                    <img id="mImg" src="">
-                </div>
-                <input type="file" id="imageUpload" /> -->
+                <!-- add text content -->
                 <button (click)="addMessage()" class="send">Send</button>
                 <br>
                 <textarea name="msgContent" id="msgContent" [(ngModel)]="msg.content"></textarea>

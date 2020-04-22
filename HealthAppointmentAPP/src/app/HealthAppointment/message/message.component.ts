@@ -227,16 +227,19 @@ export class MessageComponent implements OnInit {
     this.sidebar.show();
   }
   // sidebar function done!
-  
+
 
   // get message list of the selected people in the name list
   getMessageList(usernameTo) {
     this.usernameTo = usernameTo;
     const id = 'nameli-' + this.usernameTo;
     const parent = document.getElementById('namelist-wrapper');
-    for(let i =0; i < parent.childElementCount; i++){
+    for (let i = 0; i < parent.childElementCount; i++) {
       // tslint:disable-next-line:triple-equals
-      if(parent.children[i].id === id){
+      // console.log("id"+id);
+      //   console.log("cid"+parent.children[i].id);
+      if (parent.children[i].id === id) {
+        
         parent.children[i].className = 'selected';
       } else {
         parent.children[i].className = 'name-span';
@@ -344,25 +347,37 @@ export class MessageComponent implements OnInit {
 
 
   screenShot(e) {
-    let canvas = <HTMLCanvasElement> document.body;
+    let canvas = <HTMLCanvasElement>document.getElementById("showScreenshot");
+    console.log(canvas);
     let ctx = canvas.getContext('2d');
 
-    let x1,y1,x2,y2;
+    let x1, y1, x2, y2;
     addEventListener("mousemove", e => {
 
     });
     addEventListener("mousedown", e => {
-      x1=e.pageX;
-      y1=e.pageY;
+      x1 = e.pageX;
+      y1 = e.pageY;
     });
     addEventListener('mouseup', e => {
-      x2=e.pageX;
-      y2=e.pageY;
-    })
+      x2 = e.pageX;
+      y2 = e.pageY;
+      console.log("x1,y1,x2,y2:" + x1 + "," + y1 + "," + x2 + "," + y2);
+      let width = x2 - x1;
+      let height = y2 - y1;
+
+      document.getElementById("showMessage").onload=function(){
+        console.log("draw");
+        ctx.clearRect(0, 0, width, height);
+        ctx.drawImage((<HTMLCanvasElement>document.body), x1, y1, width, height, 0, 0, width, height);
+      }
+      
+    });
+
     // html2canvas(document.body).then(function (canvas) {
-      // document.body.appendChild(canvas);
-      // let that = this;
-      // console.log(this.http);
+    // document.body.appendChild(canvas);
+    // let that = this;
+    // console.log(this.http);
     //   let image = canvas.toDataURL("image/png");
     //   console.log(image);
     //   that.http.post("desktop/screenshot", image).subscribe(
