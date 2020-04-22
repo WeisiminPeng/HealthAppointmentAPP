@@ -16,7 +16,7 @@
     <div class="right">
         <div class="showMessage" id="showMessage">
             <ul class="messagelist">
-                <li *ngFor="let chat of chatListSmall">
+                <li *ngFor="let chat of chatListSmall; let sharedChat of chatHistory">
                     <span *ngIf="chat.usernameMsg == usernameFrom" class="right-name">me</span>
                     <span *ngIf="chat.usernameMsg != usernameFrom" class="left-name">{{chat.nameMsg}}</span>
                     <br>
@@ -24,8 +24,9 @@
                     <img *ngIf="role == 'doctor' && chat.usernameMsg !== usernameFrom" src="../../../assets/img/user-solid.svg">
                     <img *ngIf="role == 'patient' && chat.usernameMsg == usernameFrom" src="../../../assets/img/user-solid.svg">
                     <img *ngIf="role == 'patient' && chat.usernameMsg !== usernameFrom" src="../../../assets/img/user-md-solid.svg">
-                    <span *ngIf="chat.usernameMsg == usernameFrom" class="right-content">{{chat.content}}</span>
-                    <span *ngIf="chat.usernameMsg != usernameFrom" class="left-content">{{chat.content}}</span>
+                    <input *ngIf="isShared == true" type="checkbox" class="chatStatus ckeckbox-class" [(ngModel)]="sharedChat.status">
+                    <span [innerHTML]="chat.content" *ngIf="chat.usernameMsg == usernameFrom" class="right-content" (dblclick)="selectHistory()"></span>
+                    <span [innerHTML]="chat.content" *ngIf="chat.usernameMsg != usernameFrom" class="left-content" (dblclick)="selectHistory()"></span>
                 </li>
             </ul>
         </div>
@@ -117,13 +118,29 @@
                 </div>
                 <img class="search-button" src="../../../assets/img/search-solid.svg" (click)="showSearchBar()">
 
+                <!-- share chat history -->
+                <div id="share-div" class="share-div" *ngIf="isShowShareBar">
+                    <div class="showShareNamelist">
+                        <ul class="shareNamelist">
+                            <li *ngFor="let usernameTo of namelist" class="shareli">
+                                <!-- [(ngModel)]="chosenShare" -->
+                                <input type="checkbox" class="chosenShare ckeckbox-class" name="chosenShare" [(ngModel)]="usernameTo.chosenShare">
+                                <span class="share-name">{{usernameTo.name}}</span>
+                                <hr>
+                            </li>
+                        </ul>
+                    </div>
+                    <button class="share" (click)="share()">Send</button>
+                </div>
+                <img class="share-button" src="../../../assets/img/share-square-solid.svg" (click)="shareHistory()">
+
                 <!-- export chat history -->
                 <img class="export-button" src="../../../assets/img/external-link-alt-solid.svg" (click)="exportHistory()">
 
                 <!-- add text content -->
                 <button (click)="addMessage()" class="send">Send</button>
                 <br>
-                <textarea name="msgContent" id="msgContent" [(ngModel)]="msg.content"></textarea>
+                <textarea name="msgContent" id="msgContent" [(ngModel)]="msg.content" [innerHTML]="msg.content"></textarea>
             </form>
         </div>
     </div>

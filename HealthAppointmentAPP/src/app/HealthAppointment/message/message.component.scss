@@ -260,13 +260,61 @@ img{
     } 
 }
 
-.box {
-    background: #f00;
-    width: 0px;
-    height: 0px;
+//style of share chat history part
+.share-button{
+    width: 25px;
+    padding-left: 20px;
+    padding-top: 5px;
+}
+.share-div{
     position: absolute;
+    margin-top: -550px;
+    margin-left:350px;
+    z-index:1;
+    width: 550px;
+    height: 500px;
+    overflow-y:auto;
+    background-color: lightgray;
     opacity: 0.5;
-    cursor: move;
+    .showShareNamelist{
+        height: 400px;
+        width: 300px;
+        background-color: whitesmoke;
+        height: 400px;
+        width: 500px;
+        margin-top: 10px;
+        margin-left: 25px;
+        .shareNamelist{
+            list-style-type: none;
+            padding: 0px;
+            li{
+                padding-top: 5px;
+                padding-left: 5px;
+                padding-right: 5px;
+                .share-name{
+                    color: black;
+                    padding-left: 15px;
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+}
+.share{
+    font-family: $normal-font;
+    border: none;
+    background-color: white;
+    margin-top: 20px;
+    margin-right: 25px;
+    &:hover{
+        background-color: rgba(145, 195, 226);
+        color: white;
+    }
+}
+.ckeckbox-class{
+    margin-left: 0;
+    width: 25px;
+    height: 25px;
 }
 
 //style of export chat history part

@@ -10,6 +10,7 @@ import { PatientService } from '../services/patient.service';
 
 // import model
 import { Message } from './model/message.model';
+import { Share } from './model/share.model';
 
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -75,6 +76,13 @@ export class MessageComponent implements OnInit {
   isShowSearchBar: boolean = false;
   searchKeywords = "";
   searchChatListSmall: any[] = [];
+  isShared: boolean = false;
+  chatHistory: any[] = [];
+  historylist: any[] = [];
+  isChosen: boolean = false;
+  isShowShareBar: boolean = false;
+  namelist2: any[] = [];
+  shareNamelist: any[] = [];
 
 
   // declare services
@@ -210,9 +218,11 @@ export class MessageComponent implements OnInit {
     //hide search bar and emoji div
     document.addEventListener('mouseup', (e) => {
       let classname = (<HTMLTextAreaElement>e.target).className;
-      if (classname != "search-button" && classname != "search-enter" && classname != "search-div" && (classname.indexOf("search-input")) && classname != "emoji-button" && classname != "emoji-div" && classname != "emojione") {
+      if ((classname.indexOf("shareli"))&&(classname.indexOf("chosenShare"))&&(classname.indexOf("share-name")) &&(classname.indexOf("share-button")) && (classname.indexOf("chatStatus")) && (classname.indexOf("share-div")) && (classname.indexOf("showShareNamelist"))&& (classname.indexOf("shareNamelist"))&& (classname.indexOf("share")) && classname != "search-button" && classname != "search-enter" && classname != "search-div" && (classname.indexOf("search-input")) && classname != "emoji-button" && classname != "emoji-div" && classname != "emojione") {
         this.isShowEmoji = false;
         this.isShowSearchBar = false;
+        this.isShared = false;
+        this.isShowShareBar = false;
         // console.log(classname);
       }
     });
@@ -293,6 +303,8 @@ export class MessageComponent implements OnInit {
     // alert("show emoji");
     this.isShowEmoji = true;
     this.isShowSearchBar = false;
+    this.isShared = false;
+    this.isShowShareBar = false;
     // console.log("show" + this.isShowEmoji);
   }
 
@@ -316,7 +328,6 @@ export class MessageComponent implements OnInit {
   //   // console.log(reader.onload);
   // }
 
-
   //search content
   showSearchBar() {
     if (typeof (this.usernameTo) == "undefined") {
@@ -325,6 +336,8 @@ export class MessageComponent implements OnInit {
     }
     this.isShowSearchBar = true;
     this.isShowEmoji = false;
+    this.isShared = false;
+    this.isShowShareBar = false;
   }
 
   searchContent() {
@@ -344,14 +357,172 @@ export class MessageComponent implements OnInit {
     // console.log(this.searchKeywords);
   }
 
+
+  //share chat history
+  selectHistory() {
+    if (typeof (this.usernameTo) == "undefined") {
+      alert("Please select a person to send your message!");
+      return;
+    }
+    this.isShared = true;
+    this.chatList = [];
+    this.chatListSmall = [];
+    this.chatHistory = [];
+    this.messageService.list().subscribe((data) => {
+      this.messageAll = data;
+      for (let i = 0; i < this.messageAll.length; i++) {
+        if (this.messageAll[i].username1 == this.usernameFrom || this.messageAll[i].username2 == this.usernameFrom) {
+          this.chatList.push(this.messageAll[i]);
+        }
+      }
+      for (let i = 0; i < this.chatList.length; i++) {
+        if (this.chatList[i].username1 == this.usernameTo || this.chatList[i].username2 == this.usernameTo) {
+          this.chatListSmall = this.chatList[i].chatlist;
+        }
+      }
+      // console.log(this.messageAll);
+      // console.log(this.chatListSmall);
+      for (let i = 0; i < this.chatListSmall.length; i++) {
+        this.chatHistory.push(this.chatListSmall[i]);
+        this.chatHistory[i].status = false;
+      }
+      // console.log(this.chatHistory);
+      // console.log(this.chatListSmall);
+    });
+  }
+
+  shareHistory() {
+    this.historylist = []
+    this.msg.content = "";
+    for (let i = 0; i < this.chatHistory.length; i++) {
+      if (this.chatHistory[i].status == true) {
+        this.historylist.push(this.chatListSmall[i]);
+      }
+    }
+    if (this.historylist.length == 0) {
+      alert('Please choose at least one message to share');
+      return;
+    } else {
+      for (let i = 0; i < this.historylist.length; i++) {
+        this.msg.content += "<p>"+this.historylist[i].nameMsg+": "
+        +this.historylist[i].content
+        +"</p>";
+      }
+    }
+    this.isShowShareBar = true;
+  }
+
+  share() {
+    (document.getElementById('msgContent') as HTMLInputElement).value = '';
+    let oldUsernameTo=this.usernameTo;
+    this.namelist2=[]
+    for (let i = 0; i < this.namelist.length; i++) {
+      if (this.namelist[i].chosenShare == true) {
+        this.namelist2.push(this.namelist[i]);
+      }
+    }
+    if (this.namelist2.length == 0) {
+      alert("Please select a person to share!");
+      return;
+    }
+    for (let i = 0; i < this.namelist2.length; i++) {
+      this.usernameTo=this.namelist2[i].username;
+      console.log(this.usernameTo);
+      if (this.chatListSmall.length == 0) {
+        let messagelist = new Message(this.usernameFrom, this.usernameTo, [this.msg]);
+        
+        this.messageService.addMessage(messagelist).subscribe((data) => {
+          this.newMessageEmitted.emit(data);
+          this.messageService.list().subscribe((data) => {
+            this.messageAll = data;
+            this.chatList = [];
+            for (let i = 0; i < this.messageAll.length; i++) {
+              if (this.messageAll[i].username1 == this.usernameFrom || this.messageAll[i].username2 == this.usernameFrom) {
+                this.chatList.push(this.messageAll[i]);
+              }
+            }
+            for (let i = 0; i < this.chatList.length; i++) {
+              if (this.chatList[i].username1 == this.usernameTo || this.chatList[i].username2 == this.usernameTo) {
+                this.chatListSmall = this.chatList[i].chatlist;
+              }
+            }
+          });
+        });
+        this.messageService.list().subscribe((data) => {
+          this.messageAll = data;
+          this.chatList = [];
+          for (let i = 0; i < this.messageAll.length; i++) {
+            if (this.messageAll[i].username1 == this.usernameFrom || this.messageAll[i].username2 == this.usernameFrom) {
+              this.chatList.push(this.messageAll[i]);
+            }
+          }
+          for (let i = 0; i < this.chatList.length; i++) {
+            if (this.chatList[i].username1 == this.usernameTo || this.chatList[i].username2 == this.usernameTo) {
+              this.chatListSmall = this.chatList[i].chatlist;
+            }
+          }
+        });
+      } else {
+        let index;
+        for (let i = 0; i < this.messageAll.length; i++) {
+          if ((this.messageAll[i].username1 == this.usernameFrom && this.messageAll[i].username2 == this.usernameTo) || (this.messageAll[i].username1 == this.usernameTo && this.messageAll[i].username2 == this.usernameFrom)) {
+            this.messageAll[i].chatlist.push(this.msg);
+            index = i;
+          }
+        }
+        console.log()
+        console.log(this.messageAll);
+        console.log("this.messageAll[index]");
+        console.log(this.messageAll[index]);
+        console.log("tthis.messageAll[index]._id");
+        console.log(this.messageAll[index]._id);
+        const updatedMessage$: Observable<Message> = this.messageService.updateMessage(this.messageAll[index], this.messageAll[index]._id);
+        updatedMessage$.subscribe(updatedmessage => {
+          this.newMessageEmitted.emit(updatedmessage);
+          // get new message list
+          this.messageService.list().subscribe((data) => {
+            this.messageAll = data;
+            // console.log("messageAll1");
+            // console.log(this.messageAll);
+            this.chatList = [];
+            this.chatListSmall = [];
+            for (let i = 0; i < this.messageAll.length; i++) {
+              if (this.messageAll[i].username1 == this.usernameFrom || this.messageAll[i].username2 == this.usernameFrom) {
+                this.chatList.push(this.messageAll[i]);
+              }
+            }
+            // console.log("chatlist");
+            // console.log(this.chatList);
+            for (let i = 0; i < this.chatList.length; i++) {
+              // console.log("chatlist[i]");
+              // console.log(this.chatList[i]);
+              if (this.chatList[i].username1 == this.usernameTo || this.chatList[i].username2 == this.usernameTo) {
+                this.chatListSmall = this.chatList[i].chatlist;
+              }
+            }
+            // console.log("chatListSmall");
+            // console.log(this.chatListSmall);
+            // console.log("***********************");
+          });
+        });
+      }
+    }
+    this.usernameTo=oldUsernameTo;
+    this.isShowShareBar = false;
+  }
+
   //export chat history
   exportHistory() {
     // alert("history");
-    let flag = confirm("Warning! Your emoji will not be saved in to the chat history csv file!")==false;
-    if(flag){
+    let flag = confirm("Warning! Your emoji will not be saved in to the chat history csv file!") == false;
+    if (flag) {
       return;
     }
     if (typeof (this.usernameTo) == "undefined") {
+      let flag = confirm("Warning! All of Your chat history will be exported!") == false;
+      if (flag) {
+        return;
+      }
       let csv = [];
       this.messageService.list().subscribe((data) => {
         this.messageAll = data;
@@ -390,7 +561,7 @@ export class MessageComponent implements OnInit {
         // console.log(this.chatList);
         // console.log("***********************");
       });
-    }else{
+    } else {
       let csv = [];
       this.messageService.list().subscribe((data) => {
         this.messageAll = data;
@@ -426,9 +597,6 @@ export class MessageComponent implements OnInit {
         document.body.appendChild(downloadLink);
         downloadLink.click();
         document.body.removeChild(downloadLink);
-        // console.log("chatList");
-        // console.log(this.chatList);
-        // console.log("***********************");
       });
     }
   }
@@ -543,69 +711,6 @@ export class MessageComponent implements OnInit {
   //     });
   //   });
   // }
-
-  // send(image,box) {
-
-  //     let formData = new FormData();
-  //     let req = new XMLHttpRequest();
-
-  //     formData.append("box", JSON.stringify(box));
-  //     formData.append("screenshot", image);
-
-  //     req.open("POST", 'Users/shmh/desktop/screenshot');
-  //     req.send(formData);
-  // }
-  //take a screenshot
-  // screenShot(e) {
-  //   e = e || window.event;
-  //   let start = 0;
-  //   let sx, sy, ex, ey = -1;
-  //   let active_box = document.createElement("div");
-  //   // console.log(e);
-
-  //   //create box
-  //   let drawBox = () => {
-  //     active_box.style.left = (ex > 0 ? sx : sx + ex) + 'px';
-  //     active_box.style.top = (ey > 0 ? sy : sy + ey) + 'px';
-  //     active_box.style.width = Math.abs(ex) + 'px';
-  //     active_box.style.height = Math.abs(ey) + 'px';
-  //   }
-
-  //   addEventListener("click", e => {
-  //     if (start == 0) {
-  //       sx = e.pageX;
-  //       sy = e.pageY;
-  //       ex = 0;
-  //       ey = 0;
-  //       drawBox();
-  //     }
-  //     console.log(active_box);
-  //   });
-
-  //   addEventListener("mousemove", e=>{
-  //     //console.log(e)
-  //     if(start==1) {
-  //         ex=e.pageX-sx;
-  //         ey=e.pageY-sy
-  //         drawBox();
-  //     }
-  //     console.log("e: "+ex + " " + ey);
-  //   });
-
-  //   addEventListener("click", e=>{
-  //     start=0;
-  //     let a=100/75 //zoom out img 75%
-  //     resolve({
-  //        x:Math.floor(((ex > 0 ? sx : sx+ex )-scr.offsetLeft)*a),
-  //        y:Math.floor(((ey > 0 ? sy : sy+ey )-b.offsetTop)*a),
-  //        width:Math.floor(Math.abs(ex)*a),
-  //        height:Math.floor(Math.abs(ex)*a),
-  //        desc: q('.bug-desc').value
-  //        });
-
-  //   });
-  // }
-
 
 
   //add a message
