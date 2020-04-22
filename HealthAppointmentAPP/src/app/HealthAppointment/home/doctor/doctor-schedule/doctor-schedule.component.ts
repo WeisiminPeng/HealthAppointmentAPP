@@ -83,7 +83,7 @@ export class DoctorScheduleComponent implements OnInit {
   public animationSettings: Object = { effect: 'None' };
   public timeScale: TimeScaleModel = { enable: true, interval: 60 };
   public firstDayOfWeek: Number = 0;
-  public bookingColor: '#FF0000';
+  public bookingColor: '#D25443';
   public selectedDate: Date = new Date(Date.now());
   public currentDate: Date = this.selectedDate;
 

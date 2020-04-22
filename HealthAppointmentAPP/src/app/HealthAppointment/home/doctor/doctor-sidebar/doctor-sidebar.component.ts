@@ -6,7 +6,7 @@ import { ButtonComponent } from "@syncfusion/ej2-angular-buttons";
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { CommentStmt } from '@angular/compiler';
 import { DomSanitizer} from '@angular/platform-browser';
-
+import { doctorsData } from 'src/app/HealthAppointment/healthappoint.model';
 
 
 @Component({
@@ -26,6 +26,8 @@ export class DoctorSidebarComponent implements OnInit {
   public Message: string;
   public people: any;
   public avatar: any;
+  public doctor: doctorsData;
+
 
   @ViewChild('sidebar')
   public sidebar: SidebarComponent;
@@ -91,7 +93,29 @@ export class DoctorSidebarComponent implements OnInit {
       alert('upload Successfully!');
     });
     }
-
-
+  // getImg() {
+  //   // get doctor's workhours
+  //   this.doctorService.get(this.username).subscribe(doctor => {
+  //     this.doctor = doctor;
+  //
+  //     if (doctor.Avatar) {
+  //       return this.sanitizer.bypassSecurityTrustUrl(doctor.Avatar);
+  //     } else {
+  //       var imgurl: string = '../../../../../assets/photo/'+doctor.username+'.png';
+  //       return imgurl;
+  //     }
+  //   });
+  // }
+  // getImg() {
+  //   this.doctorService.get(this.username).subscribe(doctor => {
+  //     this.doctor = doctor;
+  //     if ( this.doctor.Avatar) {
+  //       return this.sanitizer.bypassSecurityTrustUrl(this.doctor.Avatar);
+  //     } else {
+  //       var imgurl: string = '../../../../../assets/photo/'+this.username+'.png';
+  //       return imgurl;
+  //     }
+  //   });
+  // }
 
 }

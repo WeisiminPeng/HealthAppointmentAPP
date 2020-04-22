@@ -171,6 +171,9 @@
     color: #B3D2E2;
     border: 1px solid #90B3C2;
   }
+  &:active{
+    outline: none;
+  }
 }
 .unableToSendMessage{
   font-size: 16px;
@@ -186,5 +189,8 @@
   padding-left: 10px;
   &:hover{
     cursor: text;
+  }
+  &:active{
+    outline: none;
   }
 }
