@@ -1,5 +1,7 @@
+// font variable
 $normal-font:  "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 
+// content style
 .content{
     font-family: $normal-font;
     width: 100%;
@@ -7,6 +9,8 @@ $normal-font:  "Lucida Sans Unicode", "Lucida Grande", sans-serif;
     display: flex;
     //background-color: white;
     //opacity: 0.95;
+    
+    // style of the left part(name list)
     .left{
         width: 180px;
         border-right: 1px solid #eee;
@@ -41,6 +45,8 @@ $normal-font:  "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 
         }
     }
+
+    // style of the right part(message list)
     .right{
         flex:1;
         // opacity:1;
@@ -153,6 +159,8 @@ $normal-font:  "Lucida Sans Unicode", "Lucida Grande", sans-serif;
             }
 
         }
+
+        //style of the add message part
         .addMessage{
             height: 210px;
             // top: 1000px;
@@ -173,6 +181,7 @@ $normal-font:  "Lucida Sans Unicode", "Lucida Grande", sans-serif;
     }
 }
 
+//style of the image and emoji part
 img{
     width:20px;
 }
@@ -260,7 +269,14 @@ img{
     cursor: move;
 }
 
+//style of export chat history part
+.export-button{
+    width: 25px;
+    padding-left: 20px;
+    padding-top: 5px;
+}
 
+//style of the send button
 .send{
   font-family: $normal-font;
   border: none;

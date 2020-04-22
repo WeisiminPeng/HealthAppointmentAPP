@@ -71,9 +71,9 @@ export class MessageComponent implements OnInit {
   // used for reload
   private timer;
 
-  isShowEmoji = false;
-  isShowSearchBar = false;
-  searchKeywords = '';
+  isShowEmoji: boolean = false;
+  isShowSearchBar: boolean = false;
+  searchKeywords = "";
   searchChatListSmall: any[] = [];
 
 
@@ -207,10 +207,10 @@ export class MessageComponent implements OnInit {
       });
     }, 50000);
 
-    // hide search bar and emoji div
+    //hide search bar and emoji div
     document.addEventListener('mouseup', (e) => {
-      const classname = (e.target as HTMLTextAreaElement).className;
-      if (classname != 'search-button' && classname != 'search-enter' && classname != 'search-div' && (classname.indexOf('search-input')) && classname != 'emoji-button' && classname != 'emoji-div' && classname != 'emojione') {
+      let classname = (<HTMLTextAreaElement>e.target).className;
+      if (classname != "search-button" && classname != "search-enter" && classname != "search-div" && (classname.indexOf("search-input")) && classname != "emoji-button" && classname != "emoji-div" && classname != "emojione") {
         this.isShowEmoji = false;
         this.isShowSearchBar = false;
         // console.log(classname);
@@ -233,12 +233,13 @@ export class MessageComponent implements OnInit {
   getMessageList(usernameTo) {
     this.usernameTo = usernameTo;
     const id = 'nameli-' + this.usernameTo;
-    console.log(id);
     const parent = document.getElementById('namelist-wrapper');
-    console.log(parent.childElementCount);
     for (let i = 0; i < parent.childElementCount; i++) {
+      // tslint:disable-next-line:triple-equals
+      // console.log("id"+id);
+      //   console.log("cid"+parent.children[i].id);
       if (parent.children[i].id === id) {
-        console.log(parent.children[i].id);
+
         parent.children[i].className = 'selected';
       } else {
         parent.children[i].className = 'name-span';
@@ -276,12 +277,12 @@ export class MessageComponent implements OnInit {
   }
 
 
-  // add an emoji
+  //add an emoji
   addEmoji(e) {
     // alert("add emoji");
-    const selectedEmoji = e.toElement.alt;
-    this.msg.content = this.msg.content + ' ' + selectedEmoji + ' ';
-    console.log(this.msg.content);
+    let selectedEmoji = e.toElement.alt;
+    this.msg.content = this.msg.content + " " + selectedEmoji + " "
+    // console.log(this.msg.content);
     this.isShowEmoji = false;
 
     // console.log("add" + this.isShowEmoji);
@@ -316,10 +317,10 @@ export class MessageComponent implements OnInit {
   // }
 
 
-  // search content
+  //search content
   showSearchBar() {
-    if (typeof (this.usernameTo) == 'undefined') {
-      alert('Please select a person to search!');
+    if (typeof (this.usernameTo) == "undefined") {
+      alert("Please select a person to search!");
       return;
     }
     this.isShowSearchBar = true;
@@ -328,8 +329,8 @@ export class MessageComponent implements OnInit {
 
   searchContent() {
     this.searchChatListSmall = [];
-    if (this.searchKeywords == '') {
-      alert('The search content should not be empty!');
+    if (this.searchKeywords == "") {
+      alert("The search content should not be empty!");
       return;
     }
     // console.log(this.chatListSmall);
@@ -343,40 +344,139 @@ export class MessageComponent implements OnInit {
     // console.log(this.searchKeywords);
   }
 
+  //export chat history
+  exportHistory() {
+    // alert("history");
+    let flag = confirm("Warning! Your emoji will not be saved in to the chat history csv file!")==false;
+    if(flag){
+      return;
+    }
+    if (typeof (this.usernameTo) == "undefined") {
+      let csv = [];
+      this.messageService.list().subscribe((data) => {
+        this.messageAll = data;
+        for (let i = 0; i < this.messageAll.length; i++) {
+          if (this.messageAll[i].username1 == this.usernameFrom || this.messageAll[i].username2 == this.usernameFrom) {
+            this.chatList.push(this.messageAll[i]);
+          }
+        }
+        //header
+        csv.push("Username,");
+        csv.push("Name,");
+        csv.push("content");
+        csv.push("\n");
+        for (let i = 0; i < this.chatList.length; i++) {
+          // console.log(this.chatList[i]);
+          for (let j = 0; j < this.chatList[i].chatlist.length; j++) {
+            // console.log(this.chatList[i].chatlist[j]);
+            let chat = this.chatList[i].chatlist[j];
+            csv.push(chat.usernameMsg + ",");
+            csv.push(chat.nameMsg + ",");
+            csv.push(chat.content + "\n");
+          }
+          csv.push("\n");
+        }
+        // console.log(csv);
+        const BOM = '\uFEFF';
+        // create a csv file
+        var blob = new Blob([BOM + csv], { type: 'text/csv' })
+        let downloadLink = document.createElement('a');
+        downloadLink.setAttribute('href', URL.createObjectURL(blob));
+        downloadLink.download = `chat_history.csv`;
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        document.body.removeChild(downloadLink);
+        // console.log("chatList");
+        // console.log(this.chatList);
+        // console.log("***********************");
+      });
+    }else{
+      let csv = [];
+      this.messageService.list().subscribe((data) => {
+        this.messageAll = data;
+        for (let i = 0; i < this.messageAll.length; i++) {
+          if (this.messageAll[i].username1 == this.usernameFrom || this.messageAll[i].username2 == this.usernameFrom) {
+            this.chatList.push(this.messageAll[i]);
+          }
+        }
+        for (let i = 0; i < this.chatList.length; i++) {
+          if (this.chatList[i].username1 == this.usernameTo || this.chatList[i].username2 == this.usernameTo) {
+            this.chatListSmall = this.chatList[i].chatlist;
+          }
+        }
 
-
-  screenShot(e) {
-    const canvas = document.body as HTMLCanvasElement;
-    const ctx = canvas.getContext('2d');
-
-    let x1, y1, x2, y2;
-    addEventListener('mousemove', e => {
-
-    });
-    addEventListener('mousedown', e => {
-      x1 = e.pageX;
-      y1 = e.pageY;
-    });
-    addEventListener('mouseup', e => {
-      x2 = e.pageX;
-      y2 = e.pageY;
-    });
-    // html2canvas(document.body).then(function (canvas) {
-      // document.body.appendChild(canvas);
-      // let that = this;
-      // console.log(this.http);
-    //   let image = canvas.toDataURL("image/png");
-    //   console.log(image);
-    //   that.http.post("desktop/screenshot", image).subscribe(
-    //     data => {
-    //     console.log("POST Request is successful ", data);
-    //     },
-    //     error => {
-    //     console.log("Error", error);
-    //     }
-    //     );
-    // });
+        //header
+        csv.push("Username,");
+        csv.push("Name,");
+        csv.push("content");
+        csv.push("\n");
+        for (let i = 0; i < this.chatListSmall.length; i++) {
+          let chat = this.chatListSmall[i];
+          csv.push(chat.usernameMsg + ",");
+          csv.push(chat.nameMsg + ",");
+          csv.push(chat.content + "\n");
+        }
+        // console.log(csv);
+        const BOM = '\uFEFF';
+        // create a csv file
+        var blob = new Blob([BOM + csv], { type: 'text/csv' })
+        let downloadLink = document.createElement('a');
+        downloadLink.setAttribute('href', URL.createObjectURL(blob));
+        downloadLink.download = `chat_history.csv`;
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        document.body.removeChild(downloadLink);
+        // console.log("chatList");
+        // console.log(this.chatList);
+        // console.log("***********************");
+      });
+    }
   }
+
+  // screenShot(e) {
+  //   let canvas = <HTMLCanvasElement>document.getElementById("showScreenshot");
+  //   console.log(canvas);
+  //   let ctx = canvas.getContext('2d');
+
+  //   let x1, y1, x2, y2;
+  //   addEventListener("mousemove", e => {
+
+  //   });
+  //   addEventListener("mousedown", e => {
+  //     x1 = e.pageX;
+  //     y1 = e.pageY;
+  //   });
+  //   addEventListener('mouseup', e => {
+  //     x2 = e.pageX;
+  //     y2 = e.pageY;
+  //     console.log("x1,y1,x2,y2:" + x1 + "," + y1 + "," + x2 + "," + y2);
+  //     let width = x2 - x1;
+  //     let height = y2 - y1;
+
+  //     document.getElementById("showMessage").onload=function(){
+  //       console.log("draw");
+  //       ctx.clearRect(0, 0, width, height);
+  //       ctx.drawImage((<HTMLCanvasElement>document.body), x1, y1, width, height, 0, 0, width, height);
+  //     }
+
+  //   });
+
+  // html2canvas(document.body).then(function (canvas) {
+  // document.body.appendChild(canvas);
+  // let that = this;
+  // console.log(this.http);
+  //   let image = canvas.toDataURL("image/png");
+  //   console.log(image);
+  //   that.http.post("desktop/screenshot", image).subscribe(
+  //     data => {
+  //     console.log("POST Request is successful ", data);
+  //     },
+  //     error => {
+  //     console.log("Error", error);
+  //     }
+  //     );
+  // });
+  // }
 
 
   // async screenShot(e) {
@@ -455,7 +555,7 @@ export class MessageComponent implements OnInit {
   //     req.open("POST", 'Users/shmh/desktop/screenshot');
   //     req.send(formData);
   // }
-  // take a screenshot
+  //take a screenshot
   // screenShot(e) {
   //   e = e || window.event;
   //   let start = 0;
@@ -508,11 +608,11 @@ export class MessageComponent implements OnInit {
 
 
 
-  // add a message
+  //add a message
   addMessage() {
     // this.msg.contentType="string";
-    if (typeof (this.usernameTo) == 'undefined') {
-      alert('Please select a person to send your message!');
+    if (typeof (this.usernameTo) == "undefined") {
+      alert("Please select a person to send your message!");
       return;
     }
     if (this.msg.content == '') {
