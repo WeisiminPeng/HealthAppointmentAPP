@@ -92,4 +92,10 @@ export class DoctorInfoComponent implements OnInit {
     const modal = document.getElementById('cgpassword');
     modal.hidden = false;
   }
+
+  getImg() {
+    var imgurl: string = '../../../../../assets/photo/'+this.username+'.png';
+
+    return imgurl;
+  }
 }

@@ -15,10 +15,11 @@
       </div>
       <div class="personalInfoDiv">
         <!--        <h2>Personal-Info</h2>-->
-<!--        <div id="imgDiv">-->
-<!--          <img id="avatar3" *ngIf="imgURL" [src]="imgURL" height="100" width="100">-->
-<!--&lt;!&ndash;          <img src="../../../../../assets/photo/profilepic.jpeg" height="100" width="100"/>&ndash;&gt;-->
-<!--        </div>-->
+        <div id="imgDiv">
+          <img id="avatar3" [src]='getImg()'height="80px" width="80px" >
+          <!--          <img id="avatar3" *ngIf="imgURL" [src]="imgURL" height="100" width="100">-->
+          <!--&lt;!&ndash;          <img src="../../../../../assets/photo/profilepic.jpeg" height="100" width="100"/>&ndash;&gt;-->
+        </div>
         <table>
           <tr>
             <td>Name:</td><input type="text" [(ngModel)]="name" />
@@ -48,7 +49,7 @@
           </tr>
           <br>
           <tr>
-            <td>Experience:</td><input type="text" class="unchange"  [(ngModel)]="Experience" />
+            <td>Experience:</td><input type="text" class="unchange" [(ngModel)]="Experience" />
           </tr>
           <br>
 

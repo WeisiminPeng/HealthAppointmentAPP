@@ -3,9 +3,9 @@ import { ActivatedRoute } from '@angular/router';
 import { DoctorService } from '../../../services/doctor.service';
 import { SidebarComponent } from '@syncfusion/ej2-angular-navigations';
 import { ButtonComponent } from "@syncfusion/ej2-angular-buttons";
-import { HttpClient,HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { CommentStmt } from '@angular/compiler';
-import { DomSanitizer} from '@angular/platform-browser';
+import { DomSanitizer } from '@angular/platform-browser';
 import { doctorsData } from 'src/app/HealthAppointment/healthappoint.model';
 
 
@@ -28,7 +28,6 @@ export class DoctorSidebarComponent implements OnInit {
   public avatar: any;
   public doctor: doctorsData;
 
-
   @ViewChild('sidebar')
   public sidebar: SidebarComponent;
   public isOpen: boolean = true;
@@ -36,7 +35,7 @@ export class DoctorSidebarComponent implements OnInit {
   public type: string = 'Push';
 
   constructor(public doctorService: DoctorService, public routes: ActivatedRoute, public http: HttpClient,
-              private sanitizer: DomSanitizer) { }
+    private sanitizer: DomSanitizer) { }
 
   // onFileSelected(event){
   //   this.selectedFile = <File>event.target.files[0];
@@ -52,18 +51,19 @@ export class DoctorSidebarComponent implements OnInit {
     this.doctorAppointment = '/doctorAppointment/' + this.username;
     this.doctorSchdule = '/doctorSchdule/' + this.username;
     this.personalInfo = '/doctorInfo/' + this.username;
-    this.Message = '/messages/'+this.username+'_doctor';
+    this.Message = '/messages/' + this.username + '_doctor';
 
-    console.log(this.doctorAppointment);
+    // console.log(this.doctorAppointment);
 
-    this.http.get('http://localhost:3000/doctors/' + this.username).subscribe((response:any)=>{
-      this.people = response;
-      console.log(this.people.Avatar);
+    // this.http.get('http://localhost:3000/doctors/' + this.username).subscribe((response: any) => {
+    //   this.people = response;
+    //   console.log(this.people.Avatar);
 
-      this.imgURL = this.sanitizer.bypassSecurityTrustUrl(this.people.Avatar);
+    //   this.imgURL = this.sanitizer.bypassSecurityTrustUrl(this.people.Avatar);
 
-    // }
-    });
+    //   // }
+    // });
+
 
     // console.log(this.doctorAppointment)
 
@@ -77,45 +77,27 @@ export class DoctorSidebarComponent implements OnInit {
   showSidebar(): void {
     this.sidebar.show();
   }
-  uploadImg(files) {
+  // uploadImg(files) {
 
-    let temp = '';
-    temp = window.URL.createObjectURL(files[0]);
-    this.imgURL = this.sanitizer.bypassSecurityTrustUrl(temp);
-    // temp = this.imgURL.changingThisBreaksApplicationSecurity;
-    // this.imgURL = this.sanitizer.bypassSecurityTrustResourceUrl(temp);
-    const httpOptions = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
-    let api='http://localhost:3000/doctors/' + this.username;
-    this.http.put(api, {
-      Avatar: this.imgURL.changingThisBreaksApplicationSecurity
-    }, httpOptions).subscribe((response) => {
-      console.log(response);
-      alert('upload Successfully!');
-    });
-    }
-  // getImg() {
-  //   // get doctor's workhours
-  //   this.doctorService.get(this.username).subscribe(doctor => {
-  //     this.doctor = doctor;
-  //
-  //     if (doctor.Avatar) {
-  //       return this.sanitizer.bypassSecurityTrustUrl(doctor.Avatar);
-  //     } else {
-  //       var imgurl: string = '../../../../../assets/photo/'+doctor.username+'.png';
-  //       return imgurl;
-  //     }
+  //   let temp = '';
+  //   temp = window.URL.createObjectURL(files[0]);
+  //   this.imgURL = this.sanitizer.bypassSecurityTrustUrl(temp);
+  //   // temp = this.imgURL.changingThisBreaksApplicationSecurity;
+  //   // this.imgURL = this.sanitizer.bypassSecurityTrustResourceUrl(temp);
+  //   const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
+  //   let api = 'http://localhost:3000/doctors/' + this.username;
+  //   this.http.put(api, {
+  //     Avatar: this.imgURL.changingThisBreaksApplicationSecurity
+  //   }, httpOptions).subscribe((response) => {
+  //     console.log(response);
+  //     alert('upload Successfully!');
   //   });
   // }
-  // getImg() {
-  //   this.doctorService.get(this.username).subscribe(doctor => {
-  //     this.doctor = doctor;
-  //     if ( this.doctor.Avatar) {
-  //       return this.sanitizer.bypassSecurityTrustUrl(this.doctor.Avatar);
-  //     } else {
-  //       var imgurl: string = '../../../../../assets/photo/'+this.username+'.png';
-  //       return imgurl;
-  //     }
-  //   });
-  // }
+
+  getImg() {
+    var imgurl: string = '../../../../../assets/photo/'+this.username+'.png';
+
+    return imgurl;
+  }
 
 }
