@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import html2canvas from 'html2canvas';
+// import html2canvas from 'html2canvas';
 
 // import service
 import { MessageService } from '../services/message.service';
@@ -71,9 +71,9 @@ export class MessageComponent implements OnInit {
   // used for reload
   private timer;
 
-  isShowEmoji: boolean = false;
-  isShowSearchBar: boolean = false;
-  searchKeywords = "";
+  isShowEmoji = false;
+  isShowSearchBar = false;
+  searchKeywords = '';
   searchChatListSmall: any[] = [];
 
 
@@ -207,10 +207,10 @@ export class MessageComponent implements OnInit {
       });
     }, 50000);
 
-    //hide search bar and emoji div
+    // hide search bar and emoji div
     document.addEventListener('mouseup', (e) => {
-      let classname = (<HTMLTextAreaElement>e.target).className;
-      if (classname != "search-button" && classname != "search-enter" && classname != "search-div" && (classname.indexOf("search-input")) && classname != "emoji-button" && classname != "emoji-div" && classname != "emojione") {
+      const classname = (e.target as HTMLTextAreaElement).className;
+      if (classname != 'search-button' && classname != 'search-enter' && classname != 'search-div' && (classname.indexOf('search-input')) && classname != 'emoji-button' && classname != 'emoji-div' && classname != 'emojione') {
         this.isShowEmoji = false;
         this.isShowSearchBar = false;
         // console.log(classname);
@@ -227,16 +227,18 @@ export class MessageComponent implements OnInit {
     this.sidebar.show();
   }
   // sidebar function done!
-  
+
 
   // get message list of the selected people in the name list
   getMessageList(usernameTo) {
     this.usernameTo = usernameTo;
     const id = 'nameli-' + this.usernameTo;
+    console.log(id);
     const parent = document.getElementById('namelist-wrapper');
-    for(let i =0; i < parent.childElementCount; i++){
-      // tslint:disable-next-line:triple-equals
-      if(parent.children[i].id === id){
+    console.log(parent.childElementCount);
+    for (let i = 0; i < parent.childElementCount; i++) {
+      if (parent.children[i].id === id) {
+        console.log(parent.children[i].id);
         parent.children[i].className = 'selected';
       } else {
         parent.children[i].className = 'name-span';
@@ -274,11 +276,11 @@ export class MessageComponent implements OnInit {
   }
 
 
-  //add an emoji
+  // add an emoji
   addEmoji(e) {
     // alert("add emoji");
-    let selectedEmoji = e.toElement.alt;
-    this.msg.content = this.msg.content + " " + selectedEmoji + " "
+    const selectedEmoji = e.toElement.alt;
+    this.msg.content = this.msg.content + ' ' + selectedEmoji + ' ';
     console.log(this.msg.content);
     this.isShowEmoji = false;
 
@@ -305,8 +307,8 @@ export class MessageComponent implements OnInit {
 
   //   this.msg.contentType="image";
   //   // this.http.post("http://localhost:3000/")
-  //   // let reader = new FileReader(); 
-  //   // reader.readAsDataURL(file); 
+  //   // let reader = new FileReader();
+  //   // reader.readAsDataURL(file);
   //   // reader.onload = function(e){
   //   //    console.log(e.target.result);//(<HTMLImageElement>document.getElementById('mImg')).src =
   //   // }
@@ -314,10 +316,10 @@ export class MessageComponent implements OnInit {
   // }
 
 
-  //search content
+  // search content
   showSearchBar() {
-    if (typeof (this.usernameTo) == "undefined") {
-      alert("Please select a person to search!");
+    if (typeof (this.usernameTo) == 'undefined') {
+      alert('Please select a person to search!');
       return;
     }
     this.isShowSearchBar = true;
@@ -326,8 +328,8 @@ export class MessageComponent implements OnInit {
 
   searchContent() {
     this.searchChatListSmall = [];
-    if (this.searchKeywords == "") {
-      alert("The search content should not be empty!");
+    if (this.searchKeywords == '') {
+      alert('The search content should not be empty!');
       return;
     }
     // console.log(this.chatListSmall);
@@ -344,21 +346,21 @@ export class MessageComponent implements OnInit {
 
 
   screenShot(e) {
-    let canvas = <HTMLCanvasElement> document.body;
-    let ctx = canvas.getContext('2d');
+    const canvas = document.body as HTMLCanvasElement;
+    const ctx = canvas.getContext('2d');
 
-    let x1,y1,x2,y2;
-    addEventListener("mousemove", e => {
+    let x1, y1, x2, y2;
+    addEventListener('mousemove', e => {
 
     });
-    addEventListener("mousedown", e => {
-      x1=e.pageX;
-      y1=e.pageY;
+    addEventListener('mousedown', e => {
+      x1 = e.pageX;
+      y1 = e.pageY;
     });
     addEventListener('mouseup', e => {
-      x2=e.pageX;
-      y2=e.pageY;
-    })
+      x2 = e.pageX;
+      y2 = e.pageY;
+    });
     // html2canvas(document.body).then(function (canvas) {
       // document.body.appendChild(canvas);
       // let that = this;
@@ -379,16 +381,16 @@ export class MessageComponent implements OnInit {
 
   // async screenShot(e) {
   //     let screenshot = await this.makeScreenshot(); // png dataUrl
-  //     let box = await this.getBox(e);   
+  //     let box = await this.getBox(e);
   //     this.send(screenshot,box); // sed post request  with bug image, region and description
   //     alert('To see POST requset with image go to: chrome console > network tab');
   // }
 
   // async makeScreenshot(){
-  //   return new Promise((resolve, reject) => { 
+  //   return new Promise((resolve, reject) => {
   //     html2canvas(document.body).then(canvas => {
   //       document.body.appendChild(canvas)
-  //     }); 
+  //     });
   //   });
   // }
 
@@ -430,7 +432,7 @@ export class MessageComponent implements OnInit {
 
   //     addEventListener("click", e=>{
   //       start=0;
-  //       // let a=100/75 //zoom out img 75%      
+  //       // let a=100/75 //zoom out img 75%
   //       resolve({
   //          x:Math.floor(ex > 0 ? sx : sx+ex ),
   //          y:Math.floor(ey > 0 ? sy : sy+ey ),
@@ -448,12 +450,12 @@ export class MessageComponent implements OnInit {
   //     let req = new XMLHttpRequest();
 
   //     formData.append("box", JSON.stringify(box));
-  //     formData.append("screenshot", image);    
+  //     formData.append("screenshot", image);
 
   //     req.open("POST", 'Users/shmh/desktop/screenshot');
   //     req.send(formData);
   // }
-  //take a screenshot
+  // take a screenshot
   // screenShot(e) {
   //   e = e || window.event;
   //   let start = 0;
@@ -492,7 +494,7 @@ export class MessageComponent implements OnInit {
 
   //   addEventListener("click", e=>{
   //     start=0;
-  //     let a=100/75 //zoom out img 75%      
+  //     let a=100/75 //zoom out img 75%
   //     resolve({
   //        x:Math.floor(((ex > 0 ? sx : sx+ex )-scr.offsetLeft)*a),
   //        y:Math.floor(((ey > 0 ? sy : sy+ey )-b.offsetTop)*a),
@@ -506,11 +508,11 @@ export class MessageComponent implements OnInit {
 
 
 
-  //add a message
+  // add a message
   addMessage() {
     // this.msg.contentType="string";
-    if (typeof (this.usernameTo) == "undefined") {
-      alert("Please select a person to send your message!");
+    if (typeof (this.usernameTo) == 'undefined') {
+      alert('Please select a person to send your message!');
       return;
     }
     if (this.msg.content == '') {

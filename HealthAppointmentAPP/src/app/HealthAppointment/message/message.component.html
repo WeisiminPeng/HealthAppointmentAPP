@@ -5,7 +5,7 @@
 <div class="content">
     <div class="left">
         <ul id= 'namelist-wrapper' class="namelist">
-            <li id="nameli-{{usernameTo.name}}" class="name-span" *ngFor="let usernameTo of namelist"(click)="getMessageList(usernameTo.username)" >
+            <li id="nameli-{{usernameTo.username}}" class="name-span" *ngFor="let usernameTo of namelist"(click)="getMessageList(usernameTo.username)" >
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{usernameTo.name}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <!-- <span tabindex="1" (click)="getMessageList(usernameTo.username)">{{usernameTo.name}}</span> -->
             </li>
