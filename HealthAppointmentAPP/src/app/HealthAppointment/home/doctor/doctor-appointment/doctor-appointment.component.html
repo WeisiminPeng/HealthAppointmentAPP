@@ -26,7 +26,7 @@
         <!-- <ng-template #content> -->
         <form>
             <div class="break-hour-instruction">
-                Click on day to add break, double click to take day off and third click to remove break
+                Click on day to switch:&nbsp;&nbsp; ADD BREAK - DAY OFF - REMOVE BREAK
             </div>
             <div class="break-hour header">
                 <div class="break-hour-start-end">
@@ -53,7 +53,7 @@
         </form>
         <div class="button-container">
             <button ejs-button cssClass="e-normal" (click)='onCancelClick()'>Cancel</button>
-            <button ejs-button cssClass="e-normal" [isPrimary]="true" (click)='onSaveClick()'>Save</button>
+            <button ejs-button cssClass="e-normal" [isPrimary]="true" (click)='onSaveClick()' style="background-color:#D25443 ">Save</button>
         </div>
     </ejs-dialog>
 </div>

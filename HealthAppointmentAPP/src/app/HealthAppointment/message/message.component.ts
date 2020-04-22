@@ -309,6 +309,25 @@ export class MessageComponent implements OnInit {
   }
 
 
+  // //add a image
+  // addImage(e) {
+  //   let file = e.target.files[0];
+  //   if (!file.type.match('image/*')) {
+  //     alert('please upload a image！');
+  //     e.target.value = "";
+  //     return;
+  //   }
+
+  //   this.msg.contentType="image";
+  //   // this.http.post("http://localhost:3000/")
+  //   // let reader = new FileReader();
+  //   // reader.readAsDataURL(file);
+  //   // reader.onload = function(e){
+  //   //    console.log(e.target.result);//(<HTMLImageElement>document.getElementById('mImg')).src =
+  //   // }
+  //   // console.log(reader.onload);
+  // }
+
   //search content
   showSearchBar() {
     if (typeof (this.usernameTo) == "undefined") {
@@ -581,6 +600,117 @@ export class MessageComponent implements OnInit {
       });
     }
   }
+
+  // screenShot(e) {
+  //   let canvas = <HTMLCanvasElement>document.getElementById("showScreenshot");
+  //   console.log(canvas);
+  //   let ctx = canvas.getContext('2d');
+
+  //   let x1, y1, x2, y2;
+  //   addEventListener("mousemove", e => {
+
+  //   });
+  //   addEventListener("mousedown", e => {
+  //     x1 = e.pageX;
+  //     y1 = e.pageY;
+  //   });
+  //   addEventListener('mouseup', e => {
+  //     x2 = e.pageX;
+  //     y2 = e.pageY;
+  //     console.log("x1,y1,x2,y2:" + x1 + "," + y1 + "," + x2 + "," + y2);
+  //     let width = x2 - x1;
+  //     let height = y2 - y1;
+
+  //     document.getElementById("showMessage").onload=function(){
+  //       console.log("draw");
+  //       ctx.clearRect(0, 0, width, height);
+  //       ctx.drawImage((<HTMLCanvasElement>document.body), x1, y1, width, height, 0, 0, width, height);
+  //     }
+
+  //   });
+
+  // html2canvas(document.body).then(function (canvas) {
+  // document.body.appendChild(canvas);
+  // let that = this;
+  // console.log(this.http);
+  //   let image = canvas.toDataURL("image/png");
+  //   console.log(image);
+  //   that.http.post("desktop/screenshot", image).subscribe(
+  //     data => {
+  //     console.log("POST Request is successful ", data);
+  //     },
+  //     error => {
+  //     console.log("Error", error);
+  //     }
+  //     );
+  // });
+  // }
+
+
+  // async screenShot(e) {
+  //     let screenshot = await this.makeScreenshot(); // png dataUrl
+  //     let box = await this.getBox(e);
+  //     this.send(screenshot,box); // sed post request  with bug image, region and description
+  //     alert('To see POST requset with image go to: chrome console > network tab');
+  // }
+
+  // async makeScreenshot(){
+  //   return new Promise((resolve, reject) => {
+  //     html2canvas(document.body).then(canvas => {
+  //       document.body.appendChild(canvas)
+  //     });
+  //   });
+  // }
+
+  // async getBox(e) {
+  //   return new Promise((resolve, reject) => {
+  //     let start = 0;
+  //     let sx, sy, ex, ey = -1;
+  //     let active_box = document.createElement("div");
+  //     // console.log(e);
+
+  //     //create box
+  //     let drawBox = () => {
+  //       active_box.style.left = (ex > 0 ? sx : sx + ex) + 'px';
+  //       active_box.style.top = (ey > 0 ? sy : sy + ey) + 'px';
+  //       active_box.style.width = Math.abs(ex) + 'px';
+  //       active_box.style.height = Math.abs(ey) + 'px';
+  //     };
+
+  //     addEventListener("click", e => {
+  //       if (start == 0) {
+  //         sx = e.pageX;
+  //         sy = e.pageY;
+  //         ex = 0;
+  //         ey = 0;
+  //         drawBox();
+  //       }
+  //       console.log(active_box);
+  //     });
+
+  //     addEventListener("mousemove", e=>{
+  //       //console.log(e)
+  //       if(start==1) {
+  //           ex=e.pageX-sx;
+  //           ey=e.pageY-sy
+  //           drawBox();
+  //       }
+  //       console.log("e: "+ex + " " + ey);
+  //     });
+
+  //     addEventListener("click", e=>{
+  //       start=0;
+  //       // let a=100/75 //zoom out img 75%
+  //       resolve({
+  //          x:Math.floor(ex > 0 ? sx : sx+ex ),
+  //          y:Math.floor(ey > 0 ? sy : sy+ey ),
+  //          width:Math.floor(Math.abs(ex)),
+  //          height:Math.floor(Math.abs(ex)),
+  //         //  desc: q('.bug-desc').value
+  //       });
+  //     });
+  //   });
+  // }
 
 
   //add a message
