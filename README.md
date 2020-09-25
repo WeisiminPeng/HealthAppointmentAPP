@@ -28,29 +28,6 @@ Use angular-cli for building the project.
 Use REST API and Node.js for back-end.  
 Use the express framework for developing the endpoints.  
 Use MongoDB for the persistence layer.  
-   
-    
-## Our information
-Name: Yang Huang  
-NUID: 001059638  
-Responsibilities: scss  
-  
-Name: Weisimin Peng  
-NUID: 001057546  
-Responsibilities: Back-end server(patient, doctor and appointment);  
-                  Front-end services(patient, doctor and appointment);  
-                  doctor-appointment/schedule/sidebar component;  
-                  patient-appointment/schedule/doctordetail/sidebar component;  
-  
-Name: Muhua Shuai  
-NUID: 001470329  
-Responsibilities: Back-end server(message);  
-                  All the component in message file;  
-                  Front-end services(message);  
-  
-Name: Tao Wang  
-NUID: 001056563   
-Responsibilities: login, registration and personal info of docor/patient page; 
   
     
 ## Technologies used
